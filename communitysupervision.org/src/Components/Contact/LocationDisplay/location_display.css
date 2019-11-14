@@ -1,0 +1,33 @@
+.location_display {
+  z-index: 2;
+}
+.location_display iframe {
+  width: 60vw;
+  height: 40vw;
+}
+.location_display h2 {
+  margin-top: 25px;
+  font-size: 40px;
+}
+.location_display h3 {
+  font-size: 25px;
+  margin-left: 10px;
+}
+.location_display h4 {
+  font-size: 18px;
+  margin-left: 10px;
+}
+@media screen and (max-width: 750px) {
+  .location_display h1 {
+    font-size: 8vw;
+  }
+  .location_display h2 {
+    font-size: 5vw;
+  }
+  .location_display h3 {
+    font-size: 4vw;
+  }
+  .location_display h4 {
+    font-size: 3vw;
+  }
+}

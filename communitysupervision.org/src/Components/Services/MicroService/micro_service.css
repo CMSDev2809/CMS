@@ -1,0 +1,116 @@
+.micro_service {
+  --dimensions_x: 18vw;
+  --dimensions_y: 20vw;
+  text-align: center;
+  margin: 25px;
+  margin-bottom: 0px;
+  border: 2px solid rgb(121, 121, 121);
+  padding: 10px;
+  background-color: rgb(192, 192, 192);
+  width: var(--dimensions_x);
+  height: var(--dimensions_y);
+  position: relative;
+  cursor: pointer;
+}
+.micro_service-simple {
+  --micro_dimensions: 7.5vw;
+  text-align: center;
+  margin: 2.25vw;
+  margin-bottom: 0px;
+  border: 2px solid rgb(121, 121, 121);
+  padding: 0px;
+  background-color: rgb(192, 192, 192);
+  width: var(--micro_dimensions);
+  height: var(--micro_dimensions);
+  cursor: pointer;
+}
+.micro_service-simple_outline {
+  border: 0px solid red;
+}
+.micro_service-simple h2 {
+  margin-top: 5px;
+  text-align: left;
+  font-size: 15px;
+}
+.micro_service-outline {
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  border-radius: 0%;
+  width: var(--dimensions_x);
+  height: var(--dimensions_y);
+  border: 3px solid rgba(255, 0, 0, 0);
+  transition: all 0.5s;
+}
+.micro_service-outline-simple {
+  --offset: 0px;
+  top: 25px;
+  left: 10%;
+  position: absolute;
+  border-radius: 0%;
+  width: 130px;
+  height: 130px;
+  border: 3px solid rgba(255, 0, 0, 0);
+  transition: all 0.5s;
+}
+.micro_service-outline:hover,
+.micro_service-outline-simple:hover {
+  border-color: rgba(255, 0, 0, 255);
+  transform: translate(10px, 10px);
+}
+.micro_service img {
+  --dimensions: 8.5vw;
+  border: 2px solid rgb(121, 121, 121);
+  border-radius: 50%;
+  padding: 5px;
+  width: var(--dimensions);
+  height: var(--dimensions);
+  background-color: white;
+}
+.micro_service-simple img {
+  --dimensions: 100%;
+  margin: 0px;
+  border: 2px solid rgb(121, 121, 121);
+  border-radius: 50%;
+  padding: 5px;
+  width: var(--dimensions);
+  height: var(--dimensions);
+  background-color: white;
+}
+.micro_service h2 {
+  width: 100%;
+  font-size: 2vw;
+}
+.micro_service-simple h2 {
+  width: 100%;
+  font-size: 15px;
+}
+.micro_service h3,
+.micro_service-simple h3 {
+  font-size: 20px;
+  color: red;
+  text-align: center;
+}
+.micro_service p,
+.micro_service-simple p {
+  text-align: left;
+  margin: 0.5vw;
+  font-size: 1.25vw;
+}
+.icon_link {
+  --dimensions: 70px;
+  border: 2px solid rgb(121, 121, 121);
+  border-radius: 50%;
+  padding: 5px;
+  width: var(--dimensions);
+  height: var(--dimensions);
+  background-color: white;
+  margin: 5px;
+}
+.icon_link img {
+  width: var(--dimensions);
+  height: var(--dimensions);
+  padding: 3px;
+  margin: -7px;
+  border-radius: 50%;
+}

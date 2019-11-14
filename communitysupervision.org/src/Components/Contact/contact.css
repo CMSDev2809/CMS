@@ -1,0 +1,19 @@
+.contact {
+  background-image: url("./img/bg-black.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  background-size: 100% 100%;
+}
+@media screen and (max-width: 750px) {
+  .contact {
+    background-size: auto 100%;
+  }
+}
+.content {
+  background-color: var(--globalBackgroundColor);
+  padding: var(--globalTextPadding);
+  width: 100%;
+  position: relative;
+}

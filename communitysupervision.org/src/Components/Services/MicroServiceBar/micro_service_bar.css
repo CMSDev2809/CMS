@@ -1,0 +1,11 @@
+.micro_service_bar {
+  background-color: var(--globalBackgroundColor);
+  padding: var(--globalTextPadding);
+}
+.micro_service_bar h1 {
+  text-align: center;
+}
+.micro_service_bar p {
+  text-align: left;
+  max-width: 100%;
+}

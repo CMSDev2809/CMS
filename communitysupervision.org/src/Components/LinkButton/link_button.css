@@ -1,0 +1,76 @@
+.link_button {
+  --horizontalMargin: 20px;
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px;
+  margin-left: var(--horizontalMargin);
+  margin-right: var(--horizontalMargin);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+  font-family: "Cabin", sans-serif;
+}
+
+@media screen and (max-width: 749px) {
+  .link_button {
+    --horizontalMargin: 10px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-left: var(--horizontalMargin);
+    margin-right: var(--horizontalMargin);
+  }
+}
+
+.link_button:hover {
+  transform: scale(1);
+}
+
+.link_button a {
+  color: black;
+  text-decoration: none;
+}
+
+.link_button::after {
+  content: "";
+  margin-top: -5px;
+  display: block;
+  width: 0;
+  height: 3px;
+  background: rgb(255, 0, 0);
+  transition: width 0.2s ease-in-out;
+}
+
+.link_button:hover::after {
+  width: 100%;
+  transition: width 0.2s ease-in-out;
+}
+
+.link_img {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 40px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.link_img a {
+  color: red;
+  text-decoration: none;
+  -webkit-text-stroke: 0.1px red;
+}
+
+.link_img-small {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 20px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.link_img-small a {
+  color: red;
+  text-decoration: none;
+  -webkit-text-stroke: 0.1px red;
+}

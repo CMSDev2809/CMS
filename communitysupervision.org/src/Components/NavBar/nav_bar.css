@@ -1,0 +1,66 @@
+.nav_bar {
+}
+.nav_bar-header {
+  background-color: white;
+  width: 100%;
+}
+.nav_bar-footer {
+  background-color: rgb(60, 60, 60);
+  width: 100%;
+}
+.nav_bar-footer h3 {
+  margin-top: 20px;
+  font-size: 15px;
+}
+.nav_links {
+  margin-top: 20px;
+}
+.footer_links {
+  margin-top: 17.5px;
+  margin-right: 50px;
+  float: right;
+}
+.copyright {
+  color: grey;
+  width: 500px;
+  top: 18px;
+  left: 15%;
+  position: absolute;
+}
+.footer_links a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+.nav_img {
+  margin-left: 5vw;
+}
+.link_buttons {
+  display: inline-flex;
+  margin-top: 25px;
+}
+.link_buttons-container {
+  float: right;
+  margin-right: 75px;
+}
+.bars {
+  font-size: 35px;
+  margin-top: 50%;
+  cursor: pointer;
+}
+.slider-show {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 300ms ease-in-out;
+}
+.slider-hide {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 300ms ease-in-out;
+}

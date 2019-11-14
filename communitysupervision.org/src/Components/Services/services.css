@@ -1,0 +1,40 @@
+.services {
+  background-image: url("./img/bg-black.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+}
+@media screen and (max-width: 775px) {
+  .services {
+    background-size: auto 100%;
+  }
+}
+.services-container {
+  padding: 100px;
+  background-color: var(--globalBackgroundColor);
+}
+.custom_image img {
+  width: 450px;
+  margin-top: 25px;
+  margin-right: 75px;
+}
+.custom_image_icon img {
+}
+.service_display {
+  display: inline-flex;
+}
+@media screen and (max-width: 775px) {
+  .services-container {
+    padding: 15px;
+  }
+  .custom_image img {
+    width: 80vw;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .service_display {
+    display: block;
+    font-size: 10px;
+  }
+}

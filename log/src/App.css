@@ -1,0 +1,19 @@
+.App {
+  text-align: left;
+  padding: 15px;
+  vertical-align: middle;
+}
+.App img {
+  --dims: 25px;
+  width: var(--dims);
+  height: var(--dims);
+  border-radius: 50%;
+}
+.row {
+  padding: 5px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+.col {
+  border: 1px solid black;
+}

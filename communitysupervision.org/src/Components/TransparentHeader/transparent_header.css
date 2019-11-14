@@ -1,0 +1,9 @@
+.transparent_header {
+  --headerHeight: 175px;
+  height: var(--headerHeight);
+  background-color: transparent;
+}
+.transparent_header h1 {
+  padding-top: calc(var(--headerHeight) / 3);
+  padding-left: 10vw;
+}

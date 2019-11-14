@@ -1,0 +1,29 @@
+.contact_display_card {
+  --margins: 0px;
+  margin-top: var(--margins);
+  margin-bottom: var(--margins);
+  border: 0px solid rgb(175, 175, 175);
+  border-radius: 5px;
+  display: inline-block;
+  padding: 2vw;
+  padding-left: 0px;
+  min-width: 5vw;
+}
+@media screen and (min-width: 775px) {
+  .contact_display_card {
+    padding: 5px;
+    padding-left: 0px;
+  }
+}
+.icon {
+  --dimensions: 50px;
+  border-radius: 50%;
+  width: var(--dimensions);
+  height: var(--dimensions);
+  position: absolute;
+  top: calc(var(--dimensions) / 4 * -1 + var(--margins));
+  left: calc(var(--dimensions) / 4 * -1);
+  font-size: 35px;
+  text-align: center;
+  font-family: sans-serif;
+}

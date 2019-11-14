@@ -1,0 +1,34 @@
+body,
+html {
+  --globalTextPadding: 3vw;
+  --globalBackgroundColor: rgb(235, 235, 235);
+  --globalWidthLimit: 750px;
+  background-color: rgb(70, 70, 70);
+}
+h1 {
+  font-family: "Cabin", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}
+h2 {
+  font-family: "Cabin", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+p {
+  font-family: "Cabin", sans-serif;
+  font-size: 20px;
+}
+.inner_border {
+  border: 0px solid rgb(215, 215, 215);
+  padding: var(--globalTextPadding);
+}
+.home {
+  background-image: fixed;
+  background-position: center;
+}
+@media screen and (max-width: 775px) {
+  .home {
+    background-size: auto 100%;
+  }
+}

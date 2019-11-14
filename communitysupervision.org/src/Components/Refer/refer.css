@@ -1,0 +1,81 @@
+.refer {
+  background-color: var(--globalBackgroundColor);
+  padding: var(--globalTextPadding);
+}
+
+.container {
+  width: 90%;
+  position: relative;
+}
+.formFields {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 15px;
+}
+.formFields h1 {
+  font-size: 25px;
+  margin: 10px;
+  color: black;
+}
+.formFields h2 {
+  font-size: 15px;
+  margin: 10px;
+  color: gray;
+  font-weight: normal;
+}
+.formFields col {
+  display: "block";
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.formFields grid {
+  width: 100%;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0.25;
+  }
+}
+.dropZone_flash {
+  border: 2px solid;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  margin-left: 65px;
+  padding: 2px;
+  border-color: white;
+  animation: fadeIn 0.5s infinite alternate;
+}
+.dropZone_stable {
+  border: 2px solid;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  margin-left: 65px;
+  padding: 2px;
+  border-color: rgba(10, 255, 255, 0);
+}
+.custom_button {
+  width: 50%;
+  margin: 25px;
+}
+.custom_checkbox {
+  --size: 25px;
+  min-width: var(--size);
+  min-height: var(--size);
+  display: inline-flex;
+  margin: 10px;
+  width: var(--size);
+  height: var(--size);
+  font-size: 30px;
+  padding: 0px;
+}
+.custom_checkbox:focus {
+  outline: none;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  max-width: 450px;
+}
