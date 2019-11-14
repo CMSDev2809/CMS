@@ -33,6 +33,7 @@ bower_components
 build/Release
 build.zip
 config.js
+server/convergeConfig.js
 server/ref.pdf
 server/receipt.pdf
 
