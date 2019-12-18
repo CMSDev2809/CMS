@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "PORT=3000 react-scripts start",
-    "build": "rm -r build; REACT_APP_BUILDDATE=$(date '+%m-%d-%y, %H:%M') NODE_PATH=./src react-scripts build; zip -r build.zip build",
+    "build": "rm -r /var/www/compliancemonitoringsystems.com/build; npm run build; mv build /var/www/compliancemonitoringsystems.com/build",
     "production": "PORT=3000 serve -s build"
   }
 }

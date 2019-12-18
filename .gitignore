@@ -36,6 +36,8 @@ config.js
 server/convergeConfig.js
 server/ref.pdf
 server/receipt.pdf
+compliancemonitoringsystems.com/build
+communitysupervision.org/build
 
 # Dependency directories
 node_modules/
