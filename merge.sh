@@ -1,1 +1,1 @@
-git pull origin master; cd /cms/compliancemonitoringsystems.com npm run build; cd /cms/communitysupervision.org npm run build
+git pull origin master; cd /CMS/compliancemonitoringsystems.com npm run build; cd /CMS/communitysupervision.org npm run build
