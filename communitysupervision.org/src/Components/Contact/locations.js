@@ -1,4 +1,4 @@
-import Contacts from "./contactList";
+import Contacts from "./contact_list";
 
 export default {
   missoula: {
