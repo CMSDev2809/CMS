@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "PORT=3002 react-scripts start",
-    "build": "rm -r /var/www/communitysupervision.org/build; npm run build; mv build /var/www/communitysupervision.org/build",
+    "build": "rm -r build; react-scripts build",
     "production": "PORT=3002 serve -s build"
   }
 }
