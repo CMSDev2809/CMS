@@ -48,7 +48,7 @@
   },
   "scripts": {
     "start": "PORT=3000 react-scripts start",
-    "build": "REACT_APP_BUILDDATE=$(date '+%m-%d-%y, %H:%M') NODE_PATH=./src node scripts/build.js",
+    "build": "rm -r build; react-scripts build",
     "production": "PORT=3000 serve -s build"
   }
 }

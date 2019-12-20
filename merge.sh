@@ -1,1 +1,1 @@
-git pull origin master; cd /CMS/compliancemonitoringsystems.com node scripts/build.js; cd /CMS/communitysupervision.org node scripts/build.js
+git pull origin master; cd /CMS/compliancemonitoringsystems.com; npm run build; rm -rf /var/www/html/compliancemonitoringsystems.com/build; mv build /var/www/html/compliancemonitoringsystems.com; cd /CMS/communitysupervision.org; npm run build; rm -rf /var/www/html/communitysupervision.org/build; mv build /var/www/html/communitysupervision.org
