@@ -29,12 +29,6 @@ module.exports = {
     email: "broc@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
-  bstokes: {
-    name: "Buck Stokes",
-    title: "Administrative Assistant",
-    email: "buck@compliancemonitoringsystems.com",
-    phonenumber: "(406) 529-1789"
-  },
   ckennedy: {
     name: "Carla Kennedy",
     title: "Community Corrections Officer",

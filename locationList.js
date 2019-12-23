@@ -16,7 +16,6 @@ export default {
     contacts: [
       Contacts.aalt,
       Contacts.broberts,
-      Contacts.bstokes,
       Contacts.cpaul,
       Contacts.jhenry,
       Contacts.jtarbert,

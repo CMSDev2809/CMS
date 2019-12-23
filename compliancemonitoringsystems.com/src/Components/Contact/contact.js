@@ -7,8 +7,8 @@ import { setSelectedLocation } from "../../Actions/locationActions";
 import { setLocations } from "../../Actions/locationActions";
 import { setContacts } from "../../Actions/locationActions";
 import Location from "./Locations/location";
-import Contacts from "./contactList";
-import Locations from "./locationList";
+import Contacts from "../../../../contactList";
+import Locations from "../../../../locationList";
 import CommentBox from "../CommentBox/comment_box";
 import Config from "../../config";
 
@@ -52,4 +52,7 @@ const mapDispatchToProps = dispatch => ({
   setSelectedLocation: location => dispatch(setSelectedLocation(location))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contact);

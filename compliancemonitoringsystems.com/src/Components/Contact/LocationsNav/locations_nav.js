@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
-import Locations from "../locationList";
+import Locations from "../../../../../locationList";
 import {
   setSelectedLocation,
   setLocationModalToggle,
