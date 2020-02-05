@@ -354,7 +354,7 @@ const handleError = (response, req, res) => {
   }
 };
 
-app.post("/api/proccessPayment", async (req, res) => {
+app.post("/api/processPayment", async (req, res) => {
   const fetch = require("node-fetch");
   let pass = false;
   if (req.body.apiKey && req.body.apiKey === convergeConfig.apiKey) {

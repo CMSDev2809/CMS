@@ -1,21 +1,9 @@
 module.exports = {
-  aacree: {
-    name: "Angela Acree",
-    title: "Compliance Officer",
-    email: "angela@compliancemonitoringsystems.com",
-    phonenumber: "(406) 214-7219"
-  },
   aalt: {
     name: "Austin Alt",
     title: "Admin/Accounts Receivable Clerk",
     email: "austin@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
-  },
-  bbrott: {
-    name: "Birnetta Brott",
-    title: "Community Corrections Officer",
-    email: "birnetta@compliancemonitoringsystems.com",
-    phonenumber: "(406) 493-5030"
   },
   blavanway: {
     name: "Barry LaVanway",
@@ -29,35 +17,17 @@ module.exports = {
     email: "broc@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
-  ckennedy: {
-    name: "Carla Kennedy",
-    title: "Community Corrections Officer",
-    email: "carla@compliancemonitoringsystems.com",
-    phonenumber: "(406) 529-1213"
-  },
   cmurthy: {
     name: "Courtney Murthy",
     title: "Compliance Officer",
     email: "courtney@compliancemonitoringsystems.com",
     phonenumber: "(406) 531-9893"
   },
-  cpaul: {
-    name: "Cara Paul",
-    title: "Administrative Assistant",
-    email: "cara@compliancemonitoringsystems.com",
-    phonenumber: "(406) 529-1789"
-  },
   gjacobson: {
     name: "Greg Jacobson",
     title: "Community Supervision Officer",
     email: "greg@compliancemonitoringsystems.com",
     phonenumber: "(406) 493-5030"
-  },
-  gkynett: {
-    name: "George Kynett",
-    title: "Community Corrections Officer",
-    email: "george@compliancemonitoringsystems.com",
-    phonenumber: "(406) 531-9893"
   },
   hroos: {
     name: "Heather Roos",
@@ -95,35 +65,11 @@ module.exports = {
     email: "jodine@compliancemonitoringsystems.com",
     phonenumber: "(406) 880-2322"
   },
-  kkimmel: {
-    name: "Kristi Kimmel",
-    title: "24/7 Technician",
-    email: "kristi@compliancemonitoringsystems.com",
-    phonenumber: "(406) 393-2455"
-  },
-  lrognerud: {
-    name: "Laura Rognerud",
-    title: "Compliance Officer",
-    email: "laura@compliancemonitoringsystems.com",
-    phonenumber: "(406) 393-2455"
-  },
-  msherry: {
-    name: "Meg Sherry",
-    title: "Community Corrections Officer",
-    email: "meg@compliancemonitoringsystems.com",
-    phonenumber: "(406) 493-5030"
-  },
   mkimmel: {
     name: "Molly Kimmel",
     title: "Compliance Officer",
     email: "molly@compliancemonitoringsystems.com",
     phonenumber: "(406) 370-5958"
-  },
-  myassin: {
-    name: "Michelle Yassin",
-    title: "Compliance Officer",
-    email: "michelle@compliancemonitoringsystems.com",
-    phonenumber: "(406) 531-9893"
   },
   rmclaughlin: {
     name: "Ryley McLaughlin",

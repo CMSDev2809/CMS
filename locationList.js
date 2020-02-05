@@ -16,7 +16,6 @@ export default {
     contacts: [
       Contacts.aalt,
       Contacts.broberts,
-      Contacts.cpaul,
       Contacts.jhenry,
       Contacts.jtarbert,
       Contacts.jsickels,
@@ -37,12 +36,7 @@ export default {
       firstLine: "112 3rd St E",
       secondLine: "Kalispell, MT 59901"
     },
-    contacts: [
-      Contacts.blavanway,
-      Contacts.kkimmel,
-      Contacts.lrognerud,
-      Contacts.mkimmel
-    ]
+    contacts: [Contacts.blavanway, Contacts.mkimmel]
   },
   polson: {
     locationName: "Polson",
@@ -56,7 +50,7 @@ export default {
       firstLine: "11 3rd Avenue East",
       secondLine: "Polson, MT 59860"
     },
-    contacts: [Contacts.gjacobson, Contacts.msherry, Contacts.jclairmont]
+    contacts: [Contacts.gjacobson, Contacts.jclairmont]
   },
   great_falls: {
     locationName: "Great Falls",
@@ -70,7 +64,7 @@ export default {
       firstLine: "200 Central Avenue, Suite A",
       secondLine: "Great Falls, MT 59401"
     },
-    contacts: [Contacts.cmurthy, Contacts.myassin]
+    contacts: [Contacts.cmurthy]
   },
   havre: {
     locationName: "Havre",

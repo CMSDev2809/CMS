@@ -83,7 +83,7 @@
   },
   "scripts": {
     "start": "PORT=3000 node scripts/start.js",
-    "build": "rm -r build; node scripts/build.js",
+    "build": "rm -r build; node scripts/build.js; cp -r build /var/www/compliancemonitoringsystems.com/html/build",
     "production": "PORT=3000 serve -s build"
   },
   "jest": {
