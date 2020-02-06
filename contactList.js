@@ -5,6 +5,18 @@ module.exports = {
     email: "austin@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
+  anealey: {
+    name: "Amber Nealey",
+    title: "Admin/Accounts Receivable",
+    email: "amber@compliancemonitoringsystems.com",
+    phonenumber: "(406) 529-1789"
+  },
+  bcountryman: {
+    name: "Bret Countryman",
+    title: "Community Corrections Officer / Office Manager",
+    email: "bret@compliancemonitoringsystems.com",
+    phonenumber: "(406) 214-9927"
+  },
   blavanway: {
     name: "Barry LaVanway",
     title: "Compliance Officer",
@@ -22,6 +34,12 @@ module.exports = {
     title: "Compliance Officer",
     email: "courtney@compliancemonitoringsystems.com",
     phonenumber: "(406) 531-9893"
+  },
+  dshepard: {
+    name: "Devinne Shepard",
+    title: "Compliance Officer",
+    email: "devinne@compliancemonitoringsystems.com",
+    phonenumber: "(406) 529-1789"
   },
   gjacobson: {
     name: "Greg Jacobson",
@@ -65,6 +83,24 @@ module.exports = {
     email: "jodine@compliancemonitoringsystems.com",
     phonenumber: "(406) 880-2322"
   },
+  ckeyser: {
+    name: "Chris Keyser",
+    title: "Community Corrections Officer",
+    email: "chris@compliancemonitoringsystems.com",
+    phonenumber: "(406) 274-0155"
+  },
+  mrose: {
+    name: "Marisa Rose",
+    title: "Compliance Officer",
+    email: "marisa@compliancemonitoringsystems.com",
+    phonenumber: "(406) 315-3241"
+  },
+  mjohnson: {
+    name: "Mindy Johnson",
+    title: "Compliance Officer",
+    email: "mindy@compliancemonitoringsystems.com",
+    phonenumber: "(406) 393-2455"
+  },
   mkimmel: {
     name: "Molly Kimmel",
     title: "Compliance Officer",
@@ -83,6 +119,12 @@ module.exports = {
     email: "raquel@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1213"
   },
+  stennant: {
+    name: "Sarah Tennant",
+    title: "Sepcimen Collector",
+    email: "sarah@compliancemonitoringsystems.com",
+    phonenumber: "(406) 544-5549"
+  },
   sleddy: {
     name: "Stephen Leddy",
     title: "Chief Operations Officer",
@@ -95,10 +137,28 @@ module.exports = {
     email: "tiffany@compliancemonitoringsystems.com",
     phonenumber: "(406) 493-4540"
   },
+  tpeplinski: {
+    name: "Taylor Peplinski",
+    title: "Administrative Assistant",
+    email: "taylor@compliancemonitoringsystems.com",
+    phonenumber: "(406) 315-3241"
+  },
   tstrub: {
     name: "Tate Strub",
     title: "Compliance Officer",
     email: "tate@compliancemonitoringsystems.com",
     phonenumber: "(406) 370-4806"
+  },
+  vhayden: {
+    name: "Virgil Hayden",
+    title: "Compliance Officer",
+    email: "virgil@compliancemonitoringsystems.com",
+    phonenumber: "(406) 493-2084"
+  },
+  wwolfe: {
+    name: "William Wolfe",
+    title: "Compliance Officer",
+    email: "william@compliancemonitoringsystems.com",
+    phonenumber: "(406) 315-3241"
   }
 };

@@ -15,6 +15,8 @@ export default {
     },
     contacts: [
       Contacts.aalt,
+      Contacts.anealey,
+      Contacts.dshepard,
       Contacts.broberts,
       Contacts.jhenry,
       Contacts.jtarbert,
@@ -36,7 +38,12 @@ export default {
       firstLine: "112 3rd St E",
       secondLine: "Kalispell, MT 59901"
     },
-    contacts: [Contacts.blavanway, Contacts.mkimmel]
+    contacts: [
+      Contacts.blavanway,
+      Contacts.ckeyser,
+      Contacts.mjohnson,
+      Contacts.mkimmel
+    ]
   },
   polson: {
     locationName: "Polson",
@@ -50,21 +57,27 @@ export default {
       firstLine: "11 3rd Avenue East",
       secondLine: "Polson, MT 59860"
     },
-    contacts: [Contacts.gjacobson, Contacts.jclairmont]
+    contacts: [Contacts.gjacobson, Contacts.jclairmont, Contacts.vhayden]
   },
   great_falls: {
     locationName: "Great Falls",
     googleMapURI:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5390.446532090585!2d-111.303917!3d47.505043!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534237ee0f90e2dd%3A0xe8a6000c3e77705e!2s200+Central+Ave%2C+Great+Falls%2C+MT+59401!5e0!3m2!1sen!2sus!4v1514020488988",
     contactInformation: {
-      officeNumber: "(406) 531-9893",
+      officeNumber: "(406) 315-3241",
       faxNumber: "(888) 855-7964"
     },
     address: {
       firstLine: "200 Central Avenue, Suite A",
       secondLine: "Great Falls, MT 59401"
     },
-    contacts: [Contacts.cmurthy]
+    contacts: [
+      Contacts.bcountryman,
+      Contacts.cmurthy,
+      Contacts.mrose,
+      Contacts.tpeplinski,
+      Contacts.wwolfe
+    ]
   },
   havre: {
     locationName: "Havre",
@@ -77,7 +90,7 @@ export default {
       firstLine: "109 2nd Street West",
       secondLine: "Havre, MT 59501"
     },
-    contacts: []
+    contacts: [Contacts.kkeeler]
   },
   glasgow: {
     locationName: "Glasgow",
@@ -129,7 +142,7 @@ export default {
       firstLine: "502 South 19th Avenue, Suite 304",
       secondLine: "Bozeman, MT 59718"
     },
-    contacts: [Contacts.jmathias]
+    contacts: [Contacts.jmathias, Contacts.stennant]
   },
   miles_city: {
     locationName: "Miles City",
@@ -143,7 +156,7 @@ export default {
       firstLine: "1010 Main Street",
       secondLine: "Miles City, MT 59301"
     },
-    contacts: [Contacts.tstrub, Contacts.hroos]
+    contacts: [Contacts.hroos, Contacts.tstrub]
   },
   sidney: {
     locationName: "Sidney",
