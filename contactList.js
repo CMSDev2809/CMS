@@ -25,7 +25,7 @@ module.exports = {
   },
   broberts: {
     name: "Broc Roberts",
-    title: "Information Technology (IT) / Laboratory Technician",
+    title: "Information Technology (IT)",
     email: "broc@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
@@ -115,7 +115,7 @@ module.exports = {
   },
   rkula: {
     name: "Raquel Kula",
-    title: "Corrections Officer",
+    title: "Community Corrections Officer",
     email: "raquel@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1213"
   },
