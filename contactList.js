@@ -89,7 +89,7 @@ module.exports = {
     email: "jodine@compliancemonitoringsystems.com",
     phonenumber: "(406) 880-2322"
   },
-  keeler: {
+  kkeeler: {
     name: "Katie Keeler",
     title: "Compliance Officer",
     email: "katie@compliancemonitoringsystems.com",
