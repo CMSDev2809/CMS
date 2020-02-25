@@ -29,6 +29,12 @@ module.exports = {
     email: "broc@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
+  ckeyser: {
+    name: "Chris Keyser",
+    title: "Community Corrections Officer",
+    email: "chris@compliancemonitoringsystems.com",
+    phonenumber: "(406) 274-0155"
+  },
   cmurthy: {
     name: "Courtney Murthy",
     title: "Compliance Officer",
@@ -83,11 +89,11 @@ module.exports = {
     email: "jodine@compliancemonitoringsystems.com",
     phonenumber: "(406) 880-2322"
   },
-  ckeyser: {
-    name: "Chris Keyser",
-    title: "Community Corrections Officer",
-    email: "chris@compliancemonitoringsystems.com",
-    phonenumber: "(406) 274-0155"
+  keeler: {
+    name: "Katie Keeler",
+    title: "Compliance Officer",
+    email: "katie@compliancemonitoringsystems.com",
+    phonenumber: "(406) 945-9012"
   },
   mrose: {
     name: "Marisa Rose",
