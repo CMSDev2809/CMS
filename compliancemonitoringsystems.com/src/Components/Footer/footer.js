@@ -12,11 +12,8 @@ class Footer extends Component {
     return (
       <div className="footer">
         <div className={"logo"}>
-          <img
-            alt={""}
-            src={Img1}
-            style={{ width: "50px", margin: "5px" }}
-          />Copyright Compliance Monitoring Systems © 2019
+          <img alt={""} src={Img1} style={{ width: "50px", margin: "5px" }} />
+          Copyright Compliance Monitoring Systems © 2020
         </div>
         <div className={"links"}>
           <Link to={"/"}>Home</Link>
@@ -31,6 +28,9 @@ class Footer extends Component {
           <Link to={"/contact"}>Contact</Link>
           <Link to={"/referral"}>Refer a Client</Link>
           <Link to={"/pay"}>Pay Online</Link>
+          <Link to={"/careers"} target={"_blank"}>
+            Careers
+          </Link>
         </div>
       </div>
     );
@@ -41,4 +41,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Footer);

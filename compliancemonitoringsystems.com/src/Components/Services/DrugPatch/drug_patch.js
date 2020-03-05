@@ -46,6 +46,16 @@ class DrugPatch extends Component {
             Amphetamine/Methamphetamine & PCP
           </li>
         </ul>
+        <div>
+          <video width="400" height="300" controls>
+            <source src={require("./pharmcheck.mp4")} type="video/mp4" />
+          </video>
+        </div>
+        <div style={{ marginBottom: "15px" }}>
+          <b>
+            <i>Video courtesy of pharmcheck.com</i>
+          </b>
+        </div>
         <Link to={"/drug_patch"}>
           <Button>
             <div
@@ -64,4 +74,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrugPatch);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DrugPatch);

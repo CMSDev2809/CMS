@@ -38,6 +38,15 @@ export default class App extends Component {
           <Route exact path="/pay" component={PayOnline} />
           <Route exact path="/referral" component={Refer} />
           <Route exact path="/news" component={News} />
+          <Route
+            exact
+            path="/careers"
+            component={() => {
+              window.location.href =
+                "https://compliancemonitoringsystems.bamboohr.com/jobs/";
+              return null;
+            }}
+          />
         </div>
       </Router>
     );

@@ -53,6 +53,9 @@ class NavBar extends Component {
         <Link to={"/pay"}>
           <Button>Pay Online</Button>
         </Link>
+        <Link to={"/careers"} target={"_blank"}>
+          <Button>Careers</Button>
+        </Link>
       </div>
     );
   }
@@ -148,6 +151,16 @@ class NavBar extends Component {
                 </Button>
               </Link>
             </div>
+            <div>
+              <Link to={"/careers"} target={"_blank"}>
+                <Button
+                  style={{ width: "175px", marginBottom: "3px" }}
+                  onClick={() => this.props.setNavModal(false)}
+                >
+                  Careers
+                </Button>
+              </Link>
+            </div>
           </Modal.Body>
         </Modal>
       </div>
@@ -175,4 +188,7 @@ const mapDispatchToProps = dispatch => ({
   setNavModal: boolean => dispatch(setNavModal(boolean))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);
