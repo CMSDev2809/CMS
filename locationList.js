@@ -72,10 +72,10 @@ export default {
       secondLine: "Great Falls, MT 59401"
     },
     contacts: [
-      Contacts.bcountryman,
+      Contacts.chopkins,
       Contacts.cmurthy,
+      Contacts.dpierce,
       Contacts.mrose,
-      Contacts.tpeplinski,
       Contacts.wwolfe
     ]
   },

@@ -11,12 +11,6 @@ module.exports = {
     email: "amber@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789"
   },
-  bcountryman: {
-    name: "Bret Countryman",
-    title: "Community Corrections Officer / Office Manager",
-    email: "bret@compliancemonitoringsystems.com",
-    phonenumber: "(406) 214-9927"
-  },
   blavanway: {
     name: "Barry LaVanway",
     title: "Compliance Officer",
@@ -41,6 +35,12 @@ module.exports = {
     email: "courtney@compliancemonitoringsystems.com",
     phonenumber: "(406) 531-9893"
   },
+  dpierce: {
+    name: "Dennis Pierce",
+    title: "Community Corrections Officer",
+    email: "dennis.pierce@compliancemonitoringsystems.com",
+    phonenumber: "(406) 315-3241"
+  },
   dshepard: {
     name: "Devinne Shepard",
     title: "Compliance Officer",
@@ -52,6 +52,12 @@ module.exports = {
     title: "Community Supervision Officer",
     email: "greg@compliancemonitoringsystems.com",
     phonenumber: "(406) 493-5030"
+  },
+  chopkins: {
+    name: "Cynthia Hopkins",
+    title: "Compliance Officer",
+    email: "cynthia.hopkins@communitysupervision.org",
+    phonenumber: "(406) 315-3241"
   },
   hroos: {
     name: "Heather Roos",
@@ -142,12 +148,6 @@ module.exports = {
     title: "Monitoring Center Supervisor",
     email: "tiffany@compliancemonitoringsystems.com",
     phonenumber: "(406) 493-4540"
-  },
-  tpeplinski: {
-    name: "Taylor Peplinski",
-    title: "Administrative Assistant",
-    email: "taylor@compliancemonitoringsystems.com",
-    phonenumber: "(406) 315-3241"
   },
   tstrub: {
     name: "Tate Strub",
