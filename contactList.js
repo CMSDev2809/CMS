@@ -56,7 +56,7 @@ module.exports = {
   chopkins: {
     name: "Cynthia Hopkins",
     title: "Compliance Officer",
-    email: "cynthia.hopkins@communitysupervision.org",
+    email: "cynthia.hopkins@compliancemonitoringsystems.com",
     phonenumber: "(406) 315-3241"
   },
   hroos: {
