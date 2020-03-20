@@ -5,6 +5,7 @@ body {
     rgba(42, 42, 42, 1) 100%
   );
   min-height: 100vh;
+  overflow-x: hidden;
 }
 button {
   border-radius: 6px;
