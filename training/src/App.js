@@ -3,10 +3,12 @@ import { Header, Router } from "./components";
 import { Animation } from "arclight-react";
 import "./app.css";
 
+const config = require("./config");
+
 const getDirectory = async () => {
-  const directory = await fetch(`http://localhost:9001/search_directory`).then(
-    res => res.json()
-  );
+  const directory = await fetch(
+    config.production ? config.productionPath : config.path
+  ).then(res => res.json());
   return directory;
 };
 
