@@ -15,15 +15,14 @@ module.exports = (req, res) => {
         const title = file;
         obj[title] = {
           title,
-          url: config.production
-            ? config.productionPath
-            : config.path +
-              ":" +
-              config.port +
-              "/" +
-              dir.substr(dir.indexOf("/Forms") + 1) +
-              "/" +
-              file
+          url:
+            (config.production ? config.productionPath : config.path) +
+            ":" +
+            config.port +
+            "/" +
+            dir.substr(dir.indexOf("/Forms") + 1) +
+            "/" +
+            file
         };
       }
     });
