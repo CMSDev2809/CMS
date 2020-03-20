@@ -11,7 +11,7 @@ const path = require("path");
 
 app.use(bodyParser.json());
 app.use("/Forms", express.static(config.base));
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: true }));
 secure.use(cors({ origin: true, credentials: true }));
 secure.use(security);
 
