@@ -1,6 +1,5 @@
 const config = require("./config");
 const jwt = require("jsonwebtoken");
-const Users = require("./models/User");
 const ObjectId = require("mongodb").ObjectID;
 
 module.exports = (req, res, next) => {
