@@ -1,0 +1,9 @@
+.table {
+}
+.table .navigation {
+  display: inline-flex;
+}
+.table .navigation .button {
+  margin: 5px;
+  margin-left: 25px;
+}

@@ -1,0 +1,40 @@
+.header {
+  width: "100%";
+  position: relative;
+  text-align: left;
+  padding: 25px;
+}
+.header .content {
+  display: inline-flex;
+  border-bottom: 2px solid black;
+  width: 100%;
+}
+.header .content .img {
+  width: 75px;
+}
+.header .content .img img {
+  width: 100%;
+}
+.header .content .title {
+  position: absolute;
+  margin-left: 100px;
+  bottom: 25px;
+}
+.header .content .directory {
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.header .content .directory .piece {
+  display: inline-flex;
+  margin-right: 25px;
+  margin-left: -15px;
+  height: 45px;
+}
+.header .content .directory .divider {
+  margin-top: -8.5px;
+}

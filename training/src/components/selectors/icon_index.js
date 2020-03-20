@@ -1,0 +1,15 @@
+module.exports = {
+  ["programs"]: { img: require("./img/programs.png"), type: "img" },
+  ["drug_patch"]: { img: require("./img/drug_patch.png"), type: "img" },
+  ["gps"]: { img: require("./img/gps.png"), type: "img" },
+  ["gui"]: { img: "folder-open", type: "icon" },
+  ["scram"]: { img: require("./img/scram.png"), type: "img" },
+  ["urinalysis"]: { img: require("./img/urinalysis.png"), type: "img" },
+  ["txt"]: { img: "file-pdf", type: "icon" },
+  ["pdf"]: { img: require("./img/pdf.png"), type: "img" },
+  ["mp4"]: { img: require("./img/video.png"), type: "img" },
+  ["help"]: { img: require("./img/teacher.png"), type: "img" },
+  ["remote_breath"]: { img: require("./img/remote_breath.png"), type: "img" },
+  ["documents"]: { img: "folder", type: "icon" },
+  ["hair_testing"]: { img: require("./img/hair.jpg"), type: "img" }
+};

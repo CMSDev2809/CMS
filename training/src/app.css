@@ -1,0 +1,25 @@
+body {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 200, 200, 1) 0%,
+    rgba(42, 42, 42, 1) 100%
+  );
+  min-height: 100vh;
+}
+button {
+  border-radius: 6px;
+  border: 1px solid black;
+  padding: 0px;
+  margin: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+button:hover {
+  transform: scale(1.05);
+}
+button:focus {
+  outline: none;
+}
