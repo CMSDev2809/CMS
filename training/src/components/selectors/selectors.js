@@ -51,6 +51,8 @@ export default function Selectors(props) {
   let content = [];
   let cards = [];
   Object.values(props.node).map((el, index) => {
+    const img =
+      IconIndex[el.url ? el.title.split(".")[1] : el.title.toLowerCase()];
     cards.push(
       <Card
         onClick={() =>
@@ -58,9 +60,7 @@ export default function Selectors(props) {
         }
         activeIndex={index + 1}
         title={el.title.replace("_", " ")}
-        img={
-          IconIndex[el.url ? el.title.split(".")[1] : el.title.toLowerCase()]
-        }
+        img={img ? img : IconIndex["_default"]}
         setHover={i => setHover(i)}
         _outerColor={_outerColor}
         _innerColor={_innerColor}
@@ -91,7 +91,9 @@ export default function Selectors(props) {
   }
   return (
     <div className={"selectors"}>
-      <div className={"content"}>{content}</div>
+      <div className={"content"}>
+        {content.length > 0 ? content : <h1>Bummer</h1>}
+      </div>
     </div>
   );
 }

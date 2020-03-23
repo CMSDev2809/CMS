@@ -10,6 +10,8 @@ module.exports = {
   ["mp4"]: { img: require("./img/video.png"), type: "img" },
   ["help"]: { img: require("./img/teacher.png"), type: "img" },
   ["remote_breath"]: { img: require("./img/remote_breath.png"), type: "img" },
-  ["documents"]: { img: "folder", type: "icon" },
-  ["hair_testing"]: { img: require("./img/hair.jpg"), type: "img" }
+  ["documents"]: { img: require("./img/folder.png"), type: "img" },
+  ["hair_testing"]: { img: require("./img/hair.jpg"), type: "img" },
+  ["docx"]: { img: require("./img/word.png"), type: "img" },
+  ["_default"]: { img: "file-pdf", type: "icon" }
 };
