@@ -19,10 +19,12 @@ module.exports = (req, res) => {
             (config.production ? config.productionPath : config.path) +
             ":" +
             config.port +
-            "/Forms" +
+            "/" +
+            dir.substr(dir.indexOf("/Forms") + 1) +
             "/" +
             file
         };
+        console.log(dir, dir.substr(dir.indexOf("/Forms") + 1));
       }
     });
     return obj;
