@@ -52,7 +52,9 @@ export default function Selectors(props) {
   let cards = [];
   Object.values(props.node).map((el, index) => {
     const img =
-      IconIndex[el.url ? el.title.split(".")[1] : el.title.toLowerCase()];
+      IconIndex[
+        el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
+      ];
     cards.push(
       <Card
         onClick={() =>
