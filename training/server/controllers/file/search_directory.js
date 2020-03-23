@@ -24,7 +24,6 @@ module.exports = (req, res) => {
             "/" +
             file
         };
-        console.log(dir, dir.substr(dir.indexOf("/Forms") + 1));
       }
     });
     return obj;

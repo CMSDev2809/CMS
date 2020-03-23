@@ -32,7 +32,7 @@ const Card = props => (
       ) : (
         <img src={props.img.img} />
       )}
-      <h1>{props.title.split(".")[0]}</h1>
+      <h2>{props.title.split(".")[0]}</h2>
     </div>
   </div>
 );

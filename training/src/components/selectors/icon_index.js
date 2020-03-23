@@ -14,5 +14,8 @@ module.exports = {
   ["hair_testing"]: { img: require("./img/hair.jpg"), type: "img" },
   ["docx"]: { img: require("./img/word.png"), type: "img" },
   ["software"]: { img: require("./img/software.png"), type: "img" },
+  ["basic"]: { img: require("./img/basic.png"), type: "img" },
+  ["advanced"]: { img: require("./img/advanced.png"), type: "img" },
+  ["it"]: { img: require("./img/advanced.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
