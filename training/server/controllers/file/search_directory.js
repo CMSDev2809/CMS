@@ -20,7 +20,8 @@ module.exports = (req, res) => {
             ":" +
             config.port +
             "/" +
-            dir.substr(dir.indexOf("/Forms") + 1) +
+            dir.split("/Forms")[1] +
+            "/Forms" +
             "/" +
             file
         };
