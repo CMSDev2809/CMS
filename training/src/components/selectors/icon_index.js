@@ -13,5 +13,6 @@ module.exports = {
   ["documents"]: { img: require("./img/folder.png"), type: "img" },
   ["hair_testing"]: { img: require("./img/hair.jpg"), type: "img" },
   ["docx"]: { img: require("./img/word.png"), type: "img" },
+  ["software"]: { img: require("./img/software.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
