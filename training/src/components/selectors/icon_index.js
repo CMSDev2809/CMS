@@ -24,6 +24,8 @@ module.exports = {
   ["xlsx"]: { img: require("./img/excel.png"), type: "img" },
   ["xls"]: { img: require("./img/excel.png"), type: "img" },
   ["csv"]: { img: require("./img/excel.png"), type: "img" },
+  ["office_365"]: { img: require("./img/office365.png"), type: "img" },
+  ["o365"]: { img: require("./img/office365.png"), type: "img" },
   ["direct_connect"]: { img: require("./img/direct_connect.png"), type: "img" },
   ["printer"]: { img: require("./img/printer.png"), type: "img" },
   ["printers"]: { img: require("./img/printer.png"), type: "img" },
