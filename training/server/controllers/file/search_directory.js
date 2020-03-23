@@ -19,8 +19,6 @@ module.exports = (req, res) => {
             (config.production ? config.productionPath : config.path) +
             ":" +
             config.port +
-            "/" +
-            dir.split("/Forms")[1] +
             "/Forms" +
             "/" +
             file
