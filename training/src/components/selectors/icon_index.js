@@ -31,5 +31,6 @@ module.exports = {
   ["direct_connect"]: { img: require("./img/direct_connect.png"), type: "img" },
   ["printer"]: { img: require("./img/printer.png"), type: "img" },
   ["printers"]: { img: require("./img/printer.png"), type: "img" },
+  ["webroot"]: { img: require("./img/webroot.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
