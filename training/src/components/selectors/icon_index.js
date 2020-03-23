@@ -24,5 +24,6 @@ module.exports = {
   ["xlsx"]: { img: require("./img/excel.png"), type: "img" },
   ["xls"]: { img: require("./img/excel.png"), type: "img" },
   ["csv"]: { img: require("./img/excel.png"), type: "img" },
+  ["direct_connect"]: { img: require("./img/direct_connect.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
