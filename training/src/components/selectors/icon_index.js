@@ -19,5 +19,10 @@ module.exports = {
   ["it"]: { img: require("./img/advanced.png"), type: "img" },
   ["download"]: { img: require("./img/download.png"), type: "img" },
   ["downloads"]: { img: require("./img/download.png"), type: "img" },
+  ["exe"]: { img: require("./img/cogs.png"), type: "img" },
+  ["zip"]: { img: require("./img/zip.png"), type: "img" },
+  ["xlsx"]: { img: require("./img/excel.png"), type: "img" },
+  ["xls"]: { img: require("./img/excel.png"), type: "img" },
+  ["csv"]: { img: require("./img/excel.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
