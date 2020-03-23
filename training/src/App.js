@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Router } from "./components";
-import { Animation } from "arclight-react";
+import { Animation, Particles } from "arclight-react";
 import "./app.css";
 
 const config = require("./config");
@@ -66,13 +66,20 @@ const App = () => {
   return (
     <div>
       <Header />
+      <div className={"particles2"}>
+        <Particles style={"a"} />
+      </div>
       <div className={"content"}>
         <button
           onClick={() => {
             handleSetMenu(traverse(directory), "left");
           }}
         >
-          <h1 style={{ marginRight: "35px", marginLeft: "35px" }}>Back</h1>
+          <h2
+            style={{ marginRight: "35px", marginLeft: "35px", width: "250px" }}
+          >
+            Back
+          </h2>
         </button>
         <Animation animationName={animation} duration={0.5}>
           {node ? (

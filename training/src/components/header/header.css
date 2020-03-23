@@ -3,10 +3,11 @@
   position: relative;
   text-align: left;
   padding: 25px;
+  color: white;
 }
 .header .content {
   display: inline-flex;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   width: 100%;
 }
 .header .content .img {
