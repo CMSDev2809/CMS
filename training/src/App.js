@@ -66,7 +66,7 @@ const App = () => {
     <div>
       <Header />
       <div className={"particles2"}>
-        <Particles style={"a"} />
+        <Particles color={"#00d9ff"} style={"a"} />
       </div>
       <div className={"content"}>
         <button
