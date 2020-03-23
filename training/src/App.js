@@ -51,9 +51,8 @@ const App = () => {
       appendUrl(url);
     }
     setAnimation(direction === "left" ? "slideOutRight" : "slideOutLeft");
-    await new Promise((r, j) => setTimeout(() => r(), 350));
+    await new Promise((r, j) => setTimeout(() => r(), 500));
     setNode(node);
-    await new Promise((r, j) => setTimeout(() => r(), 150));
     setAnimation(direction === "left" ? "slideInLeft" : "slideInRight");
   };
   React.useEffect(() => {
