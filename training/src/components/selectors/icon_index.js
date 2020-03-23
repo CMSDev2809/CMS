@@ -17,5 +17,7 @@ module.exports = {
   ["basic"]: { img: require("./img/basic.png"), type: "img" },
   ["advanced"]: { img: require("./img/advanced.png"), type: "img" },
   ["it"]: { img: require("./img/advanced.png"), type: "img" },
+  ["download"]: { img: require("./img/download.png"), type: "img" },
+  ["downloads"]: { img: require("./img/download.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
