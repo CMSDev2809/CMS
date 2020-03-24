@@ -37,6 +37,19 @@ module.exports = {
   ["microsoft_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
   ["ms_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
   ["webroot"]: { img: require("./img/webroot.png"), type: "img" },
+  ["cms"]: { img: require("./img/cms.png"), type: "img" },
+  ["compliancemonitoringsystems"]: {
+    img: require("./img/cms.png"),
+    type: "img"
+  },
+  ["compliancemonitoringsystems.com"]: {
+    img: require("./img/cms.png"),
+    type: "img"
+  },
+  ["compliance_monitoring_systems"]: {
+    img: require("./img/cms.png"),
+    type: "img"
+  },
   ["lnk"]: { img: require("./img/link.png"), type: "img" },
   ["missoula"]: { img: require("./img/missoula.png"), type: "img" },
   ["hamilton"]: { img: require("./img/hamilton.png"), type: "img" },
