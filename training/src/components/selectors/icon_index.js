@@ -37,5 +37,10 @@ module.exports = {
   ["microsoft_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
   ["ms_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
   ["webroot"]: { img: require("./img/webroot.png"), type: "img" },
+  ["missoula"]: { img: require("./img/missoula.png"), type: "img" },
+  ["hamilton"]: { img: require("./img/hamilton.png"), type: "img" },
+  ["kalispell"]: { img: require("./img/kalispell.png"), type: "img" },
+  ["bozeman"]: { img: require("./img/bozeman.png"), type: "img" },
+  ["great_falls"]: { img: require("./img/great_falls.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
