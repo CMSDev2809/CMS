@@ -1,4 +1,7 @@
 module.exports = {
+  ["adobe"]: { img: require("./img/adobe.png"), type: "img" },
+  ["chrome"]: { img: require("./img/chrome.png"), type: "img" },
+  ["open_vpn"]: { img: require("./img/open_vpn.png"), type: "img" },
   ["programs"]: { img: require("./img/programs.png"), type: "img" },
   ["drug_patch"]: { img: require("./img/drug_patch.png"), type: "img" },
   ["gps"]: { img: require("./img/gps.png"), type: "img" },
@@ -31,6 +34,8 @@ module.exports = {
   ["direct_connect"]: { img: require("./img/direct_connect.png"), type: "img" },
   ["printer"]: { img: require("./img/printer.png"), type: "img" },
   ["printers"]: { img: require("./img/printer.png"), type: "img" },
+  ["microsoft_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
+  ["ms_teams"]: { img: require("./img/ms_teams.png"), type: "img" },
   ["webroot"]: { img: require("./img/webroot.png"), type: "img" },
   ["_default"]: { img: "file-pdf", type: "icon" }
 };
