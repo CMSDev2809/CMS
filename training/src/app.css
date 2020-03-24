@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
     180deg,
-    rgba(48, 0, 35, 1) 0%,
-    rgba(42, 0, 48, 1) 100%
+    rgba(73, 0, 53, 1) 0%,
+    rgba(50, 0, 36, 1) 100%
   );
   min-height: 100vh;
   overflow-x: hidden;
