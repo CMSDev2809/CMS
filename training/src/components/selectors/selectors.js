@@ -59,7 +59,7 @@ export default function Selectors(props) {
       <Card
         onClick={() =>
           el.url
-            ? el.toLowerCase() === "link"
+            ? el.url.toLowerCase().includes(".link")
               ? window.open(el.url, "_blank")
               : openContent(el)
             : props.setNode(el.children, el.title)
