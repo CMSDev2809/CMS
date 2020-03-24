@@ -16,7 +16,6 @@ module.exports = (req, res) => {
         let url = null;
         if (file.includes(".link")) {
           url = fs.readFileSync(dir + "/" + file, "utf8");
-          console.log(url);
         } else {
           url =
             (config.production ? config.productionPath : config.path) +
