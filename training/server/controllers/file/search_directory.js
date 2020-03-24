@@ -14,7 +14,7 @@ module.exports = (req, res) => {
       } else {
         const title = file;
         let url = null;
-        if (file.includes(".lnk")) {
+        if (file.includes(".link")) {
           url = fs.readFileSync(dir + "/" + file, "utf8");
         } else {
           url =
