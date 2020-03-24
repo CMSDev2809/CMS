@@ -58,7 +58,11 @@ export default function Selectors(props) {
     cards.push(
       <Card
         onClick={() =>
-          el.url ? openContent(el) : props.setNode(el.children, el.title)
+          el.url
+            ? img === "link"
+              ? window.open(el.url, "_blank")
+              : openContent(el)
+            : props.setNode(el.children, el.title)
         }
         activeIndex={index + 1}
         title={el.title.replace("_", " ")}

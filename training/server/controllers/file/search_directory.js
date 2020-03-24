@@ -13,14 +13,21 @@ module.exports = (req, res) => {
         traveler(dir + "/" + file, obj[title].children);
       } else {
         const title = file;
-        const url =
-          (config.production ? config.productionPath : config.path) +
-          ":" +
-          config.port +
-          "/" +
-          dir.substr(dir.indexOf("/Forms") + 1) +
-          "/" +
-          file;
+        let url = null;
+        console.log(file);
+        if (file.includes(".link")) {
+          console.log("did run: ", dir + "/" + file);
+          url = fs.readFileSync(dir + "/" + file, "utf8");
+        } else {
+          url =
+            (config.production ? config.productionPath : config.path) +
+            ":" +
+            config.port +
+            "/" +
+            dir.substr(dir.indexOf("/Forms") + 1) +
+            "/" +
+            file;
+        }
         obj[title] = {
           title,
           url
