@@ -13,16 +13,22 @@ module.exports = (req, res) => {
         traveler(dir + "/" + file, obj[title].children);
       } else {
         const title = file;
-        obj[title] = {
-          title,
-          url:
+        let url = null;
+        if (file.includes(".lnk")) {
+          url = fs.readFileSync(dir + "/" + file, "utf8");
+        } else {
+          url =
             (config.production ? config.productionPath : config.path) +
             ":" +
             config.port +
             "/" +
             dir.substr(dir.indexOf("/Forms") + 1) +
             "/" +
-            file
+            file;
+        }
+        obj[title] = {
+          title,
+          url
         };
       }
     });
