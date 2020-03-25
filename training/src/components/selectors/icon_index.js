@@ -42,6 +42,7 @@ module.exports = {
   ms_teams: { img: require("./img/ms_teams.png"), type: "img" },
   webroot: { img: require("./img/webroot.png"), type: "img" },
   windows: { img: require("./img/windows.png"), type: "img" },
+  univision: { img: require("./img/univision.png"), type: "img" },
   windows_server_r2: { img: require("./img/windows.png"), type: "img" },
   cms: { img: require("./img/cms.png"), type: "img" },
   compliancemonitoringsystems: {
