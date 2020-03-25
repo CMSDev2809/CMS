@@ -15,7 +15,7 @@ const Card = props => (
     ${props._innerColor} 0%,
     ${props._outerColor} 100%
   )`,
-      opacity: props.hover === props.activeIndex || !props.hover ? 1 : 0.15
+      opacity: props.hover === props.activeIndex || !props.hover ? 1 : 0.5
     }}
   >
     <div className={"content"}>
