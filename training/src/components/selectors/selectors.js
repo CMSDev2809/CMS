@@ -19,7 +19,6 @@ const Card = props => (
     }}
   >
     <div className={"content"}>
-      {console.log(props)}
       {props.img.type === "icon" ? (
         <FontAwesomeIcon
           style={"a"}
