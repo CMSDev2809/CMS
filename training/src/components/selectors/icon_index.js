@@ -40,6 +40,7 @@ module.exports = {
   printers: { img: require("./img/printer.png"), type: "img" },
   microsoft_teams: { img: require("./img/ms_teams.png"), type: "img" },
   ms_teams: { img: require("./img/ms_teams.png"), type: "img" },
+  recall: { img: require("./img/recall.png"), type: "img" },
   webroot: { img: require("./img/webroot.png"), type: "img" },
   windows: { img: require("./img/windows.png"), type: "img" },
   univision: { img: require("./img/univision.png"), type: "img" },
