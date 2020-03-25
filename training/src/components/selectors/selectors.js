@@ -64,7 +64,7 @@ export default function Selectors(props) {
             : props.setNode(el.children, el.title)
         }
         activeIndex={index + 1}
-        title={el.title.replace("_", " ")}
+        title={el.title.replace(/_/g, " ")}
         img={img ? img : IconIndex["_default"]}
         setHover={i => setHover(i)}
         _outerColor={_outerColor}

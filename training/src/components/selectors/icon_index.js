@@ -1,6 +1,10 @@
 module.exports = {
   adobe: { img: require("./img/adobe.png"), type: "img" },
   chrome: { img: require("./img/chrome.png"), type: "img" },
+  chrome_profile_manager: {
+    img: require("./img/chrome_profile_manager.png"),
+    type: "img"
+  },
   open_vpn: { img: require("./img/open_vpn.png"), type: "img" },
   programs: { img: require("./img/programs.png"), type: "img" },
   drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
