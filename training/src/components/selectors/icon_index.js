@@ -9,6 +9,7 @@ module.exports = {
   programs: { img: require("./img/programs.png"), type: "img" },
   drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
   gps: { img: require("./img/gps.png"), type: "img" },
+  etss: { img: require("./img/etss.png"), type: "img" },
   gui: { img: "folder-open", type: "icon" },
   scram: { img: require("./img/scram.png"), type: "img" },
   urinalysis: { img: require("./img/urinalysis.png"), type: "img" },
@@ -34,8 +35,14 @@ module.exports = {
   office_365: { img: require("./img/office365.png"), type: "img" },
   o365: { img: require("./img/office365.png"), type: "img" },
   office_2010: { img: require("./img/office_2010.png"), type: "img" },
+  oral_drug_testing: { img: require("./img/oral.png"), type: "img" },
+  house_arrest: { img: require("./img/house_arrest.png"), type: "img" },
   o2010: { img: require("./img/office_2010.png"), type: "img" },
   direct_connect: { img: require("./img/direct_connect.png"), type: "img" },
+  paternity_testing: {
+    img: require("./img/paternity_testing.png"),
+    type: "img"
+  },
   printer: { img: require("./img/printer.png"), type: "img" },
   printers: { img: require("./img/printer.png"), type: "img" },
   microsoft_teams: { img: require("./img/ms_teams.png"), type: "img" },

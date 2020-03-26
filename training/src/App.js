@@ -80,7 +80,7 @@ const App = () => {
             Back
           </h2>
         </button>
-        <Animation animationName={animation} duration={0.5}>
+        <Animation animationName={animation} duration={0.4}>
           {node ? (
             <Router
               node={node}
