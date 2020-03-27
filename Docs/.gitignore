@@ -31,13 +31,6 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
-build.zip
-config.js
-server/convergeConfig.js
-server/ref.pdf
-server/receipt.pdf
-compliancemonitoringsystems.com/build
-communitysupervision.org/build
 
 # Dependency directories
 node_modules/
@@ -66,10 +59,3 @@ typings/
 
 # next.js build output
 .next
-
-# training
-training/forms
-
-# recall
-recall/save
-recall/token

@@ -1,0 +1,21 @@
+.form1 {
+  padding: 75px;
+}
+.form1 .info-block {
+}
+.form1 table {
+  width: 75%;
+  text-align: left;
+}
+.form1 table tr {
+}
+.form1 table tr p {
+  margin: 10px;
+  margin-left: -15px;
+}
+.form1 h1 {
+  font-size: 18px;
+}
+.form1 h2 {
+  font-size: 20px;
+}

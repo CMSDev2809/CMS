@@ -1,0 +1,21 @@
+.tasks {
+  width: 100%;
+}
+.hourglass {
+  float: right;
+  margin-right: 25px;
+  color: rgb(0, 143, 204);
+}
+.priority {
+  float: right;
+  margin-right: 50px;
+  color: rgb(212, 0, 63);
+}
+.tasks button {
+  display: inline-block;
+}
+.bttn-block {
+  margin-top: 25px;
+  width: 100%;
+  float: "right";
+}

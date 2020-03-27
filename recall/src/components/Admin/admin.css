@@ -1,0 +1,24 @@
+.admin {
+  padding: 5px;
+  text-align: left;
+}
+.add {
+  color: rgb(0, 255, 194);
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+h1 {
+  font-size: 24px;
+}
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 12px;
+}
+h4 {
+  font-size: 8px;
+}

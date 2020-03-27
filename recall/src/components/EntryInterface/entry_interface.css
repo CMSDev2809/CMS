@@ -1,0 +1,89 @@
+.entry_interface {
+}
+.content {
+}
+.icon {
+  font-size: 50px;
+}
+.icon-priority {
+  font-size: 50px;
+  color: rgb(156, 42, 44);
+}
+.icon-pay {
+  font-size: 50px;
+  color: rgb(112, 0, 115);
+}
+.icon-checkmark {
+  color: rgb(0, 218, 159);
+}
+.button {
+  width: 125px;
+  height: 125px;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  border-color: white;
+  margin: 25px;
+  margin-top: 0px;
+  margin-right: 12.5px;
+  display: block;
+}
+.button_container {
+  float: right;
+}
+.button_container a {
+  text-decoration: inherit;
+  color: inherit;
+}
+.box-wrapper {
+}
+.list_item {
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+}
+.list_item-void {
+  border-radius: 3px;
+  padding: 10px;
+  opacity: 0.5;
+}
+.list_item:hover {
+  background-color: rgb(204, 204, 204);
+}
+.search_box {
+  background: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    rgb(194, 194, 194)
+  );
+}
+.squish_row {
+  display: flex;
+  width: 100%;
+}
+.exclemation {
+  float: right;
+  margin-right: 25px;
+  color: rgb(163, 10, 0);
+}
+.drop_down_block {
+}
+.drop_down_block .element {
+}
+.cancel-button {
+  position: absolute;
+  top: 25%;
+  left: 300px;
+  --dimensions: 75px;
+  width: var(--dimensions);
+  height: var(--dimensions);
+}
+.cancel-button h1 {
+  font-size: 35px;
+  color: rgb(159, 0, 0);
+}
+.prev-next {
+  float: right;
+}
+button {
+  margin: 5px;
+}

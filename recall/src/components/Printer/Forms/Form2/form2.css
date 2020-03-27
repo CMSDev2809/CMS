@@ -1,0 +1,26 @@
+.form2 {
+  padding: 75px;
+  padding: 50px;
+}
+.form2 .info-block {
+}
+.form2 table {
+  border-bottom: 1pt solid black;
+  width: 100%;
+  text-align: left;
+  margin-bottom: -50px;
+}
+.form2 table tr {
+}
+.form2 table tr p {
+  margin: 10px;
+  margin-left: -15px;
+}
+.form2 h1 {
+  font-size: 18px;
+}
+.form2 h2 {
+  font-size: 20px;
+}
+.form2 p {
+}

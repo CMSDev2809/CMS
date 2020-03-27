@@ -1,0 +1,10 @@
+.settings {
+}
+.db {
+  display: flex;
+  width: 100%;
+}
+.buttons {
+  margin-top: 5px;
+  display: flex;
+}
