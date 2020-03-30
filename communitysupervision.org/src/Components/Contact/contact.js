@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import TransparentHeader from "../TransparentHeader/transparent_header";
-import Locations from "./locations";
+import Locations from "../../../locations";
 import LocationNav from "./LocationNav/location_nav";
 import LocationDisplay from "./LocationDisplay/location_display";
 import Fade from "react-reveal/Fade";
@@ -37,4 +37,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contact);
