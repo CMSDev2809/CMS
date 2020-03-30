@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+  --color_1: rgb(42, 42, 42);
+  --color_2: rgb(52, 52, 52);
+  --color_3: rgb(42, 0, 33);
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 32px;
+}
+i {
+  cursor: pointer;
+}
+.content {
+  background-color: var(--color_2);
+}
+.content .item {
+  --var: 15px;
+  margin: 0px;
+  margin-left: var(--var);
+  margin-right: var(--var);
+}
+.content .item i {
+  display: inline-flex;
+  margin-right: 15px;
+}
+.content .item h2 {
+  display: inline-flex;
+}
+.content .item .sub-item {
+  padding: 25px;
+}
+.content .item .sub-item input {
+  display: block;
+  width: 99%;
+  font-size: 18px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.content .item .sub-item table {
+  width: 100%;
+}
+.dropdown {
+}
+.dropdown i {
+  float: right;
+}
+.footer {
+  position: relative;
+  height: 75px;
+  background-color: var(--color_1);
+}
+.footer .content {
+  position: absolute;
+  top: 50%;
+  right: 125px;
+  transform: translateY(-50%);
+  background-color: var(--color_1);
+}
+.header {
+  position: relative;
+  height: 125px;
+  background-color: var(--color_1);
+}
+.header .content {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  background-color: var(--color_1);
+}
+.participant {
+  padding: 20px;
+}
+.participant .content {
+  background-color: var(--color_3);
+  border-radius: 6px;
+  padding: 15px;
+}
+.participant .content input {
+  display: block;
+  width: 99%;
+  font-size: 19px;
+  border-radius: 3px;
+  padding: 3px;
+}
+.participant .content .input-array {
+  position: relative;
+}
+.participant .content .input-array i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: black;
+}
