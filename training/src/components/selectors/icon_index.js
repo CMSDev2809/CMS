@@ -9,6 +9,8 @@ module.exports = {
   programs: { img: require("./img/programs.png"), type: "img" },
   drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
   gps: { img: require("./img/gps.png"), type: "img" },
+  attenti_gps: { img: require("./img/gps.png"), type: "img" },
+  scram_gps: { img: require("./img/scram_gps.png"), type: "img" },
   etss: { img: require("./img/etss.png"), type: "img" },
   gui: { img: "folder-open", type: "icon" },
   scram: { img: require("./img/scram.png"), type: "img" },
