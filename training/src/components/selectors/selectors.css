@@ -26,6 +26,6 @@
   transform: translate(-50%, -50%);
 }
 .selectors .content .card .content img {
-  height: 175px;
+  height: 135px;
   object-fit: contain;
 }
