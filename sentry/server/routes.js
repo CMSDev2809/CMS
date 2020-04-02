@@ -1,5 +1,5 @@
-const Handler = require("./controllers/handlerIndex");
+const Handler = require("./controllers/handler");
 
 module.exports = app => {
-  app.get("/test", (req, res) => Handler.Participant.test(req, res));
+  app.get("/getResults", (req, res) => Handler.Api.getResults(req, res));
 };
