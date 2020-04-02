@@ -9,7 +9,7 @@ module.exports = {
   programs: { img: require("./img/programs.png"), type: "img" },
   drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
   gps: { img: require("./img/gps.png"), type: "img" },
-  "electronic_monitoring_(EM)": {
+  "electronic_monitoring_(em)": {
     img: require("./img/gps.png"),
     type: "img"
   },
@@ -26,8 +26,11 @@ module.exports = {
   help: { img: require("./img/teacher.png"), type: "img" },
   remote_breath: { img: require("./img/remote_breath.png"), type: "img" },
   documents: { img: require("./img/folder.png"), type: "img" },
+  enrollment_forms: { img: require("./img/folder.png"), type: "img" },
+  supervision_forms: { img: require("./img/folder.png"), type: "img" },
   hair_testing: { img: require("./img/hair.jpg"), type: "img" },
   docx: { img: require("./img/word.png"), type: "img" },
+  doc: { img: require("./img/word.png"), type: "img" },
   software: { img: require("./img/software.png"), type: "img" },
   basic: { img: require("./img/basic.png"), type: "img" },
   advanced: { img: require("./img/advanced.png"), type: "img" },
