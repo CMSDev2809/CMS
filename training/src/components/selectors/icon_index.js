@@ -78,7 +78,7 @@ module.exports = {
   link: { img: require("./img/link.png"), type: "img" },
   LINK: { img: require("./img/link.png"), type: "img" },
   misdemeanor_probation: { img: require("./img/probation.png"), type: "img" },
-  pre_trial_supervision: { img: require("./img/pre_trial.png"), type: "img" },
+  "pre-trial_supervision": { img: require("./img/pre_trial.png"), type: "img" },
   missoula: { img: require("./img/missoula.png"), type: "img" },
   hamilton: { img: require("./img/hamilton.png"), type: "img" },
   kalispell: { img: require("./img/kalispell.png"), type: "img" },
