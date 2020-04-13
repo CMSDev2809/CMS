@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -11,6 +10,7 @@ const convergeConfig = require("./convergeConfig");
 const serverConfig = require("./config");
 const http = serverConfig.production ? require("https") : require("http");
 const receipt_html = require("./receipt_html").receipt_html;
+let app = express();
 
 app.use(bodyParser.json());
 
