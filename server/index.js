@@ -3,13 +3,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-const http = config.production ? require("https") : require("http");
 const pdf = require("html-pdf");
 const fs = require("fs");
 const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const convergeConfig = require("./convergeConfig");
 const serverConfig = require("./config");
+const http = serverConfig.production ? require("https") : require("http");
 const receipt_html = require("./receipt_html").receipt_html;
 
 app.use(bodyParser.json());
