@@ -396,7 +396,7 @@ app
 
 let server = null;
 
-if (config.production) {
+if (serverConfig.production) {
   const key = fs.readFileSync(
     "/etc/letsencrypt/live/titan-esports.org/privkey.pem",
     "utf8"
