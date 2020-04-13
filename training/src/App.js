@@ -80,6 +80,28 @@ const App = () => {
             Back
           </h2>
         </button>
+        {node && node.New_Hire_Training ? (
+          <button
+            onClick={() =>
+              handleSetMenu(
+                node.New_Hire_Training.children,
+                "right",
+                "New_Hire_Training"
+              )
+            }
+            style={{ position: "absolute", right: 15 }}
+          >
+            <h2
+              style={{
+                marginRight: "35px",
+                marginLeft: "35px",
+                width: "250px"
+              }}
+            >
+              New Hire Training
+            </h2>
+          </button>
+        ) : null}
         <Animation animationName={animation} duration={0.4}>
           {node ? (
             <Router
