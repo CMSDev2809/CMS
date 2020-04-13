@@ -398,11 +398,11 @@ let server = null;
 
 if (serverConfig.production) {
   const key = fs.readFileSync(
-    "/etc/letsencrypt/live/titan-esports.org/privkey.pem",
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem",
     "utf8"
   );
   const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/titan-esports.org/cert.pem",
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem",
     "utf8"
   );
   server = http.createServer({ key, cert }, app);
