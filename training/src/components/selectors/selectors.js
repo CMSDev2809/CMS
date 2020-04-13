@@ -98,9 +98,7 @@ export default function Selectors(props) {
   }
   return (
     <div className={"selectors"}>
-      <div className={"content"}>
-        {content.length > 0 ? content : <h1>Bummer</h1>}
-      </div>
+      <div className={"content"}>{content.length > 0 ? content : <div />}</div>
     </div>
   );
 }

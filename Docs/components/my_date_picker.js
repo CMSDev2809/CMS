@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DatePicker from "react-native-datepicker";
+import DatePicker from "@react-native-community/datetimepicker";
 
 export default class MyDatePicker extends Component {
   constructor(props) {
