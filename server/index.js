@@ -388,23 +388,26 @@ app.post("/api/processPayment", async (req, res) => {
   }
 });
 
-if (serverConfig.production) {
-  const key = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem",
-    "utf8"
-  );
-  const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem",
-    "utf8"
-  );
-  app = http.createServer({ key, cert }, app);
-} else {
-  app = http.createServer(app);
-}
-
 app
   .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
   .set("view engine", "ejs")
-  .get("/", (req, res) => res.render("pages/index"))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .get("/", (req, res) => res.render("pages/index"));
+
+let server = null;
+
+if (config.production) {
+  const key = fs.readFileSync(
+    "/etc/letsencrypt/live/titan-esports.org/privkey.pem",
+    "utf8"
+  );
+  const cert = fs.readFileSync(
+    "/etc/letsencrypt/live/titan-esports.org/cert.pem",
+    "utf8"
+  );
+  server = http.createServer({ key, cert }, app);
+} else {
+  server = http.createServer(app);
+}
+
+server.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
