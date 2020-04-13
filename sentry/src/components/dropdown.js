@@ -4,7 +4,6 @@ import "react-dropdown/style.css";
 
 class ReactDropdown extends React.Component {
   render() {
-    console.log(this.props.activeAgency);
     return (
       <div className="dropdown">
         <Dropdown

@@ -1,44 +1,36 @@
 const fetch = require("node-fetch");
+const credentials = require("../../config.js").sentryCredentials;
+const _XMLToJS = require("./parseXMLToObject");
 
-module.exports = async () => {
+module.exports = async object => {
   try {
     const response = await fetch(
-      encodeURI("https://sentry.cordanths.com/Sentry/SoapV1/Service"),
+      "https://sentry.cordanths.com/Sentry/SoapV1/Service",
       {
         method: "post",
         headers: {
           "Content-Type": "text/xml;charset=UTF-8",
           Host: "sentry.cordanths.com",
-          SOAPAction: "https://Norchem/Samp/WebApp/SoapV1/getResults"
+          SOAPAction: `"https://Norchem/Samp/WebApp/SoapV1/${object.method}"`
         },
         body: `
           <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="https://Norchem/Samp/WebApp/SoapV1">
             <soapenv:Header/>
             <soapenv:Body>
-              <getResults xmlns="https://Norchem/Samp/WebApp/SoapV1">
-                <SentryLogin>
-                <Login>string</Login>
-                <Password>string</Password>
-                </SentryLogin>
-                <ResultSearchRequest>
-                <AccessionId>string</AccessionId> <!--Zero or more repetitions:-->
-                <CocId>string</CocId> <!--Zero or more repetitions:-->
-                <FtkId>string</FtkId> <!--Zero or more repetitions:-->
-                <SinceAccessionId>string</SinceAccessionId> <!--Optional:-->
-                <SingleDate>date</SingleDate> <!--Optional:-->
-                <DateRange> <!--Optional:-->
-                <DateStart>date</DateStart>
-                <DateEnd>date</DateEnd>
-                </DateRange>
-                <NewAccessions>string</NewAccessions> <!--Optional:-->
-                </ResultSearchRequest>
-              </getResults>
+               <${object.method} xmlns="https://Norchem/Samp/WebApp/SoapV1">
+                  <SentryLogin>
+                     <Login>${credentials.username}</Login>
+                     <Password>${credentials.password}</Password>
+                  </SentryLogin>
+                  ${object.body}
+               </${object.method}>
             </soapenv:Body>
           </soapenv:Envelope>
         `
       }
-    ).then(res => res.text());
-    console.log(response);
+    )
+      .then(res => res.text())
+      .then(res => _XMLToJS(res));
     return response;
   } catch (e) {
     throw new Error(e);
