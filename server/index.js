@@ -388,7 +388,7 @@ app.post("/api/processPayment", async (req, res) => {
   }
 });
 
-if (config.production) {
+if (serverConfig.production) {
   const key = fs.readFileSync(
     "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem",
     "utf8"
