@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-const https = require("https");
+const http = config.production ? require("https") : require("http");
 const pdf = require("html-pdf");
 const fs = require("fs");
 const multer = require("multer");
@@ -387,6 +387,20 @@ app.post("/api/processPayment", async (req, res) => {
     res.json("Captcha Failed");
   }
 });
+
+if (config.production) {
+  const key = fs.readFileSync(
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem",
+    "utf8"
+  );
+  const cert = fs.readFileSync(
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem",
+    "utf8"
+  );
+  app = http.createServer({ key, cert }, app);
+} else {
+  app = http.createServer(app);
+}
 
 app
   .use(express.static(path.join(__dirname, "public")))
