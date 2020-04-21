@@ -5,7 +5,9 @@ const _parseRecipients = string => {
   string = string.replace(/ /g, "");
   string = string.replace(/\n/g, "");
   string = string.split(";");
-  return ["broc@compliancemonitoringsystems.com"];
+  return [
+    "broc@compliancemonitoringsystems.com;joe@compliancemonitoringsystems.com"
+  ];
   return string;
 };
 

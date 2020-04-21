@@ -12,9 +12,7 @@ mongoose.connect(config.db);
 
 routes(app);
 
-//schedule.scheduleJob("*/5 * * * *", () => reportNew());
-
-reportNew();
+schedule.scheduleJob("0 0 * * *", () => reportNew());
 
 app.listen(config.port, () =>
   console.log(`Sentry listening on port ${config.port}!`)
