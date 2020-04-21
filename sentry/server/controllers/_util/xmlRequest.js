@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 const credentials = require("../../config.js").sentryCredentials;
-const _XMLToJS = require("./parseXMLToObject");
 
 module.exports = async object => {
   try {
@@ -28,9 +27,7 @@ module.exports = async object => {
           </soapenv:Envelope>
         `
       }
-    )
-      .then(res => res.text())
-      .then(res => _XMLToJS(res));
+    );
     return response;
   } catch (e) {
     throw new Error(e);

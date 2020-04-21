@@ -1,28 +1,27 @@
-const _getResults = require("../controllers/apiHandling/getResults");
-const _getAccessionPDF = require("../controllers/apiHandling/getAccessionPDF");
-const _sendMail = require("./_sendMail");
-const _getAccession = require("../controllers/accessionHandling/getAccession");
-const _createAccession = require("../controllers/accessionHandling/createAccession");
+const _sendReport = require("./_sendReport");
+const Handler = require("../controllers/handler");
+
+const _reduce = arr => {
+  _sendReport(arr[0]);
+  arr.shift();
+  if (arr.length > 0) {
+    _reduce(arr);
+  }
+};
 
 module.exports = async () => {
-  // const results = await _getResults();
-  // console.log(results);
-  // results.map(async result => {
-  //   const accession = await _getAccession(result.accession);
-  //   if (accession && accession.accession) {
-  //   } else {
-  //     await _createAccession(result.accession);
-  //     const attachment = await _getAccessionPDF(result.accession);
-  //     _sendMail({
-  //       to: "some_kind_of_reporting_email",
-  //       subject: `${result.DonorInfo.Name}`,
-  //       attachment
-  //     });
-  //   }
-  // });
-  _sendMail({
-    to: "broc@compliancemonitoringsystems.com",
-    subject: "Hancock, John",
-    attachment: "http://www.pdf995.com/samples/pdf.pdf"
+  console.log("RUNNING CRON JOB");
+  const metaData = await Handler.Api.getResults({
+    query: { accessionId: null }
   });
+  const accessionIds = metaData.getResultsResponse.ResultRecords
+    .AccessionRecords.AccessionRecord
+    ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
+        el => el.AccessionId._text
+      )
+    : null;
+  if (accessionIds) {
+    console.log(accessionIds);
+    _reduce(accessionIds);
+  }
 };
