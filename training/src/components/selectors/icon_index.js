@@ -85,5 +85,6 @@ module.exports = {
   bozeman: { img: require("./img/bozeman.png"), type: "img" },
   great_falls: { img: require("./img/great_falls.png"), type: "img" },
   training: { img: require("./img/training.png"), type: "img" },
+  prea: { img: require("./img/prea.png"), type: "img" },
   _default: { img: "file-pdf", type: "icon" }
 };
