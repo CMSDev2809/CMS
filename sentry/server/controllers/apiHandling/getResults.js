@@ -6,11 +6,6 @@ const _getDate = num => {
   newDate.setDate(newDate.getDate() + num);
   const day = newDate.getDate();
   const month = newDate.getMonth() + 1;
-  console.log(
-    `${newDate.getFullYear()}-${month < 10 ? `0${month}` : month}-${
-      day < 10 ? `0${day}` : day
-    }`
-  );
   return `${newDate.getFullYear()}-${month < 10 ? `0${month}` : month}-${
     day < 10 ? `0${day}` : day
   }`;
@@ -26,11 +21,11 @@ module.exports = async (req, res) => {
           ${
             req && req.query.accessionId
               ? `<AccessionId>${req.query.accessionId}</AccessionId>`
-              : `
-                <DateRange>
-                  <DateStart>${_getDate(-1)}</DateStart>
+              : `<DateRange>
+                  <DateStart>${_getDate(-10)}</DateStart>
                   <DateEnd>${_getDate(-1)}</DateEnd>
-                </DateRange>`
+                </DateRange>
+                <NewAccessions>1</NewAccessions>`
           }
         </ResultSearchRequest>
       `
