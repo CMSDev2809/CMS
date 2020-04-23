@@ -88,5 +88,6 @@ module.exports = {
   prea: { img: require("./img/prea.png"), type: "img" },
   pbt: { img: require("./img/pbt.png"), type: "img" },
   ["24/7 PBT"]: { img: require("./img/pbt.png"), type: "img" },
+  ["24.7 PBT"]: { img: require("./img/pbt.png"), type: "img" },
   _default: { img: "file-pdf", type: "icon" }
 };
