@@ -4,7 +4,6 @@ const config = require("../../config");
 module.exports = (req, res) => {
   const traveler = (dir, obj) => {
     fs.readdirSync(dir).forEach(file => {
-      file = file.replace(/%/g, "/");
       if (fs.statSync(dir + "/" + file).isDirectory()) {
         const title = file;
         obj[title] = {
