@@ -65,9 +65,6 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className={"particles2"}>
-        <Particles color={"#00d9ff"} style={"a"} />
-      </div>
       <div className={"content"}>
         <button
           onClick={() => {

@@ -36,6 +36,20 @@ const Card = props => (
   </div>
 );
 
+const HtmlCard = props => (
+  <div
+    className={"html-card"}
+    style={{
+      backgroundColor: `white`
+    }}
+  >
+    <div
+      className={"content"}
+      dangerouslySetInnerHTML={{ __html: props.url }}
+    />
+  </div>
+);
+
 const openContent = object => {
   javascipt: window.open(object.url);
 };
@@ -55,24 +69,28 @@ export default function Selectors(props) {
         el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
       ];
     if (el.title !== "New_Hire_Training") {
-      cards.push(
-        <Card
-          onClick={() =>
-            el.url
-              ? el.url.toLowerCase().includes(".link")
-                ? window.open(el.url, "_blank")
-                : openContent(el)
-              : props.setNode(el.children, el.title)
-          }
-          activeIndex={index + 1}
-          title={el.title.replace(/_/g, " ")}
-          img={img ? img : IconIndex["_default"]}
-          setHover={i => setHover(i)}
-          _outerColor={_outerColor}
-          _innerColor={_innerColor}
-          hover={hover}
-        />
-      );
+      if (el.url && el.title.split(".")[1].toLowerCase() === "html") {
+        cards.push(<HtmlCard url={el.url} />);
+      } else {
+        cards.push(
+          <Card
+            onClick={() =>
+              el.url
+                ? el.url.toLowerCase().includes(".link")
+                  ? window.open(el.url, "_blank")
+                  : openContent(el)
+                : props.setNode(el.children, el.title)
+            }
+            activeIndex={index + 1}
+            title={el.title.replace(/_/g, " ")}
+            img={img ? img : IconIndex["_default"]}
+            setHover={i => setHover(i)}
+            _outerColor={_outerColor}
+            _innerColor={_innerColor}
+            hover={hover}
+          />
+        );
+      }
     }
     if ((index + 1) % rowMax === 0) {
       content.push(
