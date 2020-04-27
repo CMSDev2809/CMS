@@ -65,6 +65,7 @@ module.exports = {
   univision: { img: require("./img/univision.png"), type: "img" },
   windows_server_r2: { img: require("./img/windows.png"), type: "img" },
   cms: { img: require("./img/cms.png"), type: "img" },
+  cms_website: { img: require("./img/cms.png"), type: "img" },
   compliancemonitoringsystems: {
     img: require("./img/cms.png"),
     type: "img"
