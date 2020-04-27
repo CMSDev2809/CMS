@@ -66,11 +66,12 @@ export default function Selectors(props) {
   let index = 0;
   Object.values(props.node).map(el => {
     if (el.title !== "New_Hire_Training") {
-      const img =
-        IconIndex[
-          el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
-        ];
-      if (el.url && el.title.split(".")[1].toLowerCase() === "html") {
+      let _extension = el.title
+        .split(".")
+        .pop()
+        .toLowerCase();
+      const img = IconIndex[el.url ? _extension : el.title.toLowerCase()];
+      if (el.url && _extension === "html") {
         cards.push(<HtmlCard url={el.url} />);
       } else {
         cards.push(
