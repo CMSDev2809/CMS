@@ -86,7 +86,7 @@ const App = () => {
                 "New_Hire_Training"
               )
             }
-            style={{ position: "absolute", right: 15 }}
+            style={{ position: "absolute", right: 15, marginRight: "-15px" }}
           >
             <h2
               style={{
