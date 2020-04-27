@@ -12,8 +12,10 @@ const getDirectory = async () => {
   return directory;
 };
 
-const traverse = _node => {
-  popUrl();
+const traverse = (_node, pop) => {
+  if (pop) {
+    popUrl();
+  }
   let newNode = null;
   const array = window.location.href.split("/");
   const _traverse = (node, array, index = 0) => {
@@ -42,12 +44,27 @@ const appendUrl = url => {
   );
 };
 
+const handleQuery = (str, cb, node, directory) => {
+  /* Search Code Goes here
+  if (str.length > 0) {
+    node = {};
+    Object.keys(directory.Programs.children).map(el =>
+      el.toLowerCase().includes(str.toLowerCase().replace(/ /g, "_"))
+        ? (node[el] = directory.Programs.children[el])
+        : null
+    );
+  } */
+  cb(str);
+  return _cb => _cb(node, str.length > 0 ? "right" : "left");
+};
+
 const App = () => {
   const [animation, setAnimation] = React.useState("slideInLeft");
   const [directory, setDirectory] = React.useState(null);
   const [node, setNode] = React.useState(null);
+  const [query, setQuery] = React.useState("");
   const handleSetMenu = async (node, direction, url) => {
-    if (direction === "right") {
+    if (direction === "right" && url) {
       appendUrl(url);
     }
     setAnimation(direction === "left" ? "slideOutRight" : "slideOutLeft");
@@ -68,27 +85,31 @@ const App = () => {
       <div className={"content"}>
         <button
           onClick={() => {
-            handleSetMenu(traverse(directory), "left");
+            handleQuery("", setQuery);
+            handleSetMenu(traverse(directory, true), "left");
           }}
         >
-          <h2
+          <div
+            className={"button-text"}
             style={{ marginRight: "35px", marginLeft: "35px", width: "250px" }}
           >
             Back
-          </h2>
+          </div>
         </button>
         {node && node.New_Hire_Training ? (
           <button
-            onClick={() =>
+            onClick={() => {
+              handleQuery("", setQuery);
               handleSetMenu(
                 node.New_Hire_Training.children,
                 "right",
                 "New_Hire_Training"
-              )
-            }
+              );
+            }}
             style={{ position: "absolute", right: "15px" }}
           >
-            <h2
+            <div
+              className={"button-text"}
               style={{
                 marginRight: "35px",
                 marginLeft: "35px",
@@ -96,14 +117,36 @@ const App = () => {
               }}
             >
               New Hire Training
-            </h2>
+            </div>
           </button>
         ) : null}
+        {
+          // <div>
+          //   <input
+          //     type={"text-field"}
+          //     placeholder={"search directories"}
+          //     onChange={e =>
+          //       handleQuery(e.target.value, setQuery, node, directory)(
+          //         (_node, dir) =>
+          //           handleSetMenu(
+          //             traverse(dir === "left" ? directory : _node),
+          //             dir
+          //           )
+          //       )
+          //     }
+          //     value={query}
+          //   />
+          // </div>
+        }
         <Animation animationName={animation} duration={0.4}>
           {node ? (
             <Router
               node={node}
-              setNode={(node, url) => handleSetMenu(node, "right", url)}
+              setNode={(node, url) => {
+                handleQuery("", setQuery, node)(_node =>
+                  handleSetMenu(_node, "right", url)
+                );
+              }}
             />
           ) : null}
         </Animation>

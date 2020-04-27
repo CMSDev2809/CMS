@@ -7,9 +7,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-h2 {
-  font-size: 16px;
-}
 button {
   border-radius: 6px;
   border: 1px solid black;
@@ -27,10 +24,29 @@ button:hover {
 button:focus {
   outline: none;
 }
+input {
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 24px;
+  width: 40%;
+  min-width: 350px;
+  padding: 3px;
+}
 .particles2 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: -1;
+}
+.title-text {
+  font-size: 24px;
+  margin: 8px;
+  font-weight: bold;
+}
+.button-text {
+  font-size: 16px;
+  margin: 8px;
+  font-weight: bold;
 }

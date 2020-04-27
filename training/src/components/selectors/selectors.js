@@ -31,7 +31,7 @@ const Card = props => (
       ) : (
         <img src={props.img.img} />
       )}
-      <h2>{props.title.split(".")[0]}</h2>
+      <div className={"title-text"}>{props.title.split(".")[0]}</div>
     </div>
   </div>
 );
@@ -63,7 +63,8 @@ export default function Selectors(props) {
   ];
   let content = [];
   let cards = [];
-  Object.values(props.node).map((el, index) => {
+  let index = 0;
+  Object.values(props.node).map(el => {
     if (el.title !== "New_Hire_Training") {
       const img =
         IconIndex[
@@ -102,6 +103,7 @@ export default function Selectors(props) {
           cards = [];
         }
       }
+      index++;
     }
   });
   if (cards.length > 0) {
