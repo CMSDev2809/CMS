@@ -1,7 +1,7 @@
 module.exports = {
   adobe: { img: require("./img/adobe.png"), type: "img" },
   agency_pay: { img: require("./img/agency_pay.png"), type: "img" },
-  ["agency-pay"]: { img: require("./img/agency_pay.png"), type: "img" },
+  ["agency - pay"]: { img: require("./img/agency_pay.png"), type: "img" },
   chrome: { img: require("./img/chrome.png"), type: "img" },
   chrome_profile_manager: {
     img: require("./img/chrome_profile_manager.png"),
@@ -63,7 +63,7 @@ module.exports = {
   ms_teams: { img: require("./img/ms_teams.png"), type: "img" },
   recall: { img: require("./img/recall.png"), type: "img" },
   self_pay: { img: require("./img/self_pay.png"), type: "img" },
-  ["self-pay"]: { img: require("./img/self_pay.png"), type: "img" },
+  ["self - pay"]: { img: require("./img/self_pay.png"), type: "img" },
   webroot: { img: require("./img/webroot.png"), type: "img" },
   windows: { img: require("./img/windows.png"), type: "img" },
   univision: { img: require("./img/univision.png"), type: "img" },
@@ -106,5 +106,5 @@ module.exports = {
     img: require("./img/fr_forms.png"),
     type: "img"
   },
-  _default: { img: "file-pdf", type: "icon" }
+  _default: { img: require("./img/folder.png"), type: "img" }
 };
