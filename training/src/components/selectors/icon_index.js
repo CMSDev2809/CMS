@@ -27,6 +27,8 @@ module.exports = {
   remote_breath: { img: require("./img/remote_breath.png"), type: "img" },
   documents: { img: require("./img/folder.png"), type: "img" },
   enrollment_forms: { img: require("./img/folder.png"), type: "img" },
+  financial_forms: { img: require("./img/folder.png"), type: "img" },
+  requisition_forms: { img: require("./img/folder.png"), type: "img" },
   supervision_forms: { img: require("./img/folder.png"), type: "img" },
   hair_testing: { img: require("./img/hair.jpg"), type: "img" },
   docx: { img: require("./img/word.png"), type: "img" },
@@ -90,5 +92,9 @@ module.exports = {
   ["247_pbt"]: { img: require("./img/pbt.png"), type: "img" },
   intox: { img: require("./img/pbt.png"), type: "img" },
   omis: { img: require("./img/omis.jpg"), type: "img" },
+  ["frequently_used_forms"]: {
+    img: require("./img/fr_forms.png"),
+    type: "img"
+  },
   _default: { img: "file-pdf", type: "icon" }
 };
