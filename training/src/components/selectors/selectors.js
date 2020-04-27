@@ -64,11 +64,11 @@ export default function Selectors(props) {
   let content = [];
   let cards = [];
   Object.values(props.node).map((el, index) => {
-    const img =
-      IconIndex[
-        el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
-      ];
     if (el.title !== "New_Hire_Training") {
+      const img =
+        IconIndex[
+          el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
+        ];
       if (el.url && el.title.split(".")[1].toLowerCase() === "html") {
         cards.push(<HtmlCard url={el.url} />);
       } else {
@@ -90,18 +90,18 @@ export default function Selectors(props) {
             hover={hover}
           />
         );
+        if ((index + 1) % rowMax === 0) {
+          content.push(
+            <HCard
+              style={"a"}
+              data={{
+                content: cards
+              }}
+            />
+          );
+          cards = [];
+        }
       }
-    }
-    if ((index + 1) % rowMax === 0) {
-      content.push(
-        <HCard
-          style={"a"}
-          data={{
-            content: cards
-          }}
-        />
-      );
-      cards = [];
     }
   });
   if (cards.length > 0) {

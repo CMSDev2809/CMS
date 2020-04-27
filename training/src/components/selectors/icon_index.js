@@ -93,6 +93,11 @@ module.exports = {
   ["247_pbt"]: { img: require("./img/pbt.png"), type: "img" },
   intox: { img: require("./img/pbt.png"), type: "img" },
   omis: { img: require("./img/omis.jpg"), type: "img" },
+  remote_server: { img: require("./img/remote_server.png"), type: "img" },
+  ["remote_server (z-drive)"]: {
+    img: require("./img/remote_server.png"),
+    type: "img"
+  },
   ["frequently_used_forms"]: {
     img: require("./img/fr_forms.png"),
     type: "img"
