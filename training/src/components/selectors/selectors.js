@@ -56,17 +56,15 @@ const openContent = object => {
 
 export default function Selectors(props) {
   const rowMax = 3;
-  const extendedRowMax = 5;
   const [hover, setHover] = React.useState(0);
   const [_outerColor, _innerColor] = [
     `rgba(255, 255, 255, 1)`,
     `rgba(255, 255, 255, 1)`
   ];
-  const items = Object.values(props.node);
   let content = [];
   let cards = [];
   let index = 0;
-  items.map(el => {
+  Object.values(props.node).map(el => {
     if (el.title !== "New_Hire_Training") {
       let _extension = el.title
         .split(".")
@@ -94,7 +92,7 @@ export default function Selectors(props) {
             hover={hover}
           />
         );
-        if ((index + 1) % (items.length > 10 ? extendedRowMax : rowMax) === 0) {
+        if ((index + 1) % rowMax === 0) {
           content.push(
             <HCard
               style={"a"}
