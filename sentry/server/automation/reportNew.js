@@ -14,15 +14,13 @@ module.exports = async () => {
   const metaData = await Handler.Api.getResults({
     query: { accessionId: null }
   });
-  // const accessionIds = metaData.getResultsResponse.ResultRecords
-  //   .AccessionRecords.AccessionRecord
-  //   ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
-  //       el => el.AccessionId._text
-  //     )
-  //   : null;
-  // if (accessionIds) {
-  //   console.log(accessionIds);
-  //   _reduce(accessionIds);
-  // }
-  _reduce(["0W2105941"]);
+  const accessionIds = metaData.getResultsResponse.ResultRecords
+    .AccessionRecords.AccessionRecord
+    ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
+        el => el.AccessionId._text
+      )
+    : null;
+  if (accessionIds) {
+    _reduce(accessionIds);
+  }
 };
