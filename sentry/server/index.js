@@ -7,12 +7,14 @@ const routes = require("./routes");
 const schedule = require("node-schedule");
 const reportNew = require("./automation/reportNew");
 
-const mongoose = require("mongoose");
-mongoose.connect(config.db);
+// const mongoose = require("mongoose");
+// mongoose.connect(config.db);
 
 routes(app);
 
 schedule.scheduleJob("0 0 * * *", () => reportNew());
+
+reportNew();
 
 app.listen(config.port, () =>
   console.log(`Sentry listening on port ${config.port}!`)

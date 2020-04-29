@@ -9,7 +9,9 @@ const _parseRecipients = string => {
   }
   string = string.split(";");
   return [
-    "broc@compliancemonitoringsystems.com;joe@compliancemonitoringsystems.com"
+    "broc@compliancemonitoringsystems.com",
+    "joe@compliancemonitoringsystems.com",
+    "thisisafakeemail@compliancemonitoringsystems78.com"
   ];
   return string;
 };
@@ -25,7 +27,9 @@ module.exports = async (accessionId, secondPass) => {
     .then(res => ({
       memo: res.EnrolleeRecord.Memo._text,
       nameFirst: res.EnrolleeRecord.NameFirst._text,
-      nameLast: res.EnrolleeRecord.NameLast._text
+      nameLast: res.EnrolleeRecord.NameLast._text,
+      date: res.ResultDateTime._text,
+      abnormal: res.Abnormal._text
     }));
   const content = await Handler.Api.getAccessionPDF({
     query: { accessionId }
@@ -33,6 +37,8 @@ module.exports = async (accessionId, secondPass) => {
   _parseRecipients(metaData.memo).map(to =>
     _sendMail({
       to,
+      abnormal: metaData.abnormal,
+      date: metaData.date,
       nameFirst: metaData.nameFirst,
       nameLast: metaData.nameLast,
       subject: `${metaData.nameLast}, ${metaData.nameFirst} - Test Results`,
