@@ -3,48 +3,8 @@ const credentials = require("../config").mailCredentials;
 const errorContacts = require("../config").errorContacts;
 const _mailTemplate = require("./_mailTemplate");
 
-const CYCLE_CAP = 0;
-
-const _sendError = (transporter, mailOptions, iteration = 0) => {
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      if (iteration >= CYCLE_CAP) {
-        console.log(error);
-      } else {
-        _sendError(transporter, mailOptions, iteration + 1);
-      }
-    }
-  });
-};
-
-const _sendMail = (transporter, mailOptions, iteration = 0) => {
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      if (iteration >= CYCLE_CAP) {
-        _sendError(
-          nodemailer.createTransport({
-            host: "smtp.office365.com",
-            port: 587,
-            secure: false,
-            auth: {
-              user: credentials.username,
-              pass: credentials.password
-            }
-          }),
-          {
-            from: credentials.username,
-            to: errorContacts.join(";"),
-            subject: "SENTRY REPORTING ERROR",
-            html: `There was a reporting error for ${mailOptions.subject}.`
-          }
-        );
-      } else {
-        _sendMail(transporter, mailOptions, iteration + 1);
-      }
-    } else {
-      console.log("email sent: ", mailOptions.to);
-    }
-  });
+const _sendMail = (transporter, mailOptions) => {
+  transporter.sendMail(mailOptions, (error, info) => {});
 };
 
 module.exports = obj => {
@@ -53,7 +13,7 @@ module.exports = obj => {
   _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
-      port: 587,
+      port: 25,
       secure: false,
       auth: {
         user: credentials.username,
