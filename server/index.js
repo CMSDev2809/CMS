@@ -11,18 +11,12 @@ const serverConfig = require("./config");
 const referralTemplate = require("./referralTemplate");
 const http = serverConfig.production ? require("https") : require("http");
 const receipt_html = require("./receipt_html").receipt_html;
+const cors = require("cors");
 let app = express();
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors({ origin: true, credentials: true }));
 
 const ss = [
   "&cmsd&",
@@ -360,7 +354,6 @@ const handleError = (response, req, res) => {
 };
 
 app.post("/api/processPayment", async (req, res) => {
-  console.log(req);
   const fetch = require("node-fetch");
   let pass = false;
   if (req.body.apiKey && req.body.apiKey === convergeConfig.apiKey) {
