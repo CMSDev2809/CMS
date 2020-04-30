@@ -12,24 +12,26 @@ module.exports = (req, res) => {
         };
         traveler(dir + "/" + file, obj[title].children);
       } else {
-        const title = file;
-        let url = null;
-        if (file.includes(".link") || file.includes(".html")) {
-          url = fs.readFileSync(dir + "/" + file, "utf8");
-        } else {
-          url =
-            (config.production ? config.productionPath : config.path) +
-            ":" +
-            config.port +
-            "/" +
-            dir.substr(dir.indexOf("/Forms") + 1) +
-            "/" +
-            file;
+        if (file.charAt(0) !== "~") {
+          const title = file;
+          let url = null;
+          if (file.includes(".link") || file.includes(".html")) {
+            url = fs.readFileSync(dir + "/" + file, "utf8");
+          } else {
+            url =
+              (config.production ? config.productionPath : config.path) +
+              ":" +
+              config.port +
+              "/" +
+              dir.substr(dir.indexOf("/Forms") + 1) +
+              "/" +
+              file;
+          }
+          obj[title] = {
+            title,
+            url
+          };
         }
-        obj[title] = {
-          title,
-          url
-        };
       }
     });
     return obj;
