@@ -8,6 +8,7 @@ const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const convergeConfig = require("./convergeConfig");
 const serverConfig = require("./config");
+const referralTemplate = require("./referralTemplate");
 const http = serverConfig.production ? require("https") : require("http");
 const receipt_html = require("./receipt_html").receipt_html;
 let app = express();
@@ -51,7 +52,7 @@ const upload = multer({ storage }).single("image");
 const subHTML = (html1, html2, data) => {
   const boxSub = `<span style="border: 1px solid #000;font-size: 10px;margin-right: 2px"><font style="color: white;margin-left: 2px;margin-right: 2px">X</font></span>`;
   const checkSub = `<span style="border: 1px solid #000;font-size: 10px;margin-right: 2px"><font style="margin-left: 2px;margin-right: 2px">X</font></span>`;
-  let html = html1 + html2 + serverConfig.comments;
+  let html = html1 + html2 + referralTemplate.comments;
   if (data.gridValues.pretrialState === 0) {
     html = html.replace("&ptb&", checkSub);
     html = html.replace("&sb&", boxSub);
@@ -78,8 +79,8 @@ const subHTML = (html1, html2, data) => {
   html = html.replace("&rt&", data.gridValues.violationsReportedTo);
   html = html.replace("&type&", data.dropDownValue);
   html = html.replace("&cmts&", data.commentBoxText);
-  html = html.replace("&csewrk&", data.caseWorker);
-  html = html.replace("&proboff&", data.probationOfficer);
+  html = html.replace("&csewrk&", data.gridValues.caseWorker);
+  html = html.replace("&proboff&", data.gridValues.probationOfficer);
   html = html.replace(
     "&uaC&",
     `<span style="text-decoration: underline;">${data.txtBox.ua}</span>`
@@ -163,10 +164,12 @@ const sendToMonitoringCenter = async data => {
   });
   await convertPDF(
     subHTML(
-      data.css ? serverConfig.alternateHeaderHTML : serverConfig.headerHTML,
+      data.css
+        ? referralTemplate.alternateHeaderHTML
+        : referralTemplate.headerHTML,
       data.dropDownValue === "Supervision Services"
-        ? serverConfig.supervisionServices
-        : serverConfig.services247,
+        ? referralTemplate.supervisionServices
+        : referralTemplate.services247,
       data
     )
   );
