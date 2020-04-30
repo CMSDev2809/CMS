@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
 const credentials = require("../config").mailCredentials;
-const errorContacts = require("../config").errorContacts;
 const _mailTemplate = require("./_mailTemplate");
 
 const _sendMail = (transporter, mailOptions) => {

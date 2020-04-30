@@ -78,6 +78,8 @@ const subHTML = (html1, html2, data) => {
   html = html.replace("&rt&", data.gridValues.violationsReportedTo);
   html = html.replace("&type&", data.dropDownValue);
   html = html.replace("&cmts&", data.commentBoxText);
+  html = html.replace("&csewrk&", data.caseWorker);
+  html = html.replace("&proboff&", data.probationOfficer);
   html = html.replace(
     "&uaC&",
     `<span style="text-decoration: underline;">${data.txtBox.ua}</span>`
