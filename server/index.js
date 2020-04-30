@@ -360,6 +360,7 @@ const handleError = (response, req, res) => {
 };
 
 app.post("/api/processPayment", async (req, res) => {
+  console.log(req);
   const fetch = require("node-fetch");
   let pass = false;
   if (req.body.apiKey && req.body.apiKey === convergeConfig.apiKey) {
