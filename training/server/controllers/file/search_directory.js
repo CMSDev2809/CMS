@@ -12,7 +12,7 @@ module.exports = (req, res) => {
         };
         traveler(dir + "/" + file, obj[title].children);
       } else {
-        if (!file.charAt(0) === "~") {
+        if (file.charAt(0) !== "~") {
           const title = file;
           let url = null;
           if (file.includes(".link") || file.includes(".html")) {
