@@ -1,8 +1,8 @@
 body {
   background: linear-gradient(
     180deg,
-    rgba(73, 0, 53, 1) 0%,
-    rgba(50, 0, 36, 1) 100%
+    rgba(0, 1, 135, 1) 0%,
+    rgba(125, 125, 125, 1) 100%
   );
   min-height: 100vh;
   overflow-x: hidden;
@@ -24,10 +24,29 @@ button:hover {
 button:focus {
   outline: none;
 }
+input {
+  margin-left: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 24px;
+  width: 40%;
+  min-width: 350px;
+  padding: 3px;
+}
 .particles2 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: -1;
+}
+.title-text {
+  font-size: 24px;
+  margin: 8px;
+  font-weight: bold;
+}
+.button-text {
+  font-size: 16px;
+  margin: 8px;
+  font-weight: bold;
 }

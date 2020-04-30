@@ -108,6 +108,8 @@ class FormFields extends Component {
         programLength: "",
         court: "",
         judge: "",
+        caseWorker: "",
+        probationOfficer: "",
         address: "",
         violationsReportedTo: ""
       },
@@ -494,6 +496,37 @@ class FormFields extends Component {
                 placeholder="Judge"
                 onChange={e =>
                   this.updateInput(e.target.value, "gridValues", "judge")
+                }
+              />
+            </InputGroup>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col md={6}>
+            <h2>Case Worker</h2>
+            <InputGroup className="input-block-level">
+              <FormControl
+                type="text"
+                placeholder="John Doe"
+                onChange={e =>
+                  this.updateInput(e.target.value, "gridValues", "caseWorker")
+                }
+              />
+            </InputGroup>
+          </Col>
+          <Col md={6}>
+            <h2>Probation Officer</h2>
+            <InputGroup className="input-block-level">
+              <FormControl
+                type="text"
+                placeholder="John Hancock"
+                onChange={e =>
+                  this.updateInput(
+                    e.target.value,
+                    "gridValues",
+                    "probationOfficer"
+                  )
                 }
               />
             </InputGroup>

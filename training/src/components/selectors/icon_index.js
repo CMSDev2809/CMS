@@ -1,5 +1,7 @@
 module.exports = {
   adobe: { img: require("./img/adobe.png"), type: "img" },
+  agency_pay: { img: require("./img/agency_pay.png"), type: "img" },
+  ["agency - pay"]: { img: require("./img/agency_pay.png"), type: "img" },
   chrome: { img: require("./img/chrome.png"), type: "img" },
   chrome_profile_manager: {
     img: require("./img/chrome_profile_manager.png"),
@@ -27,6 +29,8 @@ module.exports = {
   remote_breath: { img: require("./img/remote_breath.png"), type: "img" },
   documents: { img: require("./img/folder.png"), type: "img" },
   enrollment_forms: { img: require("./img/folder.png"), type: "img" },
+  financial_forms: { img: require("./img/folder.png"), type: "img" },
+  requisition_forms: { img: require("./img/folder.png"), type: "img" },
   supervision_forms: { img: require("./img/folder.png"), type: "img" },
   hair_testing: { img: require("./img/hair.jpg"), type: "img" },
   docx: { img: require("./img/word.png"), type: "img" },
@@ -58,11 +62,14 @@ module.exports = {
   microsoft_teams: { img: require("./img/ms_teams.png"), type: "img" },
   ms_teams: { img: require("./img/ms_teams.png"), type: "img" },
   recall: { img: require("./img/recall.png"), type: "img" },
+  self_pay: { img: require("./img/self_pay.png"), type: "img" },
+  ["self - pay"]: { img: require("./img/self_pay.png"), type: "img" },
   webroot: { img: require("./img/webroot.png"), type: "img" },
   windows: { img: require("./img/windows.png"), type: "img" },
   univision: { img: require("./img/univision.png"), type: "img" },
   windows_server_r2: { img: require("./img/windows.png"), type: "img" },
   cms: { img: require("./img/cms.png"), type: "img" },
+  cms_website: { img: require("./img/cms.png"), type: "img" },
   compliancemonitoringsystems: {
     img: require("./img/cms.png"),
     type: "img"
@@ -84,5 +91,20 @@ module.exports = {
   kalispell: { img: require("./img/kalispell.png"), type: "img" },
   bozeman: { img: require("./img/bozeman.png"), type: "img" },
   great_falls: { img: require("./img/great_falls.png"), type: "img" },
-  _default: { img: "file-pdf", type: "icon" }
+  training: { img: require("./img/training.png"), type: "img" },
+  prea: { img: require("./img/prea.png"), type: "img" },
+  pbt: { img: require("./img/pbt.png"), type: "img" },
+  ["247_pbt"]: { img: require("./img/pbt.png"), type: "img" },
+  intox: { img: require("./img/pbt.png"), type: "img" },
+  omis: { img: require("./img/omis.jpg"), type: "img" },
+  remote_server: { img: require("./img/remote_server.png"), type: "img" },
+  ["remote_server (z-drive)"]: {
+    img: require("./img/remote_server.png"),
+    type: "img"
+  },
+  ["frequently_used_forms"]: {
+    img: require("./img/fr_forms.png"),
+    type: "img"
+  },
+  _default: { img: require("./img/folder.png"), type: "img" }
 };

@@ -31,8 +31,22 @@ const Card = props => (
       ) : (
         <img src={props.img.img} />
       )}
-      <h2>{props.title.split(".")[0]}</h2>
+      <div className={"title-text"}>{props.title.split(".")[0]}</div>
     </div>
+  </div>
+);
+
+const HtmlCard = props => (
+  <div
+    className={"html-card"}
+    style={{
+      backgroundColor: `white`
+    }}
+  >
+    <div
+      className={"content"}
+      dangerouslySetInnerHTML={{ __html: props.url }}
+    />
   </div>
 );
 
@@ -49,41 +63,48 @@ export default function Selectors(props) {
   ];
   let content = [];
   let cards = [];
-  Object.values(props.node).map((el, index) => {
-    const img =
-      IconIndex[
-        el.url ? el.title.split(".")[1].toLowerCase() : el.title.toLowerCase()
-      ];
+  let index = 0;
+  Object.values(props.node).map(el => {
     if (el.title !== "New_Hire_Training") {
-      cards.push(
-        <Card
-          onClick={() =>
-            el.url
-              ? el.url.toLowerCase().includes(".link")
-                ? window.open(el.url, "_blank")
-                : openContent(el)
-              : props.setNode(el.children, el.title)
-          }
-          activeIndex={index + 1}
-          title={el.title.replace(/_/g, " ")}
-          img={img ? img : IconIndex["_default"]}
-          setHover={i => setHover(i)}
-          _outerColor={_outerColor}
-          _innerColor={_innerColor}
-          hover={hover}
-        />
-      );
-    }
-    if ((index + 1) % rowMax === 0) {
-      content.push(
-        <HCard
-          style={"a"}
-          data={{
-            content: cards
-          }}
-        />
-      );
-      cards = [];
+      let _extension = el.title
+        .split(".")
+        .pop()
+        .toLowerCase();
+      const img = IconIndex[el.url ? _extension : el.title.toLowerCase()];
+      if (el.url && _extension === "html") {
+        cards.push(<HtmlCard url={el.url} />);
+      } else {
+        cards.push(
+          <Card
+            onClick={() =>
+              el.url
+                ? el.url.toLowerCase().includes(".link")
+                  ? window.open(el.url, "_blank")
+                  : openContent(el)
+                : props.setNode(el.children, el.title)
+            }
+            activeIndex={index + 1}
+            title={el.title.replace(/_/g, " ")}
+            img={img ? img : IconIndex["_default"]}
+            setHover={i => setHover(i)}
+            _outerColor={_outerColor}
+            _innerColor={_innerColor}
+            hover={hover}
+          />
+        );
+        if ((index + 1) % rowMax === 0) {
+          content.push(
+            <HCard
+              style={"a"}
+              data={{
+                content: cards
+              }}
+            />
+          );
+          cards = [];
+        }
+      }
+      index++;
     }
   });
   if (cards.length > 0) {
@@ -98,9 +119,7 @@ export default function Selectors(props) {
   }
   return (
     <div className={"selectors"}>
-      <div className={"content"}>
-        {content.length > 0 ? content : <h1>Bummer</h1>}
-      </div>
+      <div className={"content"}>{content.length > 0 ? content : <div />}</div>
     </div>
   );
 }

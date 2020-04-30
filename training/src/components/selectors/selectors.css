@@ -29,3 +29,21 @@
   height: 135px;
   object-fit: contain;
 }
+.selectors .content .html-card {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  border-radius: 3px;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.selectors .content .html-card .content {
+  padding: 35px;
+}
+.selectors .content .html-card .content img {
+  height: 135px;
+  object-fit: contain;
+}

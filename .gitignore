@@ -73,3 +73,5 @@ training/forms
 # recall
 recall/save
 recall/token
+recall/dist
+recall/gh-publish.sh

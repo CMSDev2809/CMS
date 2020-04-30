@@ -359,7 +359,7 @@ class CardEditor extends Component {
   async submitTransaction() {
     const modal = await new Promise((resolve, reject) => {
       fetch(
-        `http://199.195.116.230:5000/api/processPayment?ccnum=${
+        `https://compliancemonitoringsystems.com:5000/api/processPayment?ccnum=${
           this.state.cardNumber
         }&amount=${parseFloat(
           this.state.amount.replace("$", "")

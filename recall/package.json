@@ -1,22 +1,14 @@
 {
   "name": "Recall",
   "productName": "Recall",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "main": "main.js",
   "author": "Broc Roberts",
   "license": "MIT",
   "description": "A program to manage credit cards.",
   "repository": "https://github.com/CMSDev2809/recall",
   "scripts": {
-    "dev": "webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
-    "prod": "webpack --progress --config webpack.build.config.js && electron --noDevServer .",
-    "package": "webpack --config webpack.build.config.js",
-    "ship": "rm -r package; rm -r dist; webpack --config webpack.build.config.js; export GH_TOKEN=d1fe50bc8e433f316ea63aca2ef7cf986da87e10; electron-builder --win -p always",
-    "scaffold": "node ./scaffold/scaffold.js",
-    "postinstall": "cd ./scaffold && npm install",
-    "dist-win": "electron-builder --x64 --win",
-    "gh-publish": "export GH_TOKEN=d1fe50bc8e433f316ea63aca2ef7cf986da87e10; electron-builder --win -p always",
-    "package-win": "electron-packager . Recall --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Recall\""
+    "gh-publish": "electron-builder --win -p always"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

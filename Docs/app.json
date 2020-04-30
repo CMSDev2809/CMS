@@ -1,10 +1,14 @@
 {
   "expo": {
-    "name": "Docs",
+    "name": "CMS Fast Referral",
     "slug": "docs",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android", "web"],
+    "sdkVersion": "37.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,10 +20,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.compliancemonitoringsystems.fastreferral"
     },

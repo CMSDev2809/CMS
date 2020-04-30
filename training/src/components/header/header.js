@@ -5,7 +5,9 @@ import "./header.css";
 const _createCrumbs = () => {
   let array = window.location.href.split("/");
   array.splice(0, 3);
-  return array.map((el, i) => (i < array.length - 1 ? el + " > " : el));
+  return array.map((el, i) =>
+    i < array.length - 1 ? el.replace(/_/g, " ") + " > " : el.replace(/_/g, " ")
+  );
 };
 
 export default function Header() {

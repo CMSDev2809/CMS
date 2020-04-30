@@ -5,17 +5,16 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const routes = require("./routes");
 const schedule = require("node-schedule");
-const sweeper = require("./automation/sweeper");
 const reportNew = require("./automation/reportNew");
 
-const mongoose = require("mongoose");
-mongoose.connect(config.db);
+// const mongoose = require("mongoose");
+// mongoose.connect(config.db);
 
 routes(app);
 
-schedule.scheduleJob("0 0 * * *", () => sweeper());
+schedule.scheduleJob("0 0 * * *", () => reportNew());
 
-// reportNew();
+reportNew();
 
 app.listen(config.port, () =>
   console.log(`Sentry listening on port ${config.port}!`)
