@@ -1080,8 +1080,9 @@ class Form extends Component {
   submitTransaction() {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
+    console.log(config.api);
     fetch(
-      `https://compliancemonitoringsystems.com:5000/api/proccessPayment?ccnum=${
+      `${config.api}/api/proccessPayment?ccnum=${
         this.state.cardNumber
       }&amount=${this.state.cardTotal}&expDate=${this.state.expDate.replace(
         /\//g,
