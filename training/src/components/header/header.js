@@ -3,8 +3,9 @@ import Button from "@material-ui/core/Button";
 import "./header.css";
 
 const _createCrumbs = () => {
-  const array = window.location.href.split("/").splice(0, 3);
-  array.map((el, i) =>
+  let array = window.location.href.split("/");
+  array = array.splice(3, array.length);
+  return array.map((el, i) =>
     i < array.length - 1 ? el.replace(/_/g, " ") + " > " : el.replace(/_/g, " ")
   );
 };
