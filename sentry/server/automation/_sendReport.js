@@ -1,22 +1,8 @@
 const _sendMail = require("./_sendMail");
 const Handler = require("../controllers/handler");
+const _Util = require("../controllers/_util");
 
-const _parseRecipients = string => {
-  string = string.replace(/ /g, "");
-  string = string.replace(/\n/g, "");
-  if (string.charAt(string.length - 1) === ";") {
-    string = string.slice(0, string.length - 1);
-  }
-  string = string.split(";");
-  return [
-    "broc@compliancemonitoringsystems.com",
-    "joe@compliancemonitoringsystems.com",
-    "thisisafakeemail@compliancemonitoringsystems78.com"
-  ];
-  return string;
-};
-
-module.exports = async (accessionId, secondPass) => {
+module.exports = async accessionId => {
   const metaData = await Handler.Api.getResults({
     query: { accessionId }
   })
@@ -34,7 +20,7 @@ module.exports = async (accessionId, secondPass) => {
   const content = await Handler.Api.getAccessionPDF({
     query: { accessionId }
   });
-  _parseRecipients(metaData.memo).map(to =>
+  _Util.parseRecipients(metaData.memo).map(to =>
     _sendMail({
       to,
       abnormal: metaData.abnormal,

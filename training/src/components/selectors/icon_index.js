@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   adobe: { img: require("./img/adobe.png"), type: "img" },
   agency_pay: { img: require("./img/agency_pay.png"), type: "img" },
   ["agency - pay"]: { img: require("./img/agency_pay.png"), type: "img" },
@@ -7,10 +7,10 @@ module.exports = {
     img: require("./img/chrome_profile_manager.png"),
     type: "img"
   },
-  open_vpn: { img: require("./img/open_vpn.png"), type: "img" },
-  programs: { img: require("./img/programs.png"), type: "img" },
   drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
   gps: { img: require("./img/gps.png"), type: "img" },
+  open_vpn: { img: require("./img/open_vpn.png"), type: "img" },
+  programs: { img: require("./img/programs.png"), type: "img" },
   "electronic_monitoring_(em)": {
     img: require("./img/gps.png"),
     type: "img"

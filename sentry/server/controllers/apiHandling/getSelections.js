@@ -4,18 +4,19 @@ module.exports = async (req, res) => {
   try {
     const results = await _Util
       .XMLRequest({
-        method: "getResults",
+        method: "getSelections",
         body: `
-        <ResultSearchRequest>
+        <SelectionsSearchRequest>
           ${
-            req && req.query.accessionId
-              ? `<AccessionId>${req.query.accessionId}</AccessionId>`
+            req && req.query.date
+              ? `<SingleDate>${req.query.date}</SingleDate>`
               : `<DateRange>
                    <DateStart>${_Util.getDate(-3)}</DateStart>
                    <DateEnd>${_Util.getDate(-1)}</DateEnd>
                  </DateRange>`
           }
-        </ResultSearchRequest>
+          <Filter>Missed</Filter>
+        </SelectionsSearchRequest>
       `
       })
       .then(_res => _res.text())

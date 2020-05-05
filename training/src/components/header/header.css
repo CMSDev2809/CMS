@@ -16,6 +16,13 @@
 }
 .header .content .img {
   width: 75px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.header .content .img:hover {
+  transform: scale(1.05);
 }
 .header .content .img img {
   width: 100%;

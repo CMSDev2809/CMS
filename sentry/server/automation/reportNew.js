@@ -1,11 +1,12 @@
-const _sendReport = require("./_sendReport");
 const Handler = require("../controllers/handler");
+const _sendReport = require("./_sendReport");
+const _sendViolation = require("./_sendViolation");
 
-const _reduce = arr => {
-  _sendReport(arr[0]);
+const _reduce = (arr, cb, violation) => {
+  cb(arr[0], violation);
   arr.shift();
   if (arr.length > 0) {
-    _reduce(arr);
+    _reduce(arr, cb, violation);
   }
 };
 
@@ -21,7 +22,14 @@ module.exports = async () => {
   //     )
   //   : null;
   // if (accessionIds) {
-  //   _reduce(accessionIds);
+  //   _reduce(accessionIds, _sendReport);
   // }
-  _reduce(["0W2105129"]);
+  const missedTests = await Handler.Api.getSelections();
+  if (missedTests) {
+    _reduce(
+      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
+      _sendViolation,
+      "Missed Test"
+    );
+  }
 };

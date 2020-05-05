@@ -10,7 +10,6 @@ const secure = express.Router();
 const path = require("path");
 
 app.use(bodyParser.json());
-app.use("/Forms", express.static(config.base));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -28,6 +27,12 @@ secure.use(security);
 app.use("/secure", secure);
 
 routes(app, secure);
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.listen(config.port, () =>
   console.log(
