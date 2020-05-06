@@ -8,7 +8,8 @@ const _resizeText = t => {
   if (t.length < 10) return "48px";
   if (t.length < 15) return "42px";
   if (t.length < 18) return "38px";
-  else return "32px";
+  if (t.length < 24) return "32px";
+  else return "24px";
 };
 
 const Card = props => {
