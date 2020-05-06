@@ -1,110 +1,96 @@
 export default {
-  adobe: { img: require("./img/adobe.png"), type: "img" },
-  agency_pay: { img: require("./img/agency_pay.png"), type: "img" },
-  ["agency - pay"]: { img: require("./img/agency_pay.png"), type: "img" },
-  chrome: { img: require("./img/chrome.png"), type: "img" },
-  chrome_profile_manager: {
-    img: require("./img/chrome_profile_manager.png"),
+  forms: {
+    img: require("./img/forms.png"),
     type: "img"
   },
-  drug_patch: { img: require("./img/drug_patch.png"), type: "img" },
-  gps: { img: require("./img/gps.png"), type: "img" },
-  open_vpn: { img: require("./img/open_vpn.png"), type: "img" },
-  programs: { img: require("./img/programs.png"), type: "img" },
-  "electronic_monitoring_(em)": {
-    img: require("./img/gps.png"),
+  help: {
+    img: require("./img/help.png"),
     type: "img"
   },
-  attenti_gps: { img: require("./img/gps.png"), type: "img" },
-  scram_gps: { img: require("./img/scram_gps.png"), type: "img" },
-  etss: { img: require("./img/etss.png"), type: "img" },
-  gui: { img: "folder-open", type: "icon" },
-  scram: { img: require("./img/scram.png"), type: "img" },
-  urinalysis: { img: require("./img/urinalysis.png"), type: "img" },
-  drug_testing: { img: require("./img/drug_testing.png"), type: "img" },
-  txt: { img: "file-pdf", type: "icon" },
-  pdf: { img: require("./img/pdf.png"), type: "img" },
-  mp4: { img: require("./img/video.png"), type: "img" },
-  help: { img: require("./img/teacher.png"), type: "img" },
-  remote_breath: { img: require("./img/remote_breath.png"), type: "img" },
-  documents: { img: require("./img/folder.png"), type: "img" },
-  enrollment_forms: { img: require("./img/folder.png"), type: "img" },
-  financial_forms: { img: require("./img/folder.png"), type: "img" },
-  requisition_forms: { img: require("./img/folder.png"), type: "img" },
-  supervision_forms: { img: require("./img/folder.png"), type: "img" },
-  hair_testing: { img: require("./img/hair.jpg"), type: "img" },
-  docx: { img: require("./img/word.png"), type: "img" },
-  doc: { img: require("./img/word.png"), type: "img" },
-  software: { img: require("./img/software.png"), type: "img" },
-  basic: { img: require("./img/basic.png"), type: "img" },
-  advanced: { img: require("./img/advanced.png"), type: "img" },
-  it: { img: require("./img/advanced.png"), type: "img" },
-  download: { img: require("./img/download.png"), type: "img" },
-  downloads: { img: require("./img/download.png"), type: "img" },
-  exe: { img: require("./img/cogs.png"), type: "img" },
-  zip: { img: require("./img/zip.png"), type: "img" },
-  xlsx: { img: require("./img/excel.png"), type: "img" },
-  xls: { img: require("./img/excel.png"), type: "img" },
-  csv: { img: require("./img/excel.png"), type: "img" },
-  office_365: { img: require("./img/office365.png"), type: "img" },
-  o365: { img: require("./img/office365.png"), type: "img" },
-  office_2010: { img: require("./img/office_2010.png"), type: "img" },
-  oral_drug_testing: { img: require("./img/oral.png"), type: "img" },
-  house_arrest: { img: require("./img/house_arrest.png"), type: "img" },
-  o2010: { img: require("./img/office_2010.png"), type: "img" },
-  direct_connect: { img: require("./img/direct_connect.png"), type: "img" },
-  paternity_testing: {
-    img: require("./img/paternity_testing.png"),
+  it: {
+    img: require("./img/it.png"),
     type: "img"
   },
-  printer: { img: require("./img/printer.png"), type: "img" },
-  printers: { img: require("./img/printer.png"), type: "img" },
-  microsoft_teams: { img: require("./img/ms_teams.png"), type: "img" },
-  ms_teams: { img: require("./img/ms_teams.png"), type: "img" },
-  recall: { img: require("./img/recall.png"), type: "img" },
-  self_pay: { img: require("./img/self_pay.png"), type: "img" },
-  ["self - pay"]: { img: require("./img/self_pay.png"), type: "img" },
-  webroot: { img: require("./img/webroot.png"), type: "img" },
-  windows: { img: require("./img/windows.png"), type: "img" },
-  univision: { img: require("./img/univision.png"), type: "img" },
-  windows_server_r2: { img: require("./img/windows.png"), type: "img" },
-  cms: { img: require("./img/cms.png"), type: "img" },
-  cms_website: { img: require("./img/cms.png"), type: "img" },
-  compliancemonitoringsystems: {
-    img: require("./img/cms.png"),
+  programs: {
+    img: require("./img/programs.png"),
     type: "img"
   },
-  "compliancemonitoringsystems.com": {
-    img: require("./img/cms.png"),
+  software: {
+    img: require("./img/software.png"),
     type: "img"
   },
-  compliance_monitoring_systems: {
-    img: require("./img/cms.png"),
+  training: {
+    img: require("./img/training.png"),
     type: "img"
   },
-  link: { img: require("./img/link.png"), type: "img" },
-  LINK: { img: require("./img/link.png"), type: "img" },
-  misdemeanor_probation: { img: require("./img/probation.png"), type: "img" },
-  "pre-trial_supervision": { img: require("./img/pre_trial.png"), type: "img" },
-  missoula: { img: require("./img/missoula.png"), type: "img" },
-  hamilton: { img: require("./img/hamilton.png"), type: "img" },
-  kalispell: { img: require("./img/kalispell.png"), type: "img" },
-  bozeman: { img: require("./img/bozeman.png"), type: "img" },
-  great_falls: { img: require("./img/great_falls.png"), type: "img" },
-  training: { img: require("./img/training.png"), type: "img" },
-  prea: { img: require("./img/prea.png"), type: "img" },
-  pbt: { img: require("./img/pbt.png"), type: "img" },
-  ["247_pbt"]: { img: require("./img/pbt.png"), type: "img" },
-  intox: { img: require("./img/pbt.png"), type: "img" },
-  omis: { img: require("./img/omis.jpg"), type: "img" },
-  remote_server: { img: require("./img/remote_server.png"), type: "img" },
-  ["remote_server (z-drive)"]: {
-    img: require("./img/remote_server.png"),
+  ["enrollment_forms"]: {
+    img: require("./img/enrollment_forms.png"),
     type: "img"
   },
-  ["frequently_used_forms"]: {
-    img: require("./img/fr_forms.png"),
+  ["violation_forms"]: {
+    img: require("./img/violation_forms.png"),
     type: "img"
   },
-  _default: { img: require("./img/folder.png"), type: "img" }
+  ["requisition_forms"]: {
+    img: require("./img/requisition_forms.png"),
+    type: "img"
+  },
+  ["financial_forms"]: {
+    img: require("./img/financial_forms.png"),
+    type: "img"
+  },
+  ["em_other_forms"]: {
+    img: require("./img/em_other_forms.png"),
+    type: "img"
+  },
+  ["open_vpn"]: {
+    img: require("./img/open_vpn.png"),
+    type: "img"
+  },
+  ["chrome"]: {
+    img: require("./img/chrome.png"),
+    type: "img"
+  },
+  ["cms_website"]: {
+    img: require("./img/cms_website.png"),
+    type: "img"
+  },
+  ["office_365"]: {
+    img: require("./img/office_365.png"),
+    type: "img"
+  },
+  ["office_2010"]: {
+    img: require("./img/office_2010.png"),
+    type: "img"
+  },
+  ["printers"]: {
+    img: require("./img/printers.png"),
+    type: "img"
+  },
+  omis: {
+    img: require("./img/omis.png"),
+    type: "img"
+  },
+  ["drug_testing"]: {
+    img: require("./img/drug_testing.png"),
+    type: "img"
+  },
+  em: {
+    img: require("./img/em.png"),
+    type: "img"
+  },
+  etss: {
+    img: require("./img/etss.png"),
+    type: "img"
+  },
+  probation: {
+    img: require("./img/probation.png"),
+    type: "img"
+  },
+  intox: {
+    img: require("./img/intox.png"),
+    type: "img"
+  },
+  txt: { img: require("./img/documents.png"), type: "img" },
+  _defaultFolder: { img: require("./img/documents.png"), type: "img" }
 };

@@ -3,38 +3,39 @@ import { HCard, FontAwesomeIcon } from "arclight-react";
 import IconIndex from "./icon_index";
 import "./selectors.css";
 
-const Card = props => (
-  <div
-    className={"card"}
-    onMouseEnter={() => props.setHover(props.activeIndex)}
-    onMouseLeave={() => props.setHover(0)}
-    onClick={() => props.onClick()}
-    style={{
-      background: `linear-gradient(
-    180deg,
-    ${props._innerColor} 0%,
-    ${props._outerColor} 100%
-  )`,
-      opacity: props.hover === props.activeIndex || !props.hover ? 1 : 0.5
-    }}
-  >
-    <div className={"content"}>
-      {props.img.type === "icon" ? (
-        <FontAwesomeIcon
-          style={"a"}
-          data={{
-            img: props.img.img,
-            type: "solid",
-            size: "85%"
-          }}
-        />
-      ) : (
+const _resizeText = t => {
+  if (t.length < 6) return "58px";
+  if (t.length < 10) return "48px";
+  if (t.length < 15) return "42px";
+  if (t.length < 18) return "38px";
+  else return "32px";
+};
+
+const Card = props => {
+  let title = props.title.title.replace(/_/g, " ");
+  if (props.title.isFile) {
+    title = title.split(".");
+    title = title.slice(0, title.length - 1).join(".");
+  }
+  return (
+    <div
+      className={"card"}
+      onMouseEnter={() => props.setHover(props.activeIndex)}
+      onMouseLeave={() => props.setHover(0)}
+      onClick={() => props.onClick()}
+      style={{
+        opacity: props.hover === props.activeIndex || !props.hover ? 1 : 0.5
+      }}
+    >
+      <div className={"content"}>
         <img src={props.img.img} />
-      )}
-      <div className={"title-text"}>{props.title.split(".")[0]}</div>
+        <div className={"text"} style={{ fontSize: _resizeText(title) }}>
+          {title}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const HtmlCard = props => (
   <div
@@ -65,7 +66,7 @@ export default function Selectors(props) {
   let cards = [];
   let index = 0;
   Object.values(props.node).map(el => {
-    if (el.title !== "New_Hire_Training") {
+    if (el.title.toLowerCase().replace(/ /g, "_") !== "new_hire_training") {
       let _extension = el.title
         .split(".")
         .pop()
@@ -81,11 +82,13 @@ export default function Selectors(props) {
                 ? el.url.toLowerCase().includes(".link")
                   ? window.open(el.url, "_blank")
                   : openContent(el)
-                : props.setNode(el.children, el.title)
+                : el.children && el.title
+                ? props.setNode(el.children, el.title)
+                : null
             }
             activeIndex={index + 1}
-            title={el.title.replace(/_/g, " ")}
-            img={img ? img : IconIndex["_default"]}
+            title={{ title: el.title, isFile: el.url }}
+            img={img ? img : IconIndex._defaultFolder}
             setHover={i => setHover(i)}
             _outerColor={_outerColor}
             _innerColor={_innerColor}
@@ -108,6 +111,12 @@ export default function Selectors(props) {
     }
   });
   if (cards.length > 0) {
+    const _len = cards.length;
+    if (cards.length < 3) {
+      for (let i = 0; i < 3 - _len; i++) {
+        cards.push(<div />);
+      }
+    }
     content.push(
       <HCard
         style={"a"}
