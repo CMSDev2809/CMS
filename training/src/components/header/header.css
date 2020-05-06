@@ -1,44 +1,36 @@
 .header {
-  width: "100%";
   position: relative;
   text-align: left;
-  padding: 25px;
-  color: white;
+  padding: 10px;
+  color: #2a2a2a;
+  background-color: white;
+  margin-bottom: 20px;
 }
 .header .content {
   display: inline-flex;
-  border-bottom: 2px solid white;
   width: 100%;
 }
-.header .content .crumbs {
-  right: 15px;
-  position: absolute;
+.header .content table {
+  width: 75%;
+  text-align: center;
+  margin-top: 17.5px;
+}
+.header .content table td {
+  font-size: 28px;
+  vertical-align: bottom;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.header .content table td:hover {
+  transform: scale(1.05);
 }
 .header .content .img {
   width: 75px;
 }
 .header .content .img img {
   width: 100%;
-}
-.header .content .title {
-  position: absolute;
-  margin-left: 100px;
-  bottom: 25px;
-}
-.header .content .directory {
-  display: inline-flex;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-.header .content .directory .piece {
-  display: inline-flex;
-  margin-right: 25px;
-  margin-left: -15px;
-  height: 45px;
 }
 .header .content .directory .divider {
   margin-top: -8.5px;

@@ -1,0 +1,47 @@
+.navigator {
+  --color: #154482;
+  --borderSize: 1px;
+  --borderColor: lightslategray;
+  background-color: var(--color);
+  color: white;
+  font-style: italic;
+  overflow: hidden;
+  border: var(--borderSize) solid var(--borderColor);
+}
+.navigator .piece {
+  --padding: 40px;
+  position: relative;
+  background-color: var(--color);
+  display: inline-flex;
+  padding-left: calc(var(--padding) + 35px);
+  padding-right: var(--padding);
+  --height: 34px;
+  --width: 45px;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.navigator .piece:hover {
+  transform: scale(1.025);
+}
+.navigator .piece .triangle {
+  right: calc(var(--width) * -1);
+  position: absolute;
+  top: calc(var(--borderSize) * -1);
+  width: 0;
+  height: 0;
+  border-top: calc(var(--height) + var(--borderSize)) solid transparent;
+  border-left: calc(var(--width)) solid var(--borderColor);
+  border-bottom: calc(var(--height) + var(--borderSize)) solid transparent;
+}
+.navigator .piece .triangle .inner {
+  right: calc(var(--borderSize) * 2);
+  top: calc(var(--height) * -1 - var(--borderSize));
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: calc(var(--height) + var(--borderSize)) solid transparent;
+  border-left: calc(var(--width)) solid var(--color);
+  border-bottom: calc(var(--height) + var(--borderSize)) solid transparent;
+}

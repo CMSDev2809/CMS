@@ -5,4 +5,5 @@ module.exports = app => {
   app.get("/getAccessionPDF", (req, res) =>
     Handler.Api.getAccessionPDF(req, res)
   );
+  app.get("/getSelections", (req, res) => Handler.Api.getSelections(req, res));
 };

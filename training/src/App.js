@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Router } from "./components";
+import { Header, Router, Navigator } from "./components";
 import { Animation, Particles } from "arclight-react";
 import "./app.css";
 
@@ -14,7 +14,9 @@ const getDirectory = async () => {
 
 const traverse = (_node, pop) => {
   if (pop) {
-    popUrl();
+    for (let i = 0; i < pop; i++) {
+      popUrl();
+    }
   }
   let newNode = null;
   const array = window.location.href.split("/");
@@ -59,11 +61,13 @@ const handleQuery = (str, cb, node, directory) => {
 };
 
 const App = () => {
+  const [locked, setLocked] = React.useState(false);
   const [animation, setAnimation] = React.useState("slideInLeft");
   const [directory, setDirectory] = React.useState(null);
   const [node, setNode] = React.useState(null);
   const [query, setQuery] = React.useState("");
   const handleSetMenu = async (node, direction, url) => {
+    setLocked(true);
     if (direction === "right" && url) {
       appendUrl(url);
     }
@@ -71,6 +75,7 @@ const App = () => {
     await new Promise((r, j) => setTimeout(() => r(), 500));
     setNode(node);
     setAnimation(direction === "left" ? "slideInLeft" : "slideInRight");
+    setLocked(false);
   };
   React.useEffect(() => {
     (async () => {
@@ -80,64 +85,22 @@ const App = () => {
     })();
   }, []);
   return (
-    <div>
-      <Header />
+    <div style={locked ? { pointerEvents: "none" } : {}}>
+      <Header
+        directory={directory}
+        setNode={(node, url) => {
+          handleQuery("", setQuery, node)(_node =>
+            handleSetMenu(_node, "left", url)
+          );
+        }}
+      />
       <div className={"content"}>
-        <button
-          onClick={() => {
+        <Navigator
+          reverseNode={num => {
             handleQuery("", setQuery);
-            handleSetMenu(traverse(directory, true), "left");
+            handleSetMenu(traverse(directory, num), "left");
           }}
-        >
-          <div
-            className={"button-text"}
-            style={{ marginRight: "35px", marginLeft: "35px", width: "250px" }}
-          >
-            Back
-          </div>
-        </button>
-        {node && node.New_Hire_Training ? (
-          <button
-            onClick={() => {
-              handleQuery("", setQuery);
-              handleSetMenu(
-                node.New_Hire_Training.children,
-                "right",
-                "New_Hire_Training"
-              );
-            }}
-            style={{ position: "absolute", right: "15px" }}
-          >
-            <div
-              className={"button-text"}
-              style={{
-                marginRight: "35px",
-                marginLeft: "35px",
-                width: "250px"
-              }}
-            >
-              New Hire Training
-            </div>
-          </button>
-        ) : null}
-        {
-          // <div>
-          //   <input
-          //     type={"text-field"}
-          //     placeholder={"search directories"}
-          //     onChange={e =>
-          //       handleQuery(e.target.value, setQuery, node, directory)(
-          //         (_node, dir) =>
-          //           handleSetMenu(
-          //             traverse(dir === "left" ? directory : _node),
-          //             dir
-          //           )
-          //       )
-          //     }
-          //     value={query}
-          //   />
-          // </div>
-        }
+        />
         <Animation animationName={animation} duration={0.4}>
           {node ? (
             <Router

@@ -1,7 +1,8 @@
 module.exports = {
   Api: {
     getResults: require("./apiHandling/getResults"),
-    getAccessionPDF: require("./apiHandling/getAccessionPDF")
+    getAccessionPDF: require("./apiHandling/getAccessionPDF"),
+    getSelections: require("./apiHandling/getSelections")
   },
   Accession: {
     createAccession: require("./accessionHandling/createAccession"),

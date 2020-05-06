@@ -1,16 +1,5 @@
 const _Util = require("../_util");
 
-const _getDate = num => {
-  const date = new Date();
-  const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + num);
-  const day = newDate.getDate();
-  const month = newDate.getMonth() + 1;
-  return `${newDate.getFullYear()}-${month < 10 ? `0${month}` : month}-${
-    day < 10 ? `0${day}` : day
-  }`;
-};
-
 module.exports = async (req, res) => {
   try {
     const results = await _Util
@@ -22,10 +11,9 @@ module.exports = async (req, res) => {
             req && req.query.accessionId
               ? `<AccessionId>${req.query.accessionId}</AccessionId>`
               : `<DateRange>
-                  <DateStart>${_getDate(-10)}</DateStart>
-                  <DateEnd>${_getDate(-1)}</DateEnd>
-                </DateRange>
-                <NewAccessions>1</NewAccessions>`
+                   <DateStart>${_Util.getDate(-3)}</DateStart>
+                   <DateEnd>${_Util.getDate(-1)}</DateEnd>
+                 </DateRange>`
           }
         </ResultSearchRequest>
       `

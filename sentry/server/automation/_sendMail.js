@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const credentials = require("../config").mailCredentials;
 const _mailTemplate = require("./_mailTemplate");
+const _violationTemplate = require("./_violationTemplate");
 
 const _sendMail = (transporter, mailOptions) => {
   transporter.sendMail(mailOptions, (error, info) => {});
@@ -23,10 +24,15 @@ module.exports = obj => {
       from: credentials.username,
       to: obj.to,
       subject: `${obj.subject} ${date}`,
-      html: _mailTemplate({
-        donor: `${obj.nameFirst} ${obj.nameLast}`,
-        abnormal: obj.abnormal
-      }),
+      html: obj.violation
+        ? _violationTemplate({
+            donor: `${obj.nameFirst} ${obj.nameLast}`,
+            violation: obj.violation
+          })
+        : _mailTemplate({
+            donor: `${obj.nameFirst} ${obj.nameLast}`,
+            abnormal: obj.abnormal
+          }),
       attachments: obj.attachments ? obj.attachments : null
     }
   );
