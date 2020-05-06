@@ -79,6 +79,30 @@ export default {
     img: require("./img/em.png"),
     type: "img"
   },
+  txt: {
+    img: require("./img/form1.png"),
+    type: "img"
+  },
+  xlsx: {
+    img: require("./img/form2.png"),
+    type: "img"
+  },
+  csv: {
+    img: require("./img/form1.png"),
+    type: "img"
+  },
+  pdf: {
+    img: require("./img/form2.png"),
+    type: "img"
+  },
+  doc: {
+    img: require("./img/form1.png"),
+    type: "img"
+  },
+  docx: {
+    img: require("./img/form2.png"),
+    type: "img"
+  },
   etss: {
     img: require("./img/etss.png"),
     type: "img"
