@@ -1080,7 +1080,6 @@ class Form extends Component {
   submitTransaction() {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
-    console.log(config.api);
     fetch(
       `${config.api}/api/proccessPayment?ccnum=${
         this.state.cardNumber
