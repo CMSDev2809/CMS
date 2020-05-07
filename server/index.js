@@ -43,6 +43,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).single("image");
 
+app.use(express.static(path.join(__dirname, "images")));
+
 const subHTML = (html1, html2, data) => {
   const boxSub = `<span style="border: 1px solid #000;font-size: 10px;margin-right: 2px"><font style="color: white;margin-left: 2px;margin-right: 2px">X</font></span>`;
   const checkSub = `<span style="border: 1px solid #000;font-size: 10px;margin-right: 2px"><font style="margin-left: 2px;margin-right: 2px">X</font></span>`;
