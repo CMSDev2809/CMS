@@ -18,6 +18,8 @@ app.use(bodyParser.json());
 
 app.use(cors({ origin: true, credentials: true }));
 
+app.use("/images", express.static("images"));
+
 const ss = [
   "&cmsd&",
   "&247&",

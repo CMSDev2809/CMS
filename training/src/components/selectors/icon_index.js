@@ -1,4 +1,44 @@
 export default {
+  exe: {
+    img: require("./img/exe.png"),
+    type: "img"
+  },
+  txt: {
+    img: require("./img/txt.png"),
+    type: "img"
+  },
+  doc: {
+    img: require("./img/doc.png"),
+    type: "img"
+  },
+  docx: {
+    img: require("./img/doc.png"),
+    type: "img"
+  },
+  xlsx: {
+    img: require("./img/xlsx.png"),
+    type: "img"
+  },
+  xls: {
+    img: require("./img/xlsx.png"),
+    type: "img"
+  },
+  csv: {
+    img: require("./img/xlsx.png"),
+    type: "img"
+  },
+  mp4: {
+    img: require("./img/mp4.png"),
+    type: "img"
+  },
+  mp3: {
+    img: require("./img/mp3.png"),
+    type: "img"
+  },
+  pdf: {
+    img: require("./img/pdf.png"),
+    type: "img"
+  },
   forms: {
     img: require("./img/forms.png"),
     type: "img"
