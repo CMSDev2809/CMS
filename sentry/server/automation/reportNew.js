@@ -27,7 +27,7 @@ module.exports = async () => {
   const missedTests = await Handler.Api.getSelections();
   if (missedTests) {
     _reduce(
-      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
+      [missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord[0]],
       _sendViolation,
       "Missed Test"
     );
