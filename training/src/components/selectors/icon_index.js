@@ -32,5 +32,5 @@ export default {
   etss: require("./img/etss.png"),
   probation: require("./img/probation.png"),
   intox: require("./img/intox.png"),
-  _defaultFolder: require("./img/doc.png")
+  _defaultFolder: require("./img/documents.png")
 };
