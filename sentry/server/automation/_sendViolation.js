@@ -5,6 +5,7 @@ const pdf = require("html-pdf");
 const _violationPDF = require("./_violationPDF");
 
 module.exports = async (enrollee, violation) => {
+  console.log(enrollee.ScheduleRecord.TestRecords);
   enrollee = {
     violation,
     date: enrollee.TestDate._text,

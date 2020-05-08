@@ -13,7 +13,8 @@ module.exports = async (req, res) => {
               : `<DateRange>
                    <DateStart>${_Util.getDate(-3)}</DateStart>
                    <DateEnd>${_Util.getDate(-1)}</DateEnd>
-                 </DateRange>`
+                 </DateRange>
+                 <NewAccessions>1</NewAccessions>`
           }
         </ResultSearchRequest>
       `

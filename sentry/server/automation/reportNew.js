@@ -12,18 +12,18 @@ const _reduce = (arr, cb, violation) => {
 
 module.exports = async () => {
   console.log("RUNNING CRON JOB");
-  // const metaData = await Handler.Api.getResults({
-  //   query: { accessionId: null }
-  // });
-  // const accessionIds = metaData.getResultsResponse.ResultRecords
-  //   .AccessionRecords.AccessionRecord
-  //   ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
-  //       el => el.AccessionId._text
-  //     )
-  //   : null;
-  // if (accessionIds) {
-  //   _reduce(accessionIds, _sendReport);
-  // }
+  const metaData = await Handler.Api.getResults({
+    query: { accessionId: null }
+  });
+  const accessionIds = metaData.getResultsResponse.ResultRecords
+    .AccessionRecords.AccessionRecord
+    ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
+        el => el.AccessionId._text
+      )
+    : null;
+  if (accessionIds) {
+    _reduce(accessionIds, _sendReport);
+  }
   const missedTests = await Handler.Api.getSelections();
   if (missedTests) {
     _reduce(
