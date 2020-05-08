@@ -29,13 +29,8 @@ export default {
   omis: require("./img/omis.png"),
   ["drug_testing"]: require("./img/drug_testing.png"),
   em: require("./img/em.png"),
-  txt: require("./img/form1.png"),
-  xlsx: require("./img/form2.png"),
-  csv: require("./img/form1.png"),
-  pdf: require("./img/form2.png"),
   etss: require("./img/etss.png"),
   probation: require("./img/probation.png"),
   intox: require("./img/intox.png"),
-  txt: require("./img/documents.png"),
   _defaultFolder: require("./img/doc.png")
 };
