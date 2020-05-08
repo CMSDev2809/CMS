@@ -29,7 +29,7 @@ const Card = props => {
       }}
     >
       <div className={"content"}>
-        <img src={props.img.img} />
+        <img src={props.img} />
         <div className={"text"} style={{ fontSize: _resizeText(title) }}>
           {title}
         </div>
