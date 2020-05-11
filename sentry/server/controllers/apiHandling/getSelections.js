@@ -10,11 +10,7 @@ module.exports = async (req, res) => {
           ${
             req && req.query.date
               ? `<SingleDate>${req.query.date}</SingleDate>`
-              : `<DateRange>
-                   <DateStart>${_Util.getDate(-3)}</DateStart>
-                   <DateEnd>${_Util.getDate(-1)}</DateEnd>
-                 </DateRange>
-                 <NewAccessions>1</NewAccessions>`
+              : `<SingleDate>${req.query.date}</SingleDate>`
           }
           <Filter>Missed</Filter>
         </SelectionsSearchRequest>
