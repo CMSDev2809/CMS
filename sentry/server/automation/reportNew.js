@@ -1,6 +1,7 @@
 const Handler = require("../controllers/handler");
 const _sendReport = require("./_sendReport");
 const _sendViolation = require("./_sendViolation");
+const _Util = require("../controllers/_util");
 
 const _reduce = (arr, cb, violation) => {
   cb(arr[0], violation);
@@ -24,7 +25,9 @@ module.exports = async () => {
   if (accessionIds) {
     _reduce(accessionIds, _sendReport);
   }
-  const missedTests = await Handler.Api.getSelections();
+  const missedTests = await Handler.Api.getSelections({
+    query: { date: _Util.getDate(-1) }
+  });
   if (missedTests) {
     _reduce(
       [missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord[0]],
