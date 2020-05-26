@@ -28,9 +28,9 @@ module.exports = async () => {
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) }
   });
-  if (missedTests) {
+  if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
     _reduce(
-      [missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord[0]],
+      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
       _sendViolation,
       "Missed Test"
     );
