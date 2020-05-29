@@ -5,7 +5,6 @@ const pdf = require("html-pdf");
 const _violationPDF = require("./_violationPDF");
 
 module.exports = async (enrollee, violation) => {
-  console.log(enrollee.ScheduleRecord.TestRecords);
   enrollee = {
     violation,
     date: enrollee.TestDate._text,
@@ -16,9 +15,9 @@ module.exports = async (enrollee, violation) => {
       : "",
     enrolleeCaseId: enrollee.EnrolleeRecord.EnrolleeCaseId
       ? enrollee.EnrolleeRecord.EnrolleeCaseId._text
-      : ""
+      : "",
   };
-  _Util.parseRecipients(enrollee.memo).map(async to => {
+  _Util.parseRecipients(enrollee.memo).map(async (to) => {
     const content = await new Promise((resolve, reject) => {
       pdf.create(_violationPDF(enrollee)).toBuffer((err, buffer) => {
         resolve(buffer);
@@ -35,9 +34,9 @@ module.exports = async (enrollee, violation) => {
       attachments: [
         {
           filename: `${enrollee.nameLast}, ${enrollee.nameFirst}.pdf`,
-          content
-        }
-      ]
+          content,
+        },
+      ],
     });
   });
 };
