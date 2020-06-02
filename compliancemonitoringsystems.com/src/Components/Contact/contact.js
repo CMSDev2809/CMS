@@ -7,16 +7,16 @@ import { setSelectedLocation } from "../../Actions/locationActions";
 import { setLocations } from "../../Actions/locationActions";
 import { setContacts } from "../../Actions/locationActions";
 import Location from "./Locations/location";
-import Contacts from "../../../../contactList";
-import Locations from "../../../../locationList";
 import CommentBox from "../CommentBox/comment_box";
 import Config from "../../config";
+const Contacts = require("../../../../contactList");
+const Locations = require("../../../../locationList");
 
 class Contact extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: Contacts
+      contacts: Contacts,
     };
     this.props.setSelectedLocation(Locations.missoula);
   }
@@ -44,15 +44,12 @@ class Contact extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  selectedLocation: state.locationReducer.selectedLocation
+const mapStateToProps = (state) => ({
+  selectedLocation: state.locationReducer.selectedLocation,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setSelectedLocation: location => dispatch(setSelectedLocation(location))
+const mapDispatchToProps = (dispatch) => ({
+  setSelectedLocation: (location) => dispatch(setSelectedLocation(location)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

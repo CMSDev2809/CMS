@@ -19,6 +19,7 @@
 }
 .selectors .content .card .content {
   text-align: center;
+  position: relative;
 }
 .selectors .content .card .content .text {
   color: white;
@@ -31,6 +32,7 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 100%;
+  font-size: 24px;
 }
 .selectors .content .card .content img {
   object-fit: contain;

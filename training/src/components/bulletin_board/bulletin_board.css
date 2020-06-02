@@ -1,0 +1,26 @@
+.bulletin_board {
+  width: 100%;
+  min-width: 500px;
+  max-width: 1000px;
+  position: relative;
+}
+.bulletin_board .title {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.bulletin_board .text {
+  width: 75%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.bulletin_board img {
+  width: 100%;
+}
