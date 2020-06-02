@@ -15,7 +15,11 @@ module.exports = (req, res) => {
         if (file.charAt(0) !== "~") {
           const title = file;
           let url = null;
-          if (file.includes(".link") || file.includes(".html")) {
+          if (
+            file.includes(".link") ||
+            file.includes(".html") ||
+            file === "__bulletin__.txt"
+          ) {
             url = fs.readFileSync(dir + "/" + file, "utf8");
           } else {
             url =

@@ -44,7 +44,7 @@ const _column1 = (cards) => {
   );
 };
 
-const _column2 = () => {
+const _column2 = (node) => {
   return (
     <div>
       <div className={"column2"}>
@@ -52,7 +52,10 @@ const _column2 = () => {
           <tbody>
             <tr>
               <td>
-                <BulletinBoard style={{ marginBottom: "1000px" }} />
+                <BulletinBoard
+                  style={{ marginBottom: "1000px" }}
+                  data={node["__bulletin__.txt"].url}
+                />
               </td>
             </tr>
             <tr>
@@ -80,7 +83,7 @@ export default function Landing(props) {
             <td width={"450px"}>
               {_column1(props.cards.filter((el) => (el ? el : null)))}
             </td>
-            <td>{_column2()}</td>
+            <td>{_column2(props.node)}</td>
           </tr>
         </tbody>
       </table>

@@ -100,7 +100,6 @@ export default function Selectors(props) {
       }
     }
   });
-
   if (cards.length > 0) {
     const _len = cards.length;
     if (cards.length < 3) {
@@ -123,8 +122,9 @@ export default function Selectors(props) {
         {content.length > 0 ? (
           props.node.__root__ ? (
             <Landing
+              node={props.node}
               cards={Object.values(props.node).map((el) => {
-                if (el.title) {
+                if (el.title && el.title.toLowerCase() !== "__bulletin__.txt") {
                   let _extension = el.title.split(".").pop().toLowerCase();
                   const img =
                     IconIndex[el.url ? _extension : el.title.toLowerCase()];

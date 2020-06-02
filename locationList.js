@@ -13,6 +13,7 @@ module.exports = {
       firstLine: "2809 Great Northern Loop #200",
       secondLine: "Missoula, MT 59808",
     },
+    officeEmail: "missoula@compliancemonitoringsystems.com",
     contacts: [
       Contacts.aalt,
       Contacts.anealey,
