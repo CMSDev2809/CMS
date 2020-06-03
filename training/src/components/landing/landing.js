@@ -51,7 +51,7 @@ const _column2 = (node) => {
         <table>
           <tbody>
             <tr>
-              <td>
+              <td align="center">
                 <BulletinBoard
                   style={{ marginBottom: "1000px" }}
                   data={node["__bulletin__.txt"].url}
@@ -59,7 +59,7 @@ const _column2 = (node) => {
               </td>
             </tr>
             <tr>
-              <td>
+              <td align="center">
                 <h1>Contact List</h1>
                 <InteractiveMap />
               </td>
