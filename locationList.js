@@ -39,6 +39,7 @@ module.exports = {
       firstLine: "112 3rd St E",
       secondLine: "Kalispell, MT 59901",
     },
+    officeEmail: "flathead@compliancemonitoringsystems.com",
     contacts: [
       Contacts.blavanway,
       Contacts.ckeyser,
@@ -58,6 +59,7 @@ module.exports = {
       firstLine: "11 3rd Avenue East",
       secondLine: "Polson, MT 59860",
     },
+    officeEmail: "lake@compliancemonitoringsystems.com",
     contacts: [Contacts.gjacobson, Contacts.jclairmont, Contacts.vhayden],
   },
   great_falls: {
@@ -72,6 +74,7 @@ module.exports = {
       firstLine: "200 Central Avenue, Suite A",
       secondLine: "Great Falls, MT 59401",
     },
+    officeEmail: "cascade@compliancemonitoringsystems.com",
     contacts: [
       Contacts.chopkins,
       Contacts.cmurthy,
@@ -91,6 +94,7 @@ module.exports = {
       firstLine: "109 2nd Street West",
       secondLine: "Havre, MT 59501",
     },
+    officeEmail: "hill@compliancemonitoringsystems.com",
     contacts: [Contacts.kkeeler],
   },
   glasgow: {
@@ -104,6 +108,7 @@ module.exports = {
       firstLine: "501 East Court St",
       secondLine: "Glasgow, MT 59230 (Courthouse Basement)",
     },
+    officeEmail: "valley@compliancemonitoringsystems.com",
     contacts: [],
   },
   hamilton: {
@@ -117,6 +122,7 @@ module.exports = {
       firstLine: "1720 North 1st Street, East End Unit",
       secondLine: "Hamilton, MT 59840",
     },
+    officeEmail: "ravalli@compliancemonitoringsystems.com",
     contacts: [],
   },
   thompson_falls: {
@@ -130,6 +136,7 @@ module.exports = {
       firstLine: "406 Main Street",
       secondLine: "Thompson Falls, MT 59873",
     },
+    officeEmail: "sanders@compliancemonitoringsystems.com",
     contacts: [],
   },
   bozeman: {
@@ -143,6 +150,7 @@ module.exports = {
       firstLine: "502 South 19th Avenue, Suite 304",
       secondLine: "Bozeman, MT 59718",
     },
+    officeEmail: "gallatin@compliancemonitoringsystems.com",
     contacts: [Contacts.jmathias, Contacts.stennant],
   },
   miles_city: {
@@ -157,6 +165,7 @@ module.exports = {
       firstLine: "1010 Main Street",
       secondLine: "Miles City, MT 59301",
     },
+    officeEmail: "custer@compliancemonitoringsystems.com",
     contacts: [Contacts.hroos, Contacts.tstrub],
   },
   sidney: {
@@ -171,6 +180,7 @@ module.exports = {
       firstLine: "1201 West Holly Street, Suite 209",
       secondLine: "Sidney, MT 59270",
     },
+    officeEmail: "richland@compliancemonitoringsystems.com",
     contacts: [Contacts.rkula],
   },
 };
