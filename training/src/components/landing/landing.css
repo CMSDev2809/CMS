@@ -1,0 +1,43 @@
+.landing {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: relative;
+  padding-top: 100px;
+  overflow: hidden;
+}
+.landing .title {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 75px;
+}
+.landing table {
+  width: 100%;
+  padding: 40px;
+}
+.landing .column1 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.landing .column1 .logo {
+  width: 150px;
+  height: 150px;
+}
+.landing .column2 {
+  width: calc(100% - 40px);
+  height: 850px;
+  padding: 20px;
+  text-align: center;
+}
+.landing .column2 table {
+  padding: 80px;
+  border-spacing: 0 0px;
+  margin-top: -80px;
+}
+.landing .card {
+  margin-bottom: -125px;
+}

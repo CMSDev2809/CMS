@@ -1,120 +1,36 @@
 export default {
-  forms: {
-    img: require("./img/forms.png"),
-    type: "img"
-  },
-  help: {
-    img: require("./img/help.png"),
-    type: "img"
-  },
-  it: {
-    img: require("./img/it.png"),
-    type: "img"
-  },
-  programs: {
-    img: require("./img/programs.png"),
-    type: "img"
-  },
-  software: {
-    img: require("./img/software.png"),
-    type: "img"
-  },
-  training: {
-    img: require("./img/training.png"),
-    type: "img"
-  },
-  ["enrollment_forms"]: {
-    img: require("./img/enrollment_forms.png"),
-    type: "img"
-  },
-  ["violation_forms"]: {
-    img: require("./img/violation_forms.png"),
-    type: "img"
-  },
-  ["requisition_forms"]: {
-    img: require("./img/requisition_forms.png"),
-    type: "img"
-  },
-  ["financial_forms"]: {
-    img: require("./img/financial_forms.png"),
-    type: "img"
-  },
-  ["em_other_forms"]: {
-    img: require("./img/em_other_forms.png"),
-    type: "img"
-  },
-  ["open_vpn"]: {
-    img: require("./img/open_vpn.png"),
-    type: "img"
-  },
-  ["chrome"]: {
-    img: require("./img/chrome.png"),
-    type: "img"
-  },
-  ["cms_website"]: {
-    img: require("./img/cms_website.png"),
-    type: "img"
-  },
-  ["office_365"]: {
-    img: require("./img/office_365.png"),
-    type: "img"
-  },
-  ["office_2010"]: {
-    img: require("./img/office_2010.png"),
-    type: "img"
-  },
-  ["printers"]: {
-    img: require("./img/printers.png"),
-    type: "img"
-  },
-  omis: {
-    img: require("./img/omis.png"),
-    type: "img"
-  },
-  ["drug_testing"]: {
-    img: require("./img/drug_testing.png"),
-    type: "img"
-  },
-  em: {
-    img: require("./img/em.png"),
-    type: "img"
-  },
-  txt: {
-    img: require("./img/form1.png"),
-    type: "img"
-  },
-  xlsx: {
-    img: require("./img/form2.png"),
-    type: "img"
-  },
-  csv: {
-    img: require("./img/form1.png"),
-    type: "img"
-  },
-  pdf: {
-    img: require("./img/form2.png"),
-    type: "img"
-  },
-  doc: {
-    img: require("./img/form1.png"),
-    type: "img"
-  },
-  docx: {
-    img: require("./img/form2.png"),
-    type: "img"
-  },
-  etss: {
-    img: require("./img/etss.png"),
-    type: "img"
-  },
-  probation: {
-    img: require("./img/probation.png"),
-    type: "img"
-  },
-  intox: {
-    img: require("./img/intox.png"),
-    type: "img"
-  },
-  txt: { img: require("./img/documents.png"), type: "img" },
-  _defaultFolder: { img: require("./img/documents.png"), type: "img" }
+  exe: require("./img/exe.png"),
+  txt: require("./img/txt.png"),
+  doc: require("./img/doc.png"),
+  docx: require("./img/doc.png"),
+  xlsx: require("./img/xlsx.png"),
+  xls: require("./img/xlsx.png"),
+  csv: require("./img/xlsx.png"),
+  mp4: require("./img/mp4.png"),
+  mp3: require("./img/mp3.png"),
+  pdf: require("./img/pdf.png"),
+  forms: require("./img/forms.png"),
+  help: require("./img/help.png"),
+  it: require("./img/it.png"),
+  programs: require("./img/programs.png"),
+  software: require("./img/software.png"),
+  training: require("./img/training.png"),
+  ["enrollment_forms"]: require("./img/enrollment_forms.png"),
+  ["violation_forms"]: require("./img/violation_forms.png"),
+  ["requisition_forms"]: require("./img/requisition_forms.png"),
+  ["financial_forms"]: require("./img/financial_forms.png"),
+  ["em_other_forms"]: require("./img/em_other_forms.png"),
+  ["open_vpn"]: require("./img/open_vpn.png"),
+  ["chrome"]: require("./img/chrome.png"),
+  ["cms_website"]: require("./img/cms_website.png"),
+  ["office_365"]: require("./img/office_365.png"),
+  ["office_2010"]: require("./img/office_2010.png"),
+  ["printers"]: require("./img/printers.png"),
+  omis: require("./img/omis.png"),
+  ["drug_testing"]: require("./img/drug_testing.png"),
+  em: require("./img/em.png"),
+  etss: require("./img/etss.png"),
+  probation: require("./img/probation.png"),
+  intox: require("./img/intox.png"),
+  _defaultFolder: require("./img/documents.png")
 };

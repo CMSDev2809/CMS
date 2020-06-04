@@ -16,10 +16,10 @@ const piece = (title, zIndex, cb) => (
   </div>
 );
 
-const _createCrumbs = cb => {
+const _createCrumbs = (cb) => {
   let array = window.location.href.split("/");
   array = array.splice(3, array.length);
-  return array.map(el =>
+  return array.map((el) =>
     el.length > 0 ? piece(el.replace(/_/g, " "), _depth++, cb) : null
   );
 };

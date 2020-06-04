@@ -1,0 +1,46 @@
+{
+  "bozeman": {
+    "coords": { "x": 38.5, "y": 70 },
+    "showing": false
+  },
+  "missoula": {
+    "coords": { "x": 15.25, "y": 42 },
+    "showing": false
+  },
+  "hamilton": {
+    "coords": { "x": 12.85, "y": 55.25 },
+    "showing": false
+  },
+  "thompson_falls": {
+    "coords": { "x": 3.7, "y": 27.25 },
+    "showing": false
+  },
+  "miles_city": {
+    "coords": { "x": 81.25, "y": 55.25 },
+    "showing": false
+  },
+  "sidney": {
+    "coords": { "x": 93.8, "y": 30 },
+    "showing": false
+  },
+  "kalispell": {
+    "coords": { "x": 13.25, "y": 16 },
+    "showing": false
+  },
+  "polson": {
+    "coords": { "x": 14, "y": 27 },
+    "showing": false
+  },
+  "great_falls": {
+    "coords": { "x": 37, "y": 32 },
+    "showing": false
+  },
+  "havre": {
+    "coords": { "x": 50.5, "y": 10 },
+    "showing": false
+  },
+  "glasgow": {
+    "coords": { "x": 75, "y": 20 },
+    "showing": false
+  }
+}

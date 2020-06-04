@@ -1,6 +1,6 @@
 import React from "react";
 import { Header, Router, Navigator } from "./components";
-import { Animation, Particles } from "arclight-react";
+import { Animation } from "arclight-react";
 import "./app.css";
 
 const config = require("./config");
@@ -8,7 +8,7 @@ const config = require("./config");
 const getDirectory = async () => {
   const directory = await fetch(
     config.production ? config.productionPath : config.path
-  ).then(res => res.json());
+  ).then((res) => res.json());
   return directory;
 };
 
@@ -37,7 +37,7 @@ const popUrl = () => {
   window.history.replaceState(null, null, array.join("/"));
 };
 
-const appendUrl = url => {
+const appendUrl = (url) => {
   window.history.replaceState(
     null,
     null,
@@ -57,7 +57,7 @@ const handleQuery = (str, cb, node, directory) => {
     );
   } */
   cb(str);
-  return _cb => _cb(node, str.length > 0 ? "right" : "left");
+  return (_cb) => _cb(node, str.length > 0 ? "right" : "left");
 };
 
 const App = () => {
@@ -77,38 +77,44 @@ const App = () => {
     setAnimation(direction === "left" ? "slideInLeft" : "slideInRight");
     setLocked(false);
   };
-  React.useEffect(() => {
-    (async () => {
-      let directory = await getDirectory();
-      setDirectory(directory);
-      setNode(traverse(directory));
-    })();
+  React.useEffect(async () => {
+    let directory = await getDirectory();
+    setDirectory(directory);
+    setNode(traverse(directory));
   }, []);
   return (
     <div style={locked ? { pointerEvents: "none" } : {}}>
-      <Header
-        directory={directory}
-        setNode={(node, url) => {
-          handleQuery("", setQuery, node)(_node =>
-            handleSetMenu(_node, "left", url)
-          );
-        }}
-      />
-      <div className={"content"}>
-        <Navigator
-          reverseNode={num => {
-            handleQuery("", setQuery);
-            handleSetMenu(traverse(directory, num), "left");
+      {node && !node.__root__ ? (
+        <Header
+          directory={directory}
+          setNode={(node, url) => {
+            handleQuery(
+              "",
+              setQuery,
+              node
+            )((_node) => handleSetMenu(_node, "left", url));
           }}
         />
+      ) : null}
+      <div className={"content"}>
+        {node && !node.__root__ ? (
+          <Navigator
+            reverseNode={(num) => {
+              handleQuery("", setQuery);
+              handleSetMenu(traverse(directory, num), "left");
+            }}
+          />
+        ) : null}
         <Animation animationName={animation} duration={0.4}>
           {node ? (
             <Router
               node={node}
               setNode={(node, url) => {
-                handleQuery("", setQuery, node)(_node =>
-                  handleSetMenu(_node, "right", url)
-                );
+                handleQuery(
+                  "",
+                  setQuery,
+                  node
+                )((_node) => handleSetMenu(_node, "right", url));
               }}
             />
           ) : null}

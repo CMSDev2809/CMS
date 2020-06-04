@@ -3,19 +3,23 @@ const config = require("../../config");
 
 module.exports = (req, res) => {
   const traveler = (dir, obj) => {
-    fs.readdirSync(dir).forEach(file => {
+    fs.readdirSync(dir).forEach((file) => {
       if (fs.statSync(dir + "/" + file).isDirectory()) {
         const title = file;
         obj[title] = {
           title,
-          children: fs.readdirSync(dir + "/" + file).length > 0 ? {} : null
+          children: fs.readdirSync(dir + "/" + file).length > 0 ? {} : null,
         };
         traveler(dir + "/" + file, obj[title].children);
       } else {
         if (file.charAt(0) !== "~") {
           const title = file;
           let url = null;
-          if (file.includes(".link") || file.includes(".html")) {
+          if (
+            file.includes(".link") ||
+            file.includes(".html") ||
+            file === "__bulletin__.txt"
+          ) {
             url = fs.readFileSync(dir + "/" + file, "utf8");
           } else {
             url =
@@ -29,13 +33,15 @@ module.exports = (req, res) => {
           }
           obj[title] = {
             title,
-            url
+            url,
           };
         }
       }
     });
     return obj;
   };
-  const obj = traveler(`${config.base}`, {});
+  const obj = traveler(`${config.base}`, {
+    __root__: true,
+  });
   res.json(obj);
 };

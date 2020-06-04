@@ -32,9 +32,15 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.use("/Forms", express.static(config.base));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get("/locations", (req, res) => {
+  res.json(require("../locationList"));
 });
+
+if (config.production) {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
 
 app.listen(config.port, () =>
   console.log(

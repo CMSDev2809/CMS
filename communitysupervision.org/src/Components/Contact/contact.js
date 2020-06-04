@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import Header from "../Header/header";
 import Footer from "../Footer/footer";
 import TransparentHeader from "../TransparentHeader/transparent_header";
-import Locations from "../../../../locationList";
 import LocationNav from "./LocationNav/location_nav";
 import LocationDisplay from "./LocationDisplay/location_display";
 import Fade from "react-reveal/Fade";
 import "./contact.css";
+const Locations = require("../../../../locationList");
 
 class Contact extends Component {
   componentDidMount() {
@@ -31,13 +31,10 @@ class Contact extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  location: state.locationReducer.location
+const mapStateToProps = (state) => ({
+  location: state.locationReducer.location,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);
