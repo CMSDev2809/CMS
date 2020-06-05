@@ -8,9 +8,13 @@ module.exports = async (enrollee, violation) => {
   try {
     enrollee = {
       violation,
-      date: enrollee.TestDate._text,
-      nameFirst: enrollee.EnrolleeRecord.NameFirst._text,
-      nameLast: enrollee.EnrolleeRecord.NameLast._text,
+      date: enrollee.TestDate ? enrollee.TestDate._text : "",
+      nameFirst: enrollee.EnrolleeRecord.NameFirst
+        ? enrollee.EnrolleeRecord.NameFirst._text
+        : "",
+      nameLast: enrollee.EnrolleeRecord.NameLast
+        ? enrollee.EnrolleeRecord.NameLast._text
+        : "",
       memo: enrollee.EnrolleeRecord.Memo
         ? enrollee.EnrolleeRecord.Memo._text
         : "",

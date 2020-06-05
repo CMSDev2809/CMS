@@ -12,11 +12,15 @@ module.exports = async (accessionId) => {
           res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord
       )
       .then((res) => ({
-        memo: res.EnrolleeRecord.Memo._text,
-        nameFirst: res.EnrolleeRecord.NameFirst._text,
-        nameLast: res.EnrolleeRecord.NameLast._text,
-        date: res.ResultDateTime._text,
-        abnormal: res.Abnormal._text,
+        memo: res.EnrolleeRecord.Memo ? res.EnrolleeRecord.Memo._text : "",
+        nameFirst: res.EnrolleeRecord.NameFirst
+          ? res.EnrolleeRecord.NameFirst._text
+          : "",
+        nameLast: res.EnrolleeRecord.NameLast
+          ? res.EnrolleeRecord.NameLast._text
+          : "",
+        date: res.ResultDateTime ? res.ResultDateTime._text : "",
+        abnormal: res.Abnormal ? res.Abnormal._text : "",
       }));
     const content = await Handler.Api.getAccessionPDF({
       query: { accessionId },
