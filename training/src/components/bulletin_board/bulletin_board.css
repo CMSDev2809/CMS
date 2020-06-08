@@ -21,7 +21,7 @@
   -ms-transform: translate(-50%, -65%);
   transform: translate(-50%, -65%);
   height: 15vw;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .bulletin_board img {
   width: 100%;
