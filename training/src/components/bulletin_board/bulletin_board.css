@@ -12,16 +12,19 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.bulletin_board .text {
-  width: 75%;
+.bulletin_board .wrapper {
+  width: 90%;
   position: absolute;
   left: 50%;
   top: 65%;
   -webkit-transform: translate(-50%, -65%);
   -ms-transform: translate(-50%, -65%);
   transform: translate(-50%, -65%);
-  height: 15vw;
   overflow-y: auto;
+  height: 15vw;
+}
+.bulletin_board .wrapper .text {
+  width: 85%;
 }
 .bulletin_board img {
   width: 100%;

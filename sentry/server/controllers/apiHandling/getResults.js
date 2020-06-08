@@ -17,10 +17,10 @@ module.exports = async (req, res) => {
                  <NewAccessions>1</NewAccessions>`
           }
         </ResultSearchRequest>
-      `
+      `,
       })
-      .then(_res => _res.text())
-      .then(_res => _Util.parseXMLToObject(_res));
+      .then((_res) => _res.text())
+      .then((_res) => _Util.parseXMLToObject(_res));
     return res ? res.json(results) : results;
   } catch (e) {
     throw new Error(e.message);
