@@ -2,6 +2,25 @@ const _sendMail = require("./_sendMail");
 const Handler = require("../controllers/handler");
 const _Util = require("../controllers/_util");
 
+const _mailFunc = (to, metaData, content) =>
+  _sendMail({
+    to,
+    abnormal: metaData.abnormal,
+    date: metaData.date,
+    nameFirst: metaData.nameFirst,
+    nameLast: metaData.nameLast,
+    subject: `${metaData.nameLast}, ${metaData.nameFirst} - Test Results`,
+    metaData,
+    attachments: [
+      {
+        encoding: "base64",
+        filename: `${metaData.nameLast}, ${metaData.nameFirst}.pdf`,
+        content,
+        contentType: "application/pdf",
+      },
+    ],
+  });
+
 module.exports = async (accessionId) => {
   try {
     const metaData = await Handler.Api.getResults({
@@ -12,6 +31,7 @@ module.exports = async (accessionId) => {
           res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord
       )
       .then((res) => ({
+        group: res.EnrolleeRecord.GroupName._text,
         memo: res.EnrolleeRecord.Memo ? res.EnrolleeRecord.Memo._text : "",
         nameFirst: res.EnrolleeRecord.NameFirst
           ? res.EnrolleeRecord.NameFirst._text
@@ -25,25 +45,14 @@ module.exports = async (accessionId) => {
     const content = await Handler.Api.getAccessionPDF({
       query: { accessionId },
     });
-    _Util.parseRecipients(metaData.memo).map((to) =>
-      _sendMail({
-        to,
-        abnormal: metaData.abnormal,
-        date: metaData.date,
-        nameFirst: metaData.nameFirst,
-        nameLast: metaData.nameLast,
-        subject: `${metaData.nameLast}, ${metaData.nameFirst} - Test Results`,
-        metaData,
-        attachments: [
-          {
-            encoding: "base64",
-            filename: `${metaData.nameLast}, ${metaData.nameFirst}.pdf`,
-            content,
-            contentType: "application/pdf",
-          },
-        ],
-      })
-    );
+    const participants = _Util.parseRecipients(metaData.memo);
+    if (participants && participants.length > 0) {
+      participants.map((to) =>
+        _mailFunc("joe@compliancemonitoringsystems.com", metaData, content)
+      );
+    } else {
+      _mailFunc("broc@compliancemonitoringsystems.com", metaData, content);
+    }
   } catch (e) {
     console.log(e);
   }
