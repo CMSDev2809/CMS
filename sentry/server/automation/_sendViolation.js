@@ -50,7 +50,7 @@ module.exports = async (enrollee, violation) => {
       participants.map(async (to) => {
         _mailFunc(
           violation,
-          "broc@compliancemonitoringsystems.com",
+          "joe@compliancemonitoringsystems.com",
           enrollee,
           content
         );
@@ -58,7 +58,7 @@ module.exports = async (enrollee, violation) => {
     } else {
       _mailFunc(
         violation,
-        "joe@compliancemonitoringsystems.com",
+        "broc@compliancemonitoringsystems.com",
         enrollee,
         content
       );
