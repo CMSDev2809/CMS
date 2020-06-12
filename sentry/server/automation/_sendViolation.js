@@ -4,10 +4,11 @@ const _Util = require("../controllers/_util");
 const pdf = require("html-pdf");
 const _violationPDF = require("./_violationPDF");
 
-const _mailFunc = (violation, to, enrollee, content) =>
+const _mailFunc = (violation, to, enrollee, content, error) =>
   _sendMail({
     violation,
     to,
+    error,
     date: enrollee.date,
     nameFirst: enrollee.nameFirst,
     nameLast: enrollee.nameLast,
@@ -56,11 +57,8 @@ module.exports = async (enrollee, violation) => {
         );
       });
     } else {
-      _mailFunc(
-        violation,
-        "broc@compliancemonitoringsystems.com",
-        enrollee,
-        content
+      ["joe@compliancemonitoringsystems.com"].map((to) =>
+        _mailFunc(violation, to, enrollee, content, true)
       );
     }
   } catch (e) {

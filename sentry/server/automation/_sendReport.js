@@ -2,9 +2,10 @@ const _sendMail = require("./_sendMail");
 const Handler = require("../controllers/handler");
 const _Util = require("../controllers/_util");
 
-const _mailFunc = (to, metaData, content) =>
+const _mailFunc = (to, metaData, content, error) =>
   _sendMail({
     to,
+    error,
     abnormal: metaData.abnormal,
     date: metaData.date,
     nameFirst: metaData.nameFirst,
@@ -51,7 +52,9 @@ module.exports = async (accessionId) => {
         _mailFunc("joe@compliancemonitoringsystems.com", metaData, content)
       );
     } else {
-      _mailFunc("broc@compliancemonitoringsystems.com", metaData, content);
+      ["joe@compliancemonitoringsystems.com"].map((to) =>
+        _mailFunc(to, metaData, content, true)
+      );
     }
   } catch (e) {
     console.log(e);

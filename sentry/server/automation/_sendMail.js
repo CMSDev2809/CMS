@@ -2,14 +2,21 @@ const nodemailer = require("nodemailer");
 const credentials = require("../config").mailCredentials;
 const _mailTemplate = require("./_mailTemplate");
 const _violationTemplate = require("./_violationTemplate");
+const _errorTemplate = require("./_errorTemplate");
 
 const _sendMail = (transporter, mailOptions) => {
   transporter.sendMail(mailOptions, (error, info) => {});
 };
 
-module.exports = obj => {
-  let date = new Date(obj.date);
-  date = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
+module.exports = (obj) => {
+  let fn;
+  if (obj.error) {
+    fn = _errorTemplate;
+  } else if (obj.violation) {
+    fn = _violationTemplate;
+  } else {
+    fn = _mailTemplate;
+  }
   _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
@@ -17,23 +24,18 @@ module.exports = obj => {
       secure: false,
       auth: {
         user: credentials.username,
-        pass: credentials.password
-      }
+        pass: credentials.password,
+      },
     }),
     {
       from: credentials.username,
       to: obj.to,
-      subject: `${obj.subject} ${date}`,
-      html: obj.violation
-        ? _violationTemplate({
-            donor: `${obj.nameFirst} ${obj.nameLast}`,
-            violation: obj.violation
-          })
-        : _mailTemplate({
-            donor: `${obj.nameFirst} ${obj.nameLast}`,
-            abnormal: obj.abnormal
-          }),
-      attachments: obj.attachments ? obj.attachments : null
+      subject: `${obj.subject} ${obj.date}`,
+      html: fn({
+        donor: `${obj.nameFirst} ${obj.nameLast}`,
+        abnormal: obj.abnormal,
+      }),
+      attachments: obj.attachments ? obj.attachments : null,
     }
   );
 };
