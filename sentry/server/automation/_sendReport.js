@@ -40,7 +40,9 @@ module.exports = async (accessionId) => {
         nameLast: res.EnrolleeRecord.NameLast
           ? res.EnrolleeRecord.NameLast._text
           : "",
-        date: res.ResultDateTime ? res.ResultDateTime._text : "",
+        date: res.CollectionDateTime
+          ? res.CollectionDateTime._text.toString().split("T")[0]
+          : "",
         abnormal: res.Abnormal ? res.Abnormal._text : "",
       }));
     const content = await Handler.Api.getAccessionPDF({

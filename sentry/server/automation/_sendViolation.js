@@ -9,7 +9,6 @@ const _mailFunc = (violation, to, enrollee, content, error) =>
     violation,
     to,
     error,
-    date: enrollee.date,
     nameFirst: enrollee.nameFirst,
     nameLast: enrollee.nameLast,
     subject: `${enrollee.nameLast}, ${enrollee.nameFirst} - Violation (${enrollee.violation})`,

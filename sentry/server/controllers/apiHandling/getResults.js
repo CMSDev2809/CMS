@@ -11,10 +11,9 @@ module.exports = async (req, res) => {
             req && req.query.accessionId
               ? `<AccessionId>${req.query.accessionId}</AccessionId>`
               : `<DateRange>
-                   <DateStart>${_Util.getDate(-3)}</DateStart>
+                   <DateStart>${_Util.getDate(-1)}</DateStart>
                    <DateEnd>${_Util.getDate(-1)}</DateEnd>
-                 </DateRange>
-                 <NewAccessions>1</NewAccessions>`
+                 </DateRange>`
           }
         </ResultSearchRequest>
       `,

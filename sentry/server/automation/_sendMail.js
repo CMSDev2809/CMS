@@ -30,7 +30,7 @@ module.exports = (obj) => {
     {
       from: credentials.username,
       to: obj.to,
-      subject: `${obj.subject} ${obj.date}`,
+      subject: obj.date ? `${obj.subject} ${obj.date}` : `${obj.subject}`,
       html: fn({
         donor: `${obj.nameFirst} ${obj.nameLast}`,
         abnormal: obj.abnormal,
