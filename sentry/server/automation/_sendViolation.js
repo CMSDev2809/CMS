@@ -49,17 +49,13 @@ module.exports = async (enrollee, violation) => {
     });
     if (participants && participants.length > 0) {
       participants.map(async (to) => {
-        _mailFunc(
-          violation,
-          "joe@compliancemonitoringsystems.com",
-          enrollee,
-          content
-        );
+        _mailFunc(violation, to, enrollee, content);
       });
     } else {
-      ["joe@compliancemonitoringsystems.com"].map((to) =>
-        _mailFunc(violation, to, enrollee, content, true)
-      );
+      [
+        "joe@compliancemonitoringsystems.com",
+        "monitoringcenter@compliancemonitoringsystems.com",
+      ].map((to) => _mailFunc(violation, to, enrollee, content, true));
     }
   } catch (e) {
     console.log(e);

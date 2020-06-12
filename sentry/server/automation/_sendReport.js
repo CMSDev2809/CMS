@@ -48,13 +48,12 @@ module.exports = async (accessionId) => {
     });
     const participants = _Util.parseRecipients(metaData.memo);
     if (participants && participants.length > 0) {
-      participants.map((to) =>
-        _mailFunc("joe@compliancemonitoringsystems.com", metaData, content)
-      );
+      participants.map((to) => _mailFunc(to, metaData, content));
     } else {
-      ["joe@compliancemonitoringsystems.com"].map((to) =>
-        _mailFunc(to, metaData, content, true)
-      );
+      [
+        "joe@compliancemonitoringsystems.com",
+        "monitoringcenter@compliancemonitoringsystems.com",
+      ].map((to) => _mailFunc(to, metaData, content, true));
     }
   } catch (e) {
     console.log(e);
