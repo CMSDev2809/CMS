@@ -39,6 +39,13 @@ module.exports = async () => {
     query: { date: _Util.getDate(-1) },
   });
   if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
+    missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.map(
+      (el) =>
+        console.log(
+          el.EnrolleeRecord.NameFirst._text,
+          el.EnrolleeRecord.NameLast._text
+        )
+    );
     _reduce(
       missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
       _sendViolation,
