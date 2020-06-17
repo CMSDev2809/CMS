@@ -52,10 +52,13 @@ module.exports = async (accessionId) => {
     if (participants && participants.length > 0) {
       participants.map((to) => _mailFunc(to, metaData, content));
     } else {
-      [
-        "joe@compliancemonitoringsystems.com",
+      _mailFunc("joe@compliancemonitoringsystems.com", metaData, content, true);
+      _mailFunc(
         "monitoringcenter@compliancemonitoringsystems.com",
-      ].map((to) => _mailFunc(to, metaData, content, true));
+        metaData,
+        content,
+        true
+      );
     }
   } catch (e) {
     console.log(e);

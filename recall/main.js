@@ -33,7 +33,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
-    show: false
+    show: false,
   });
 
   // and load the index.html of the app.
@@ -43,13 +43,13 @@ function createWindow() {
       protocol: "http:",
       host: "localhost:8080",
       pathname: "index.html",
-      slashes: true
+      slashes: true,
     });
   } else {
     indexPath = url.format({
       protocol: "file:",
       pathname: path.join(__dirname, "package", "index.html"),
-      slashes: true
+      slashes: true,
     });
   }
   mainWindow.loadURL(indexPath);
@@ -64,7 +64,7 @@ function createWindow() {
   });
 
   // Emitted when the window is closed.
-  mainWindow.on("closed", function() {
+  mainWindow.on("closed", function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
@@ -97,7 +97,7 @@ app.on("activate", () => {
 //-------------------------------------------------------------------
 // Auto updates
 //-------------------------------------------------------------------
-const sendStatusToWindow = text => {
+const sendStatusToWindow = (text) => {
   log.info(text);
   if (mainWindow) {
     mainWindow.webContents.send("message", text);
@@ -107,25 +107,25 @@ const sendStatusToWindow = text => {
 autoUpdater.on("checking-for-update", () => {
   sendStatusToWindow("Checking for update...");
 });
-autoUpdater.on("update-available", info => {
+autoUpdater.on("update-available", (info) => {
   sendStatusToWindow("Update available.");
 });
-autoUpdater.on("update-not-available", info => {
+autoUpdater.on("update-not-available", (info) => {
   sendStatusToWindow("Update not available.");
 });
-autoUpdater.on("error", err => {
+autoUpdater.on("error", (err) => {
   sendStatusToWindow(`Error in auto-updater: ${err.toString()}`);
 });
-autoUpdater.on("download-progress", progressObj => {
+autoUpdater.on("download-progress", (progressObj) => {
   sendStatusToWindow(
     `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred} + '/' + ${progressObj.total} + )`
   );
 });
-autoUpdater.on("update-downloaded", info => {
+autoUpdater.on("update-downloaded", (info) => {
   sendStatusToWindow("Update downloaded; will install now");
 });
 
-autoUpdater.on("update-downloaded", info => {
+autoUpdater.on("update-downloaded", (info) => {
   // Wait 5 seconds, then quit and install
   // In your application, you don't need to wait 500 ms.
   // You could call autoUpdater.quitAndInstall(); immediately

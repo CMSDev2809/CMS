@@ -51,10 +51,20 @@ module.exports = async (enrollee, violation) => {
         _mailFunc(violation, to, enrollee, content);
       });
     } else {
-      [
+      _mailFunc(
+        violation,
         "joe@compliancemonitoringsystems.com",
+        enrollee,
+        content,
+        true
+      );
+      _mailFunc(
+        violation,
         "monitoringcenter@compliancemonitoringsystems.com",
-      ].map((to) => _mailFunc(violation, to, enrollee, content, true));
+        enrollee,
+        content,
+        true
+      );
     }
   } catch (e) {
     console.log(e);
