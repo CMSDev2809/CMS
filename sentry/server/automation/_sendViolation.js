@@ -4,8 +4,8 @@ const _Util = require("../controllers/_util");
 const pdf = require("html-pdf");
 const _violationPDF = require("./_violationPDF");
 
-const _mailFunc = (violation, to, enrollee, content, error) =>
-  _sendMail({
+const _mailFunc = async (violation, to, enrollee, content, error) =>
+  await _sendMail({
     violation,
     to,
     error,
@@ -47,18 +47,20 @@ module.exports = async (enrollee, violation) => {
       });
     });
     if (participants && participants.length > 0) {
-      participants.map(async (to) => {
-        _mailFunc(violation, to, enrollee, content);
-      });
+      await Promise.all(
+        participants.map(
+          async (to) => await _mailFunc(violation, to, enrollee, content)
+        )
+      );
     } else {
-      _mailFunc(
+      await _mailFunc(
         violation,
         "joe@compliancemonitoringsystems.com",
         enrollee,
         content,
         true
       );
-      _mailFunc(
+      await _mailFunc(
         violation,
         "monitoringcenter@compliancemonitoringsystems.com",
         enrollee,

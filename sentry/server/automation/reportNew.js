@@ -3,10 +3,10 @@ const _sendReport = require("./_sendReport");
 const _sendViolation = require("./_sendViolation");
 const _Util = require("../controllers/_util");
 
-const _reduce = (arr, cb, violation) => {
+const _reduce = async (arr, cb, violation) => {
   if (arr.length > 0) {
     try {
-      cb(arr[0], violation);
+      await cb(arr[0], violation);
     } catch (e) {
       console.log(e);
     }
@@ -33,12 +33,16 @@ module.exports = async () => {
         )
       : null;
   if (accessionIds) {
+    console.log(`Reporting ${accessionIds.length} test results.`);
     _reduce(accessionIds, _sendReport);
   }
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
   });
   if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
+    console.log(
+      `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
+    );
     _reduce(
       missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
       _sendViolation,

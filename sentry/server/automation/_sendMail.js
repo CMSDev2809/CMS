@@ -4,9 +4,16 @@ const _mailTemplate = require("./_mailTemplate");
 const _violationTemplate = require("./_violationTemplate");
 const _errorTemplate = require("./_errorTemplate");
 
-const _sendMail = (transporter, mailOptions) => {
-  transporter.sendMail(mailOptions, (error, info) => {});
-};
+const _sendMail = (transporter, mailOptions) =>
+  new Promise((resolve, reject) =>
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        reject();
+      }
+      resolve();
+    })
+  );
 
 module.exports = (obj) => {
   let fn;
@@ -20,7 +27,7 @@ module.exports = (obj) => {
   _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
-      port: 25,
+      port: 587,
       secure: false,
       auth: {
         user: credentials.username,

@@ -2,8 +2,8 @@ const _sendMail = require("./_sendMail");
 const Handler = require("../controllers/handler");
 const _Util = require("../controllers/_util");
 
-const _mailFunc = (to, metaData, content, error) =>
-  _sendMail({
+const _mailFunc = async (to, metaData, content, error) =>
+  await _sendMail({
     to,
     error,
     abnormal: metaData.abnormal,
@@ -50,10 +50,17 @@ module.exports = async (accessionId) => {
     });
     const participants = _Util.parseRecipients(metaData.memo);
     if (participants && participants.length > 0) {
-      participants.map((to) => _mailFunc(to, metaData, content));
+      await Promise.all(
+        participants.map(async (to) => await _mailFunc(to, metaData, content))
+      );
     } else {
-      _mailFunc("joe@compliancemonitoringsystems.com", metaData, content, true);
-      _mailFunc(
+      await _mailFunc(
+        "joe@compliancemonitoringsystems.com",
+        metaData,
+        content,
+        true
+      );
+      await _mailFunc(
         "monitoringcenter@compliancemonitoringsystems.com",
         metaData,
         content,
