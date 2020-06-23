@@ -15,7 +15,7 @@ const _sendMail = (transporter, mailOptions) =>
     })
   );
 
-module.exports = (obj) => {
+module.exports = async (obj) => {
   let fn;
   if (obj.error) {
     fn = _errorTemplate;
@@ -24,7 +24,7 @@ module.exports = (obj) => {
   } else {
     fn = _mailTemplate;
   }
-  _sendMail(
+  return await _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
       port: 587,
