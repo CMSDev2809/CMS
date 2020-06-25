@@ -34,7 +34,7 @@ module.exports = async () => {
       : null;
   if (accessionIds) {
     console.log(`Reporting ${accessionIds.length} test results.`);
-    _reduce(accessionIds, _sendReport);
+    await _reduce(accessionIds, _sendReport);
   }
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
@@ -43,7 +43,7 @@ module.exports = async () => {
     console.log(
       `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
     );
-    _reduce(
+    await _reduce(
       missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
       _sendViolation,
       "Missed Test"

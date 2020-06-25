@@ -8,8 +8,7 @@ const _sendMail = (transporter, mailOptions) =>
   new Promise((resolve, reject) =>
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error);
-        reject();
+        reject(error);
       }
       resolve();
     })

@@ -68,7 +68,5 @@ module.exports = async (enrollee, violation) => {
         true
       );
     }
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };

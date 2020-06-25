@@ -67,7 +67,5 @@ module.exports = async (accessionId) => {
         true
       );
     }
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };
