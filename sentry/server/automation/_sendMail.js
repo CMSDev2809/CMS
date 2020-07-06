@@ -2,38 +2,47 @@ const nodemailer = require("nodemailer");
 const credentials = require("../config").mailCredentials;
 const _mailTemplate = require("./_mailTemplate");
 const _violationTemplate = require("./_violationTemplate");
+const _errorTemplate = require("./_errorTemplate");
+const config = require("../config");
 
-const _sendMail = (transporter, mailOptions) => {
-  transporter.sendMail(mailOptions, (error, info) => {});
-};
+const _sendMail = (transporter, mailOptions, resolve, reject) =>
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    }
+    resolve();
+  });
 
-module.exports = obj => {
-  let date = new Date(obj.date);
-  date = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`;
-  _sendMail(
+module.exports = (obj) => {
+  let fn;
+  if (obj.error) {
+    fn = _errorTemplate;
+  } else if (obj.violation) {
+    fn = _violationTemplate;
+  } else {
+    fn = _mailTemplate;
+  }
+  return _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
-      port: 25,
+      port: 587,
       secure: false,
       auth: {
         user: credentials.username,
-        pass: credentials.password
-      }
+        pass: credentials.password,
+      },
     }),
     {
       from: credentials.username,
       to: obj.to,
-      subject: `${obj.subject} ${date}`,
-      html: obj.violation
-        ? _violationTemplate({
-            donor: `${obj.nameFirst} ${obj.nameLast}`,
-            violation: obj.violation
-          })
-        : _mailTemplate({
-            donor: `${obj.nameFirst} ${obj.nameLast}`,
-            abnormal: obj.abnormal
-          }),
-      attachments: obj.attachments ? obj.attachments : null
-    }
+      subject: obj.date ? `${obj.subject} ${obj.date}` : `${obj.subject}`,
+      html: fn({
+        donor: `${obj.nameFirst} ${obj.nameLast}`,
+        abnormal: obj.abnormal,
+      }),
+      attachments: obj.attachments ? obj.attachments : null,
+    },
+    obj.resolve,
+    obj.reject
   );
 };

@@ -147,7 +147,7 @@ module.exports = {
       officeNumber: "(406) 544-5549",
     },
     address: {
-      firstLine: "502 South 19th Avenue, Suite 304",
+      firstLine: "502 South 19th Avenue, Suite 301B",
       secondLine: "Bozeman, MT 59718",
     },
     officeEmail: "gallatin@compliancemonitoringsystems.com",

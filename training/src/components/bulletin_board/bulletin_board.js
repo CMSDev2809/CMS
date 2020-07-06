@@ -8,8 +8,10 @@ export default function BulletinBoard(props) {
       <div className={"title"}>
         <h1>Bulletin Board</h1>
       </div>
-      <div className={"text"}>
-        <h2>{props.data}</h2>
+      <div className={"wrapper"}>
+        <div className={"text"}>
+          <h2>{props.data}</h2>
+        </div>
       </div>
     </div>
   );
