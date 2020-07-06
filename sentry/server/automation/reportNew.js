@@ -16,7 +16,7 @@ const _reduce = async (arr, cb, violation) => {
 module.exports = async () => {
   console.log("RUNNING CRON JOB");
   const metaData = await Handler.Api.getResults({
-    query: { date: _Util.getDate(-4) },
+    query: { date: _Util.getDate(-1) },
   });
   const accessionIds =
     metaData.getResultsResponse.ResultRecords.AccessionRecords
@@ -33,7 +33,7 @@ module.exports = async () => {
     await _reduce(accessionIds, _sendReport);
   }
   const missedTests = await Handler.Api.getSelections({
-    query: { date: _Util.getDate(-4) },
+    query: { date: _Util.getDate(-1) },
   });
   if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
     // console.log(
