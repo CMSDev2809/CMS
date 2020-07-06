@@ -142,7 +142,7 @@ module.exports = {
   bozeman: {
     locationName: "Bozeman",
     googleMapURI:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.645576471651!2d-111.06210988443534!3d45.678014979104006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534545ae17600d29%3A0xa81610745aa75afd!2s1704+W+Babcock+St+Suite+A%2C+Bozeman%2C+MT+59715!5e0!3m2!1sen!2sus!4v1530214843045",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.8320975827064!2d-111.06425688443551!3d45.674270879104064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534545af43e83bf5%3A0x965bedf946d36c8a!2s502%20S%2019th%20Ave%20%23301B%2C%20Bozeman%2C%20MT%2059718!5e0!3m2!1sen!2sus!4v1594073087644!5m2!1sen!2sus",
     contactInformation: {
       officeNumber: "(406) 544-5549",
     },
