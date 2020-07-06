@@ -12,7 +12,11 @@ const reportNew = require("./automation/reportNew");
 
 routes(app);
 
-schedule.scheduleJob("0 2 * * *", () => reportNew());
+schedule.scheduleJob("0 3 * * *", () => reportNew());
+
+if (!config.production) {
+  reportNew();
+}
 
 app.listen(config.port, () =>
   console.log(`Sentry listening on port ${config.port}!`)

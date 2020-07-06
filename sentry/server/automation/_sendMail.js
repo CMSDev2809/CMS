@@ -3,18 +3,17 @@ const credentials = require("../config").mailCredentials;
 const _mailTemplate = require("./_mailTemplate");
 const _violationTemplate = require("./_violationTemplate");
 const _errorTemplate = require("./_errorTemplate");
+const config = require("../config");
 
-const _sendMail = (transporter, mailOptions) =>
-  new Promise((resolve, reject) =>
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        reject(error);
-      }
-      resolve();
-    })
-  );
+const _sendMail = (transporter, mailOptions, resolve, reject) =>
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    }
+    resolve();
+  });
 
-module.exports = async (obj) => {
+module.exports = (obj) => {
   let fn;
   if (obj.error) {
     fn = _errorTemplate;
@@ -23,7 +22,7 @@ module.exports = async (obj) => {
   } else {
     fn = _mailTemplate;
   }
-  return await _sendMail(
+  return _sendMail(
     nodemailer.createTransport({
       host: "smtp.office365.com",
       port: 587,
@@ -42,6 +41,8 @@ module.exports = async (obj) => {
         abnormal: obj.abnormal,
       }),
       attachments: obj.attachments ? obj.attachments : null,
-    }
+    },
+    obj.resolve,
+    obj.reject
   );
 };

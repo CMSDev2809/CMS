@@ -3,11 +3,22 @@ const Handler = require("../controllers/handler");
 const _Util = require("../controllers/_util");
 const pdf = require("html-pdf");
 const _violationPDF = require("./_violationPDF");
+const config = require("../config");
 
-const _mailFunc = async (violation, to, enrollee, content, error) =>
+const _mailFunc = async (
+  violation,
+  to,
+  enrollee,
+  content,
+  resolve,
+  reject,
+  error
+) =>
   await _sendMail({
     violation,
     to,
+    resolve,
+    reject,
     error,
     nameFirst: enrollee.nameFirst,
     nameLast: enrollee.nameLast,
@@ -49,23 +60,29 @@ module.exports = async (enrollee, violation) => {
     if (participants && participants.length > 0) {
       await Promise.all(
         participants.map(
-          async (to) => await _mailFunc(violation, to, enrollee, content)
+          async (to) =>
+            await new Promise((resolve, reject) =>
+              _mailFunc(
+                config.production ? to : "broc@compliancemonitoringsystems.com",
+                metaData,
+                content,
+                resolve,
+                reject
+              )
+            )
         )
       );
     } else {
-      await _mailFunc(
-        violation,
-        "joe@compliancemonitoringsystems.com",
-        enrollee,
-        content,
-        true
-      );
-      await _mailFunc(
-        violation,
-        "monitoringcenter@compliancemonitoringsystems.com",
-        enrollee,
-        content,
-        true
+      const errorContacts = config.production
+        ? config.errorContacts
+        : ["broc@compliancemonitoringsystems.com"];
+      await Promise.all(
+        errorContacts.map(
+          async (to) =>
+            await new Promise((resolve, reject) =>
+              _mailFunc(to, metaData, content, resolve, reject, true)
+            )
+        )
       );
     }
   } catch (e) {}

@@ -5,14 +5,10 @@ const _Util = require("../controllers/_util");
 
 const _reduce = async (arr, cb, violation) => {
   if (arr.length > 0) {
-    try {
-      await cb(arr[0], violation);
-    } catch (e) {
-      console.log(e);
-    }
+    await cb(arr[0], violation);
     arr.shift();
     if (arr.length > 0) {
-      _reduce(arr, cb, violation);
+      return await _reduce(arr, cb, violation);
     }
   }
 };
@@ -20,7 +16,7 @@ const _reduce = async (arr, cb, violation) => {
 module.exports = async () => {
   console.log("RUNNING CRON JOB");
   const metaData = await Handler.Api.getResults({
-    query: { accessionId: null },
+    query: { date: _Util.getDate(-4) },
   });
   const accessionIds =
     metaData.getResultsResponse.ResultRecords.AccessionRecords
@@ -37,16 +33,16 @@ module.exports = async () => {
     await _reduce(accessionIds, _sendReport);
   }
   const missedTests = await Handler.Api.getSelections({
-    query: { date: _Util.getDate(-1) },
+    query: { date: _Util.getDate(-4) },
   });
   if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
-    console.log(
-      `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
-    );
-    await _reduce(
-      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
-      _sendViolation,
-      "Missed Test"
-    );
+    // console.log(
+    //   `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
+    // );
+    // await _reduce(
+    //   missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
+    //   _sendViolation,
+    //   "Missed Test"
+    // );
   }
 };

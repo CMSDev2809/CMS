@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
           ${
             req && req.query.accessionId
               ? `<AccessionId>${req.query.accessionId}</AccessionId>`
-              : `<SingleDate>${_Util.getDate(-1)}</SingleDate>`
+              : `<SingleDate>${req.query.date}</SingleDate>`
           }
         </ResultSearchRequest>
       `,
