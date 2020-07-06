@@ -36,13 +36,13 @@ module.exports = async () => {
     query: { date: _Util.getDate(-1) },
   });
   if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
-    // console.log(
-    //   `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
-    // );
-    // await _reduce(
-    //   missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
-    //   _sendViolation,
-    //   "Missed Test"
-    // );
+    console.log(
+      `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
+    );
+    await _reduce(
+      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
+      _sendViolation,
+      "Missed Test"
+    );
   }
 };
