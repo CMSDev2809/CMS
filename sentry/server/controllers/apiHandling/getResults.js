@@ -10,13 +10,32 @@ module.exports = async (req, res) => {
           ${
             req && req.query.accessionId
               ? `<AccessionId>${req.query.accessionId}</AccessionId>`
-              : `<SingleDate>${req.query.date}</SingleDate>`
+              : `<DateRange>
+                  <DateStart>${req.query.lastDate}</DateStart>
+                  <DateEnd>${req.query.thisDate}</DateEnd>
+                </DateRange>`
           }
         </ResultSearchRequest>
       `,
       })
       .then((_res) => _res.text())
-      .then((_res) => _Util.parseXMLToObject(_res));
+      .then((_res) => _Util.parseXMLToObject(_res))
+      .then((_res) =>
+        _res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord
+          ? Object.prototype.toString.call(
+              _res.getResultsResponse.ResultRecords.AccessionRecords
+                .AccessionRecord
+            ) == "[object Array]"
+            ? _res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
+                (el) =>
+                  el.ResultDateTime._text.split("T")[0] === req.query.date
+                    ? el
+                    : null
+              ).filter((el) => el)
+            : _res.getResultsResponse.ResultRecords.AccessionRecords
+                .AccessionRecord
+          : null
+      );
     return res ? res.json(results) : results;
   } catch (e) {
     throw new Error(e.message);

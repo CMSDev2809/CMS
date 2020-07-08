@@ -13,7 +13,10 @@ module.exports = async (req, res) => {
       `,
       })
       .then((_res) => _res.text())
-      .then((_res) => _Util.parseXMLToObject(_res));
+      .then((_res) => _Util.parseXMLToObject(_res))
+      .then(
+        (_res) => _res.getSelectionsResponse.SelectionRecords.SelectionRecord
+      );
     return res ? res.json(results) : results;
   } catch (e) {
     throw new Error(e.message);

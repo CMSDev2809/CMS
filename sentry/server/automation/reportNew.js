@@ -3,9 +3,10 @@ const _sendReport = require("./_sendReport");
 const _sendViolation = require("./_sendViolation");
 const _Util = require("../controllers/_util");
 
-const _reduce = async (arr, cb, violation) => {
+const _reduce = async (arr, cb, violation, totalItems) => {
   if (arr.length > 0) {
-    await cb(arr[0], violation);
+    await cb(arr[0], violation, totalItems);
+    console.log(`Mail Sent - Items remaining: ${arr.length}`);
     arr.shift();
     if (arr.length > 0) {
       return await _reduce(arr, cb, violation);
@@ -13,36 +14,28 @@ const _reduce = async (arr, cb, violation) => {
   }
 };
 
+let total = 0;
+
 module.exports = async () => {
   console.log("RUNNING CRON JOB");
-  const metaData = await Handler.Api.getResults({
-    query: { date: _Util.getDate(-1) },
-  });
-  const accessionIds =
-    metaData.getResultsResponse.ResultRecords.AccessionRecords
-      .AccessionRecord &&
-    Object.prototype.toString.call(
-      metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord
-    ) == "[object Array]"
-      ? metaData.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
-          (el) => el.AccessionId._text
-        )
-      : null;
+  const totalItems = () => ++total;
+  const accessionIds = await Handler.Api.getResults({
+    query: {
+      date: _Util.getDate(-1),
+      thisDate: _Util.getDate(0),
+      lastDate: _Util.getDate(-2),
+    },
+  }).then((res) => res.map((el) => el.AccessionId._text));
   if (accessionIds) {
     console.log(`Reporting ${accessionIds.length} test results.`);
-    await _reduce(accessionIds, _sendReport);
+    await _reduce(accessionIds, _sendReport, null, totalItems);
   }
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
   });
-  if (missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord) {
-    console.log(
-      `Reporting ${missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord.length} missed test violations.`
-    );
-    await _reduce(
-      missedTests.getSelectionsResponse.SelectionRecords.SelectionRecord,
-      _sendViolation,
-      "Missed Test"
-    );
+  if (missedTests) {
+    console.log(`Reporting ${missedTests.length} missed test violations.`);
+    await _reduce(missedTests, _sendViolation, "Missed Test", totalItems);
   }
+  console.log("Reporting Finished");
 };
