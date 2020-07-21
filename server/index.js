@@ -405,9 +405,12 @@ if (serverConfig.production) {
     "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem"
   );
   const cert = fs.readFileSync(
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem"
+  );
+  const ca = fs.readFileSync(
     "/etc/letsencrypt/live/compliancemonitoringsystems.com/chain.pem"
   );
-  server = http.createServer({ key, cert }, app);
+  server = http.createServer({ key, cert, ca }, app);
 } else {
   server = http.createServer(app);
 }
