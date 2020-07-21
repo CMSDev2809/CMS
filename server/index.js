@@ -28,19 +28,20 @@ const ss = [
   "&ha&",
   "&gpsa&",
   "&gpsp&",
-  "&phmc&"
+  "&phmc&",
+  "&hfdt&",
 ];
 const s247 = ["&dp&", "&ua&", "&tdb&"];
 const ha = ["&ham1&", "&ham2&", "&ham3&"];
 const ham = ["&apt1&", "&apt2&", "&apt3&", "&apt4&", "&apt5&"];
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, "./new");
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, "attachment" + ".pdf");
-  }
+  },
 });
 
 const upload = multer({ storage }).single("image");
@@ -135,7 +136,7 @@ const subHTML = (html1, html2, data) => {
   return html;
 };
 
-const convertPDF = async text => {
+const convertPDF = async (text) => {
   const prom = await new Promise((resolve, reject) => {
     pdf.create(text).toFile(__dirname + "/ref.pdf", (err, res) => {
       resolve("file created");
@@ -144,11 +145,11 @@ const convertPDF = async text => {
   return prom;
 };
 
-const sendToMonitoringCenter = async data => {
+const sendToMonitoringCenter = async (data) => {
   "use strict";
   const locations = {
     Missoula: "missoula@compliancemonitoringsystems.com",
-    Kalispell: "flathead@compliancemonitoringsystems.com"
+    Kalispell: "flathead@compliancemonitoringsystems.com",
   };
   const nodemailer = require("nodemailer");
   let transporter = nodemailer.createTransport({
@@ -157,8 +158,8 @@ const sendToMonitoringCenter = async data => {
     secure: false,
     auth: {
       user: serverConfig.monitoringCenterFromEmail,
-      pass: serverConfig.monitoringCenterPassword
-    }
+      pass: serverConfig.monitoringCenterPassword,
+    },
   });
   await convertPDF(
     subHTML(
@@ -174,12 +175,12 @@ const sendToMonitoringCenter = async data => {
   let attachments = [
     {
       filename: "referral.pdf",
-      path: __dirname + "/ref.pdf"
-    }
+      path: __dirname + "/ref.pdf",
+    },
   ];
   if (fs.existsSync(__dirname + "/attachment.pdf") && data.attachedForm) {
     attachments.push({
-      path: __dirname + "/attachment.pdf"
+      path: __dirname + "/attachment.pdf",
     });
   }
   let mailOptions = {
@@ -188,7 +189,7 @@ const sendToMonitoringCenter = async data => {
       ? locations[data.location]
       : serverConfig.monitoringCenterEmail,
     subject: "Referral",
-    attachments: attachments
+    attachments: attachments,
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -211,14 +212,14 @@ app.post("/api/moonlighting", (req, res, next) => {
       secure: false,
       auth: {
         user: serverConfig.moonlightingFromEmail,
-        pass: serverConfig.moonlightingPassword
-      }
+        pass: serverConfig.moonlightingPassword,
+      },
     });
     let mailOptions = {
       from: serverConfig.moonlightingFromEmail,
       to: serverConfig.moonlightingEmail,
       subject: "Referral",
-      html: `<p>${req.body.name}</p><p>${req.body.email}</p><p>${req.body.message}</p>`
+      html: `<p>${req.body.name}</p><p>${req.body.email}</p><p>${req.body.message}</p>`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -230,7 +231,7 @@ app.post("/api/moonlighting", (req, res, next) => {
 });
 
 app.post("/api/image", (req, res, next) => {
-  upload(req, res, err => {
+  upload(req, res, (err) => {
     const msg = err
       ? { success: false, message: "Failed to upload image" }
       : { success: true, message: "Image uploaded" };
@@ -254,8 +255,8 @@ const sendReceipt = async (data, response, receiver) => {
       secure: false,
       auth: {
         user: convergeConfig.email,
-        pass: convergeConfig.emailPassword
-      }
+        pass: convergeConfig.emailPassword,
+      },
     });
     await new Promise((resolve, reject) => {
       pdf
@@ -267,19 +268,19 @@ const sendReceipt = async (data, response, receiver) => {
     let attachments = [
       {
         filename: "receipt.pdf",
-        path: __dirname + "/receipt.pdf"
-      }
+        path: __dirname + "/receipt.pdf",
+      },
     ];
     if (fs.existsSync(__dirname + "/receipt.pdf") && data.attachedForm) {
       attachments.push({
-        path: __dirname + "/receipt.pdf"
+        path: __dirname + "/receipt.pdf",
       });
     }
     let mailOptions = {
       from: convergeConfig.email,
       to: recipient,
       subject: "Payment Receipt",
-      attachments: attachments
+      attachments: attachments,
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -299,14 +300,14 @@ app.post("/api/comment", (req, res) => {
       secure: false,
       auth: {
         user: serverConfig.monitoringCenterFromEmail,
-        pass: serverConfig.monitoringCenterPassword
-      }
+        pass: serverConfig.monitoringCenterPassword,
+      },
     });
     let mailOptions = {
       from: serverConfig.monitoringCenterFromEmail,
       to: serverConfig.monitoringCenterEmail,
       subject: "Website Comment",
-      html: `<div><h2>Name: ${req.body.data.name}</h2></div><div><h3>${req.body.data.email}</h3></div><div><p>${req.body.data.comment}</p></div>`
+      html: `<div><h2>Name: ${req.body.data.name}</h2></div><div><h3>${req.body.data.email}</h3></div><div><p>${req.body.data.comment}</p></div>`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -352,7 +353,7 @@ const handleError = (response, req, res) => {
   } else {
     res.json({
       success: false,
-      code: error_code
+      code: error_code,
     });
   }
 };
@@ -368,10 +369,10 @@ app.post("/api/processPayment", async (req, res) => {
       {
         method: "post",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       }
-    ).then(response => response.json());
+    ).then((response) => response.json());
     if (captcha.success) {
       pass = true;
     }
@@ -381,9 +382,9 @@ app.post("/api/processPayment", async (req, res) => {
       <ssl_merchant_id>${convergeConfig.merchantId}</ssl_merchant_id><ssl_first_name>${req.query.clientFirstName}</ssl_first_name><ssl_last_name>${req.query.clientLastName}</ssl_last_name><ssl_user_id>${convergeConfig.userId}</ssl_user_id><ssl_pin>${convergeConfig.pin}</ssl_pin><ssl_transaction_type>${convergeConfig.transactionType}</ssl_transaction_type><ssl_card_number>${req.query.ccnum}</ssl_card_number><ssl_exp_date>${req.query.expDate}</ssl_exp_date><ssl_cvv2cvc2>${req.query.cvc}</ssl_cvv2cvc2><ssl_avs_address>${req.query.billingAddress.line1}</ssl_avs_address><ssl_city>${req.query.billingAddress.city}</ssl_city><ssl_state>${req.query.billingAddress.state}</ssl_state><ssl_avs_zip>${req.query.billingAddress.zipCode}</ssl_avs_zip></txn>"`;
     const url = convergeConfig.endpoint + builderText;
     fetch(url, { method: "post", credentials: "include" })
-      .then(response => response.text())
-      .then(response => handleError(response, req, res))
-      .catch(error => {
+      .then((response) => response.text())
+      .then((response) => handleError(response, req, res))
+      .catch((error) => {
         console.log(error);
       });
   } else {
