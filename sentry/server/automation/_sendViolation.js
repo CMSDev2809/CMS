@@ -12,78 +12,87 @@ const _mailFunc = async (
   content,
   resolve,
   reject,
+  totalItems,
   error
 ) =>
-  await _sendMail({
-    violation,
-    to,
-    resolve,
-    reject,
-    error,
-    nameFirst: enrollee.nameFirst,
-    nameLast: enrollee.nameLast,
-    subject: `${enrollee.nameLast}, ${enrollee.nameFirst} - Violation (${enrollee.violation})`,
-    enrollee,
-    attachments: [
-      {
-        filename: `${enrollee.nameLast}, ${enrollee.nameFirst}.pdf`,
-        content,
-      },
-    ],
-  });
-
-module.exports = async (enrollee, violation) => {
-  try {
-    enrollee = {
+  await _sendMail(
+    {
       violation,
-      group: enrollee.EnrolleeRecord.GroupName._text,
-      date: enrollee.TestDate ? enrollee.TestDate._text : "",
-      nameFirst: enrollee.EnrolleeRecord.NameFirst
-        ? enrollee.EnrolleeRecord.NameFirst._text
-        : "",
-      nameLast: enrollee.EnrolleeRecord.NameLast
-        ? enrollee.EnrolleeRecord.NameLast._text
-        : "",
-      memo: enrollee.EnrolleeRecord.Memo
-        ? enrollee.EnrolleeRecord.Memo._text
-        : "",
-      enrolleeCaseId: enrollee.EnrolleeRecord.EnrolleeCaseId
-        ? enrollee.EnrolleeRecord.EnrolleeCaseId._text
-        : "",
-    };
-    const participants = _Util.parseRecipients(enrollee.memo);
-    const content = await new Promise((resolve, reject) => {
-      pdf.create(_violationPDF(enrollee)).toBuffer((err, buffer) => {
-        resolve(buffer);
-      });
+      to,
+      resolve,
+      reject,
+      error,
+      nameFirst: enrollee.nameFirst,
+      nameLast: enrollee.nameLast,
+      subject: `${enrollee.nameLast}, ${enrollee.nameFirst} - Violation (${enrollee.violation})`,
+      enrollee,
+      attachments: [
+        {
+          filename: `${enrollee.nameLast}, ${enrollee.nameFirst}.pdf`,
+          content,
+        },
+      ],
+    },
+    totalItems
+  );
+
+module.exports = async (enrollee, violation, totalItems) => {
+  enrollee = {
+    violation,
+    group: enrollee.EnrolleeRecord.GroupName._text,
+    date: enrollee.TestDate ? enrollee.TestDate._text : "",
+    nameFirst: enrollee.EnrolleeRecord.NameFirst
+      ? enrollee.EnrolleeRecord.NameFirst._text
+      : "",
+    nameLast: enrollee.EnrolleeRecord.NameLast
+      ? enrollee.EnrolleeRecord.NameLast._text
+      : "",
+    memo: enrollee.EnrolleeRecord.Memo
+      ? enrollee.EnrolleeRecord.Memo._text
+      : "",
+    enrolleeCaseId: enrollee.EnrolleeRecord.EnrolleeCaseId
+      ? enrollee.EnrolleeRecord.EnrolleeCaseId._text
+      : "",
+  };
+  const participants = _Util.parseRecipients(enrollee.memo);
+  const content = await new Promise((resolve, reject) => {
+    pdf.create(_violationPDF(enrollee)).toBuffer((err, buffer) => {
+      resolve(buffer);
     });
-    if (participants && participants.length > 0) {
-      await Promise.all(
-        participants.map(
-          async (to) =>
-            await new Promise((resolve, reject) =>
-              _mailFunc(
-                config.production ? to : "broc@compliancemonitoringsystems.com",
-                metaData,
-                content,
-                resolve,
-                reject
-              )
-            )
+  });
+  if (participants && participants.length > 0) {
+    await participants.map(
+      async (to) =>
+        await new Promise((resolve, reject) =>
+          _mailFunc(
+            violation,
+            config.production ? to : "broc@compliancemonitoringsystems.com",
+            enrollee,
+            content,
+            resolve,
+            reject,
+            totalItems
+          )
         )
-      );
-    } else {
-      const errorContacts = config.production
-        ? config.errorContacts
-        : ["broc@compliancemonitoringsystems.com"];
-      await Promise.all(
-        errorContacts.map(
-          async (to) =>
-            await new Promise((resolve, reject) =>
-              _mailFunc(to, metaData, content, resolve, reject, true)
-            )
+    );
+  } else {
+    const errorContacts = config.production
+      ? config.errorContacts
+      : ["broc@compliancemonitoringsystems.com"];
+    await errorContacts.map(
+      async (to) =>
+        await new Promise((resolve, reject) =>
+          _mailFunc(
+            violation,
+            to,
+            enrollee,
+            content,
+            resolve,
+            reject,
+            totalItems,
+            true
+          )
         )
-      );
-    }
-  } catch (e) {}
+    );
+  }
 };

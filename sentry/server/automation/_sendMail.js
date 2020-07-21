@@ -5,15 +5,29 @@ const _violationTemplate = require("./_violationTemplate");
 const _errorTemplate = require("./_errorTemplate");
 const config = require("../config");
 
-const _sendMail = (transporter, mailOptions, resolve, reject) =>
-  transporter.sendMail(mailOptions, (error, info) => {
+const _sendMail = (transporter, mailOptions, resolve, reject, totalItems) =>
+  transporter.sendMail(mailOptions, async (error, info) => {
     if (error) {
-      console.log(error);
+      if (error.responseCode === 432) {
+        await new Promise((resolve, reject) =>
+          setTimeout(() => resolve(), 10000)
+        );
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error);
+          } else {
+            // totalItems();
+            resolve();
+          }
+        });
+      }
+    } else {
+      // totalItems();
+      resolve();
     }
-    resolve();
   });
 
-module.exports = (obj) => {
+module.exports = (obj, totalItems) => {
   let fn;
   if (obj.error) {
     fn = _errorTemplate;
@@ -43,6 +57,7 @@ module.exports = (obj) => {
       attachments: obj.attachments ? obj.attachments : null,
     },
     obj.resolve,
-    obj.reject
+    obj.reject,
+    totalItems
   );
 };
