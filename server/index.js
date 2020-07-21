@@ -402,12 +402,10 @@ let server = null;
 
 if (serverConfig.production) {
   const key = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem",
-    "utf8"
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem"
   );
   const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem",
-    "utf8"
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com/chain.pem"
   );
   server = http.createServer({ key, cert }, app);
 } else {
