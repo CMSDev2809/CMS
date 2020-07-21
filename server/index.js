@@ -402,13 +402,13 @@ let server = null;
 
 if (serverConfig.production) {
   const key = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem"
+    "/etc/letsencrypt/live/communitysupervision.org/privkey.pem"
   );
   const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem"
+    "/etc/letsencrypt/live/communitysupervision.org/cert.pem"
   );
   const ca = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/chain.pem"
+    "/etc/letsencrypt/live/communitysupervision.org/chain.pem"
   );
   server = http.createServer({ key, cert, ca }, app);
 } else {
