@@ -22,7 +22,7 @@ class EntryInterface extends Component {
       activePane: "search",
       activeClient: "",
       editorState: {},
-      placeholder: 0
+      placeholder: 0,
     };
   }
 
@@ -123,14 +123,14 @@ class Search extends Component {
       textInput: "",
       searchIndex: 0,
       totalSize: 0,
-      limit: 0
+      limit: 0,
     };
   }
 
   componentDidMount() {
     fns
       .readFromSave()
-      .then(res => this.setState({ limit: parseInt(res.limit) }));
+      .then((res) => this.setState({ limit: parseInt(res.limit) }));
   }
 
   async deleteCard(id) {
@@ -153,7 +153,7 @@ class Search extends Component {
     );
     const totalSize = hits.totalSize;
     const cards = await Promise.all(
-      hits.cards.map(async element => {
+      hits.cards.map(async (element) => {
         const card = await fns.decryptCard(element);
         return (
           <li className="list-group-item" style={{ position: "relative" }}>
@@ -216,14 +216,14 @@ class Search extends Component {
       hits: [],
       textInput: "",
       totalSize: 0,
-      searchIndex: 0
+      searchIndex: 0,
     });
   }
 
   render() {
     const transStyle = {
       opacity: "0.5",
-      pointerEvents: "none"
+      pointerEvents: "none",
     };
     return (
       <div style={{ position: "relative" }}>
@@ -240,7 +240,7 @@ class Search extends Component {
                 label="Client Name"
                 placeholder=""
                 value={this.state.textInput}
-                onChange={value => {
+                onChange={(value) => {
                   this.setState({ textInput: value });
                 }}
               />
@@ -346,8 +346,8 @@ class CardEditor extends Component {
         success: false,
         status: false,
         waiting: true,
-        code: ""
-      }
+        code: "",
+      },
     };
     this.state = this.stateObject;
   }
@@ -359,7 +359,7 @@ class CardEditor extends Component {
   async submitTransaction() {
     const modal = await new Promise((resolve, reject) => {
       fetch(
-        `https://compliancemonitoringsystems.com:5000/api/processPayment?ccnum=${
+        `https://communitysupervision.org:5000/api/processPayment?ccnum=${
           this.state.cardNumber
         }&amount=${parseFloat(
           this.state.amount.replace("$", "")
@@ -376,20 +376,20 @@ class CardEditor extends Component {
           method: "post",
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            apiKey: keyword.apiKey
-          })
+            apiKey: keyword.apiKey,
+          }),
         }
       )
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           resolve({
             status: true,
             waiting: false,
             code: res.code,
-            success: res.success
+            success: res.success,
           });
         });
       setTimeout(() => {
@@ -397,7 +397,7 @@ class CardEditor extends Component {
           status: true,
           waiting: false,
           code: "The request timed out",
-          success: res.success
+          success: res.success,
         });
       }, 14000);
     });
@@ -431,7 +431,7 @@ class CardEditor extends Component {
         receiptEmail: this.props.editorState.receiptEmail
           ? this.props.editorState.receiptEmail
           : 0,
-        isAutopay: this.props.editorState.isAutopay
+        isAutopay: this.props.editorState.isAutopay,
       });
     } else {
       this.resetState();
@@ -527,7 +527,7 @@ class CardEditor extends Component {
                 position: "absolute",
                 top: "50%",
                 left: "50%",
-                transform: "translate(-50%, -50%)"
+                transform: "translate(-50%, -50%)",
               }}
             >
               {this.state.modal.waiting ? (
@@ -586,14 +586,14 @@ class CardEditor extends Component {
                           this.state.id,
                           Object.assign(card, {
                             processing: this.props.history.username,
-                            highPriority: false
+                            highPriority: false,
                           })
                         );
                       } else {
                         fns.createCard(
                           Object.assign(card, {
                             processing: this.props.history.username,
-                            highPriority: false
+                            highPriority: false,
                           })
                         );
                       }
@@ -624,20 +624,20 @@ class CardEditor extends Component {
                           this.state.id,
                           Object.assign(card, {
                             processing: this.props.history.username,
-                            highPriority: true
+                            highPriority: true,
                           })
                         );
                       } else {
                         fns.createCard(
                           Object.assign(card, {
                             processing: this.props.history.username,
-                            highPriority: true
+                            highPriority: true,
                           })
                         );
                       }
                       fns.highPriority(
                         Object.assign(this.state, {
-                          requestedBy: this.props.history.username
+                          requestedBy: this.props.history.username,
                         })
                       );
                       this.props.setEditorState("search", {});
@@ -656,7 +656,7 @@ class CardEditor extends Component {
             )}
             {this.state.processing.length > 0 ? (
               <button
-                ref={buttonDOM => {
+                ref={(buttonDOM) => {
                   this.buttonDOM = buttonDOM;
                 }}
                 className="button"
@@ -762,7 +762,7 @@ class CardEditor extends Component {
                       label="Client First Name"
                       placeholder={this.props.placeholder ? "John" : ""}
                       value={this.state.firstName}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({ firstName: value });
                       }}
                     />
@@ -772,7 +772,7 @@ class CardEditor extends Component {
                       label="Client Last Name"
                       placeholder={this.props.placeholder ? "Hancock" : ""}
                       value={this.state.lastName}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({ lastName: value });
                       }}
                     />
@@ -786,12 +786,12 @@ class CardEditor extends Component {
                         this.props.placeholder ? "0123 4567 8901 2345" : ""
                       }
                       value={this.state.cardNumber}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({
                           cardNumber: this.cardValueFormater(
                             value,
                             this.state.cardNumber
-                          )
+                          ),
                         });
                       }}
                     />
@@ -801,9 +801,9 @@ class CardEditor extends Component {
                       label="Expiration Date"
                       placeholder={this.props.placeholder ? "01/20" : ""}
                       value={this.state.expDate}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({
-                          expDate: this.formatExp(value, this.state.expDate)
+                          expDate: this.formatExp(value, this.state.expDate),
                         });
                       }}
                     />
@@ -813,12 +813,12 @@ class CardEditor extends Component {
                       label="Security Code"
                       placeholder={this.props.placeholder ? "012" : ""}
                       value={this.state.securityCode}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({
                           securityCode: this.formatSecurityCode(
                             value,
                             this.state.securityCode
-                          )
+                          ),
                         });
                       }}
                     />
@@ -832,7 +832,7 @@ class CardEditor extends Component {
                         this.props.placeholder ? "John J Hancock" : ""
                       }
                       value={this.state.cardHolder}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({ cardHolder: value });
                       }}
                     />
@@ -842,7 +842,7 @@ class CardEditor extends Component {
                       label="Amount"
                       placeholder={this.props.placeholder ? "$300.00" : ""}
                       value={this.state.amount}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({ amount: this.formatTotal(value) });
                       }}
                       onBlur={() =>
@@ -852,7 +852,7 @@ class CardEditor extends Component {
                                 "$" +
                                 parseFloat(
                                   this.state.amount.replace("$", "")
-                                ).toFixed(2)
+                                ).toFixed(2),
                             })
                           : this.setState({ amount: "" })
                       }
@@ -865,14 +865,14 @@ class CardEditor extends Component {
                     this.props.placeholder ? "123 North Pole Ave" : ""
                   }
                   value={this.state.billingAddress}
-                  onChange={value => {
+                  onChange={(value) => {
                     this.setState({ billingAddress: value });
                   }}
                 />
                 <TextInput
                   placeholder={this.props.placeholder ? "Igloo 5" : ""}
                   value={this.state.billingAddress2}
-                  onChange={value => {
+                  onChange={(value) => {
                     this.setState({ billingAddress2: value });
                   }}
                 />
@@ -881,7 +881,7 @@ class CardEditor extends Component {
                     style={{
                       marginRight: "10px",
                       marginTop: "10px",
-                      width: "60%"
+                      width: "60%",
                     }}
                   >
                     <div style={{ marginBottom: "10px", marginTop: "-10px" }}>
@@ -894,7 +894,7 @@ class CardEditor extends Component {
                             this.props.placeholder ? "Arctic Circle" : ""
                           }
                           value={this.state.city}
-                          onChange={value => {
+                          onChange={(value) => {
                             this.setState({ city: value });
                           }}
                         />
@@ -907,9 +907,9 @@ class CardEditor extends Component {
                           placeholder={this.props.placeholder ? "Missoula" : ""}
                           defaultValue={"Missoula"}
                           class="form-control"
-                          onChange={e => {
+                          onChange={(e) => {
                             this.setState({
-                              city: e.target.value
+                              city: e.target.value,
                             });
                           }}
                         >
@@ -922,7 +922,7 @@ class CardEditor extends Component {
                     style={{
                       marginRight: "10px",
                       marginTop: "10px",
-                      width: "20%"
+                      width: "20%",
                     }}
                   >
                     <div style={{ marginBottom: "10px", marginTop: "-10px" }}>
@@ -932,7 +932,7 @@ class CardEditor extends Component {
                       <div className={"element"}>
                         <TextInput
                           value={this.state.state}
-                          onChange={value => {
+                          onChange={(value) => {
                             this.setState({ state: value });
                           }}
                         />
@@ -945,9 +945,9 @@ class CardEditor extends Component {
                           placeholder={this.props.placeholder ? "MT" : ""}
                           defaultValue={"MT"}
                           class="form-control"
-                          onChange={e => {
+                          onChange={(e) => {
                             this.setState({
-                              state: e.target.value
+                              state: e.target.value,
                             });
                           }}
                         >
@@ -961,7 +961,7 @@ class CardEditor extends Component {
                       label="Zip Code"
                       placeholder={this.props.placeholder ? "01234" : ""}
                       value={this.state.zip}
-                      onChange={value => {
+                      onChange={(value) => {
                         this.setState({ zip: value });
                       }}
                     />
@@ -971,12 +971,12 @@ class CardEditor extends Component {
                   label="Phone Number"
                   placeholder={this.props.placeholder ? "(012) 345-6789" : ""}
                   value={this.state.phoneNumber}
-                  onChange={value => {
+                  onChange={(value) => {
                     this.setState({
                       phoneNumber: this.formatPhone(
                         value,
                         this.state.phoneNumber
-                      )
+                      ),
                     });
                   }}
                 />
@@ -984,10 +984,10 @@ class CardEditor extends Component {
                   type="checkbox"
                   name="vehicle1"
                   value="Bike"
-                  onChange={value => {
+                  onChange={(value) => {
                     console.log(value);
                     this.setState({
-                      isAutopay: value
+                      isAutopay: value,
                     });
                   }}
                 />
@@ -998,7 +998,7 @@ class CardEditor extends Component {
                   label="Purpose"
                   placeholder={this.props.placeholder ? "Penguins" : ""}
                   value={this.state.purpose}
-                  onChange={value => {
+                  onChange={(value) => {
                     this.setState({ purpose: value });
                   }}
                 />
@@ -1008,7 +1008,7 @@ class CardEditor extends Component {
                   label="Notes (Optional)"
                   placeholder=""
                   value={this.state.notes}
-                  onChange={e => {
+                  onChange={(e) => {
                     this.setState({ notes: e.target.value });
                   }}
                 />
@@ -1021,15 +1021,15 @@ class CardEditor extends Component {
   }
 }
 
-const EntryInterface_mapStateToProps = state => {
+const EntryInterface_mapStateToProps = (state) => {
   return {
     ...state.EntryInterface,
     sendCard: state.Tasks,
-    username: state.Home.username
+    username: state.Home.username,
   };
 };
 
-const EntryInterface_mapDispatchToProps = dispatch => {
+const EntryInterface_mapDispatchToProps = (dispatch) => {
   return {};
 };
 
