@@ -1096,7 +1096,7 @@ class Form extends Component {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
     fetch(
-      `https://compliancemon.herokuapp.com/api/proccessPayment?ccnum=${
+      `${config.api}/api/proccessPayment?ccnum=${
         this.state.cardNumber
       }&amount=${this.state.cardTotal}&expDate=${this.state.expDate.replace(
         /\//g,
