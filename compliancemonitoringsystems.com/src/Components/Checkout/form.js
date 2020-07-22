@@ -8,12 +8,12 @@ import {
   ButtonToolbar,
   DropdownButton,
   MenuItem,
-  ControlLabel
+  ControlLabel,
 } from "react-bootstrap";
 import LoadingModal from "./loading_modal";
 import {
   transactionStatus,
-  selectedBox
+  selectedBox,
 } from "../../Actions/transactionActions";
 import ConfirmModal from "./confirm_modal";
 import Recaptcha from "react-recaptcha";
@@ -29,7 +29,7 @@ class Form extends Component {
       inputGroupWidth: 275,
       inputGroupWidthModifier: 1.5,
       helpFontSize: 15,
-      showHelp: true
+      showHelp: true,
     };
     this.state = {
       captcha: null,
@@ -66,8 +66,8 @@ class Form extends Component {
         line2: "",
         city: "",
         state: "MT",
-        zipCode: ""
-      }
+        zipCode: "",
+      },
     };
   }
 
@@ -76,7 +76,7 @@ class Form extends Component {
     if (length === 0) {
       this.setState({
         cardValidation: null,
-        cardNumber: num
+        cardNumber: num,
       });
     } else if (
       ((this.state.cardType !== "American Express" && length === 16) ||
@@ -86,13 +86,13 @@ class Form extends Component {
       this.setState({
         cardValidation: "success",
         errorState: "formValidationSuccess2",
-        cardNumber: num
+        cardNumber: num,
       });
     } else {
       this.setState({
         cardValidation: "error",
         errorState: "formValidationError2",
-        cardNumber: num
+        cardNumber: num,
       });
     }
   }
@@ -101,7 +101,7 @@ class Form extends Component {
     if (num.length === 0) {
       this.setState({
         cvcValidation: null,
-        cvcNumber: num
+        cvcNumber: num,
       });
     } else if (
       (num.length === 3 && this.state.cardType !== "American Express") ||
@@ -112,13 +112,13 @@ class Form extends Component {
       this.setState({
         cvcValidation: "success",
         cvcErrorState: "formValidationSuccess2",
-        cvcNumber: num
+        cvcNumber: num,
       });
     } else {
       this.setState({
         cvcValidation: "error",
         cvcErrorState: "formValidationError2",
-        cvcNumber: num
+        cvcNumber: num,
       });
     }
   }
@@ -127,19 +127,19 @@ class Form extends Component {
     if (num.replace(/\//g, "").length < 1) {
       this.setState({
         cvcValidation: null,
-        cvcNumber: num
+        cvcNumber: num,
       });
     } else if (num.replace(/\//g, "").length === 4) {
       this.setState({
         expDateValidation: "success",
         expDateErrorState: "formValidationSuccess2",
-        expDate: num
+        expDate: num,
       });
     } else {
       this.setState({
         expDateValidation: "error",
         expDateErrorState: "formValidationError2",
-        expDate: num
+        expDate: num,
       });
     }
   }
@@ -168,19 +168,19 @@ class Form extends Component {
         this.setState({
           cardTotal,
           paymentValidation: "success",
-          paymentErrorState: "formValidationSuccess2"
+          paymentErrorState: "formValidationSuccess2",
         });
       } else {
         this.setState({
           cardTotal,
           paymentValidation: "error",
-          paymentErrorState: "formValidationError2"
+          paymentErrorState: "formValidationError2",
         });
       }
     } else {
       this.setState({
         cardTotal,
-        paymentValidation: null
+        paymentValidation: null,
       });
     }
   }
@@ -194,25 +194,25 @@ class Form extends Component {
             <InputGroup
               style={{
                 width: `${this.config.inputGroupWidth}px`,
-                display: "inline-block"
+                display: "inline-block",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="First Name"
-                onChange={e =>
+                onChange={(e) =>
                   this.setState({ clientFirstName: e.target.value })
                 }
                 onFocus={() => {
                   this.props.selectedBox(10);
                   this.setState({
-                    helpIndex: 10
+                    helpIndex: 10,
                   });
                 }}
                 onBlur={() => {
                   this.props.selectedBox(0);
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -221,25 +221,25 @@ class Form extends Component {
               style={{
                 width: `${this.config.inputGroupWidth * 0.3}px`,
                 display: "inline-block",
-                marginLeft: "2.5px"
+                marginLeft: "2.5px",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="MI"
-                onChange={e =>
+                onChange={(e) =>
                   this.setState({ clientMiddleInitial: e.target.value })
                 }
                 onFocus={() => {
                   this.props.selectedBox(10);
                   this.setState({
-                    helpIndex: 10
+                    helpIndex: 10,
                   });
                 }}
                 onBlur={() => {
                   this.props.selectedBox(0);
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -247,25 +247,25 @@ class Form extends Component {
             <InputGroup
               style={{
                 width: `${this.config.inputGroupWidth}px`,
-                marginTop: "-5px"
+                marginTop: "-5px",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="Last Name"
-                onChange={e =>
+                onChange={(e) =>
                   this.setState({ clientLastName: e.target.value })
                 }
                 onFocus={() => {
                   this.props.selectedBox(10);
                   this.setState({
-                    helpIndex: 10
+                    helpIndex: 10,
                   });
                 }}
                 onBlur={() => {
                   this.props.selectedBox(0);
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -273,9 +273,11 @@ class Form extends Component {
             {this.config.showHelp && this.state.helpIndex === 10 ? (
               <div
                 style={{
-                  width: `${this.config.inputGroupWidth *
-                    this.config.inputGroupTextModier}px`,
-                  fontSize: `${this.config.helpFontSize}px`
+                  width: `${
+                    this.config.inputGroupWidth *
+                    this.config.inputGroupTextModier
+                  }px`,
+                  fontSize: `${this.config.helpFontSize}px`,
                 }}
               >
                 This will be the client to whom the invoice pertains.
@@ -298,7 +300,7 @@ class Form extends Component {
             style={{
               fontSize: "12px",
               display: "inline-block",
-              marginLeft: "6px"
+              marginLeft: "6px",
             }}
           >
             (Optional)
@@ -306,23 +308,23 @@ class Form extends Component {
         </h3>
         <InputGroup
           style={{
-            width: `${this.config.inputGroupWidth}px`
+            width: `${this.config.inputGroupWidth}px`,
           }}
         >
           <FormControl
             type="text"
             placeholder="xxxxxxxxx"
-            onChange={e => this.setState({ invoiceNumber: e.target.value })}
+            onChange={(e) => this.setState({ invoiceNumber: e.target.value })}
             onFocus={() => {
               this.props.selectedBox(1);
               this.setState({
-                helpIndex: 1
+                helpIndex: 1,
               });
             }}
             onBlur={() => {
               this.props.selectedBox(0);
               this.setState({
-                helpIndex: 0
+                helpIndex: 0,
               });
             }}
           />
@@ -330,9 +332,10 @@ class Form extends Component {
         {this.config.showHelp && this.state.helpIndex === 1 ? (
           <div
             style={{
-              width: `${this.config.inputGroupWidth *
-                this.config.inputGroupTextModier}px`,
-              fontSize: `${this.config.helpFontSize}px`
+              width: `${
+                this.config.inputGroupWidth * this.config.inputGroupTextModier
+              }px`,
+              fontSize: `${this.config.helpFontSize}px`,
             }}
           >
             This number will be on an invoice provided to you by Compliance
@@ -354,21 +357,21 @@ class Form extends Component {
             <InputGroup
               style={{
                 width: `${this.config.inputGroupWidth}px`,
-                display: "inline-block"
+                display: "inline-block",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="First Name"
-                onChange={e => this.setState({ firstName: e.target.value })}
+                onChange={(e) => this.setState({ firstName: e.target.value })}
                 onFocus={() => {
                   this.setState({
-                    helpIndex: 2
+                    helpIndex: 2,
                   });
                 }}
                 onBlur={() => {
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -377,21 +380,23 @@ class Form extends Component {
               style={{
                 width: `${this.config.inputGroupWidth * 0.3}px`,
                 display: "inline-block",
-                marginLeft: "2.5px"
+                marginLeft: "2.5px",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="MI"
-                onChange={e => this.setState({ middleInitial: e.target.value })}
+                onChange={(e) =>
+                  this.setState({ middleInitial: e.target.value })
+                }
                 onFocus={() => {
                   this.setState({
-                    helpIndex: 2
+                    helpIndex: 2,
                   });
                 }}
                 onBlur={() => {
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -399,21 +404,21 @@ class Form extends Component {
             <InputGroup
               style={{
                 width: `${this.config.inputGroupWidth}px`,
-                marginTop: "-5px"
+                marginTop: "-5px",
               }}
             >
               <FormControl
                 type="text"
                 placeholder="Last Name"
-                onChange={e => this.setState({ lastName: e.target.value })}
+                onChange={(e) => this.setState({ lastName: e.target.value })}
                 onFocus={() => {
                   this.setState({
-                    helpIndex: 2
+                    helpIndex: 2,
                   });
                 }}
                 onBlur={() => {
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -421,9 +426,11 @@ class Form extends Component {
             {this.config.showHelp && this.state.helpIndex === 2 ? (
               <div
                 style={{
-                  width: `${this.config.inputGroupWidth *
-                    this.config.inputGroupTextModier}px`,
-                  fontSize: `${this.config.helpFontSize}px`
+                  width: `${
+                    this.config.inputGroupWidth *
+                    this.config.inputGroupTextModier
+                  }px`,
+                  fontSize: `${this.config.helpFontSize}px`,
                 }}
               >
                 This will be the name of the card holder.
@@ -450,13 +457,13 @@ class Form extends Component {
             onFocus={() => {
               this.props.selectedBox(3);
               this.setState({
-                helpIndex: 3
+                helpIndex: 3,
               });
             }}
             onBlur={() => {
               this.props.selectedBox(0);
               this.setState({
-                helpIndex: 0
+                helpIndex: 0,
               });
             }}
           >
@@ -471,7 +478,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "Scram Monitoring",
-                    other: false
+                    other: false,
                   })
                 }
               >
@@ -482,7 +489,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "GPS Monitoring",
-                    other: false
+                    other: false,
                   })
                 }
               >
@@ -493,7 +500,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "House Arrest",
-                    other: false
+                    other: false,
                   })
                 }
               >
@@ -504,7 +511,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "Drug Patch",
-                    other: false
+                    other: false,
                   })
                 }
               >
@@ -515,7 +522,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "Urinalysis",
-                    other: false
+                    other: false,
                   })
                 }
               >
@@ -527,7 +534,7 @@ class Form extends Component {
                 onClick={() =>
                   this.setState({
                     selectedService: "Other",
-                    other: true
+                    other: true,
                   })
                 }
               >
@@ -542,16 +549,16 @@ class Form extends Component {
                 placeholder="Program Name"
                 onFocus={() => {
                   this.setState({
-                    helpIndex: 3
+                    helpIndex: 3,
                   });
                 }}
                 onBlur={() => {
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
                 style={{ marginTop: "2.5px" }}
-                onChange={e =>
+                onChange={(e) =>
                   this.setState({ selectedService: e.target.value })
                 }
               />
@@ -562,9 +569,10 @@ class Form extends Component {
           {this.config.showHelp && this.state.helpIndex === 3 ? (
             <div
               style={{
-                width: `${this.config.inputGroupWidth *
-                  this.config.inputGroupTextModier}px`,
-                fontSize: `${this.config.helpFontSize}px`
+                width: `${
+                  this.config.inputGroupWidth * this.config.inputGroupTextModier
+                }px`,
+                fontSize: `${this.config.helpFontSize}px`,
               }}
             >
               This value will be the program that you have been invoiced for.
@@ -594,19 +602,19 @@ class Form extends Component {
               <FormControl
                 type="text"
                 placeholder="e.g. 25.00"
-                onChange={e =>
+                onChange={(e) =>
                   this.paymentValidation(e.target.value.replace(/\$/g, ""))
                 }
                 onFocus={() => {
                   this.props.selectedBox(4);
                   this.setState({
-                    helpIndex: 4
+                    helpIndex: 4,
                   });
                 }}
                 onBlur={() => {
                   this.props.selectedBox(0);
                   this.setState({
-                    helpIndex: 0
+                    helpIndex: 0,
                   });
                 }}
               />
@@ -619,9 +627,10 @@ class Form extends Component {
           {this.config.showHelp && this.state.helpIndex === 4 ? (
             <div
               style={{
-                width: `${this.config.inputGroupWidth *
-                  this.config.inputGroupTextModier}px`,
-                fontSize: `${this.config.helpFontSize}px`
+                width: `${
+                  this.config.inputGroupWidth * this.config.inputGroupTextModier
+                }px`,
+                fontSize: `${this.config.helpFontSize}px`,
               }}
             >
               This number represents the total amount owed specified on your
@@ -645,12 +654,12 @@ class Form extends Component {
           <ButtonToolbar
             onFocus={() => {
               this.setState({
-                helpIndex: 5
+                helpIndex: 5,
               });
             }}
             onBlur={() => {
               this.setState({
-                helpIndex: 0
+                helpIndex: 0,
               });
             }}
           >
@@ -669,7 +678,7 @@ class Form extends Component {
                     cardNumber: "",
                     cvcNumber: "",
                     cardValidation: null,
-                    cvcValidaiton: null
+                    cvcValidaiton: null,
                   })
                 }
               >
@@ -682,7 +691,7 @@ class Form extends Component {
                     cardType: "Mastercard",
                     linesShown: 3,
                     cardNumber: "",
-                    cvcNumber: ""
+                    cvcNumber: "",
                   })
                 }
               >
@@ -695,7 +704,7 @@ class Form extends Component {
                     cardType: "American Express",
                     linesShown: 3,
                     cardNumber: "",
-                    cvcNumber: ""
+                    cvcNumber: "",
                   })
                 }
               >
@@ -708,7 +717,7 @@ class Form extends Component {
                     cardType: "Discover",
                     linesShown: 4,
                     cardNumber: "",
-                    cvcNumber: ""
+                    cvcNumber: "",
                   })
                 }
               >
@@ -719,9 +728,10 @@ class Form extends Component {
           {this.config.showHelp && this.state.helpIndex === 5 ? (
             <div
               style={{
-                width: `${this.config.inputGroupWidth *
-                  this.config.inputGroupTextModier}px`,
-                fontSize: `${this.config.helpFontSize}px`
+                width: `${
+                  this.config.inputGroupWidth * this.config.inputGroupTextModier
+                }px`,
+                fontSize: `${this.config.helpFontSize}px`,
               }}
             >
               This value represents carrier of your credit or debit card.
@@ -749,7 +759,7 @@ class Form extends Component {
               <FormControl
                 type="text"
                 placeholder="xxxx xxxx xxxx xxxx"
-                onChange={e => {
+                onChange={(e) => {
                   this.cardValidation(
                     this.formatCC(e.target.value, this.state.cardNumber)
                   );
@@ -767,9 +777,10 @@ class Form extends Component {
           {this.config.showHelp && this.state.helpIndex === 9 ? (
             <div
               style={{
-                width: `${this.config.inputGroupWidth *
-                  this.config.inputGroupTextModier}px`,
-                fontSize: `${this.config.helpFontSize}px`
+                width: `${
+                  this.config.inputGroupWidth * this.config.inputGroupTextModier
+                }px`,
+                fontSize: `${this.config.helpFontSize}px`,
               }}
             >
               This will be the full card number associated with this credit or
@@ -799,7 +810,7 @@ class Form extends Component {
             <FormControl
               type="text"
               placeholder="xxx"
-              onChange={e => {
+              onChange={(e) => {
                 this.cvcValidation(e.target.value);
               }}
               value={this.state.cvcNumber}
@@ -815,9 +826,10 @@ class Form extends Component {
         {this.config.showHelp && this.state.helpIndex === 8 ? (
           <div
             style={{
-              width: `${this.config.inputGroupWidth *
-                this.config.inputGroupTextModier}px`,
-              fontSize: `${this.config.helpFontSize}px`
+              width: `${
+                this.config.inputGroupWidth * this.config.inputGroupTextModier
+              }px`,
+              fontSize: `${this.config.helpFontSize}px`,
             }}
           >
             This will be the cvc or cvv number associated with this credit or
@@ -844,7 +856,7 @@ class Form extends Component {
             <FormControl
               type="text"
               placeholder="xx/xx"
-              onChange={e => {
+              onChange={(e) => {
                 this.expDateValidation(e.target.value);
               }}
               value={this.state.expDate}
@@ -866,9 +878,10 @@ class Form extends Component {
         {this.config.showHelp && this.state.helpIndex === 11 ? (
           <div
             style={{
-              width: `${this.config.inputGroupWidth *
-                this.config.inputGroupTextModier}px`,
-              fontSize: `${this.config.helpFontSize}px`
+              width: `${
+                this.config.inputGroupWidth * this.config.inputGroupTextModier
+              }px`,
+              fontSize: `${this.config.helpFontSize}px`,
             }}
           >
             This will be the expiration date of this credit or debit card.
@@ -883,12 +896,12 @@ class Form extends Component {
   billingAddress() {
     const focusOn = () => {
       this.setState({
-        helpIndex: 6
+        helpIndex: 6,
       });
     };
     const blurOn = () => {
       this.setState({
-        helpIndex: 0
+        helpIndex: 0,
       });
     };
     return (
@@ -896,18 +909,18 @@ class Form extends Component {
         <h3>Card Billing Address</h3>
         <InputGroup
           style={{
-            width: `${this.config.inputGroupWidth}px`
+            width: `${this.config.inputGroupWidth}px`,
           }}
         >
           <FormControl
             type="text"
             placeholder="123 North Pole Ave"
-            onChange={e =>
+            onChange={(e) =>
               this.setState({
                 billingAddress: {
                   ...this.state.billingAddress,
-                  line1: e.target.value
-                }
+                  line1: e.target.value,
+                },
               })
             }
             style={{ marginBottom: "2.5px" }}
@@ -917,18 +930,18 @@ class Form extends Component {
         </InputGroup>
         <InputGroup
           style={{
-            width: `${this.config.inputGroupWidth}px`
+            width: `${this.config.inputGroupWidth}px`,
           }}
         >
           <FormControl
             type="text"
             placeholder="(Optional) Suite 1"
-            onChange={e =>
+            onChange={(e) =>
               this.setState({
                 billingAddress: {
                   ...this.state.billingAddress,
-                  line2: e.target.value
-                }
+                  line2: e.target.value,
+                },
               })
             }
             style={{ marginBottom: "2.5px" }}
@@ -941,18 +954,18 @@ class Form extends Component {
             style={{
               width: `${this.config.inputGroupWidth * 0.7 - 2.5}px`,
               display: "inline-block",
-              marginRight: "2.5px"
+              marginRight: "2.5px",
             }}
           >
             <FormControl
               type="text"
               placeholder="City"
-              onChange={e =>
+              onChange={(e) =>
                 this.setState({
                   billingAddress: {
                     ...this.state.billingAddress,
-                    city: e.target.value
-                  }
+                    city: e.target.value,
+                  },
                 })
               }
               onFocus={focusOn}
@@ -962,18 +975,18 @@ class Form extends Component {
           <InputGroup
             style={{
               width: `${this.config.inputGroupWidth * 0.3}px`,
-              display: "inline-block"
+              display: "inline-block",
             }}
           >
             <FormControl
               type="text"
               placeholder="ST"
-              onChange={e =>
+              onChange={(e) =>
                 this.setState({
                   billingAddress: {
                     ...this.state.billingAddress,
-                    state: e.target.value.toUpperCase()
-                  }
+                    state: e.target.value.toUpperCase(),
+                  },
                 })
               }
               value={this.state.billingAddress.state}
@@ -985,18 +998,18 @@ class Form extends Component {
         <InputGroup
           style={{
             width: `${this.config.inputGroupWidth * 0.7 - 2.5}px`,
-            marginTop: "2.5px"
+            marginTop: "2.5px",
           }}
         >
           <FormControl
             type="text"
             placeholder="Zip Code"
-            onChange={e =>
+            onChange={(e) =>
               this.setState({
                 billingAddress: {
                   ...this.state.billingAddress,
-                  zipCode: e.target.value
-                }
+                  zipCode: e.target.value,
+                },
               })
             }
             value={this.state.billingAddress.zipCode}
@@ -1007,9 +1020,10 @@ class Form extends Component {
         {this.config.showHelp && this.state.helpIndex === 6 ? (
           <div
             style={{
-              width: `${this.config.inputGroupWidth *
-                this.config.inputGroupTextModier}px`,
-              fontSize: `${this.config.helpFontSize}px`
+              width: `${
+                this.config.inputGroupWidth * this.config.inputGroupTextModier
+              }px`,
+              fontSize: `${this.config.helpFontSize}px`,
             }}
           >
             This will be the billing address associated with this credit or
@@ -1031,7 +1045,7 @@ class Form extends Component {
             style={{
               fontSize: "12px",
               display: "inline-block",
-              marginLeft: "6px"
+              marginLeft: "6px",
             }}
           >
             (Optional)
@@ -1039,21 +1053,21 @@ class Form extends Component {
         </h3>
         <InputGroup
           style={{
-            width: `${this.config.inputGroupWidth}px`
+            width: `${this.config.inputGroupWidth}px`,
           }}
         >
           <FormControl
             type="text"
             placeholder="john.smith@gmail.com"
-            onChange={e => this.setState({ email: e.target.value })}
+            onChange={(e) => this.setState({ email: e.target.value })}
             onFocus={() => {
               this.setState({
-                helpIndex: 15
+                helpIndex: 15,
               });
             }}
             onBlur={() => {
               this.setState({
-                helpIndex: 0
+                helpIndex: 0,
               });
             }}
           />
@@ -1061,9 +1075,10 @@ class Form extends Component {
         {this.config.showHelp && this.state.helpIndex === 15 ? (
           <div
             style={{
-              width: `${this.config.inputGroupWidth *
-                this.config.inputGroupTextModier}px`,
-              fontSize: `${this.config.helpFontSize}px`
+              width: `${
+                this.config.inputGroupWidth * this.config.inputGroupTextModier
+              }px`,
+              fontSize: `${this.config.helpFontSize}px`,
             }}
           >
             Compliance Monitoring Systems will email you a receipt and
@@ -1081,7 +1096,7 @@ class Form extends Component {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
     fetch(
-      `${config.api}/api/proccessPayment?ccnum=${
+      `https://compliancemon.herokuapp.com/api/proccessPayment?ccnum=${
         this.state.cardNumber
       }&amount=${this.state.cardTotal}&expDate=${this.state.expDate.replace(
         /\//g,
@@ -1101,15 +1116,15 @@ class Form extends Component {
         method: "post",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          captchaToken: this.state.captcha
-        })
+          captchaToken: this.state.captcha,
+        }),
       }
     )
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         this.props.setTransactionStatus(res);
       });
   }
@@ -1120,7 +1135,7 @@ class Form extends Component {
         <Button
           style={{
             width: `${this.config.inputGroupWidth * 1.25}px`,
-            marginTop: "30px"
+            marginTop: "30px",
           }}
           onClick={() => this.changeConfirmModal()}
         >
@@ -1134,7 +1149,7 @@ class Form extends Component {
             width: `${this.config.inputGroupWidth * 1.25}px`,
             marginTop: "30px",
             opacity: "0.5",
-            cursor: "default"
+            cursor: "default",
           }}
         >
           Review
@@ -1178,7 +1193,7 @@ class Form extends Component {
       <div style={{ marginTop: "25px" }}>
         <Recaptcha
           sitekey={CAPTCHA_KEY}
-          verifyCallback={captcha => {
+          verifyCallback={(captcha) => {
             this.setState({ captcha });
           }}
           expiredCallback={() => this.setState({ captcha: null })}
@@ -1214,7 +1229,7 @@ class Form extends Component {
             expDate: this.state.expDate,
             billingAddress: this.state.billingAddress,
             cardNumber: this.state.cardNumber,
-            email: this.state.email
+            email: this.state.email,
           }}
         />
         {this.clientName()}
@@ -1241,16 +1256,13 @@ class Form extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  transactionStatus: state.transactionReducer.transactionStatus
+const mapStateToProps = (state) => ({
+  transactionStatus: state.transactionReducer.transactionStatus,
 });
 
-const mapDispatchToProps = dispatch => ({
-  selectedBox: box => dispatch(selectedBox(box)),
-  setTransactionStatus: status => dispatch(transactionStatus(status))
+const mapDispatchToProps = (dispatch) => ({
+  selectedBox: (box) => dispatch(selectedBox(box)),
+  setTransactionStatus: (status) => dispatch(transactionStatus(status)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
