@@ -347,8 +347,8 @@ const handleError = (response, req, res) => {
   }
   console.log("approval_code: ", approval_code);
   if (approval_code && approval_code.length > 0) {
-    sendReceipt(req.query, response, "merchant");
-    sendReceipt(req.query, response, "client");
+    sendReceipt(req.body.data, response, "merchant");
+    sendReceipt(req.body.data, response, "client");
     res.json({ success: true, code: approval_code });
   } else {
     res.json({
@@ -378,8 +378,8 @@ app.post("/api/processPayment", async (req, res) => {
     }
   }
   if (pass) {
-    const builderText = `?xmldata="<txn><ssl_amount>${req.query.amount}</ssl_amount>
-      <ssl_merchant_id>${convergeConfig.merchantId}</ssl_merchant_id><ssl_first_name>${req.query.clientFirstName}</ssl_first_name><ssl_last_name>${req.query.clientLastName}</ssl_last_name><ssl_user_id>${convergeConfig.userId}</ssl_user_id><ssl_pin>${convergeConfig.pin}</ssl_pin><ssl_transaction_type>${convergeConfig.transactionType}</ssl_transaction_type><ssl_card_number>${req.query.ccnum}</ssl_card_number><ssl_exp_date>${req.query.expDate}</ssl_exp_date><ssl_cvv2cvc2>${req.query.cvc}</ssl_cvv2cvc2><ssl_avs_address>${req.query.billingAddress.line1}</ssl_avs_address><ssl_city>${req.query.billingAddress.city}</ssl_city><ssl_state>${req.query.billingAddress.state}</ssl_state><ssl_avs_zip>${req.query.billingAddress.zipCode}</ssl_avs_zip></txn>"`;
+    const builderText = `?xmldata="<txn><ssl_amount>${req.body.data.amount}</ssl_amount>
+      <ssl_merchant_id>${convergeConfig.merchantId}</ssl_merchant_id><ssl_first_name>${req.body.data.clientFirstName}</ssl_first_name><ssl_last_name>${req.body.data.clientLastName}</ssl_last_name><ssl_user_id>${convergeConfig.userId}</ssl_user_id><ssl_pin>${convergeConfig.pin}</ssl_pin><ssl_transaction_type>${convergeConfig.transactionType}</ssl_transaction_type><ssl_card_number>${req.body.data.ccnum}</ssl_card_number><ssl_exp_date>${req.body.data.expDate}</ssl_exp_date><ssl_cvv2cvc2>${req.body.data.cvc}</ssl_cvv2cvc2><ssl_avs_address>${req.body.data.billingAddress.line1}</ssl_avs_address><ssl_city>${req.body.data.billingAddress.city}</ssl_city><ssl_state>${req.body.data.billingAddress.state}</ssl_state><ssl_avs_zip>${req.body.data.billingAddress.zipCode}</ssl_avs_zip></txn>"`;
     const url = convergeConfig.endpoint + builderText;
     fetch(url, { method: "post", credentials: "include" })
       .then((response) => response.text())
