@@ -1107,9 +1107,9 @@ class Form extends Component {
         this.state.clientMiddleInitial
       }&clientLastName=${this.state.clientLastName}&invoiceNumber=${
         this.state.invoiceNumber
-      }&program=${this.state.selectedService}&billingAddress=${
+      }&program=${this.state.selectedService}&billingAddress=${JSON.stringify(
         this.state.billingAddress
-      }&cardHolderFirstName=${this.state.firstName}&cardHolderLastName=${
+      )}&cardHolderFirstName=${this.state.firstName}&cardHolderLastName=${
         this.state.lastName
       }`,
       {
