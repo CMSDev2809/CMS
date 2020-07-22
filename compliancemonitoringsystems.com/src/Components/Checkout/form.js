@@ -1095,34 +1095,31 @@ class Form extends Component {
   submitTransaction() {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
-    fetch(
-      `${config.api}/api/proccessPayment?ccnum=${
-        this.state.cardNumber
-      }&amount=${this.state.cardTotal}&expDate=${this.state.expDate.replace(
-        /\//g,
-        ""
-      )}&cvc=${this.state.cvcNumber}&email=${
-        this.state.email
-      }&clientFirstName=${this.state.clientFirstName}&clientMiddleInitial=${
-        this.state.clientMiddleInitial
-      }&clientLastName=${this.state.clientLastName}&invoiceNumber=${
-        this.state.invoiceNumber
-      }&program=${this.state.selectedService}&billingAddress=${JSON.stringify(
-        this.state.billingAddress
-      )}&cardHolderFirstName=${this.state.firstName}&cardHolderLastName=${
-        this.state.lastName
-      }`,
-      {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+    fetch(`${config.api}/api/proccessPayment`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        captchaToken: this.state.captcha,
+        data: {
+          ccnum: this.state.cardNumber,
+          amount: this.state.cardTotal,
+          expDate: this.state.expDate.replace(/\//g, ""),
+          cvc: this.state.cvcNumber,
+          email: this.state.email,
+          clientFirstName: this.state.clientFirstName,
+          clientMiddleInitial: this.state.clientMiddleInitial,
+          clientLastName: this.state.clientLastName,
+          invoiceNumber: this.state.invoiceNumber,
+          program: this.state.selectedService,
+          billingAddress: this.state.billingAddress,
+          cardHolderFirstName: this.state.firstName,
+          cardHolderLastName: this.state.lastName,
         },
-        body: JSON.stringify({
-          captchaToken: this.state.captcha,
-        }),
-      }
-    )
+      }),
+    })
       .then((res) => res.json())
       .then((res) => {
         this.props.setTransactionStatus(res);
