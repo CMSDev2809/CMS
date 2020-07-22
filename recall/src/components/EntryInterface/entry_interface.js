@@ -358,31 +358,30 @@ class CardEditor extends Component {
 
   async submitTransaction() {
     const modal = await new Promise((resolve, reject) => {
-      fetch(
-        `https://communitysupervision.org:5000/api/processPayment?ccnum=${
-          this.state.cardNumber
-        }&amount=${parseFloat(
-          this.state.amount.replace("$", "")
-        )}&expDate=${this.state.expDate.replace(/\//g, "")}&cvc=${
-          this.state.securityCode
-        }&email=${this.state.contactEmail}&clientFirstName=${
-          this.state.firstName
-        }&clientMiddleInitial=${""}&clientLastName=${
-          this.state.lastName
-        }&invoiceNumber=${""}&program=${""}&billingAddress=${
-          this.state.billingAddress
-        }&cardHolder=${this.state.cardHolder}`,
-        {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+      fetch(`https://communitysupervision.org:5000/api/processPayment`, {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          apiKey: keyword.apiKey,
+          data: {
+            ccnum: this.state.cardNumber,
+            amount: parseFloat(this.state.amount.replace("$", "")),
+            expDate: this.state.expDate.replace(/\//g, ""),
+            cvc: this.state.securityCode,
+            email: this.state.contactEmail,
+            clientFirstName: this.state.firstName,
+            clientMiddleInitial: "",
+            clientLastName: this.state.lastName,
+            invoiceNumber: "",
+            program: "",
+            billingAddress: this.state.billingAddress,
+            cardHolder: this.state.cardHolder,
           },
-          body: JSON.stringify({
-            apiKey: keyword.apiKey,
-          }),
-        }
-      )
+        }),
+      })
         .then((res) => res.json())
         .then((res) => {
           resolve({
