@@ -22,11 +22,7 @@
       const nominee = document.getElementById("__nominee__");
       const nominated_by = document.getElementById("__nominated_by__");
       const reason = document.getElementById("__nom_reason__");
-      if (
-        nominee.value.length > 0 &&
-        nominated_by.value.length > 0 &&
-        reason.value.length > 0
-      ) {
+      if (nominee.value.length > 0 && reason.value.length > 0) {
         document.getElementById("wow_content").style.opacity = 0.2;
         document.getElementById("wow_content").style["pointer-events"] = "none";
         fetch(`http://192.168.3.2:9000/submit_wow`, {
@@ -49,11 +45,9 @@
             ).innerHTML = `<h1>${res}</h1>`);
           });
       } else {
-        if (!nominee.length) {
+        if (!nominee.value.length) {
           alert("'Nominee' must not be blank.");
-        } else if (!nomiated_by.length) {
-          alert("'Nominated By' must not be blank.");
-        } else if (!reason.length) {
+        } else if (!reason.value.length) {
           alert("'Reason' must not be blank.");
         }
       }
