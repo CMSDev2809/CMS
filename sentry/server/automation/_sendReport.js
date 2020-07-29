@@ -11,8 +11,9 @@ const _mailFunc = async (
   reject,
   totalItems,
   error
-) =>
-  await _sendMail(
+) => {
+  console.log(` ---> ${metaData.nameLast}, ${metaData.nameFirst} (${to})`);
+  return await _sendMail(
     {
       to,
       error,
@@ -35,6 +36,7 @@ const _mailFunc = async (
     },
     totalItems
   );
+};
 
 module.exports = async (accessionId, totalItems) => {
   let metaData = await Handler.Api.getResults({
