@@ -14,7 +14,8 @@ const _mailFunc = async (
   reject,
   totalItems,
   error
-) =>
+) => {
+  console.log(` ---> ${enrollee.nameLast}, ${enrollee.nameFirst} (${to})`);
   await _sendMail(
     {
       violation,
@@ -35,6 +36,7 @@ const _mailFunc = async (
     },
     totalItems
   );
+};
 
 module.exports = async (enrollee, violation, totalItems) => {
   enrollee = {

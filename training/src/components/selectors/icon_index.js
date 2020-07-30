@@ -22,6 +22,7 @@ export default {
   ["em_other_forms"]: require("./img/em_other_forms.png"),
   ["open_vpn"]: require("./img/open_vpn.png"),
   ["chrome"]: require("./img/chrome.png"),
+  ["wow_awards"]: require("./img/wow.png"),
   ["cms_website"]: require("./img/cms_website.png"),
   ["office_365"]: require("./img/office_365.png"),
   ["office_2010"]: require("./img/office_2010.png"),
@@ -32,5 +33,5 @@ export default {
   etss: require("./img/etss.png"),
   probation: require("./img/probation.png"),
   intox: require("./img/intox.png"),
-  _defaultFolder: require("./img/documents.png")
+  _defaultFolder: require("./img/documents.png"),
 };

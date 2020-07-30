@@ -47,6 +47,7 @@ const openContent = (object) => {
 };
 
 export default function Selectors(props) {
+  let singleHTML = false;
   const rowMax = 3;
   const [hover, setHover] = React.useState(0);
   const [_outerColor, _innerColor] = [
@@ -62,6 +63,7 @@ export default function Selectors(props) {
         let _extension = el.title.split(".").pop().toLowerCase();
         const img = IconIndex[el.url ? _extension : el.title.toLowerCase()];
         if (el.url && _extension === "html") {
+          singleHTML = true;
           cards.push(<HtmlCard url={el.url} />);
         } else {
           cards.push(
@@ -102,7 +104,7 @@ export default function Selectors(props) {
   });
   if (cards.length > 0) {
     const _len = cards.length;
-    if (cards.length < 3) {
+    if (cards.length < 3 && !singleHTML) {
       for (let i = 0; i < 3 - _len; i++) {
         cards.push(<div />);
       }

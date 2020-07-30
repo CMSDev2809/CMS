@@ -17,4 +17,40 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script type="text/javascript">
+    const request = () => {
+      const nominee = document.getElementById("__nominee__");
+      const nominated_by = document.getElementById("__nominated_by__");
+      const reason = document.getElementById("__nom_reason__");
+      if (nominee.value.length > 0 && reason.value.length > 0) {
+        document.getElementById("wow_content").style.opacity = 0.2;
+        document.getElementById("wow_content").style["pointer-events"] = "none";
+        fetch(`http://192.168.3.2:9000/submit_wow`, {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nominee: nominee.value,
+            nominated_by: nominated_by.value,
+            reason: reason.value,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            document.getElementById("wow_content").style.opacity = 1;
+            return (document.getElementById(
+              "wow_content"
+            ).innerHTML = `<h1>${res}</h1>`);
+          });
+      } else {
+        if (!nominee.value.length) {
+          alert("'Nominee' must not be blank.");
+        } else if (!reason.value.length) {
+          alert("'Reason' must not be blank.");
+        }
+      }
+    };
+  </script>
 </html>
