@@ -243,7 +243,7 @@ const sendReceipt = async (data, response, receiver) => {
   ("use strict");
   const nodemailer = require("nodemailer");
   let recipient = "";
-  if (serverConfig.production === "production") {
+  if (serverConfig.production) {
     recipient = receiver === "merchant" ? convergeConfig.email : data.email;
   } else {
     recipient = "broc@compliancemonitoringsystems.com";
