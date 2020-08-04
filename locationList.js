@@ -33,7 +33,6 @@ module.exports = {
       Contacts.jtarbert,
       Contacts.jsickels,
       Contacts.rmclaughlin,
-      Contacts.sleddy,
       Contacts.tdavis,
     ],
   },
@@ -116,9 +115,9 @@ module.exports = {
       "pbt",
     ],
     contacts: [
+      Contacts.ajohanneck,
       Contacts.chopkins,
       Contacts.cmurthy,
-      Contacts.dpierce,
       Contacts.mrose,
       Contacts.wwolfe,
     ],
