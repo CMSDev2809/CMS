@@ -22,6 +22,10 @@ module.exports = {
           )}</div>
           <div><h2 style="font-size: 8px">Invoice Number</h2></div>
           <div style="font-size: 8px">${data.invoiceNumber}</div>
+          <div><h2 style="font-size: 8px">Program</h2></div>
+          <div style="font-size: 8px">${data.program}</div>
+          <div><h2 style="font-size: 8px">Program Location</h2></div>
+          <div style="font-size: 8px">${data.location}</div>
           <div><h2 style="font-size: 8px">Transaction Amount</h2></div>
           <div style="font-size: 8px">$${data.amount}</div>
           <div><h2 style="font-size: 8px">Card Number</h2></div>
@@ -40,5 +44,5 @@ module.exports = {
       </div>
     </div>
   </div>
-  `
+  `,
 };

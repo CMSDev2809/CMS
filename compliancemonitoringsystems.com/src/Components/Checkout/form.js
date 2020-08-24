@@ -18,6 +18,7 @@ import {
 import ConfirmModal from "./confirm_modal";
 import Recaptcha from "react-recaptcha";
 import config from "../../config";
+const Locations = require("../../../../locationList");
 
 const CAPTCHA_KEY = "6LcXSsAUAAAAAICzcfA5adl9d5nFgVOr4PuF0D5A";
 
@@ -46,6 +47,7 @@ class Form extends Component {
       clientMiddleInitial: "",
       clientLastName: "",
       selectedService: "Select a Program...",
+      location: "Select a Location...",
       cardType: "Select a Card Type...",
       cardNumber: "",
       cardValidation: null,
@@ -59,6 +61,7 @@ class Form extends Component {
       expDateErrorState: "formValidationError2",
       paymentErrorState: "formValidationError2",
       other: false,
+      otherLocation: false,
       cartTotal: 0,
       email: "",
       billingAddress: {
@@ -588,6 +591,109 @@ class Form extends Component {
     }
   }
 
+  locationName() {
+    let title = this.state.otherLocation
+      ? "Other Location"
+      : this.state.location;
+    if (
+      (this.state.firstName.length > 0 && this.state.lastName.length > 0) ||
+      this.state.willFlow === false
+    ) {
+      return (
+        <div>
+          <h3>Select a Location</h3>
+          <ButtonToolbar
+            onFocus={() => {
+              this.props.selectedBox(13);
+              this.setState({
+                helpIndex: 13,
+              });
+            }}
+            onBlur={() => {
+              this.props.selectedBox(0);
+              this.setState({
+                helpIndex: 0,
+              });
+            }}
+          >
+            <DropdownButton
+              bsSize="small"
+              title={title}
+              id="services-dropdown"
+              style={{ width: `${this.config.inputGroupWidth}px` }}
+            >
+              {Object.values(Locations).map((el, i) => (
+                <MenuItem
+                  eventKey={`${i}`}
+                  onClick={() =>
+                    this.setState({
+                      location: el.locationName,
+                      otherLocation: false,
+                    })
+                  }
+                >
+                  {el.locationName}
+                </MenuItem>
+              ))}
+
+              <MenuItem divider />
+              <MenuItem
+                eventKey="10"
+                onClick={() =>
+                  this.setState({
+                    location: "Other",
+                    otherLocation: true,
+                  })
+                }
+              >
+                Other...
+              </MenuItem>
+            </DropdownButton>
+          </ButtonToolbar>
+          {this.state.otherLocation ? (
+            <InputGroup style={{ width: `${this.config.inputGroupWidth}px` }}>
+              <FormControl
+                type="text"
+                placeholder="Location"
+                onFocus={() => {
+                  this.setState({
+                    helpIndex: 13,
+                  });
+                }}
+                onBlur={() => {
+                  this.setState({
+                    helpIndex: 0,
+                  });
+                }}
+                style={{ marginTop: "2.5px" }}
+                onChange={(e) => this.setState({ location: e.target.value })}
+              />
+            </InputGroup>
+          ) : (
+            ""
+          )}
+          {this.config.showHelp && this.state.helpIndex === 13 ? (
+            <div
+              style={{
+                width: `${
+                  this.config.inputGroupWidth * this.config.inputGroupTextModier
+                }px`,
+                fontSize: `${this.config.helpFontSize}px`,
+              }}
+            >
+              This value will be the location where you've received services.
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      );
+    } else {
+      this.state.linesShown = 1;
+      return "";
+    }
+  }
+
   paymentAmount() {
     if (this.state.linesShown > 0) {
       return (
@@ -1104,6 +1210,8 @@ class Form extends Component {
       body: JSON.stringify({
         captchaToken: this.state.captcha,
         data: {
+          program: this.state.selectedService,
+          location: this.state.location,
           ccnum: this.state.cardNumber,
           amount: this.state.cardTotal,
           expDate: this.state.expDate.replace(/\//g, ""),
@@ -1160,6 +1268,7 @@ class Form extends Component {
       this.state.clientFirstName.length > 0 &&
       this.state.clientLastName.length > 0 &&
       this.state.selectService !== "Select a Program..." &&
+      this.state.location !== "Select a Location..." &&
       this.state.firstName.length > 0 &&
       this.state.cardType !== "Card Type..." &&
       this.state.cardNumber.length > 0 &&
@@ -1232,6 +1341,7 @@ class Form extends Component {
         {this.clientName()}
         {this.paymentAmount()}
         {this.selectService()}
+        {this.locationName()}
         {this.nameOnCard()}
         {this.cardType()}
         {this.state.cardType !== "Select a Card Type..." ? (
