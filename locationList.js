@@ -71,7 +71,7 @@ module.exports = {
     googleMapURI:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5371.071944003848!2d-114.162568!3d47.693431!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5367738ed6b9495b%3A0x14a89127eb1fa8ae!2s11+3rd+Ave+E%2C+Polson%2C+MT+59860!5e0!3m2!1sen!2sus!4v1514020145090",
     contactInformation: {
-      officeNumber: "(406) 493-5030",
+      officeNumber: "(406) 319-2322",
       faxNumber: "(888) 855-7964",
     },
     address: {
@@ -219,7 +219,7 @@ module.exports = {
     googleMapURI:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.8320975827064!2d-111.06425688443551!3d45.674270879104064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534545af43e83bf5%3A0x965bedf946d36c8a!2s502%20S%2019th%20Ave%20%23301B%2C%20Bozeman%2C%20MT%2059718!5e0!3m2!1sen!2sus!4v1594073087644!5m2!1sen!2sus",
     contactInformation: {
-      officeNumber: "(406) 544-5549",
+      officeNumber: "(406) 551-7880",
     },
     address: {
       firstLine: "502 South 19th Avenue, Suite 301B",
