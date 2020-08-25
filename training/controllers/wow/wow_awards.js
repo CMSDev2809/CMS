@@ -20,6 +20,7 @@ const sendMail = (data) => {
   return new Promise((resolve, reject) =>
     transporter.sendMail(mailOptions, async (error, info) => {
       if (error) {
+        console.log(error);
         resolve("Submission failed.");
       }
       resolve("Submission Successful!");
