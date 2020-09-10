@@ -8,6 +8,7 @@ import GPS from "../GPS/gps";
 import Urinalysis from "../Urinalysis/urinalysis";
 import HouseArrest from "../HouseArrest/house_arrest";
 import PaternityTesting from "../PaternityTesting/paternity_testing";
+import Intoxalock from "../Intoxalock/intoxalock";
 import RemoteBreath from "../RemoteBreath/remote_breath";
 import DrugPatch from "../DrugPatch/drug_patch";
 import fns from "../../../fns";
@@ -51,17 +52,18 @@ class Home extends Component {
         ) : (
           ""
         )}
+        {this.props.servicePage === "intoxalock" ? <Intoxalock /> : ""}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  servicePage: state.serviceReducer.servicePage
+const mapStateToProps = (state) => ({
+  servicePage: state.serviceReducer.servicePage,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setServicePage: servicePage => dispatch(setServicePage(servicePage))
+const mapDispatchToProps = (dispatch) => ({
+  setServicePage: (servicePage) => dispatch(setServicePage(servicePage)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

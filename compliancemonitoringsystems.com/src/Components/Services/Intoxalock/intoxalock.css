@@ -1,0 +1,10 @@
+.intox {
+  font-size: 25px;
+}
+.intox .block {
+}
+
+.intox .block > div {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

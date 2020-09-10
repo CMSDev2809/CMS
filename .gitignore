@@ -75,5 +75,7 @@ recall/save
 recall/token
 recall/dist
 recall/gh-publish.sh
+sms/controllers/handlers/token.js
+sms/controllers/handlers/credentials.js
 
 **/build
