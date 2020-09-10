@@ -11,9 +11,10 @@ class Contact extends Component {
     let subIndent = 37.5;
     let glyphiconMarginRight = 10;
     let bottomMargin = 60;
-    this.props.selectedLocation.contacts.map(index =>
+    this.props.selectedLocation.contacts.map((index) =>
       contactBuilder.push(
         <div>
+          {console.log(index)}
           <MediaQuery query="(max-width: 780px)">
             <div style={{ marginTop: "20px", marginBottom: "40px" }}>
               <h3>{index.name}</h3>
@@ -76,7 +77,8 @@ class Contact extends Component {
             <div
               class="glyphicon glyphicon-phone"
               style={{ marginRight: `${glyphiconMarginRight}px` }}
-            />Contact
+            />
+            Contact
           </h2>
           <div style={{ marginLeft: `${subIndent}px` }}>
             <div>
@@ -105,8 +107,9 @@ class Contact extends Component {
                 onClick={() =>
                   window.scrollTo({
                     top: document.body.scrollHeight - 950,
-                    behavior: "smooth"
-                  })}
+                    behavior: "smooth",
+                  })
+                }
               >
                 Leave a comment!
               </h4>
@@ -118,7 +121,8 @@ class Contact extends Component {
             <div
               class="glyphicon glyphicon-globe"
               style={{ marginRight: `${glyphiconMarginRight}px` }}
-            />Address
+            />
+            Address
           </h2>
           <div style={{ marginLeft: `${subIndent}px` }}>
             <div>{this.props.selectedLocation.address.firstLine}</div>
@@ -130,7 +134,8 @@ class Contact extends Component {
             <div
               class="glyphicon glyphicon-user"
               style={{ marginRight: `${glyphiconMarginRight}px` }}
-            />Staff
+            />
+            Staff
           </h2>
           <MediaQuery query="(max-width: 780px)">
             <div style={{ marginLeft: `${subIndent - 25}px` }}>
@@ -146,10 +151,10 @@ class Contact extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  selectedLocation: state.locationReducer.selectedLocation
+const mapStateToProps = (state) => ({
+  selectedLocation: state.locationReducer.selectedLocation,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);

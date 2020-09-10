@@ -13,6 +13,7 @@ import GPS from "./Components/FAQ/gps";
 import Urinalysis from "./Components/FAQ/urinalysis";
 import HouseArrest from "./Components/FAQ/house_arrest";
 import PaternityTesting from "./Components/FAQ/paternity_testing";
+import Intoxalock from "./Components/FAQ/intoxalock";
 import DrugPatch from "./Components/FAQ/drug_patch";
 import Refer from "./Components/Refer/refer";
 import News from "./Components/News/news";
@@ -33,6 +34,7 @@ export default class App extends Component {
           <Route exact path="/gps" component={GPS} />
           <Route exact path="/drug_patch" component={DrugPatch} />
           <Route exact path="/paternity_testing" component={PaternityTesting} />
+          <Route exact path="/intoxalock" component={Intoxalock} />
           <Route exact path="/house_arrest" component={HouseArrest} />
           <Route exact path="/urinalysis" component={Urinalysis} />
           <Route exact path="/pay" component={PayOnline} />
