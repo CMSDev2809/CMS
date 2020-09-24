@@ -9,19 +9,33 @@ const Handler = require("../handler");
 const SMS = require("../../models/SMS");
 
 module.exports = {
+  catchSMS: async (req, res, emitters) => {
+    let _Date = new Date();
+    _Date.setHours(_Date.getHours() - 6);
+    const message = await SMS.create({
+      timestamp: _Date,
+      content: req.body.Body,
+      origin: req.body.From,
+      target: req.body.To,
+    });
+    emitters.broadcast_update(message);
+  },
   sendSMS: async (req, res) => {
+    let _Date = new Date();
+    _Date.setHours(_Date.getHours() - 6);
     await SMS.create({
-      timestamp: new Date(),
+      timestamp: _Date,
       content: req.body.message,
       origin: config.twilioPhoneNumber,
+      target: req.body.target,
     });
     client.messages.create(
       {
-        body: `${req.body.message}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
+        body: req.body.message,
         from: config.twilioPhoneNumber,
-        to: req.body.to,
+        to: req.body.target,
       },
-      (err, msg) => (err ? console.log(err) : res.json(msg.sid))
+      (err, msg) => (err ? console.log(err) : res.json(msg))
     );
   },
   dailySend: async (req, res) => {
@@ -37,7 +51,7 @@ module.exports = {
               "content-type": "application/json",
             },
             body: JSON.stringify({
-              message: el.description,
+              message: `${el.description}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
               to: el.phoneNumber,
             }),
           })

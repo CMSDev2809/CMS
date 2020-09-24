@@ -1,14 +1,47 @@
 import React from "react";
-import { Header, Img } from "arclight-react";
+import {
+  Header,
+  Img,
+  Dropdown,
+  Button,
+  FontAwesomeIcon,
+  TextField,
+} from "arclight-react";
 import styled from "styled-components";
+
+const config = require("../../../../config");
 
 const _Header = styled.div`
   color: #d7d7d7;
   height: 125px;
   border-bottom: 1px solid white;
+  & table {
+    margin-bottom: 20px;
+    & td {
+      padding: 20px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
 `;
 
 export default class _ extends React.Component {
+  state = {
+    showControls: false,
+    field: "",
+    oField: "",
+  };
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.active !== newProps.active) {
+      this.setState({
+        showControls: false,
+        oField: "",
+        field: "",
+      });
+    }
+  }
+
   render() {
     return (
       <_Header>
@@ -16,8 +49,138 @@ export default class _ extends React.Component {
           name={"StylishLeft"}
           textDisplay={{
             left: null,
-            center: null,
-            right: null,
+            center: (
+              <table>
+                <tbody>
+                  <tr>
+                    {this.props.active ? (
+                      <React.Fragment>
+                        <td>
+                          <div style={{ display: "inline-flex" }}>
+                            {this.state.showControls &&
+                            (this.state.field !== this.state.oField ||
+                              !(this.state.field.length > 0)) ? (
+                              <React.Fragment>
+                                <Button
+                                  theme={"Light"}
+                                  pop
+                                  onClick={() =>
+                                    window.confirm("Save Changes?")
+                                      ? (() => {
+                                          this.props.updateFriendly({
+                                            number: this.props.active.replace(
+                                              "+",
+                                              ""
+                                            ),
+                                            friendlyName: this.state.field,
+                                          });
+                                          this.setState({
+                                            showControls: false,
+                                            oField: "",
+                                            field: "",
+                                          });
+                                        })()
+                                      : null
+                                  }
+                                >
+                                  <FontAwesomeIcon
+                                    theme={"Light"}
+                                    size={10}
+                                    icon={"checkmark"}
+                                  />
+                                </Button>
+                                <div style={{ width: "8px" }} />
+                              </React.Fragment>
+                            ) : null}
+                            <Button
+                              theme={"Light"}
+                              pop
+                              onClick={() =>
+                                this.setState({
+                                  showControls: !this.state.showControls,
+                                  field: this.state.oField,
+                                })
+                              }
+                            >
+                              <FontAwesomeIcon
+                                theme={"Light"}
+                                size={10}
+                                icon={
+                                  this.state.showControls ? "cancel" : "edit"
+                                }
+                              />
+                            </Button>
+                          </div>
+                        </td>
+                      </React.Fragment>
+                    ) : null}
+                    {this.state.showControls ? (
+                      <React.Fragment>
+                        <td>
+                          <TextField
+                            readonly={false}
+                            value={this.state.field}
+                            placeholder={"Friendly Name"}
+                            onChange={(e) =>
+                              this.setState({ field: e.target.value })
+                            }
+                          />
+                        </td>
+                        <td>
+                          <h4>({this.props.active})</h4>
+                        </td>
+                      </React.Fragment>
+                    ) : this.props.friendlyName ? (
+                      <React.Fragment>
+                        <td>
+                          <h2>{this.props.friendlyName}</h2>
+                        </td>
+                        <td>
+                          <h4>({this.props.active})</h4>
+                        </td>
+                      </React.Fragment>
+                    ) : (
+                      <td>
+                        <h2 style={{ marginBottom: "-10px" }}>
+                          {this.props.active}
+                        </h2>
+                      </td>
+                    )}
+                    {this.props.active ? (
+                      <td>
+                        <Button
+                          theme={"Light"}
+                          pop
+                          size={10}
+                          onClick={() =>
+                            window.confirm("Delete SMS conversation?")
+                          }
+                        >
+                          <FontAwesomeIcon
+                            theme={"Light"}
+                            size={10}
+                            icon={"cancel"}
+                          />
+                        </Button>
+                      </td>
+                    ) : null}
+                  </tr>
+                </tbody>
+              </table>
+            ),
+            right:
+              this.props.origins.length > 0 ? (
+                <Dropdown
+                  value={
+                    this.props.active ? this.props.active : "Choose a Value"
+                  }
+                  theme={"Light"}
+                  onChange={(e) => {
+                    this.props.setActive(e.target.value);
+                  }}
+                  items={this.props.origins}
+                />
+              ) : null,
           }}
           theme={"Dark"}
           info={{

@@ -7,32 +7,22 @@ const _TextArea = styled.div`
   bottom: 0;
   width: calc(100% - 20px);
   padding: 10px;
+  ${(props) =>
+    props.active ? "opacity: 1;" : "opacity: 0.3; pointer-events: none;"}
 `;
 
 export default class _ extends React.Component {
-  state = { value: "" };
-
-  componentDidMount() {
-    document.body.addEventListener("keydown", (e) =>
-      e.keyCode === 13 ? this.enter() : null
-    );
-  }
-
-  enter() {
-    this.props.test(this.state.value);
-  }
-
   render() {
     return (
-      <_TextArea>
+      <_TextArea active={this.props.active}>
         <TextArea
-          readonly={false}
-          value={this.state.value}
+          readonly={this.props.active ? false : true}
+          value={null}
           height={"75px"}
           theme={"Dark"}
           controls={[]}
           placeholder={"Build your message"}
-          onChange={(e) => this.setState({ value: e.target.value })}
+          onEnter={(e) => this.props.send(e)}
         />
       </_TextArea>
     );

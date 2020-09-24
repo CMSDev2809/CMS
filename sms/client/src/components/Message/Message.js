@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import config from "../../../../config";
 
 const Message = styled.div`
   width: 100%;
@@ -23,16 +24,24 @@ const SubText = styled.div`
 `;
 
 export default class _ extends React.Component {
+  formatTime(date) {
+    return date;
+  }
+
   render() {
     return (
       <div style={{ width: "350px", position: "relative" }}>
         <SuperText>
-          {this.props.pos === "receive"
-            ? "(406) 529-1789"
-            : "Compliance Monitoring Systems"}
+          {this.props.origin === config.twilioPhoneNumber
+            ? "Compliance Monitoring Systems"
+            : `${
+                this.props.friendlyName
+                  ? `${this.props.friendlyName} (${this.props.origin})`
+                  : this.props.origin
+              }`}
         </SuperText>
-        <Message>{this.props.text}</Message>
-        <SubText>5:24 PM - September 21, 2020</SubText>
+        <Message>{this.props.content}</Message>
+        <SubText>{this.formatTime(this.props.timestamp)}</SubText>
       </div>
     );
   }

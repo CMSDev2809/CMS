@@ -1,5 +1,6 @@
 const TwilioAPI = require("./handlers/twilioAPI");
 const CalendarAPI = require("./handlers/calendarAPI");
+const KnownSMS = require("./handlers/KnownSMS");
 const SMS = require("./handlers/SMS");
 
-module.exports = { TwilioAPI, CalendarAPI, SMS };
+module.exports = { TwilioAPI, CalendarAPI, SMS, KnownSMS };

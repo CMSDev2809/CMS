@@ -18,6 +18,16 @@ const SMS = new Schema({
     unique: false,
     required: false,
   },
+  target: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  friendlyName: {
+    type: String,
+    unique: false,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("SMS", SMS);

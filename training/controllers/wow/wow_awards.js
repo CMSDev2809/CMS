@@ -8,7 +8,7 @@ const sendMail = (data) => {
     secure: false,
     auth: {
       user: "webreferral@compliancemonitoringsystems.com",
-      pass: "Scramtastic1!",
+      pass: "Scramtastic1!$",
     },
   });
   const mailOptions = {
