@@ -20,7 +20,6 @@ export default class _ extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.dir(this.scrollRef.current);
     if (
       this.props.messages !== newProps.messages ||
       this.props.active !== newProps.active

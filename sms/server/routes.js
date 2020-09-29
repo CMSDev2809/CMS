@@ -15,6 +15,7 @@ module.exports = (app, emitters) => {
   app.get("/getCalendarEvents", (req, res) =>
     Handler.CalendarAPI.getCalendarEvents(req, res)
   );
+  app.get("/smsVoice", (req, res) => res.json(""));
   app.get("/matchSMS", (req, res) => Handler.KnownSMS.matchSMS(req, res));
   app.get("/getSMS", (req, res) => Handler.SMS.getSMS(req, res));
   app.put("/updateMatchSMS", (req, res) =>
@@ -23,4 +24,5 @@ module.exports = (app, emitters) => {
   app.delete("/removeMatchSMS", (req, res) =>
     Handler.KnownSMS.removeMatchSMS(req, res)
   );
+  app.delete("/deleteAllSMS", (req, res) => Handler.SMS.deleteAllSMS(req, res));
 };

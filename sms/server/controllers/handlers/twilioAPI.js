@@ -42,6 +42,8 @@ module.exports = {
     const results = await fetch(
       `${config.developmentEndpoint}:${config.port}/getCalendarEvents`
     ).then((res) => res.json());
+    let _Date = new Date();
+    _Date.setHours(_Date.getHours() - 6);
     await Promise.all(
       results.map(
         async (el) =>
@@ -51,8 +53,10 @@ module.exports = {
               "content-type": "application/json",
             },
             body: JSON.stringify({
+              timestamp: _Date,
               message: `${el.description}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
-              to: el.phoneNumber,
+              target: el.phoneNumber,
+              origin: config.twilioPhoneNumber,
             }),
           })
       )

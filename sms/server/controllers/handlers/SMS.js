@@ -19,4 +19,16 @@ module.exports = {
     ).sort({ timestamp: 1 });
     res.json(results);
   },
+  deleteAllSMS: async (req, res) => {
+    const results = await SMS.remove({
+      $or: [
+        { target: req.body.n1 },
+        { origin: req.body.n2 },
+        { origin: req.body.n1 },
+        { target: req.body.n2 },
+      ],
+    });
+    console.log(results, req.body);
+    res.json(results);
+  },
 };

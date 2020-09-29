@@ -30,14 +30,19 @@ export default class _ extends React.Component {
     showControls: false,
     field: "",
     oField: "",
+    pNum: "",
+    oPNum: "",
+    generatingNew: true,
   };
 
   componentWillReceiveProps(newProps) {
     if (this.props.active !== newProps.active) {
       this.setState({
         showControls: false,
-        oField: "",
         field: "",
+        oField: "",
+        pNum: "",
+        oPNum: "",
       });
     }
   }
@@ -53,13 +58,48 @@ export default class _ extends React.Component {
               <table>
                 <tbody>
                   <tr>
+                    {this.state.pNum.length === 12 ? (
+                      <React.Fragment>
+                        <Button
+                          theme={"Light"}
+                          pop
+                          onClick={() =>
+                            window.confirm("Open conversation?")
+                              ? (() => {
+                                  this.props.updateFriendly({
+                                    number: this.state.pNum.replace("+", ""),
+                                    friendlyName: this.state.field,
+                                  });
+                                  this.props.setActive(this.state.pNum);
+                                  this.setState({
+                                    generatingNew: false,
+                                    showControls: false,
+                                    oField: "",
+                                    pNum: "",
+                                    oNum: "",
+                                    field: "",
+                                  });
+                                })()
+                              : null
+                          }
+                        >
+                          <FontAwesomeIcon
+                            theme={"Light"}
+                            size={10}
+                            icon={"checkmark"}
+                          />
+                        </Button>
+                        <div style={{ width: "8px" }} />
+                      </React.Fragment>
+                    ) : null}
                     {this.props.active ? (
                       <React.Fragment>
                         <td>
                           <div style={{ display: "inline-flex" }}>
                             {this.state.showControls &&
                             (this.state.field !== this.state.oField ||
-                              !(this.state.field.length > 0)) ? (
+                              !(this.state.field.length > 0) ||
+                              this.state.generatingNew) ? (
                               <React.Fragment>
                                 <Button
                                   theme={"Light"}
@@ -77,6 +117,8 @@ export default class _ extends React.Component {
                                           this.setState({
                                             showControls: false,
                                             oField: "",
+                                            pNum: "",
+                                            oNum: "",
                                             field: "",
                                           });
                                         })()
@@ -102,22 +144,17 @@ export default class _ extends React.Component {
                                 })
                               }
                             >
-                              <FontAwesomeIcon
-                                theme={"Light"}
-                                size={10}
-                                icon={
-                                  this.state.showControls ? "cancel" : "edit"
-                                }
-                              />
+                              Edit
                             </Button>
                           </div>
                         </td>
                       </React.Fragment>
                     ) : null}
-                    {this.state.showControls ? (
+                    {this.state.showControls || this.state.generatingNew ? (
                       <React.Fragment>
                         <td>
                           <TextField
+                            theme={"Dark"}
                             readonly={false}
                             value={this.state.field}
                             placeholder={"Friendly Name"}
@@ -127,7 +164,19 @@ export default class _ extends React.Component {
                           />
                         </td>
                         <td>
-                          <h4>({this.props.active})</h4>
+                          {this.state.generatingNew ? (
+                            <TextField
+                              theme={"Dark"}
+                              readonly={false}
+                              value={this.state.pNum}
+                              placeholder={"Phone Number"}
+                              onChange={(e) =>
+                                this.setState({ pNum: e.target.value })
+                              }
+                            />
+                          ) : (
+                            <h4>({this.props.active})</h4>
+                          )}
                         </td>
                       </React.Fragment>
                     ) : this.props.friendlyName ? (
@@ -152,15 +201,14 @@ export default class _ extends React.Component {
                           theme={"Light"}
                           pop
                           size={10}
+                          textColor={"red"}
                           onClick={() =>
                             window.confirm("Delete SMS conversation?")
+                              ? this.props.deleteConversation(this.props.active)
+                              : null
                           }
                         >
-                          <FontAwesomeIcon
-                            theme={"Light"}
-                            size={10}
-                            icon={"cancel"}
-                          />
+                          Delete
                         </Button>
                       </td>
                     ) : null}
@@ -176,6 +224,7 @@ export default class _ extends React.Component {
                   }
                   theme={"Light"}
                   onChange={(e) => {
+                    this.setState({ generatingNew: false });
                     this.props.setActive(e.target.value);
                   }}
                   items={this.props.origins}
@@ -212,7 +261,20 @@ export default class _ extends React.Component {
               </React.Fragment>
             ),
           }}
-          controls={[]}
+          controls={[
+            <Button
+              textColor={"#00dfaa"}
+              theme={"Light"}
+              pop
+              onClick={() => {
+                this.setState({ generatingNew: true });
+                this.props.setActive(null);
+                this.props.setFiltered([]);
+              }}
+            >
+              <FontAwesomeIcon theme={"Light"} icon={"plus"} />
+            </Button>,
+          ]}
         />
       </_Header>
     );
