@@ -12,11 +12,11 @@ const config = require("../../config");
 const openSocket = require("socket.io-client");
 const socket = openSocket(
   PRODUCTION
-    ? "https://sms.compliancemonitoringsystems.com"
+    ? `${config.productionEndpoint}:${config.port}`
     : `${config.developmentEndpoint}:${config.port}`
 );
 
-const ENDPOINT = config.production
+const PRODUCTION = true
   ? config.productionEndpoint
   : config.developmentEndpoint;
 
