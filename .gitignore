@@ -79,3 +79,4 @@ sms/controllers/handlers/token.js
 sms/controllers/handlers/credentials.js
 
 **/build
+training/routes/wow/wow_awards.js

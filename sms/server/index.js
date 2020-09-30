@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors({ origin: true, credentials: true }));
 
-app.use(express.static("./client/build"));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 if (config.production) {
   app.get("/", (req, res) => {
