@@ -20,11 +20,11 @@ app.use(express.static("./client/build"));
 
 if (config.production) {
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
 }
 
