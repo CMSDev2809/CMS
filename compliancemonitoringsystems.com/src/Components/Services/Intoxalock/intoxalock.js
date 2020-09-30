@@ -14,7 +14,6 @@ class Intoxalock extends Component {
   }
 
   render() {
-    let divSpace = 30;
     return (
       <div className={"intox"}>
         <h1 style={{ textAlign: "left" }}>Intoxalock</h1>
@@ -72,7 +71,7 @@ class Intoxalock extends Component {
           <div className={"block"}>
             <h2>The easiest device.</h2>
             <div>
-              We provide an industry leading ignitoin interlock device that is
+              We provide an industry leading ignition interlock device that is
               easy to use with its simple blow pattern and one button keypad.
               When you compare Intoxalock to other ignition interlock devices in
               the market, it's easy to see why it's a top choice among
@@ -117,7 +116,7 @@ class Intoxalock extends Component {
           <div className={"block"}>
             <h2>Affordable pricing with flexible payment options.</h2>
             <div>
-              Ignition interlock devices are leased (or rendted), not purchased,
+              Ignition interlock devices are leased (or rented), not purchased,
               The cost of your individual monthly lease payment will depend on
               several factors. On average, Intoxalock devices cost around $2.50
               a day. Voluntary customers are eligible for a substantial
@@ -163,7 +162,7 @@ class Intoxalock extends Component {
             <h2>SPECIAL OFFER: FREE INSTALL!</h2>
             <div>
               Because of Intoxalock's partnership with Compliance Monitoring
-              Systems, you are eligible for a FREE Intoxalock Ignitino Interlock
+              Systems, you are eligible for a FREE Intoxalock Ignition Interlock
               installation!
             </div>
             <div>
