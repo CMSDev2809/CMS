@@ -5,7 +5,7 @@ import { TextInput, Feed } from "./components/index";
 import socketListeners from "./socketListeners/socketListeners";
 import _appMethods from "./_appMethods";
 
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 const config = require("../../config");
 
@@ -16,7 +16,7 @@ const socket = openSocket(
     : `${config.developmentEndpoint}:${config.port}`
 );
 
-const PRODUCTION = true
+const ENDPOINT = PRODUCTION
   ? config.productionEndpoint
   : config.developmentEndpoint;
 
