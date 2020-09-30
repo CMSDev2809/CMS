@@ -8,6 +8,7 @@ const routes = require("./routes");
 const schedule = require("node-schedule");
 const cors = require("cors");
 const socket = require("./socket-io/socket-io");
+const fs = require("fs");
 require("./db_util")();
 
 app.use(bodyParser.json());
