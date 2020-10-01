@@ -12,6 +12,22 @@ module.exports = (app, emitters) => {
   );
   app.post("/dailySend", (req, res) => Handler.TwilioAPI.dailySend(req, res));
   app.post("/sendSMS", (req, res) => Handler.TwilioAPI.sendSMS(req, res));
+  app.post("/createUser", (req, res) =>
+    Handler.UserHandling.createUser(req, res)
+  );
+  app.put("/updateUser", (req, res) =>
+    Handler.UserHandling.updateUser(req, res)
+  );
+  app.post("/loginUser", (req, res) =>
+    Handler.UserHandling.loginUser(req, res)
+  );
+  app.get("/getUser", (req, res) => Handler.UserHandling.getUser(req, res));
+  app.get("/validateToken", (req, res) =>
+    Handler.UserHandling.validateToken(req, res)
+  );
+  app.delete("/removeUser", (req, res) =>
+    Handler.UserHandling.removeUser(req, res)
+  );
   app.get("/getCalendarEvents", (req, res) =>
     Handler.CalendarAPI.getCalendarEvents(req, res)
   );
