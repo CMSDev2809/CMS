@@ -18,11 +18,9 @@ app.use(cors({ origin: true, credentials: true }));
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
+app.use(express.static(path.join(__dirname, "./audio")));
+
 if (config.production) {
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-  });
-} else {
   app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
   });
@@ -49,7 +47,4 @@ server.listen(config.port, () =>
   console.log(`SMS listening on port ${config.port}!`)
 );
 
-(async () => {
-  const Emitters = await socket(io);
-  routes(app, Emitters);
-})();
+routes(app, socket(io));
