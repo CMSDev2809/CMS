@@ -5,7 +5,7 @@ import { TextInput, Feed } from "./components/index";
 import socketListeners from "./socketListeners/socketListeners";
 import _appMethods from "./_appMethods";
 
-const PRODUCTION = true;
+const PRODUCTION = false;
 
 const config = require("../../config");
 
