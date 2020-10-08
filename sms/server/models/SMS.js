@@ -28,6 +28,11 @@ const SMS = new Schema({
     unique: false,
     required: false,
   },
+  new: {
+    type: Boolean,
+    unique: false,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("SMS", SMS);

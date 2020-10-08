@@ -13,6 +13,24 @@ const Feed = styled.div`
   }
 `;
 
+const NewBar = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: red;
+  color: red;
+  position: relative;
+  margin: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  & .sub {
+    background-color: #282c34;
+    position: absolute;
+    top: -21px;
+    left: 15%;
+    padding: 12px;
+  }
+`;
+
 export default class _ extends React.Component {
   constructor(props) {
     super(props);
@@ -32,12 +50,13 @@ export default class _ extends React.Component {
   }
 
   render() {
+    let newTrigger = false;
     return (
       <Feed ref={this.scrollRef}>
         <table>
           <tbody>
             {this.props.messages
-              ? this.props.messages.map((el) => (
+              ? this.props.messages.map((el, i) => (
                   <tr>
                     <td
                       align={
@@ -46,12 +65,20 @@ export default class _ extends React.Component {
                           : "left"
                       }
                     >
-                      <Message
-                        friendlyName={this.props.friendlyName}
-                        content={el.content}
-                        timestamp={el.timestamp}
-                        origin={el.origin}
-                      />
+                      <React.Fragment>
+                        {el.new && !newTrigger ? (
+                          <NewBar>
+                            {(newTrigger = true)}
+                            <div className={"sub"}>New Messages</div>
+                          </NewBar>
+                        ) : null}
+                        <Message
+                          friendlyName={this.props.friendlyName}
+                          content={el.content}
+                          timestamp={el.timestamp}
+                          origin={el.origin}
+                        />
+                      </React.Fragment>
                     </td>
                   </tr>
                 ))

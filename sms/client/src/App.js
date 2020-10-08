@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Header } from "./components/index";
-import { TextInput, Feed } from "./components/index";
+import { TextInput, Feed, Header, SignIn } from "./components/index";
+import { Transition } from "arclight-react";
 import socketListeners from "./socketListeners/socketListeners";
 import _appMethods from "./_appMethods";
 
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 const config = require("../../config");
 
@@ -32,6 +32,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      authenticated: false,
       active: null,
       friendlyName: "",
       filtered: null,
@@ -43,28 +44,36 @@ export default class App extends React.Component {
   render() {
     return (
       <_App>
-        <Header
-          updateFriendly={(object) => this.updateFriendly(object)}
-          active={this.state.active}
-          friendlyName={this.state.friendlyName}
-          setActive={(active) => this.setActive(active)}
-          origins={this.state.origins}
-          setFiltered={(filtered) => this.setFiltered(filtered)}
-          deleteConversation={(active) => this.deleteConversation(active)}
-        />
-        <Feed
-          active={this.state.active}
-          messages={this.state.filtered}
-          friendlyName={this.state.friendlyName}
-        />
-        <TextInput
-          active={this.state.active}
-          send={(message) =>
-            this.state.active
-              ? this.sendSMS({ message, target: this.state.active })
-              : null
-          }
-        />
+        {this.state.authenticated ? (
+          <Transition inheritDimensions trans={{ animation: "bounceInUp" }}>
+            <Header
+              markSMSAsRead={(n) => this.markSMSAsRead(n)}
+              signOut={() => this.signOut()}
+              updateFriendly={(object) => this.updateFriendly(object)}
+              active={this.state.active}
+              friendlyName={this.state.friendlyName}
+              setActive={(active) => this.setActive(active)}
+              origins={this.state.origins}
+              setFiltered={(filtered) => this.setFiltered(filtered)}
+              deleteConversation={(active) => this.deleteConversation(active)}
+            />
+            <Feed
+              active={this.state.active}
+              messages={this.state.filtered}
+              friendlyName={this.state.friendlyName}
+            />
+            <TextInput
+              active={this.state.active}
+              send={(message) =>
+                this.state.active
+                  ? this.sendSMS({ message, target: this.state.active })
+                  : null
+              }
+            />
+          </Transition>
+        ) : (
+          <SignIn signIn={(credentials) => this.signIn(credentials)} />
+        )}
       </_App>
     );
   }

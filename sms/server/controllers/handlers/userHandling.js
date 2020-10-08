@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const ObjectId = require("mongodb").ObjectID;
 
 module.exports = {
-  createUser: async (req) => {
+  createUser: async (req, res) => {
     try {
       let user = await Users.create({
         username: req.body.username,
@@ -14,31 +14,31 @@ module.exports = {
       });
       user.code = 200;
       user.msg = "Account Creation Successful!";
-      return user;
+      return res.json(user);
     } catch (e) {
-      return e;
+      return res.json(e);
     }
   },
-  updateUser: async (req, level, exact) => {
+  updateUser: async (req, res) => {
     if (
       (exact && req.user_info.level !== 0 && level !== req.user_info.level) ||
       req.user_info.level > level
     ) {
-      return {
+      return res.json({
         msg: "Access Denied",
         code: 403,
-      };
+      });
     }
     try {
       const user = await Users.update({ _id: req.body.id }, req.body);
       user.code = 200;
       user.msg = "User Account Updated!";
-      return user;
+      return res.json(user);
     } catch (e) {
-      return e;
+      return res.json(e);
     }
   },
-  loginUser: async (req) => {
+  loginUser: async (req, res) => {
     const credentials = new Buffer(
       req.headers["authorization"].split(" ")[1],
       "base64"
@@ -46,53 +46,59 @@ module.exports = {
     const [username, password] = credentials.split(":");
     const user = await Users.findOne({ username });
     if (!user) {
-      return { code: 11100 };
+      return res.json({ code: 11100 });
     }
     try {
       const token = user.getToken(
         bcrypt.compareSync(password, user.password) ? user : null
       );
-      return { token, code: 200, msg: "Login Successful!", u: user.username };
+      return res.json({
+        token,
+        code: 200,
+        msg: "Login Successful!",
+        u: user.username,
+      });
     } catch (e) {
-      return { code: 11101, msg: "Authentication Error." };
+      return res.json({ code: 11101, msg: "Authentication Error." });
     }
   },
-  getUser: async (req) => {
+  getUser: async (req, res) => {
     const user = await Users.findOne({ _id: ObjectId(req.query.u) });
     if (!user) {
-      return { code: 11102, msg: "Get User Error." };
+      return res.json({ code: 11102, msg: "Get User Error." });
     }
     try {
-      return { code: 200, msg: "Get User Successful!", user };
+      return res.json({ code: 200, msg: "Get User Successful!", user });
     } catch (e) {
-      return { code: 11102, msg: "Get User Error." };
+      return res.json({ code: 11102, msg: "Get User Error." });
     }
   },
-  validateToken: async (req) => {
+  validateToken: async (req, res) => {
     const user = await Users.findOne({ username: req.user_info.username });
     if (!user) {
-      return { code: 11105, msg: "Unable to Parse User." };
+      return res.json({ code: 11105, msg: "Unable to Parse User." });
     }
     try {
-      return {
+      return res.json({
         code: 200,
         msg: "Token is Valid!",
         id: user._id,
         u: user.username,
         l: user.level,
-      };
+      });
     } catch (e) {
-      return { code: 11101, msg: "Invalid or Null Token." };
+      console.log(e);
+      return res.json({ code: 11101, msg: "Invalid or Null Token." });
     }
   },
-  removeUser: async (req, level, exact) => {
+  removeUser: async (req, res) => {
     try {
       const user = await Users.remove({ _id: req.body.id });
       user.code = 200;
       user.msg = "User Account Removed!";
-      return user;
+      return res.json(user);
     } catch (e) {
-      return e;
+      return res.json(e);
     }
   },
 };
