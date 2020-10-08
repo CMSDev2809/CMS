@@ -14,8 +14,8 @@ module.exports = {
         { ...req.body }
       );
     }
-    res.json(results);
     emitters.broadcast_nameChange();
+    res.json(results);
   },
   createMatchSMS: async (req, res) => {
     req.body.number = "+" + req.body.number;

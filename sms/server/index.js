@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const security = express.Router();
+const protected = require("./protected").protected;
 const path = require("path");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -15,6 +17,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors({ origin: true, credentials: true }));
+
+app.use("/s", security);
+security.use(cors({ origin: true, credentials: true }));
+security.use(protected);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
@@ -47,4 +53,4 @@ server.listen(config.port, () =>
   console.log(`SMS listening on port ${config.port}!`)
 );
 
-routes(app, socket(io));
+routes(app, security, socket(io));

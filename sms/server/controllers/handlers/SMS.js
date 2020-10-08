@@ -19,7 +19,26 @@ module.exports = {
     ).sort({ timestamp: 1 });
     res.json(results);
   },
-  deleteAllSMS: async (req, res) => {
+  markSMSAsRead: async (req, res) => {
+    const results = await SMS.updateMany(
+      {
+        $or: [{ target: req.body.number }, { origin: req.body.number }],
+      },
+      {
+        new: false,
+      }
+    );
+    res.json(results);
+  },
+  updateSMS: async (req, res) => {
+    req.body.number = "+" + req.body.number;
+    const results = await SMS.update(
+      { number: req.body.number },
+      { ...req.body }
+    );
+    res.json(results);
+  },
+  deleteAllSMS: async (req, res, emitters) => {
     const results = await SMS.remove({
       $or: [
         { target: req.body.n1 },
@@ -28,7 +47,10 @@ module.exports = {
         { target: req.body.n2 },
       ],
     });
-    console.log(results, req.body);
     res.json(results);
+    emitters.broadcast_updateOrigins({
+      type: "remove",
+      number: req.body.n1,
+    });
   },
 };

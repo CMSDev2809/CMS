@@ -17,6 +17,7 @@ module.exports = {
       content: req.body.Body,
       origin: req.body.From,
       target: req.body.To,
+      new: true,
     });
     emitters.broadcast_update(message);
   },
@@ -28,6 +29,7 @@ module.exports = {
       content: req.body.message,
       origin: config.twilioPhoneNumber,
       target: req.body.target,
+      new: true,
     });
     client.messages.create(
       {
@@ -57,6 +59,7 @@ module.exports = {
               message: `${el.description}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
               target: el.phoneNumber,
               origin: config.twilioPhoneNumber,
+              new: true,
             }),
           })
       )

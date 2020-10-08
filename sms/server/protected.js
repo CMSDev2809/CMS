@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const config = require("./config");
-const Users = require("./models/user");
+const config = require("../config");
+const Users = require("./models/User");
 
 module.exports = {
   protected: (req, res, next) => {
-    let token = req.headers["titan_key"];
+    const token = req.headers["sms_key"];
     if (token) {
       jwt.verify(token, config.secret, async (err, decoded) => {
         if (err) {

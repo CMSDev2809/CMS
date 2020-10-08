@@ -83,11 +83,7 @@ export default class _ extends React.Component {
                               : null
                           }
                         >
-                          <FontAwesomeIcon
-                            theme={"Light"}
-                            size={10}
-                            icon={"checkmark"}
-                          />
+                          Confirm
                         </Button>
                         <div style={{ width: "8px" }} />
                       </React.Fragment>
@@ -125,11 +121,7 @@ export default class _ extends React.Component {
                                       : null
                                   }
                                 >
-                                  <FontAwesomeIcon
-                                    theme={"Light"}
-                                    size={10}
-                                    icon={"checkmark"}
-                                  />
+                                  Confirm
                                 </Button>
                                 <div style={{ width: "8px" }} />
                               </React.Fragment>
@@ -144,7 +136,7 @@ export default class _ extends React.Component {
                                 })
                               }
                             >
-                              Edit
+                              {this.state.showControls ? "Cancel" : "Edit"}
                             </Button>
                           </div>
                         </td>
@@ -219,13 +211,20 @@ export default class _ extends React.Component {
             right:
               this.props.origins.length > 0 ? (
                 <Dropdown
-                  value={
-                    this.props.active ? this.props.active : "Choose a Value"
-                  }
+                  defaultValue={"<New Conversation>"}
+                  allowNone={"<New Conversation>"}
                   theme={"Light"}
                   onChange={(e) => {
-                    this.setState({ generatingNew: false });
-                    this.props.setActive(e.target.value);
+                    if (this.props.active)
+                      this.props.markSMSAsRead(this.props.active);
+                    if (e.target.value === "<New Conversation>") {
+                      this.setState({ generatingNew: true });
+                      this.props.setActive(null);
+                      this.props.setFiltered([]);
+                    } else {
+                      this.setState({ generatingNew: false });
+                      this.props.setActive(e.target.value);
+                    }
                   }}
                   items={this.props.origins}
                 />
@@ -236,7 +235,7 @@ export default class _ extends React.Component {
             width: "100%",
             height: "150px",
             crown: (
-              <React.Fragment>
+              <div>
                 <table>
                   <tbody>
                     <tr>
@@ -258,22 +257,17 @@ export default class _ extends React.Component {
                     </tr>
                   </tbody>
                 </table>
-              </React.Fragment>
+              </div>
             ),
           }}
           controls={[
-            <Button
-              textColor={"#00dfaa"}
-              theme={"Light"}
-              pop
-              onClick={() => {
-                this.setState({ generatingNew: true });
-                this.props.setActive(null);
-                this.props.setFiltered([]);
-              }}
+            <div
+              style={{ top: 0, right: 0, position: "absolute", margin: "15px" }}
             >
-              <FontAwesomeIcon theme={"Light"} icon={"plus"} />
-            </Button>,
+              <Button theme={"Light"} pop onClick={() => this.props.signOut()}>
+                <FontAwesomeIcon theme={"Light"} icon={"signOut"} />
+              </Button>
+            </div>,
           ]}
         />
       </_Header>
