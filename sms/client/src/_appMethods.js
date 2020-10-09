@@ -80,6 +80,7 @@ export default (_this, ENDPOINT, config, socket, socketListeners) => {
   _this.aquire = async () => {
     let origins = [];
     let objs = [];
+    let showNew = false;
     const messages = await fetch(`${ENDPOINT}:${config.port}/s/getSMS`, {
       headers: {
         sms_key: Utils.Cookies.read_cookie("CMSSMS"),
@@ -89,6 +90,7 @@ export default (_this, ENDPOINT, config, socket, socketListeners) => {
       messages
         .reverse()
         .map((el) => {
+          if (el.new) showNew = true;
           if (
             !origins.includes(el.origin) &&
             el.origin !== config.twilioPhoneNumber
@@ -156,6 +158,7 @@ export default (_this, ENDPOINT, config, socket, socketListeners) => {
       _this.setState({
         messages,
         origins,
+        showNew,
       });
     }
   };
@@ -223,7 +226,10 @@ export default (_this, ENDPOINT, config, socket, socketListeners) => {
       active,
       friendlyName: friendlyName ? friendlyName.friendlyName : "",
     });
-    _this.getSMSByNum(active);
+    _this.getSMSByNum(active).then(() => {
+      const elmnt = document.getElementById("newestMsg");
+      elmnt.scrollIntoView(true);
+    });
   };
 
   _this.componentDidMount = async () => {

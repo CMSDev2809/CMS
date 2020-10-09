@@ -30,7 +30,7 @@ export default class _ extends React.Component {
 
   render() {
     return (
-      <div style={{ width: "350px", position: "relative" }}>
+      <div id={this.props.id} style={{ width: "350px", position: "relative" }}>
         <SuperText>
           {this.props.origin === config.twilioPhoneNumber
             ? "Compliance Monitoring Systems"
