@@ -32,6 +32,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showNew: false,
       authenticated: false,
       active: null,
       friendlyName: "",
@@ -47,6 +48,7 @@ export default class App extends React.Component {
         {this.state.authenticated ? (
           <Transition inheritDimensions trans={{ animation: "bounceInUp" }}>
             <Header
+              showNew={this.state.showNew}
               markSMSAsRead={(n) => this.markSMSAsRead(n)}
               signOut={() => this.signOut()}
               updateFriendly={(object) => this.updateFriendly(object)}

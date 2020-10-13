@@ -8,6 +8,7 @@ const Feed = styled.div`
   height: calc(100% - 345px);
   margin-top: 25px;
   overflow-y: auto;
+  overflow-x: hidden;
   & table {
     width: calc(100% - 20px);
   }
@@ -37,18 +38,6 @@ export default class _ extends React.Component {
     this.scrollRef = React.createRef();
   }
 
-  componentWillReceiveProps(newProps) {
-    if (
-      this.props.messages !== newProps.messages ||
-      this.props.active !== newProps.active
-    )
-      setTimeout(
-        () =>
-          (this.scrollRef.current.scrollTop = this.scrollRef.current.scrollHeight),
-        1
-      );
-  }
-
   render() {
     let newTrigger = false;
     return (
@@ -73,6 +62,11 @@ export default class _ extends React.Component {
                           </NewBar>
                         ) : null}
                         <Message
+                          id={
+                            i === this.props.messages.length - 1
+                              ? "newestMsg"
+                              : null
+                          }
                           friendlyName={this.props.friendlyName}
                           content={el.content}
                           timestamp={el.timestamp}

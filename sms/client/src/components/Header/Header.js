@@ -25,6 +25,13 @@ const _Header = styled.div`
   }
 `;
 
+const NewNotify = styled.div`
+  position: absolute;
+  margin: 10px;
+  top: 10px;
+  right: 100px;
+`;
+
 export default class _ extends React.Component {
   state = {
     showControls: false,
@@ -50,6 +57,17 @@ export default class _ extends React.Component {
   render() {
     return (
       <_Header>
+        {this.props.showNew ? (
+          <NewNotify>
+            <FontAwesomeIcon
+              size={"60px"}
+              color={"red"}
+              trans={{ animation: "pulse", count: "infinite" }}
+              theme={"Dark"}
+              icon={"exclamation"}
+            />
+          </NewNotify>
+        ) : null}
         <Header
           name={"StylishLeft"}
           textDisplay={{

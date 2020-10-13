@@ -8,6 +8,14 @@ export default (socket, _this) =>
     ) {
       _this.getSMSByNum(data.target);
     }
-    _this.aquire();
+    _this.aquire().then(() => {
+      if (
+        data.origin === _this.state.active ||
+        data.target === _this.state.active
+      ) {
+        const elmnt = document.getElementById("newestMsg");
+        elmnt.scrollIntoView(true);
+      }
+    });
     Utils.SFX.play("ding");
   });
