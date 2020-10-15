@@ -1,9 +1,19 @@
 const Handler = require("./controllers/handler");
 
 module.exports = async (app, security, emitters) => {
-  emitters = await emitters.then((res) => res);
+  emitters = emitters.then((res) => res);
+  app.get("/getCalendarEvents", (req, res) =>
+    Handler.CalendarAPI.getCalendarEvents(req, res)
+  );
+  app.get("/smsVoice", (req, res) =>
+    res.sendFile(`${__dirname}/audio/aud.mp3`)
+  );
+  app.post("/dailySend", (req, res) => Handler.TwilioAPI.dailySend(req, res));
   app.post("/smsPOST", (req, res) =>
     Handler.TwilioAPI.catchSMS(req, res, emitters)
+  );
+  app.post("/loginUser", (req, res) =>
+    Handler.UserHandling.loginUser(req, res)
   );
   security.post("/createMatchSMS", (req, res) =>
     Handler.KnownSMS.createMatchSMS(req, res)
@@ -11,16 +21,12 @@ module.exports = async (app, security, emitters) => {
   security.post("/smartMatchSMS", (req, res) =>
     Handler.KnownSMS.smartMatchSMS(req, res, emitters)
   );
-  app.post("/dailySend", (req, res) => Handler.TwilioAPI.dailySend(req, res));
   security.post("/sendSMS", (req, res) => Handler.TwilioAPI.sendSMS(req, res));
   security.post("/createUser", (req, res) =>
     Handler.UserHandling.createUser(req, res)
   );
   security.put("/updateUser", (req, res) =>
     Handler.UserHandling.updateUser(req, res)
-  );
-  app.post("/loginUser", (req, res) =>
-    Handler.UserHandling.loginUser(req, res)
   );
   security.get("/getUser", (req, res) =>
     Handler.UserHandling.getUser(req, res)
@@ -30,12 +36,6 @@ module.exports = async (app, security, emitters) => {
   );
   security.delete("/removeUser", (req, res) =>
     Handler.UserHandling.removeUser(req, res)
-  );
-  app.get("/getCalendarEvents", (req, res) =>
-    Handler.CalendarAPI.getCalendarEvents(req, res)
-  );
-  app.get("/smsVoice", (req, res) =>
-    res.sendFile(`${__dirname}/audio/aud.mp3`)
   );
   security.get("/matchSMS", (req, res) => Handler.KnownSMS.matchSMS(req, res));
   security.get("/getSMS", (req, res) => Handler.SMS.getSMS(req, res));
