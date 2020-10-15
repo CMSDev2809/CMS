@@ -36,11 +36,11 @@ if (config.production) {
 let server = null;
 if (config.production) {
   const key = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/privkey.pem-0002",
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com-0002/privkey.pem",
     "utf8"
   );
   const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/compliancemonitoringsystems.com/cert.pem-0002",
+    "/etc/letsencrypt/live/compliancemonitoringsystems.com-0002/fullchain.pem",
     "utf8"
   );
   server = require("https").createServer({ key, cert }, app);
