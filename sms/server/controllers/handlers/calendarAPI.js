@@ -68,6 +68,9 @@ module.exports = {
             events.map((el) => {
               const summary = el.summary.split("-");
               return {
+                time: el.start.dateTime
+                  ? el.start.dateTime.split("T")[1].split("-")[0]
+                  : null,
                 description: el.description,
                 name: summary[0].trim(),
                 phoneNumber: summary[1].trim(),

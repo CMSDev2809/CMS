@@ -5,9 +5,9 @@ import { Transition } from "arclight-react";
 import socketListeners from "./socketListeners/socketListeners";
 import _appMethods from "./_appMethods";
 
-const PRODUCTION = true;
-
 const config = require("../../config");
+
+const PRODUCTION = config.production;
 
 const openSocket = require("socket.io-client");
 const socket = openSocket(

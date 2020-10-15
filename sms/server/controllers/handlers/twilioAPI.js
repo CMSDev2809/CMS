@@ -37,32 +37,35 @@ module.exports = {
         from: config.twilioPhoneNumber,
         to: req.body.target,
       },
-      (err, msg) => (err ? console.log(err) : res.json(msg))
+      (err, msg) => (err ? console.log(err) : res ? res.json(msg) : null)
     );
   },
   dailySend: async (req, res) => {
     const results = await fetch(
       `${config.developmentEndpoint}:${config.port}/getCalendarEvents`
     ).then((res) => res.json());
-    let _Date = new Date();
+    const _Date = new Date();
     _Date.setHours(_Date.getHours() - 6);
     await Promise.all(
-      results.map(
-        async (el) =>
-          await fetch(`${config.developmentEndpoint}:${config.port}/sendSMS`, {
-            method: "post",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({
-              timestamp: _Date,
-              message: `${el.description}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
-              target: el.phoneNumber,
-              origin: config.twilioPhoneNumber,
-              new: true,
-            }),
-          })
-      )
+      results.map(async (el) => {
+        if (el.time) {
+          let t1 = el.time.split(":");
+          t1 = t1[0] + t1[1];
+          let t2 = _Date.toUTCString().split(" ")[4].split(":");
+          t2 = t2[0] + t2[1];
+          return t1 === t2
+            ? await module.exports.sendSMS({
+                body: {
+                  timestamp: _Date,
+                  message: `${el.description}\n\nPay Online:\nhttps://tinyurl.com/yyfm7flv`,
+                  target: el.phoneNumber,
+                  origin: config.twilioPhoneNumber,
+                  new: true,
+                },
+              })
+            : null;
+        }
+      })
     );
     res.json("Operation Complete");
   },

@@ -11,6 +11,7 @@ const schedule = require("node-schedule");
 const cors = require("cors");
 const socket = require("./socket-io/socket-io");
 const fs = require("fs");
+const fetch = require("node-fetch");
 require("./db_util")();
 
 app.use(bodyParser.json());
@@ -54,3 +55,17 @@ server.listen(config.port, () =>
 );
 
 routes(app, security, socket(io));
+
+schedule.scheduleJob("*/15 * * * *", () =>
+  fetch(
+    `${
+      config.production ? config.productionEndpoint : config.developmentEndpoint
+    }:${config.port}/dailySend`,
+    {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+);
