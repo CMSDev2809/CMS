@@ -42,7 +42,11 @@ module.exports = {
   },
   dailySend: async (req, res) => {
     const results = await fetch(
-      `${config.developmentEndpoint}:${config.port}/getCalendarEvents`
+      `${
+        config.production
+          ? config.productionEndpoint
+          : config.developmentEndpoint
+      }:${config.port}/getCalendarEvents`
     ).then((res) => res.json());
     const _Date = new Date();
     _Date.setHours(_Date.getHours() - 6);
