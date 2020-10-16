@@ -54,18 +54,23 @@ server.listen(config.port, () =>
   console.log(`SMS listening on port ${config.port}!`)
 );
 
-routes(app, security, socket(io));
-
-schedule.scheduleJob("*/15 * * * *", () =>
-  fetch(
-    `${
-      config.production ? config.productionEndpoint : config.developmentEndpoint
-    }:${config.port}/dailySend`,
-    {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-);
+(async () => {
+  const emitters = await socket(io);
+  emitters = await emitters.then((res) => res);
+  routes(app, security, emitters);
+  schedule.scheduleJob("*/15 * * * *", () =>
+    fetch(
+      `${
+        config.production
+          ? config.productionEndpoint
+          : config.developmentEndpoint
+      }:${config.port}/dailySend`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+  );
+})();

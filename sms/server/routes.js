@@ -1,7 +1,6 @@
 const Handler = require("./controllers/handler");
 
-module.exports = async (app, security, emitters) => {
-  emitters = emitters.then((res) => res);
+module.exports = (app, security, emitters) => {
   app.get("/getCalendarEvents", (req, res) =>
     Handler.CalendarAPI.getCalendarEvents(req, res)
   );
