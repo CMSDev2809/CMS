@@ -55,8 +55,7 @@ server.listen(config.port, () =>
 );
 
 (async () => {
-  const emitters = await socket(io);
-  emitters = await emitters.then((res) => res);
+  const emitters = await socket(io).then((res) => res);
   routes(app, security, emitters);
   schedule.scheduleJob("*/15 * * * *", () =>
     fetch(
