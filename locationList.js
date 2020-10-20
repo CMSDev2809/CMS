@@ -34,7 +34,7 @@ module.exports = {
       Contacts.jsickels,
       Contacts.lhenderson,
       Contacts.rmclaughlin,
-      Contacts.tdavis,
+      Contacts.tbenjamin,
     ],
   },
   kalispell: {
