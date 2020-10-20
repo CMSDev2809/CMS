@@ -13,7 +13,7 @@ class NavBar extends Component {
     super(props);
     this.state = {
       sliderStatus: false,
-      linkAnims: false
+      linkAnims: false,
     };
   }
 
@@ -53,13 +53,18 @@ class NavBar extends Component {
       />,
       <LinkButton
         fontSize={linkButtonFontSize}
+        text={"Grant Funding"}
+        route={"/apply"}
+      />,
+      <LinkButton
+        fontSize={linkButtonFontSize}
         text={"Refer"}
         route={"/refer"}
-      />
+      />,
     ];
     return (
       <div className="link_buttons">
-        {components.map(element =>
+        {components.map((element) =>
           this.linkAnims(element, (delay += delayInc))
         )}
       </div>
@@ -75,13 +80,14 @@ class NavBar extends Component {
             <div className="nav_bar-header">
               <div className="link_buttons-container">
                 <Media query={`(min-width: ${Med.limit}px)`}>
-                  {this.linkButtons(22.5)}
+                  {this.linkButtons(18)}
                 </Media>
                 <Media query={`(max-width: ${Med.limit - 1}px)`}>
                   <div
                     className="bars"
                     onClick={() =>
-                      this.setState({ sliderStatus: !this.state.sliderStatus })}
+                      this.setState({ sliderStatus: !this.state.sliderStatus })
+                    }
                   >
                     <i class="fas fa-bars" />
                   </div>
@@ -97,10 +103,10 @@ class NavBar extends Component {
                   style={{
                     float: "right",
                     marginTop: "-40px",
-                    marginBottom: "10px"
+                    marginBottom: "10px",
                   }}
                 >
-                  {this.linkButtons(20, true)}
+                  {this.linkButtons(14, true)}
                 </div>
               </div>
             </Media>
@@ -112,6 +118,7 @@ class NavBar extends Component {
               <Link to={"/services"}>Services</Link>
               <Link to={"/about_us"}>About Us</Link>
               <Link to={"/contact"}>Contact</Link>
+              <Link to={"/apply"}>Grant Funding</Link>
               <Link to={"/refer"}>Refer</Link>
             </div>
             <div className="nav_img">
@@ -119,7 +126,7 @@ class NavBar extends Component {
             </div>
             <Media query={`(min-width: ${Med.limit * 1.25}px)`}>
               <div className="copyright">
-                Copyright Community Supervision Services © 2018
+                Copyright Community Supervision Services © 2020
               </div>
             </Media>
           </div>
@@ -129,8 +136,8 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

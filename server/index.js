@@ -393,6 +393,45 @@ app.post("/api/processPayment", async (req, res) => {
   }
 });
 
+app.post("/api/grant", async (req, res) => {
+  const nodemailer = require("nodemailer");
+  const grantApp = require("./grantApp");
+  const content = await new Promise((resolve, reject) => {
+    pdf.create(grantApp(req.body)).toBuffer((err, buffer) => {
+      resolve(buffer);
+    });
+  });
+  let transporter = nodemailer.createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: serverConfig.monitoringCenterFromEmail,
+      pass: serverConfig.monitoringCenterPassword,
+    },
+  });
+  let mailOptions = {
+    from: serverConfig.monitoringCenterFromEmail,
+    to: serverConfig.grantContactEmail,
+    subject: "Grant Application",
+    attachments: [
+      {
+        filename: `${req.body.rco} - Grant Application.pdf`,
+        content,
+      },
+    ],
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return res.json(error);
+    }
+  });
+  res.json({
+    msg: "Success!",
+    code: 200,
+  });
+});
+
 app
   .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
