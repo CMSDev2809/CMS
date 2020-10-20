@@ -14,6 +14,7 @@ import ServicesPretrialSupervision from "./Components/Services/services_pretrial
 import ServicesUrinalysis from "./Components/Services/services_urinalysis";
 import AboutUs from "./Components/AboutUs/about_us";
 import Contact from "./Components/Contact/contact";
+import Apply from "./Components/Apply/apply";
 import Refer from "./Components/Refer/refer";
 import { history } from "./store";
 
@@ -73,6 +74,7 @@ export default class App extends Component {
           />
           <Route exact path="/about_us" component={AboutUs} history={history} />
           <Route exact path="/contact" component={Contact} history={history} />
+          <Route exact path="/apply" component={Apply} history={history} />
           <Route exact path="/refer" component={Refer} history={history} />
         </div>
       </Router>

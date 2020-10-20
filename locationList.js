@@ -59,12 +59,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [
-      Contacts.blavanway,
-      Contacts.ckeyser,
-      Contacts.mjohnson,
-      Contacts.mkimmel,
-    ],
+    contacts: [Contacts.blavanway, Contacts.mkimmel],
   },
   polson: {
     locationName: "Polson",
@@ -88,7 +83,7 @@ module.exports = {
       "house_arrest",
       "alcohol_monitoring_discretion",
     ],
-    contacts: [Contacts.gjacobson, Contacts.jclairmont, Contacts.vhayden],
+    contacts: [Contacts.gjacobson, Contacts.jclairmont],
   },
   great_falls: {
     locationName: "Great Falls",
