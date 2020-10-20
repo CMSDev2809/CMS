@@ -424,11 +424,12 @@ app.post("/api/grant", async (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return res.json(error);
+    } else {
+      res.json({
+        msg: "Success!",
+        code: 200,
+      });
     }
-  });
-  res.json({
-    msg: "Success!",
-    code: 200,
   });
 });
 
