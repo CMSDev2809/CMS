@@ -32,6 +32,7 @@ module.exports = {
       Contacts.jhenry,
       Contacts.jtarbert,
       Contacts.jsickels,
+      Contacts.lhenderson,
       Contacts.rmclaughlin,
       Contacts.tdavis,
     ],
@@ -59,7 +60,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [Contacts.blavanway, Contacts.mkimmel],
+    contacts: [Contacts.blavanway, Contacts.mhills, Contacts.mkimmel],
   },
   polson: {
     locationName: "Polson",
@@ -112,7 +113,7 @@ module.exports = {
     contacts: [
       Contacts.ajohanneck,
       Contacts.chopkins,
-      Contacts.cmurthy,
+      Contacts.jharding,
       Contacts.mrose,
       Contacts.wwolfe,
     ],
@@ -146,7 +147,7 @@ module.exports = {
     googleMapURI:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.758702657001!2d-106.6396282843491!3d48.19200047922782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x533dab9df392a089%3A0x46705e162c697449!2s501%20E%20Court%20St%2C%20Glasgow%2C%20MT%2059230!5e0!3m2!1sen!2sus!4v1567204881826!5m2!1sen!2sus",
     contactInformation: {
-      officeNumber: "(406) 945-9012",
+      officeNumber: "(406) 529-1789",
     },
     address: {
       firstLine: "501 East Court St",
@@ -231,7 +232,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [Contacts.jmathias, Contacts.stennant],
+    contacts: [Contacts.jmathias, Contacts.jhyett],
   },
   miles_city: {
     locationName: "Miles City",
@@ -281,5 +282,51 @@ module.exports = {
       "alcohol_monitoring_discretion",
     ],
     contacts: [Contacts.rkula],
+  },
+  glendive: {
+    locationName: "Glendive",
+    googleMapURI:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10862.968973036845!2d-104.7174802!3d47.1041235!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x551b2b961ece40c0!2sChristina%20Miller%2C%20MMFT%2C%20LCPC!5e0!3m2!1sen!2sus!4v1603234605679!5m2!1sen!2sus",
+    contactInformation: {
+      officeNumber: "(406) 529-1789",
+      faxNumber: "(888) 855-7964",
+    },
+    address: {
+      firstLine: "313 West Valentine 123",
+      secondLine: "Glendive, MT 59330",
+    },
+    officeEmail: "monitoringcenter@compliancemonitoringsystems.com",
+    services: [
+      "remote_breath",
+      "drug_patch",
+      "scram",
+      "gps",
+      "house_arrest",
+      "alcohol_monitoring_discretion",
+    ],
+    contacts: [],
+  },
+  lewistown: {
+    locationName: "Lewistown",
+    googleMapURI:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10862.968973036845!2d-104.7174802!3d47.1041235!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x551b2b961ece40c0!2sChristina%20Miller%2C%20MMFT%2C%20LCPC!5e0!3m2!1sen!2sus!4v1603234605679!5m2!1sen!2sus",
+    contactInformation: {
+      officeNumber: "(406) 529-1789",
+      faxNumber: "(888) 855-7964",
+    },
+    address: {
+      firstLine: "500 West Main Street #323",
+      secondLine: "Lewistown, MT 59457",
+    },
+    officeEmail: "monitoringcenter@compliancemonitoringsystems.com",
+    services: [
+      "remote_breath",
+      "drug_patch",
+      "scram",
+      "gps",
+      "house_arrest",
+      "alcohol_monitoring_discretion",
+    ],
+    contacts: [],
   },
 };
