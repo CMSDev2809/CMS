@@ -173,7 +173,7 @@ class FormFields extends Component {
         <Row>
           <Col md={6} className="col">
             <h2>
-              <font style={{ color: "red" }}>*</font> Referring Company or
+              <font style={{ color: "red" }}>*</font> Applicant Company or
               Organization
             </h2>
             <InputGroup className="input-block-level">
@@ -369,7 +369,7 @@ class FormFields extends Component {
             <InputGroup className="input-block-level">
               <FormControl
                 type="text"
-                placeholder="Referring Agency"
+                placeholder="i.e. District Court, Justice Court, P&P etc."
                 onChange={(e) =>
                   this.setState({ referringAgency: e.target.value })
                 }
