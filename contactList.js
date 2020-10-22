@@ -127,9 +127,9 @@ module.exports = {
   },
   mtamol: {
     name: "Mindi Tamol",
-    title: "Compliance Officer",
-    email: "molly@compliancemonitoringsystems.com",
-    phonenumber: "(406) 370-5958",
+    title: "Administrative Specialist",
+    email: "mtamol@compliancemonitoringsystems.com",
+    phonenumber: "(406) 529-1789",
   },
   rmclaughlin: {
     name: "Ryley McLaughlin",
