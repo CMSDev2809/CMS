@@ -11,7 +11,7 @@ module.exports = (obj) => `
         <h2 style="font-size: 8px;">(406) 529-1789</h2>
         <h2 style="font-size: 8px;">Fax: (888) 855-7964</h2>
       </center>
-      <center><b><h1>Grant Funds Application</b></center>
+      <center><b><h1 style="font-size: 18px;">Grant Funds Application</b></center>
       <h1 style="font-size: 16px">Applicant</h1>
       <div style="margin-top: 20px; position: relative;">
         <h2 style="font-size: 9px">Referring Company or Organization:</h2>
