@@ -63,14 +63,43 @@ class StatusModal extends Component {
   }
 }
 
+class Checkbox extends Component {
+  clickHandler() {
+    this.props.postClick();
+  }
+
+  render() {
+    const width = 25;
+    const height = width;
+    return (
+      <Button onClick={() => this.clickHandler()} className="custom_checkbox">
+        {this.props.checked ? (
+          <div
+            class="glyphicon glyphicon glyphicon-ok"
+            style={{
+              marginTop: "-12px",
+              width: `${width}`,
+              height: `${height}`,
+            }}
+          />
+        ) : (
+          <div style={{ width: `${width}`, height: `${height}` }} />
+        )}
+      </Button>
+    );
+  }
+}
+
 class FormFields extends Component {
   state = {
     emailIsValid: false,
     date: this.getDate(),
+    checkbox: false,
   };
 
   validate() {
-    const _helper_ = (key) => this.state[key] && this.state[key].length > 0;
+    const _helper_ = (key) =>
+      this.state[key] && this.state[key].length > 0 && this.state.checkbox;
     return (
       _helper_("referringCompany") &&
       _helper_("pointOfContact") &&
@@ -366,6 +395,56 @@ class FormFields extends Component {
             marginBottom: "20px",
           }}
         />
+        <i>
+          <p>
+            Applicant shall maintain insurance against claims for injuries to
+            persons or damages to property, including contractual liability,
+            which may arise from or in connection with the performance of the
+            work by Contractor, agents, employees, representatives, assigns, or
+            subcontractors. This insurance shall cover such claims as may be
+            caused by any negligent act or omission
+          </p>
+          <p>
+            Applicant will fully comply with all applicable federal, Tribe, or
+            local laws, rules, regulations, and executive orders including but
+            not limited to, the Montana Human Rights Act, the Equal Pay Act of
+            1963, the Civil Rights Act of 1964, the Age Discrimination Act of
+            1975, the Americans with Disabilities Act of 1990, and Section 504
+            of the Rehabilitation Act of 1973
+          </p>
+          <p>
+            Applicant shall be registered to do business with the Montana
+            Secretary of State and shall maintain this registration in good
+            standing during the term of this Agreement and any renewal.
+          </p>
+          <p>
+            Applicant shall indemnify and hold harmless CSS, its employees and
+            agents, from all claims, liabilities, causes of action or judgments,
+            including costs and attorney fees, asserted by or awarded to third
+            parties as a result of any negligent action or omission or willful
+            misconduct of the applicant, its employees or agents.
+          </p>
+        </i>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <Checkbox
+                  bsClass="checkBox"
+                  postClick={() =>
+                    this.setState({ checkbox: !this.state.checkbox })
+                  }
+                  checked={this.state.checkbox}
+                />
+              </td>
+              <td>
+                <p style={{ marginTop: "12px" }}>
+                  I have read and agree that I meet the above requirements.
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <div
           style={{
             textAlign: "center",
