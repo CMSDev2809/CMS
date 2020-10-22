@@ -111,7 +111,8 @@ class FormFields extends Component {
       _helper_("dailyRate") &&
       _helper_("clientName") &&
       _helper_("referringAgency") &&
-      _helper_("otherFees")
+      _helper_("otherFees") &&
+      _helper_("nameOfPersonCompletingApplication")
     );
   }
 
@@ -150,6 +151,7 @@ class FormFields extends Component {
         dr: this.state.dailyRate,
         cn: this.state.clientName,
         ra: this.state.referringAgency,
+        nopca: this.state.nameOfPersonCompletingApplication,
       }),
     }).then((res) => res.json());
     if (results.code <= 200) {
@@ -306,7 +308,9 @@ class FormFields extends Component {
               />
             </InputGroup>
           </Col>
-          <Col md={12}>
+        </Row>
+        <Row>
+          <Col md={6}>
             <h2>
               <font style={{ color: "red" }}>*</font> Other Fees
             </h2>
@@ -315,6 +319,23 @@ class FormFields extends Component {
                 type="text"
                 placeholder="i.e. install fee $25.00"
                 onChange={(e) => this.setState({ otherFees: e.target.value })}
+              />
+            </InputGroup>
+          </Col>
+          <Col md={6}>
+            <h2>
+              <font style={{ color: "red" }}>*</font> Name of Person Completing
+              Application
+            </h2>
+            <InputGroup className="input-block-level">
+              <FormControl
+                type="text"
+                placeholder="John Doe"
+                onChange={(e) =>
+                  this.setState({
+                    nameOfPersonCompletingApplication: e.target.value,
+                  })
+                }
               />
             </InputGroup>
           </Col>

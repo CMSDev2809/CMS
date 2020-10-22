@@ -40,6 +40,8 @@ module.exports = (obj) => `
           <h2 style="font-size: 12px"><b>${__replace__(obj.fr)}</b></h2>
           <h2 style="font-size: 9px">Daily Rate:</h2>
           <h2 style="font-size: 12px"><b>${__replace__(obj.dr)}</b></h2>
+          <h2 style="font-size: 9px">Name of Person Completing Application:</h2>
+          <h2 style="font-size: 12px"><b>${__replace__(obj.nopca)}</b></h2>
         </div>
       </div>
       <h1 style="font-size: 16px;margin-top: 20px;">Client</h1>
