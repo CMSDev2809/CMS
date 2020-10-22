@@ -65,10 +65,10 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = dispatch => ({
-  setService: service => dispatch(setService(service))
+const mapDispatchToProps = (dispatch) => ({
+  setService: (service) => dispatch(setService(service)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

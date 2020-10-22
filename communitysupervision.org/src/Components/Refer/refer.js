@@ -14,7 +14,7 @@ import {
   Modal,
   DropdownButton,
   MenuItem,
-  ControlLabel
+  ControlLabel,
 } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 import Dropzone from "react-dropzone";
@@ -75,7 +75,7 @@ class Checkbox extends Component {
             style={{
               marginTop: "-12px",
               width: `${width}`,
-              height: `${height}`
+              height: `${height}`,
             }}
           />
         ) : (
@@ -110,19 +110,19 @@ class FormFields extends Component {
         court: "",
         judge: "",
         address: "",
-        violationsReportedTo: ""
+        violationsReportedTo: "",
       },
       houseArrestState: {
         b1: false,
         b2: false,
-        b3: false
+        b3: false,
       },
       houseArrestMovement: {
         b1: false,
         b2: false,
         b3: false,
         b4: false,
-        b5: false
+        b5: false,
       },
       supervisionServices: {
         c1: false,
@@ -131,18 +131,18 @@ class FormFields extends Component {
         c4: false,
         c5: false,
         c6: false,
-        c7: false
+        c7: false,
       },
       services247: {
         c1: false,
         c2: false,
-        c3: false
+        c3: false,
       },
       txtBox: {
         frequency: "3",
         ua: "0",
-        other: ""
-      }
+        other: "",
+      },
     };
   }
 
@@ -241,7 +241,7 @@ class FormFields extends Component {
 
   submitReferral(state) {
     this.setState({
-      sendingReferral: true
+      sendingReferral: true,
     });
     if (this.validateSubmission()) {
       const body = {
@@ -255,35 +255,35 @@ class FormFields extends Component {
         txtBox: state.txtBox,
         commentBoxText: state.commentBoxText,
         attachedForm: this.state.files.length > 0 ? true : false,
-        css: true
+        css: true,
       };
       const formData = new FormData();
       formData.append("image", this.state.files[0]);
       fetch(`${config.api}/image`, {
         method: "POST",
-        body: formData
+        body: formData,
       })
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           fetch(`${config.api}/refer`, {
             method: "POST",
             headers: {
               Accept: "application/json",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
           })
-            .then(res => res.json())
+            .then((res) => res.json())
             .then(() =>
               this.setState({
                 referralSuccess: 1,
-                modalText: "Referral Received!"
+                modalText: "Referral Received!",
               })
             )
-            .catch(err => {
+            .catch((err) => {
               this.setState({
                 referralSuccess: 2,
-                modalText: "Uh oh, there was an error receiving your referral."
+                modalText: "Uh oh, there was an error receiving your referral.",
               });
             })
             .then(
@@ -297,7 +297,7 @@ class FormFields extends Component {
       this.setState({
         referralSuccess: 3,
         modalText:
-          "Please fill all required fields and a minimum of 1 service before submission."
+          "Please fill all required fields and a minimum of 1 service before submission.",
       });
       setTimeout(() => this.setState({ sendingReferral: false }), 4000);
     }
@@ -306,13 +306,12 @@ class FormFields extends Component {
   onDrop(files) {
     if (files[0].type === "application/pdf") {
       this.setState({
-        files
+        files,
       });
     }
   }
 
   render() {
-    console.log(this.state.dropDownValue);
     let oStyle = this.state.supervisionServices.c4
       ? {}
       : { opacity: "0.25", pointerEvents: "none" };
@@ -330,7 +329,7 @@ class FormFields extends Component {
       display: "inline-flex",
       marginLeft: "10px",
       maxWidth: "250px",
-      opacity: "1"
+      opacity: "1",
     };
     const grid = (
       <Grid fluid={true} bsClass="grid">
@@ -350,7 +349,7 @@ class FormFields extends Component {
             <h2
               style={{
                 marginTop: "2px",
-                display: "inline-flex"
+                display: "inline-flex",
               }}
             >
               Pretrial
@@ -389,8 +388,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Name"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "name")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "name")
+                }
               />
             </InputGroup>
           </Col>
@@ -402,8 +402,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Phone Number"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "phoneNumber")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "phoneNumber")
+                }
               />
             </InputGroup>
           </Col>
@@ -418,8 +419,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="To Enroll By"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "toEnrollBy")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "toEnrollBy")
+                }
               />
             </InputGroup>
           </Col>
@@ -435,7 +437,7 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="john.hancock@gmail.com"
-                onBlur={e => this.validateEmail(e.target.value)}
+                onBlur={(e) => this.validateEmail(e.target.value)}
               />
               <FormControl.Feedback />
             </FormGroup>
@@ -449,8 +451,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Charges"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "charges")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "charges")
+                }
               />
             </InputGroup>
           </Col>
@@ -460,12 +463,13 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Program Length"
-                onChange={e =>
+                onChange={(e) =>
                   this.updateInput(
                     e.target.value,
                     "gridValues",
                     "programLength"
-                  )}
+                  )
+                }
               />
             </InputGroup>
           </Col>
@@ -478,8 +482,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Court"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "court")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "court")
+                }
               />
             </InputGroup>
           </Col>
@@ -489,8 +494,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Judge"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "judge")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "judge")
+                }
               />
             </InputGroup>
           </Col>
@@ -503,8 +509,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Address"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "address")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "address")
+                }
               />
             </InputGroup>
           </Col>
@@ -514,8 +521,9 @@ class FormFields extends Component {
               <FormControl
                 type="text"
                 placeholder="Case Number"
-                onChange={e =>
-                  this.updateInput(e.target.value, "gridValues", "caseNumber")}
+                onChange={(e) =>
+                  this.updateInput(e.target.value, "gridValues", "caseNumber")
+                }
               />
             </InputGroup>
           </Col>
@@ -539,7 +547,7 @@ class FormFields extends Component {
             width: "100%",
             borderTop: "3px solid",
             marginTop: "20px",
-            marginBottom: "20px"
+            marginBottom: "20px",
           }}
         />
         <div style={{ textAlign: "center" }}>
@@ -550,13 +558,15 @@ class FormFields extends Component {
           <DropdownButton title={this.state.dropDownValue}>
             <MenuItem
               onClick={() =>
-                this.setState({ dropDownValue: "Supervision Services" })}
+                this.setState({ dropDownValue: "Supervision Services" })
+              }
             >
               Supervison Services
             </MenuItem>
             <MenuItem
               onClick={() =>
-                this.setState({ dropDownValue: "24.7 Program Services" })}
+                this.setState({ dropDownValue: "24.7 Program Services" })
+              }
             >
               24.7 Monitoring
             </MenuItem>
@@ -570,7 +580,8 @@ class FormFields extends Component {
                   <Checkbox
                     bsClass="checkBox"
                     postClick={() =>
-                      this.updateCheckbox("supervisionServices", "c1")}
+                      this.updateCheckbox("supervisionServices", "c1")
+                    }
                     checked={this.state.supervisionServices.c1}
                   />
                   <h2>
@@ -584,7 +595,8 @@ class FormFields extends Component {
                   <Checkbox
                     bsClass="checkBox"
                     postClick={() =>
-                      this.updateCheckbox("supervisionServices", "c2")}
+                      this.updateCheckbox("supervisionServices", "c2")
+                    }
                     checked={this.state.supervisionServices.c2}
                   />
                   <h2>
@@ -598,7 +610,8 @@ class FormFields extends Component {
                   <Checkbox
                     bsClass="checkBox"
                     postClick={() =>
-                      this.updateCheckbox("supervisionServices", "c3")}
+                      this.updateCheckbox("supervisionServices", "c3")
+                    }
                     checked={this.state.supervisionServices.c3}
                   />
                   <h2>
@@ -608,21 +621,22 @@ class FormFields extends Component {
                       <InputGroup
                         style={{
                           display: "inline-flex",
-                          width: "50px"
+                          width: "50px",
                         }}
                       >
                         <FormControl
                           type="text"
                           placeholder=""
                           style={{ height: "20px" }}
-                          onChange={e =>
+                          onChange={(e) =>
                             this.updateInput(
                               e.target.value.length > 1
                                 ? e.target.value.charAt(0)
                                 : e.target.value,
                               "txtBox",
                               "frequency"
-                            )}
+                            )
+                          }
                           value={this.state.txtBox.frequency}
                         />
                       </InputGroup>{" "}
@@ -636,7 +650,8 @@ class FormFields extends Component {
                   <Checkbox
                     bsClass="checkBox"
                     postClick={() =>
-                      this.updateCheckbox("supervisionServices", "c4")}
+                      this.updateCheckbox("supervisionServices", "c4")
+                    }
                     checked={this.state.supervisionServices.c4}
                   />
                   <h2>
@@ -654,7 +669,8 @@ class FormFields extends Component {
                       this.houseArrestState(
                         "b1",
                         !this.state.houseArrestState.b1
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestState.b1}
                   />
                   <b>NONE - Lockdown OR</b>
@@ -665,7 +681,8 @@ class FormFields extends Component {
                       this.houseArrestState(
                         "b2",
                         !this.state.houseArrestState.b2
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestState.b2}
                   />
                   Work
@@ -676,7 +693,8 @@ class FormFields extends Component {
                       this.houseArrestState(
                         "b3",
                         !this.state.houseArrestState.b3
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestState.b3}
                   />
                   Treatment
@@ -688,7 +706,8 @@ class FormFields extends Component {
                       this.houseArrestMovement(
                         "b1",
                         !this.state.houseArrestMovement.b1
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestMovement.b1}
                   />
                   Medical Appointment
@@ -698,7 +717,8 @@ class FormFields extends Component {
                       this.houseArrestMovement(
                         "b2",
                         !this.state.houseArrestMovement.b2
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestMovement.b2}
                   />
                   Legal Appointment
@@ -708,7 +728,8 @@ class FormFields extends Component {
                       this.houseArrestMovement(
                         "b3",
                         !this.state.houseArrestMovement.b3
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestMovement.b3}
                   />
                   Religious Functions
@@ -718,7 +739,8 @@ class FormFields extends Component {
                       this.houseArrestMovement(
                         "b4",
                         !this.state.houseArrestMovement.b4
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestMovement.b4}
                   />
                   All
@@ -728,7 +750,8 @@ class FormFields extends Component {
                       this.houseArrestMovement(
                         "b5",
                         !this.state.houseArrestMovement.b5
-                      )}
+                      )
+                    }
                     checked={this.state.houseArrestMovement.b5}
                   />
                   Other
@@ -736,7 +759,7 @@ class FormFields extends Component {
                     <FormControl
                       type="text"
                       placeholder=""
-                      onChange={e => {
+                      onChange={(e) => {
                         this.updateInput(e.target.value, "txtBox", "other");
                       }}
                     />
@@ -801,14 +824,14 @@ class FormFields extends Component {
               <section style={dropStyle}>
                 <div className={dropClass}>
                   <Dropzone
-                    onDrop={files => this.onDrop(files)}
+                    onDrop={(files) => this.onDrop(files)}
                     style={{
                       padding: "0px",
                       backgroundColor: "rgb(187, 187, 187)",
                       width: "100%",
                       height: "100%",
                       borderRadius: "50%",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                   >
                     <div
@@ -816,7 +839,7 @@ class FormFields extends Component {
                       style={{
                         fontSize: "25px",
                         marginTop: "8px",
-                        marginLeft: "11.5px"
+                        marginLeft: "11.5px",
                       }}
                     />
                   </Dropzone>
@@ -824,7 +847,7 @@ class FormFields extends Component {
                 <aside>
                   <h2>Attached Order (.pdf)</h2>
                   <ul>
-                    {this.state.files.map(f => {
+                    {this.state.files.map((f) => {
                       return (
                         <li key={f.name}>
                           {f.name} - {f.size} bytes
@@ -839,7 +862,8 @@ class FormFields extends Component {
                   <Checkbox
                     bsClass="checkBox"
                     postClick={() =>
-                      this.updateCheckbox("supervisionServices", "c7")}
+                      this.updateCheckbox("supervisionServices", "c7")
+                    }
                     checked={this.state.supervisionServices.c7}
                   />
                   <h2>
@@ -874,21 +898,22 @@ class FormFields extends Component {
                     <InputGroup
                       style={{
                         display: "inline-flex",
-                        width: "50px"
+                        width: "50px",
                       }}
                     >
                       <FormControl
                         type="text"
                         placeholder=""
                         style={{ height: "20px" }}
-                        onChange={e =>
+                        onChange={(e) =>
                           this.updateInput(
                             e.target.value.length > 1
                               ? e.target.value.charAt(0)
                               : e.target.value,
                             "txtBox",
                             "ua"
-                          )}
+                          )
+                        }
                         value={this.state.txtBox.ua}
                       />
                     </InputGroup>{" "}
@@ -897,16 +922,18 @@ class FormFields extends Component {
                       <MenuItem
                         onClick={() =>
                           this.setState({
-                            uaDropDown: "week"
-                          })}
+                            uaDropDown: "week",
+                          })
+                        }
                       >
                         week
                       </MenuItem>
                       <MenuItem
                         onClick={() =>
                           this.setState({
-                            uaDropDown: "month"
-                          })}
+                            uaDropDown: "month",
+                          })
+                        }
                       >
                         month
                       </MenuItem>
@@ -918,7 +945,7 @@ class FormFields extends Component {
                   style={{
                     marginLeft: "75px",
                     marginBottom: "25px",
-                    color: "rgb(88, 88, 88)"
+                    color: "rgb(88, 88, 88)",
                   }}
                 >
                   <b>
@@ -952,7 +979,9 @@ class FormFields extends Component {
             <FormControl
               componentClass="textarea"
               style={{ height: "250px" }}
-              onChange={e => this.setState({ commentBoxText: e.target.value })}
+              onChange={(e) =>
+                this.setState({ commentBoxText: e.target.value })
+              }
             />
           </FormGroup>
         </div>
@@ -997,8 +1026,8 @@ class Refer extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Refer);

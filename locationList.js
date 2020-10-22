@@ -309,7 +309,7 @@ module.exports = {
   lewistown: {
     locationName: "Lewistown",
     googleMapURI:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10862.968973036845!2d-104.7174802!3d47.1041235!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x551b2b961ece40c0!2sChristina%20Miller%2C%20MMFT%2C%20LCPC!5e0!3m2!1sen!2sus!4v1603234605679!5m2!1sen!2sus",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2717.776475373826!2d-109.4302867847613!3d47.06423493327963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5340d4a0a5ff5127%3A0x4a42f178d82f92f4!2s500%20W%20Main%20St%20%23323%2C%20Lewistown%2C%20MT%2059457!5e0!3m2!1sen!2sus!4v1603235611501!5m2!1sen!2sus",
     contactInformation: {
       officeNumber: "(406) 529-1789",
       faxNumber: "(888) 855-7964",
