@@ -392,7 +392,7 @@ class FormFields extends Component {
         <Grid fluid={true} bsClass="grid">
           <Row style={{ marginLeft: "-15px", marginBottom: "15px" }}>
             <Col md={6} className="col">
-              <h1>Funds Request Application</h1>
+              <h1>Indigent Funding Request</h1>
               <h2>
                 <font style={{ color: "red" }}>*</font> Required field
               </h2>
