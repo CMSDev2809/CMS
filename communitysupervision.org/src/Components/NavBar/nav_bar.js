@@ -53,7 +53,7 @@ class NavBar extends Component {
       />,
       <LinkButton
         fontSize={linkButtonFontSize}
-        text={"Grant Funding"}
+        text={"Indigent Funding Request"}
         route={"/apply"}
       />,
       <LinkButton
@@ -118,7 +118,7 @@ class NavBar extends Component {
               <Link to={"/services"}>Services</Link>
               <Link to={"/about_us"}>About Us</Link>
               <Link to={"/contact"}>Contact</Link>
-              <Link to={"/apply"}>Grant Funding</Link>
+              <Link to={"/apply"}>Indigent Funding Request</Link>
               <Link to={"/refer"}>Refer</Link>
             </div>
             <div className="nav_img">
