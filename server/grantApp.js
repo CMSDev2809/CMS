@@ -14,7 +14,7 @@ module.exports = (obj) => `
       <center><b><h1 style="font-size: 18px;">Grant Funds Application</b></center>
       <h1 style="font-size: 16px">Applicant</h1>
       <div style="margin-top: 20px; position: relative;">
-        <h2 style="font-size: 9px">Referring Company or Organization:</h2>
+        <h2 style="font-size: 9px">Applicant Company or Organization:</h2>
         <h2 style="font-size: 12px"><b>${__replace__(obj.rco)}</b></h2>
         <h2 style="font-size: 9px">Contact Phone Number:</h2>
         <h2 style="font-size: 12px"><b>${__replace__(obj.cpn)}</b></h2>
@@ -46,10 +46,10 @@ module.exports = (obj) => `
       </div>
       <h1 style="font-size: 16px;margin-top: 20px;">Client</h1>
       <div style="margin-top: 20px; position: relative;">
-        <h2 style="font-size: 9px">Referring Company or Organization:</h2>
+        <h2 style="font-size: 9px">Client Name:</h2>
         <h2 style="font-size: 12px"><b>${__replace__(obj.cn)}</b></h2>
         <div style="position: absolute; left: 50%; top: calc(0% - 10px);">
-          <h2 style="font-size: 9px">Point of Contact:</h2>
+          <h2 style="font-size: 9px">Referring Agency:</h2>
           <h2 style="font-size: 12px"><b>${__replace__(obj.ra)}</b></h2>
         </div>
       </div>
