@@ -255,6 +255,7 @@ module.exports = {
       Contacts.jtarbert,
       Contacts.jsickels,
       Contacts.lhenderson,
+	  Contacts.olapka,
       Contacts.rmclaughlin,
       Contacts.tbenjamin,
     ],
