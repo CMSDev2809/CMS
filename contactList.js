@@ -159,7 +159,7 @@ module.exports = {
     name: "Tate Strub",
     title: "Compliance Officer",
     email: "tate@compliancemonitoringsystems.com",
-    phonenumber: "(406) 370-4806",
+    phonenumber: "(406) 853-4449",
   },
   wwolfe: {
     name: "William Wolfe",
