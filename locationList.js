@@ -203,7 +203,7 @@ module.exports = {
     googleMapURI:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5502.1724452590315!2d-105.844757!3d46.407346!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x533a741c73fe3059%3A0x32feeddc554b1f20!2s1010+Main+St%2C+Miles+City%2C+MT+59301!5e0!3m2!1sen!2sus!4v1514020331456",
     contactInformation: {
-      officeNumber: "(406) 370-4806",
+      officeNumber: "(406) 874-6058",
       faxNumber: "(888) 855-7964",
     },
     address: {
