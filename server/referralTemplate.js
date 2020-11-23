@@ -80,7 +80,6 @@ module.exports = {
        <h2 style="font-size: 8px;">&gpsp& GPS Bracelet Tracking (passive) $300/mo ($50 Install fee) This GPS rate is for tracking purposes only and violations will be submitted within one (1) business day. Order with restrictions is required</h2>
        <h2 style="font-size: 8px;">&phmc& PharmChem Drug Patch (2-14 days) Cocaine, Opiates, Amphetamines/Methamphetamine, PCP, THC -$65/patch ($50 Install fee)</h2>
        <h2 style="font-size: 8px;">&hfdt& Hair Follicle Drug Testing - $95 for std. / $130 for extended</h2>
-       <h2 style="font-size: 8px;">&247M& 24/7 Monitoring</h2>
      </div>
  `,
   services247: `
