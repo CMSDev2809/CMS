@@ -138,6 +138,7 @@ class FormFields extends Component {
         c7: false,
         c8: false,
         c9: false,
+        c10: false,
       },
       services247: {
         c1: false,
@@ -631,13 +632,6 @@ class FormFields extends Component {
                   >
                     Supervison Services
                   </MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      this.setState({ dropDownValue: "24.7 Program Services" })
-                    }
-                  >
-                    24.7 Monitoring
-                  </MenuItem>
                 </DropdownButton>
               </div>
             </React.Fragment>
@@ -994,6 +988,20 @@ class FormFields extends Component {
                       Hair Follicle Drug Testing -{" "}
                       <i>$95 for std. / $130 for extended</i>
                     </h2>
+                  </div>
+                </div>
+              ) : null}
+              {this.state.availableServices.includes("247") ? (
+                <div>
+                  <div style={{ display: "inline-flex" }}>
+                    <Checkbox
+                      bsClass="checkBox"
+                      postClick={() =>
+                        this.updateCheckbox("supervisionServices", "c10")
+                      }
+                      checked={this.state.supervisionServices.c10}
+                    />
+                    <h2>24.7 Monitoring</h2>
                   </div>
                 </div>
               ) : null}
