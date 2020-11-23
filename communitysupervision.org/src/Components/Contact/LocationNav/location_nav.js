@@ -15,7 +15,7 @@ class LocationNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalStatus: false
+      modalStatus: false,
     };
   }
 
@@ -33,25 +33,27 @@ class LocationNav extends Component {
   locations(fontSize, iconOffset) {
     let locations = [];
     for (let key in this.props.Locations) {
-      locations.push(
-        <div onClick={() => this.updateLocation(key)}>
-          <div className="location_card">
-            <i
-              class="fas fa-angle-right"
-              style={{ fontSize: "35px", marginTop: `${iconOffset}px` }}
-            />
-            <LinkButton
-              text={this.props.Locations[key].locationName}
-              fontSize={fontSize}
-              fn={
-                this.state.modalStatus
-                  ? () => this.setState({ modalStatus: false })
-                  : null
-              }
-            />
+      if (!this.props.Locations[key].exclude) {
+        locations.push(
+          <div onClick={() => this.updateLocation(key)}>
+            <div className="location_card">
+              <i
+                class="fas fa-angle-right"
+                style={{ fontSize: "35px", marginTop: `${iconOffset}px` }}
+              />
+              <LinkButton
+                text={this.props.Locations[key].locationName}
+                fontSize={fontSize}
+                fn={
+                  this.state.modalStatus
+                    ? () => this.setState({ modalStatus: false })
+                    : null
+                }
+              />
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
     }
     return locations;
   }
@@ -64,23 +66,25 @@ class LocationNav extends Component {
           showCloseIcon={false}
           open={this.state.modalStatus}
           onClose={() =>
-            this.setState({ modalStatus: !this.state.modalStatus })}
+            this.setState({ modalStatus: !this.state.modalStatus })
+          }
           center
           styles={{
             overlay: {
-              width: "100%"
+              width: "100%",
             },
             modal: {
               width: "100%",
-              borderRadius: "3px"
-            }
+              borderRadius: "3px",
+            },
           }}
         >
           <div style={{ marginTop: `-${buttonOffset}px` }}>
             <div
               className="location_nav-button"
               onClick={() =>
-                this.setState({ modalStatus: !this.state.modalStatus })}
+                this.setState({ modalStatus: !this.state.modalStatus })
+              }
             >
               <h1>
                 <i class="far fa-address-book" />
@@ -102,7 +106,8 @@ class LocationNav extends Component {
           <div
             className="location_nav-button"
             onClick={() =>
-              this.setState({ modalStatus: !this.state.modalStatus })}
+              this.setState({ modalStatus: !this.state.modalStatus })
+            }
           >
             <h1>
               <i class="fas fa-address-book" />
@@ -114,10 +119,10 @@ class LocationNav extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = dispatch => ({
-  setLocationReducer: location => dispatch(setLocation(location))
+const mapDispatchToProps = (dispatch) => ({
+  setLocationReducer: (location) => dispatch(setLocation(location)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationNav);
