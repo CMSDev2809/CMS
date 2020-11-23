@@ -30,6 +30,7 @@ const ss = [
   "&gpsp&",
   "&phmc&",
   "&hfdt&",
+  "&247M",
 ];
 const s247 = ["&dp&", "&ua&", "&tdb&"];
 const ha = ["&ham1&", "&ham2&", "&ham3&"];
