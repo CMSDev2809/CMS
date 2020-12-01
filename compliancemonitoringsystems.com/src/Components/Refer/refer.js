@@ -94,9 +94,9 @@ class FormFields extends Component {
       sendingReferral: false,
       referralSuccess: 0,
       modalText: "",
-      dropDownValue: "Select a form...",
-      dropDownValue2: "Select a location...",
-      availableServices: null,
+      dropDownValue: "Supervision Services",
+      dropDownValue2: Object.values(LocationList)[0].locationName,
+      availableServices: Object.values(LocationList)[0].services,
       uaDropDown: "week",
       emailIsValid: null,
       commentBoxText: "",
@@ -139,6 +139,7 @@ class FormFields extends Component {
         c8: false,
         c9: false,
         c10: false,
+        c11: false,
       },
       services247: {
         c1: false,
@@ -1002,6 +1003,79 @@ class FormFields extends Component {
                       checked={this.state.supervisionServices.c10}
                     />
                     <h2>24.7 Monitoring</h2>
+                  </div>
+                </div>
+              ) : null}
+              {this.state.availableServices.includes("ua") ? (
+                <div>
+                  <div style={{ display: "inline-flex" }}>
+                    <Checkbox
+                      bsClass="checkBox"
+                      postClick={() =>
+                        this.updateCheckbox("supervisionServices", "c11")
+                      }
+                      checked={this.state.supervisionServices.c11}
+                    />
+                    <h2>
+                      24/7 Urinalysis drug testing{" "}
+                      <InputGroup
+                        style={{
+                          display: "inline-flex",
+                          width: "50px",
+                        }}
+                      >
+                        <FormControl
+                          type="text"
+                          placeholder=""
+                          style={{ height: "20px" }}
+                          onChange={(e) =>
+                            this.updateInput(
+                              e.target.value.length > 1
+                                ? e.target.value.charAt(0)
+                                : e.target.value,
+                              "txtBox",
+                              "ua"
+                            )
+                          }
+                          value={this.state.txtBox.ua}
+                        />
+                      </InputGroup>{" "}
+                      x /{" "}
+                      <DropdownButton title={this.state.uaDropDown}>
+                        <MenuItem
+                          onClick={() =>
+                            this.setState({
+                              uaDropDown: "week",
+                            })
+                          }
+                        >
+                          week
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            this.setState({
+                              uaDropDown: "month",
+                            })
+                          }
+                        >
+                          month
+                        </MenuItem>
+                      </DropdownButton>{" "}
+                      <b>Pricing dependant upon specified drug panel</b>
+                    </h2>
+                  </div>
+                  <div
+                    style={{
+                      marginLeft: "75px",
+                      marginBottom: "25px",
+                      color: "rgb(88, 88, 88)",
+                    }}
+                  >
+                    <b>
+                      <i>
+                        Please include panel details in the comments section
+                      </i>
+                    </b>
                   </div>
                 </div>
               ) : null}
