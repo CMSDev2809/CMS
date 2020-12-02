@@ -242,7 +242,6 @@ app.post("/api/image", (req, res, next) => {
 });
 
 const sendReceipt = async (data, response, receiver) => {
-  ("use strict");
   const nodemailer = require("nodemailer");
   let recipient = "";
   if (serverConfig.production) {
@@ -260,29 +259,21 @@ const sendReceipt = async (data, response, receiver) => {
         pass: convergeConfig.emailPassword,
       },
     });
-    await new Promise((resolve, reject) => {
-      pdf
-        .create(receipt_html(data, response))
-        .toFile(__dirname + "/receipt.pdf", (err, res) => {
-          resolve("file created");
-        });
-    });
-    let attachments = [
-      {
-        filename: "receipt.pdf",
-        path: __dirname + "/receipt.pdf",
-      },
-    ];
-    if (fs.existsSync(__dirname + "/receipt.pdf") && data.attachedForm) {
-      attachments.push({
-        path: __dirname + "/receipt.pdf",
+    const content = await new Promise((resolve, reject) => {
+      pdf.create(receipt_html(data, response)).toBuffer((err, buffer) => {
+        resolve(buffer);
       });
-    }
+    });
     let mailOptions = {
       from: convergeConfig.email,
       to: recipient,
       subject: "Payment Receipt",
-      attachments: attachments,
+      attachments: [
+        {
+          filename: `receipt.pdf`,
+          content,
+        },
+      ],
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -361,7 +352,6 @@ const handleError = (response, req, res) => {
 };
 
 app.post("/api/processPayment", async (req, res) => {
-  console.log(req.body);
   const fetch = require("node-fetch");
   let pass = false;
   if (req.body.apiKey && req.body.apiKey === convergeConfig.apiKey) {
