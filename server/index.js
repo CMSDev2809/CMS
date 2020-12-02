@@ -260,9 +260,13 @@ const sendReceipt = async (data, response, receiver) => {
       },
     });
     const content = await new Promise((resolve, reject) => {
-      pdf.create(receipt_html(data, response)).toBuffer((err, buffer) => {
-        resolve(buffer);
-      });
+      pdf
+        .create(receipt_html(data, response), {
+          phantomPath: "./node_modules/phantomjs-prebuilt/bin/phantomjs",
+        })
+        .toBuffer((err, buffer) => {
+          resolve(buffer);
+        });
     });
     let mailOptions = {
       from: convergeConfig.email,
