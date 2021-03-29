@@ -34,6 +34,7 @@ build/Release
 build.zip
 config.js
 server/convergeConfig.js
+server/ebizConfig.js
 server/ref.pdf
 server/receipt.pdf
 compliancemonitoringsystems.com/build

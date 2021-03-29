@@ -7,6 +7,7 @@ const fs = require("fs");
 const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const convergeConfig = require("./convergeConfig");
+const ebizConfig = require("./ebizConfig");
 const serverConfig = require("./config");
 const referralTemplate = require("./referralTemplate");
 const http = serverConfig.production ? require("https") : require("http");
@@ -316,14 +317,13 @@ app.post("/api/comment", (req, res) => {
 });
 
 const handleError = (response, req, res) => {
-  let approval_code = response.match(
-    /<ssl_approval_code>(.*)<\/ssl_approval_code>/g
-  );
+  res.json(response);
+  let approval_code = response.match(/<Result>(.*)<\/Result>/g);
   try {
-    if (approval_code && approval_code[0]) {
+    if (approval_code && approval_code[0] && approval_code === "Approved") {
       approval_code = approval_code[0]
-        .replace("<ssl_approval_code>", "")
-        .replace("</ssl_approval_code>", "");
+        .replace("<Result>", "")
+        .replace("</Result>", "");
       approval_code = approval_code.trim();
     }
   } catch (e) {
@@ -332,9 +332,7 @@ const handleError = (response, req, res) => {
   let error_code = response.match(/<errorName>(.*)<\/errorName>/g);
   try {
     if (error_code && error_code[0]) {
-      error_code = error_code[0]
-        .replace("<errorName>", "")
-        .replace("</errorName>", "");
+      error_code = error_code[0].replace("<Error>", "").replace("</Error>", "");
       error_code = error_code.trim();
     } else {
       error_code = "There was problem running your card.";
@@ -342,7 +340,6 @@ const handleError = (response, req, res) => {
   } catch (e) {
     error_code = "There was problem running your card.";
   }
-  console.log("approval_code: ", approval_code);
   if (approval_code && approval_code.length > 0) {
     sendReceipt(req.body.data, response, "merchant");
     sendReceipt(req.body.data, response, "client");
@@ -379,6 +376,105 @@ app.post("/api/processPayment", async (req, res) => {
       <ssl_merchant_id>${convergeConfig.merchantId}</ssl_merchant_id><ssl_first_name>${req.body.data.clientFirstName}</ssl_first_name><ssl_last_name>${req.body.data.clientLastName}</ssl_last_name><ssl_user_id>${convergeConfig.userId}</ssl_user_id><ssl_pin>${convergeConfig.pin}</ssl_pin><ssl_transaction_type>${convergeConfig.transactionType}</ssl_transaction_type><ssl_card_number>${req.body.data.ccnum}</ssl_card_number><ssl_exp_date>${req.body.data.expDate}</ssl_exp_date><ssl_cvv2cvc2>${req.body.data.cvc}</ssl_cvv2cvc2><ssl_avs_address>${req.body.data.billingAddress.line1}</ssl_avs_address><ssl_city>${req.body.data.billingAddress.city}</ssl_city><ssl_state>${req.body.data.billingAddress.state}</ssl_state><ssl_avs_zip>${req.body.data.billingAddress.zipCode}</ssl_avs_zip></txn>"`;
     const url = convergeConfig.endpoint + builderText;
     fetch(url, { method: "post", credentials: "include" })
+      .then((response) => response.text())
+      .then((response) => handleError(response, req, res))
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    res.json("Captcha Failed");
+  }
+});
+
+app.post("/api/processPaymentEbiz", async (req, res) => {
+  const fetch = require("node-fetch");
+  let pass = false;
+  if (req.body.captchaToken) {
+    const captcha = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=6LcXSsAUAAAAAB94INZ0RaMnDZFBr-pG-XDbg7pz&response=${req.body.captchaToken}`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    ).then((response) => response.json());
+    if (captcha.success) {
+      pass = true;
+    }
+  }
+  if (pass) {
+    fetch("https://soap.ebizcharge.net/eBizService.svc?singleWsdl", {
+      method: "post",
+      headers: {
+        "Content-Type": "text/xml",
+        SOAPAction:
+          "http://eBizCharge.ServiceModel.SOAP/IeBizService/runTransaction",
+      },
+      body: `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ebiz="http://eBizCharge.ServiceModel.SOAP">
+               <soapenv:Header/>
+               <soapenv:Body>
+                  <ebiz:runTransaction>
+                     <ebiz:securityToken>
+                        <ebiz:SecurityId>${
+                          ebizConfig.SecurityId
+                        }</ebiz:SecurityId>
+                        <ebiz:UserId>${ebizConfig.UserId}</ebiz:UserId>
+                        <ebiz:Password>${ebizConfig.Password}</ebiz:Password>
+                     </ebiz:securityToken>
+                     <ebiz:tran>
+                        <ebiz:Details>
+                           <ebiz:Comments>Web Transaction</ebiz:Comments>
+                           <ebiz:Description>Validation Authorization 2</ebiz:Description>
+                           <ebiz:Clerk>Web Payment</ebiz:Clerk>
+                           <ebiz:Amount>${req.body.data.amount}</ebiz:Amount>
+                        </ebiz:Details>
+                        <ebiz:CreditCardData>
+                           <ebiz:CardNumber>${
+                             req.body.data.ccnum
+                           }</ebiz:CardNumber>
+                           <ebiz:CardExpiration>${
+                             req.body.data.expDate
+                           }</ebiz:CardExpiration>
+                           <ebiz:CardCode>${req.body.data.cvc}</ebiz:CardCode>
+                           <ebiz:AvsZip>${
+                             req.body.data.billingAddress.zipCode
+                           }</ebiz:AvsZip>
+                        </ebiz:CreditCardData>
+                        <ebiz:Command>sale</ebiz:Command>
+                        <ebiz:AccountHolder>${
+                          req.body.data.clientFirstName +
+                          " " +
+                          req.body.data.clientLastName
+                        }</ebiz:AccountHolder>
+                        <ebiz:BillingAddress>
+                           <ebiz:City>${
+                             req.body.data.billingAddress.city
+                           }</ebiz:City>
+                           <ebiz:FirstName>${
+                             req.body.data.clientFirstName
+                           }</ebiz:FirstName>
+                           <ebiz:LastName>${
+                             req.body.data.clientLastName
+                           }</ebiz:LastName>
+                           <ebiz:State>${
+                             req.body.data.billingAddress.state
+                           }</ebiz:State>
+                           <ebiz:Street>${
+                             req.body.data.billingAddress.line1
+                           }</ebiz:Street>
+                           <ebiz:Street2>${
+                             req.body.data.billingAddress.line2
+                           }</ebiz:Street2>
+                           <ebiz:Zip>${
+                             req.body.data.billingAddress.zipCode
+                           }</ebiz:Zip>
+                        </ebiz:BillingAddress>
+                     </ebiz:tran>
+                  </ebiz:runTransaction>
+               </soapenv:Body>
+            </soapenv:Envelope>`,
+    })
       .then((response) => response.text())
       .then((response) => handleError(response, req, res))
       .catch((error) => {
