@@ -1,2 +1,2 @@
 # CMS
-Collection of websites and utility softwares.
+Collection of websites and utility software.
