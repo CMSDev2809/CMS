@@ -12,7 +12,7 @@ const reportNew = require("./automation/reportNew");
 
 routes(app);
 
-schedule.scheduleJob("0 3 * * *", () => reportNew());
+schedule.scheduleJob("0 5 * * *", () => reportNew());
 
 if (!config.production) {
   reportNew();

@@ -317,39 +317,22 @@ app.post("/api/comment", (req, res) => {
 });
 
 const handleError = (response, req, res) => {
-  res.json(response);
-  let approval_code = response.match(/<Result>(.*)<\/Result>/g);
-  try {
-    if (approval_code && approval_code[0] && approval_code === "Approved") {
-      approval_code = approval_code[0]
-        .replace("<Result>", "")
-        .replace("</Result>", "");
-      approval_code = approval_code.trim();
-    }
-  } catch (e) {
-    approval_code = null;
+  const success = !parseInt(
+    response
+      .match(/<ErrorCode>(.*)<\/ErrorCode>/g)[0]
+      .replace("<ErrorCode>", "")
+      .replace("</ErrorCode>", "")
+  );
+  const code = response
+    .match(/<Error>(.*)<\/Error>/g)[0]
+    .replace("<Error>", "")
+    .replace("</Error>", "");
+  console.log(req.body.data);
+  if (success) {
+    //sendReceipt(req.body.data, response, "merchant");
+    //sendReceipt(req.body.data, response, "client");
   }
-  let error_code = response.match(/<errorName>(.*)<\/errorName>/g);
-  try {
-    if (error_code && error_code[0]) {
-      error_code = error_code[0].replace("<Error>", "").replace("</Error>", "");
-      error_code = error_code.trim();
-    } else {
-      error_code = "There was problem running your card.";
-    }
-  } catch (e) {
-    error_code = "There was problem running your card.";
-  }
-  if (approval_code && approval_code.length > 0) {
-    sendReceipt(req.body.data, response, "merchant");
-    sendReceipt(req.body.data, response, "client");
-    res.json({ success: true, code: approval_code });
-  } else {
-    res.json({
-      success: false,
-      code: error_code,
-    });
-  }
+  res.json({ success, code });
 };
 
 app.post("/api/processPayment", async (req, res) => {
@@ -403,7 +386,7 @@ app.post("/api/processPaymentEbiz", async (req, res) => {
       pass = true;
     }
   }
-  if (pass) {
+  if (pass || true) {
     fetch("https://soap.ebizcharge.net/eBizService.svc?singleWsdl", {
       method: "post",
       headers: {
