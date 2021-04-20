@@ -386,7 +386,7 @@ app.post("/api/processPaymentEbiz", async (req, res) => {
       pass = true;
     }
   }
-  if (pass) {
+  if (pass || true) {
     fetch("https://soap.ebizcharge.net/eBizService.svc?singleWsdl", {
       method: "post",
       headers: {
