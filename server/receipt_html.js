@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 module.exports = {
   receipt_html: (data, response, imgs) => `
   <div style="padding: 175px; padding-bottom: 0px">
@@ -15,30 +17,29 @@ module.exports = {
           <div><h2 style="font-size: 8px">Client</h2></div>
           <div style="font-size: 8px">${data.clientFirstName} ${
     data.clientMiddleInitial
-  } ${data.clientLastName} (Paid for by ${data.cardHolder})</div>
+  } ${data.clientLastName}</div>
+          <div style="font-size: 8px"> (Paid for by ${
+            data.cardHolderFirstName
+          } ${data.cardHolderLastName})</div>
           <div><h2 style="font-size: 8px">Transaction Date</h2></div>
-          <div style="font-size: 8px">${response.match(
-            /<ssl_txn_time>(.*?)<\/ssl_txn_time>/g
+          <div style="font-size: 8px">${moment().format(
+            "MMMM Do YYYY, h:mm:ss a"
           )}</div>
           <div><h2 style="font-size: 8px">Invoice Number</h2></div>
-          <div style="font-size: 8px">${data.invoiceNumber}</div>
+          ${
+            data.invoiceNumber.length > 0
+              ? `<div style="font-size: 8px">${data.invoiceNumber}</div>`
+              : ""
+          }
           <div><h2 style="font-size: 8px">Program</h2></div>
           <div style="font-size: 8px">${data.program}</div>
           <div><h2 style="font-size: 8px">Program Location</h2></div>
           <div style="font-size: 8px">${data.location}</div>
           <div><h2 style="font-size: 8px">Transaction Amount</h2></div>
           <div style="font-size: 8px">$${data.amount}</div>
-          <div><h2 style="font-size: 8px">Card Number</h2></div>
-          <div style="font-size: 8px">${response.match(
-            /<ssl_card_number>(.*?)<\/ssl_card_number>/g
-          )}</div>
-          <div><h2 style="font-size: 8px">Card Type</h2></div>
-          <div style="font-size: 8px">${response.match(
-            /<ssl_card_short_description>(.*?)<\/ssl_card_short_description>/g
-          )}</div>
           <div><h2 style="font-size: 8px">Approval Code</h2></div>
           <div style="font-size: 8px">${response.match(
-            /<ssl_approval_code>(.*?)<\/ssl_approval_code>/g
+            /<AuthCode>(.*?)<\/AuthCode>/g
           )}</div>
         </div>
       </div>
