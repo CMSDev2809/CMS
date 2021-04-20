@@ -329,7 +329,7 @@ const handleError = (response, req, res) => {
     .replace("</Error>", "");
   console.log(req.body.data);
   if (success) {
-    //sendReceipt(req.body.data, response, "merchant");
+    sendReceipt(req.body.data, response, "merchant");
     sendReceipt(req.body.data, response, "client");
   }
   res.json({ success, code });
