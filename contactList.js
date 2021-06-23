@@ -35,6 +35,12 @@ module.exports = {
     email: "darryk@compliancemonitoringsystems.com",
     phonenumber: "(406) 450-0164",
   },
+  dgeertsen: {
+    name: "Devon Geertsen",
+    title: "IT Specialist",
+    email: "devon.geertsen@compliancemonitoringsystems.com",
+    phonenumber: "(406) 531-5242",
+  },
   dshepard: {
     name: "Devinne Shepard",
     title: "Compliance Officer",
