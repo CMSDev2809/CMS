@@ -55,7 +55,7 @@
     "react-animated-slider": "^1.1.4",
     "react-bootstrap": "^0.31.5",
     "react-credit-cards": "^0.7.0",
-    "react-dev-utils": "^4.2.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.1.1",
     "react-draggable-list": "^3.4.1",
     "react-dropzone": "^4.2.9",
