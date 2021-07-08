@@ -5,6 +5,12 @@ module.exports = {
     email: "austin@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789",
   },
+   aebner: {
+    name: "Austin Ebner",
+    title: "Compliance Officer",
+    email: "austin.ebner@compliancemonitoringsystems.com",
+    phonenumber: "(406)529-1789",
+  }, 
   ajohanneck: {
     name: "Amber Johanneck",
     title: "24/7 Technician",
@@ -17,6 +23,12 @@ module.exports = {
     email: "amber@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789",
   },
+  aprochet: {
+    name: "Ashley Prochet",
+    title: "Compliance Officer",
+    email: "ashley.prochet@compliancemonitoringsystems.com",
+    phonenumber: "(406)529-1789",
+  }, 
   blavanway: {
     name: "Barry LaVanway",
     title: "Compliance Officer",
@@ -58,6 +70,12 @@ module.exports = {
     title: "Compliance Officer",
     email: "cynthia.hopkins@compliancemonitoringsystems.com",
     phonenumber: "(406) 214-9927",
+  },
+    cwright: {
+    name: "Christopher Wright",
+    title: "Compliance Officer",
+    email: "christopher.wright@compliancemonitoringsystems.com",
+    phonenumber: "(406) 393-2455",
   },
   hroos: {
     name: "Heather Roos",
@@ -101,6 +119,12 @@ module.exports = {
     email: "joe@compliancemonitoringsystems.com",
     phonenumber: "(406) 370-5262",
   },
+   jshelman: {
+    name: "John Shelman",
+    title: "Compliance Officer",
+    email: "john.shelman@compliancemonitoringsystems.com",
+    phonenumber: "(406) 315-3242",
+  },
   jtarbert: {
     name: "Jodine Tarbert",
     title: "Chief Executive Officer / Owner",
@@ -140,7 +164,7 @@ module.exports = {
   mtamol: {
     name: "Mindi Tamol",
     title: "Administrative Specialist",
-    email: "mtamol@compliancemonitoringsystems.com",
+    email: "mindi.tamol@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789",
   },
   olapka: {
@@ -166,6 +190,12 @@ module.exports = {
     title: "Monitoring Center Supervisor",
     email: "tiffany@compliancemonitoringsystems.com",
     phonenumber: "(406) 493-4540",
+  },
+    tfranke: {
+    name: "Trina Franke",
+    title: "Client Account Services",
+    email: "trina.franke@compliancemonitoringsystems.com ",
+    phonenumber: "(406) 370-4806",
   },
   tstrub: {
     name: "Tate Strub",
