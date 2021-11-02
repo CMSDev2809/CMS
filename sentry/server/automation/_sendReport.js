@@ -69,7 +69,7 @@ module.exports = async (accessionId, totalItems) => {
       async (to) =>
         await new Promise((resolve, reject) =>
           _mailFunc(
-            config.production ? to : "broc@compliancemonitoringsystems.com",
+            config.production ? to : config.testingAddress,
             metaData,
             content,
             resolve,
@@ -81,7 +81,7 @@ module.exports = async (accessionId, totalItems) => {
   } else {
     const errorContacts = config.production
       ? config.errorContacts
-      : ["broc@compliancemonitoringsystems.com"];
+      : [config.testingAddress];
     await errorContacts.map(
       async (to) =>
         new Promise((resolve, reject) =>
