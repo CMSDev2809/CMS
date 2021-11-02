@@ -47,9 +47,6 @@ class NavBar extends Component {
         <Link to={"/contact"}>
           <Button>Contact</Button>
         </Link>
-        <Link to={"/referral"}>
-          <Button>Refer a Client</Button>
-        </Link>
         <Link to={"/pay"}>
           <Button>Pay Online</Button>
         </Link>
@@ -132,14 +129,6 @@ class NavBar extends Component {
               </Link>
             </div>
             <div>
-              <Link to={"/referral"}>
-                <Button
-                  style={{ width: "175px", marginBottom: "3px" }}
-                  onClick={() => this.props.setNavModal(false)}
-                >
-                  Refer a Client
-                </Button>
-              </Link>
             </div>
             <div>
               <Link to={"/pay"}>
