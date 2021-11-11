@@ -21,3 +21,5 @@ if (!config.production) {
 app.listen(config.port, () =>
   console.log(`Sentry listening on port ${config.port}!`)
 );
+
+app.get(`/sentrystatus`, (req,res) => res.json("Sentry is running!"))
