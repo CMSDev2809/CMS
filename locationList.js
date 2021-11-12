@@ -394,7 +394,7 @@ module.exports = {
       Contacts.anealey,
 	  Contacts.aprochet,
       Contacts.aalt,
-	  Contacts:aebner,
+	  Contacts.aebner,
 	  Contacts.dgeertsen,
       Contacts.jhenry,
       Contacts.jtarbert,
