@@ -203,7 +203,7 @@ module.exports = {
     email: "raquel@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1213",
   },
-   rmurhpy: {
+   rmurphy: {
     name: "Ross Murphy",
     title: "Team Lead",
     email: "ross.murphy@compliancemonitoringsystems.com",
@@ -231,7 +231,7 @@ module.exports = {
     name: "Tysen Sigglin",
     title: "Compliance Officer",
     email: "tysen.sigglin@compliancemonitoringsystems.com",
-    phonenumber: "(406)315-3241",
+    phonenumber: "(406) 315-3241",
   },
   wwolfe: {
     name: "William Wolfe",
