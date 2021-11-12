@@ -191,7 +191,7 @@ module.exports = {
       Contacts.jshelman,
       Contacts.mrose,
 	  Contacts.rmurphy,
-	  Contacts.tsigglin
+	  Contacts.tsigglin,
     ],
   },
   hamilton: {

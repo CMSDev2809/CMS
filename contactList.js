@@ -179,7 +179,7 @@ module.exports = {
     email: "mindi.tamol@compliancemonitoringsystems.com",
     phonenumber: "(406) 529-1789",
   },
- mtibbertts: {
+  mtibbertts: {
     name: "Michael Tibbertts",
     title: "Team Lead",
     email: "michael.tibbertts@compliancemonitoringsystems.com",
@@ -227,7 +227,7 @@ module.exports = {
     email: "tate@compliancemonitoringsystems.com",
     phonenumber: "(406) 853-4449",
   },
-    tsigglin: {
+  tsigglin: {
     name: "Tysen Sigglin",
     title: "Compliance Officer",
     email: "tysen.sigglin@compliancemonitoringsystems.com",
