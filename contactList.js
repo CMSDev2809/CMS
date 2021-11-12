@@ -54,7 +54,7 @@ module.exports = {
     phonenumber: "(406) 450-0164",
   },
   dgeertsen: {
-    name: "Devolon Geertsen",
+    name: "Devon Geertsen",
     title: "IT Specialist",
     email: "devon.geertsen@compliancemonitoringsystems.com",
     phonenumber: "(406) 531-5242",

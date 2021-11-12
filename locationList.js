@@ -191,7 +191,7 @@ module.exports = {
       Contacts.jshelman,
       Contacts.mrose,
 	  Contacts.rmurphy,
-	  Contacts.tsigglin,
+	  Contacts.tsigglin
     ],
   },
   hamilton: {
@@ -281,7 +281,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [Contacts.jwallace,Contacts.mtibbertts,Contacts.mkimmel],
+    contacts: [Contacts.jwallace,Contacts.mtibbertts,Contacts.mkimmel]
   },
   lewistown: {
     locationName: "Lewistown",
@@ -391,10 +391,11 @@ module.exports = {
       "hair_follicle",
     ],
     contacts: [
-      Contacts.aalt,
-	  Contacts.aprochet,
       Contacts.anealey,
-      Contacts.dgeertsen,
+	  Contacts.aprochet,
+      Contacts.aalt,
+	  Contacts:aebner,
+	  Contacts.dgeertsen,
       Contacts.jhenry,
       Contacts.jtarbert,
       Contacts.jsickels,
