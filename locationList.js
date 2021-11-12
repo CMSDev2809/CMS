@@ -281,7 +281,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [Contacts.jwallace,Contacts.mtibbertts,Contacts.mkimmel]
+    contacts: [Contacts.jwallace,Contacts.mtibbertts,Contacts.mkimmel],
   },
   lewistown: {
     locationName: "Lewistown",
