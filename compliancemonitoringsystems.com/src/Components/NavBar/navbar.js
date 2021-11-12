@@ -47,9 +47,9 @@ class NavBar extends Component {
         <Link to={"/contact"}>
           <Button>Contact</Button>
         </Link>
-      /*<Link to={"/referral"}>
+        <Link to={"/referral"}>
           <Button>Refer a Client</Button>
-        </Link>*/ 
+        </Link> 
         <Link to={"/pay"}>
           <Button>Pay Online</Button>
         </Link>
