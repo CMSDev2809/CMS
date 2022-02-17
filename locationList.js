@@ -187,11 +187,11 @@ module.exports = {
       "pbt",
     ],
     contacts: [
-      Contacts.ajohanneck,
       Contacts.chopkins,
       Contacts.jshelman,
       Contacts.mrose,
-      Contacts.wwolfe,
+	  Contacts.rmurphy,
+	  Contacts.tsigglin,
     ],
   },
   hamilton: {
@@ -281,7 +281,7 @@ module.exports = {
       "alcohol_monitoring_discretion",
       "hair_follicle",
     ],
-    contacts: [Contacts.blavanway, Contacts.cwright, Contacts.mhills, Contacts.mkimmel],
+    contacts: [Contacts.jwallace,Contacts.mtibbertts,Contacts.mkimmel],
   },
   lewistown: {
     locationName: "Lewistown",
@@ -391,9 +391,11 @@ module.exports = {
       "hair_follicle",
     ],
     contacts: [
-      Contacts.aalt,
       Contacts.anealey,
-      Contacts.dgeertsen,
+	  Contacts.aprochet,
+      Contacts.aalt,
+	  Contacts.aebner,
+	  Contacts.dgeertsen,
       Contacts.jhenry,
       Contacts.jtarbert,
       Contacts.jsickels,
@@ -441,7 +443,7 @@ module.exports = {
       "house_arrest",
       "alcohol_monitoring_discretion",
     ],
-    contacts: [Contacts.gjacobson, Contacts.jclairmont],
+    contacts: [Contacts.aibsen,Contacts.gjacobson, Contacts.jclairmont],
   },
   thompson_falls: {
     locationName: "Thompson Falls",
