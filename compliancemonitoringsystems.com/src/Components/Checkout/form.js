@@ -1265,6 +1265,7 @@ class Form extends Component {
 
   readyCheck() {
     if (
+      this.state.captcha &&
       this.state.clientFirstName.length > 0 &&
       this.state.clientLastName.length > 0 &&
       this.state.selectService !== "Select a Program..." &&
@@ -1300,6 +1301,7 @@ class Form extends Component {
         <Recaptcha
           sitekey={CAPTCHA_KEY}
           verifyCallback={(captcha) => {
+            console.log(captcha)
             this.setState({ captcha });
           }}
           expiredCallback={() => this.setState({ captcha: null })}
