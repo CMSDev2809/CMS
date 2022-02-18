@@ -5,7 +5,7 @@ const path = require("path");
 const pdf = require("html-pdf");
 const fs = require("fs");
 const multer = require("multer");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 const convergeConfig = require("./convergeConfig");
 const ebizConfig = require("./ebizConfig");
 const serverConfig = require("./config");
@@ -371,10 +371,9 @@ const handleError = (response, req, res) => {
 
 app.post("/api/processPaymentEbiz", async (req, res) => {
   const fetch = require("node-fetch");
-  let pass = false;
   if (req.body.captchaToken) {
     const captcha = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=6LcXSsAUAAAAAB94INZ0RaMnDZFBr-pG-XDbg7pz&response=${req.body.captchaToken}`,
+      `https://www.google.com/recaptcha/api/siteverify?secret=6LcXSsAUAAAAAICzcfA5adl9d5nFgVOr4PuF0D5A&response=${req.body.captchaToken}`,
       {
         method: "post",
         headers: {
@@ -382,11 +381,8 @@ app.post("/api/processPaymentEbiz", async (req, res) => {
         },
       }
     ).then((response) => response.json());
-    if (captcha.success) {
-      pass = true;
-    }
   }
-  if (pass || true) {
+  if (captcha && captcha.success) {
     fetch("https://soap.ebizcharge.net/eBizService.svc?singleWsdl", {
       method: "post",
       headers: {
