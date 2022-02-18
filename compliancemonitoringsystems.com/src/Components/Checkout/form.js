@@ -1201,7 +1201,6 @@ class Form extends Component {
   submitTransaction() {
     this.props.setTransactionStatus("busy");
     this.setState({ showModal: true });
-    alert(this.state.captcha)
     fetch(`${config.api}/api/processPaymentEbiz`, {
       method: "post",
       headers: {
