@@ -327,7 +327,6 @@ const handleError = (response, req, res) => {
     .match(/<Error>(.*)<\/Error>/g)[0]
     .replace("<Error>", "")
     .replace("</Error>", "");
-  console.log(req.body.data);
   if (success) {
     sendReceipt(req.body.data, response, "merchant");
     sendReceipt(req.body.data, response, "client");
@@ -371,9 +370,10 @@ const handleError = (response, req, res) => {
 
 app.post("/api/processPaymentEbiz", async (req, res) => {
   const fetch = require("node-fetch");
+  let captcha;
   if (req.body.captchaToken) {
-    const captcha = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=6LcXSsAUAAAAAICzcfA5adl9d5nFgVOr4PuF0D5A&response=${req.body.captchaToken}`,
+    captcha = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=6LcXSsAUAAAAAB94INZ0RaMnDZFBr-pG-XDbg7pz&response=${req.body.captchaToken}`,
       {
         method: "post",
         headers: {
@@ -459,6 +459,9 @@ app.post("/api/processPaymentEbiz", async (req, res) => {
       .catch((error) => {
         console.log(error);
       });
+  } else if (captcha) {
+    console.log(captcha['error-codes'])
+    res.json(captcha['error-codes']);
   } else {
     res.json("Captcha Failed");
   }
