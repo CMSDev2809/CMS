@@ -53,7 +53,7 @@
     "rc-slider": "^8.7.1",
     "react": "^17.0.2",
     "react-animated-slider": "^1.1.4",
-    "react-bootstrap": "^0.31.5",
+    "react-bootstrap": "^0.33.1",
     "react-credit-cards": "^0.7.0",
     "react-dev-utils": "^4.2.3",
     "react-dom": "^17.0.2",
