@@ -28,9 +28,6 @@ function emptyCache() {
 				caches.delete(name);
 			});
 		});
-
-		// Makes sure the page reloads. Changes are only visible after you refresh.
-		window.location.reload(true);
 	}
 }
 
