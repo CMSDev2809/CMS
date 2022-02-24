@@ -20,23 +20,8 @@ import News from "./Components/News/news";
 //import News from "./Components/News/glide";
 import { history } from "./store";
 
-function emptyCache() {
-	if ("caches" in window) {
-		caches.keys().then((names) => {
-			// Delete all the cache files
-			names.forEach((name) => {
-				caches.delete(name);
-			});
-		});
-
-		// Makes sure the page reloads. Changes are only visible after you refresh.
-		window.location.reload(true);
-	}
-}
-
 export default class App extends Component {
 	render() {
-		emptyCache();
 		return (
 			<Router history={history}>
 				<div>
