@@ -1,7 +1,7 @@
 module.exports = {
 	headerHTML: `<div style="padding: 20px;">
     <center style="margin-bottom: 20px;">
-      <img src="http://192.163.204.58/images/img2.png" style="width: 75px;float: left;margin-right: -75px;margin-left: 15px;" >
+      <img src="https://compliancemonitoringsystems.com/static/media/img.18fd2225.png" style="width: 75px;float: left;margin-right: -75px;margin-left: 15px;" >
       <h1 style="font-size: 15px;">Compliance Monitoring Systems, LLC</h1>
       <h2 style="font-size: 8px;">2809 Great Northern Loop, Suite 200</h2>
       <h2 style="font-size: 8px;">Missoula, Montana 59808</h2>
