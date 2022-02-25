@@ -71,6 +71,7 @@ const subHTML = (html1, html2, data) => {
 	html = html.replace("&date&", data.gridValues.date);
 	html = html.replace("&name&", data.gridValues.name);
 	html = html.replace("&pn&", data.gridValues.phoneNumber);
+	html = html.replace("&county&", data.gridValues.county);
 	html = html.replace("&address&", data.gridValues.address);
 	html = html.replace("&charges&", data.gridValues.charges);
 	html = html.replace("&cn&", data.gridValues.caseNumber);
