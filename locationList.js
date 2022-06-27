@@ -187,11 +187,11 @@ module.exports = {
 			"pbt",
 		],
 		contacts: [
+			Contacts.blathrop,
 			Contacts.jshelman,
 			Contacts.mrose,
 			Contacts.rmurphy,
 			Contacts.tsigglin,
-			Contacts.blathrop,
 		],
 	},
 	hamilton: {
@@ -282,10 +282,10 @@ module.exports = {
 			"hair_follicle",
 		],
 		contacts: [
-			Contacts.mtibbetts,
-			Contacts.mkimmel,
-			Contacts.jtschida,
 			Contacts.bhumphreys,
+			Contacts.jtschida,
+			Contacts.mkimmel,
+			Contacts.mtibbetts,
 		],
 	},
 	lewistown: {
@@ -396,6 +396,7 @@ module.exports = {
 			"hair_follicle",
 		],
 		contacts: [
+			Contacts.aallen,
 			Contacts.anealey,
 			Contacts.aprochet,
 			Contacts.aalt,
