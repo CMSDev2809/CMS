@@ -383,6 +383,7 @@ app.post("/api/processPaymentEbiz", async (req, res) => {
 			}
 		).then((response) => response.json());
 	}
+	console.log(req.body.data.billingAddress);
 	if (captcha && captcha.success) {
 		fetch("https://soap.ebizcharge.net/eBizService.svc?singleWsdl", {
 			method: "post",
