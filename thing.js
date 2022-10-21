@@ -1,1 +1,0 @@
-const var = `https://slack.com/oauth/v2/authorize?client_id=1444428325829.1447739266787&scope=app_mentions:read+channels:history+chat:write+chat:write.public+commands+incoming-webhook+users:write&user_scope=chat:write`;
