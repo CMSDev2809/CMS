@@ -141,6 +141,7 @@ class FormFields extends Component {
 				c9: false,
 				c10: false,
 				c11: false,
+				c12: false,
 			},
 			services247: {
 				c1: false,
@@ -692,7 +693,7 @@ class FormFields extends Component {
 											checked={this.state.supervisionServices.c2}
 										/>
 										<h2>
-											SCRAM CAM Alcohol Monitoring $300/mo ($50 Install fee){" "}
+											SCRAM CAM Alcohol Monitoring $330/mo ($50 Install fee){" "}
 											<b>Continuous Alcohol Monitoring 48 tests/day</b>
 										</h2>
 									</div>
@@ -709,7 +710,7 @@ class FormFields extends Component {
 											checked={this.state.supervisionServices.c3}
 										/>
 										<h2>
-											SCRAM Alcohol Monitoring <b>w/ House Arrest</b> $300/mo
+											SCRAM Alcohol Monitoring <b>w/ House Arrest</b> $330/mo
 											($50 Install fee) landline OR Ethernet capability
 										</h2>
 									</div>
@@ -726,7 +727,7 @@ class FormFields extends Component {
 											checked={this.state.supervisionServices.c4}
 										/>
 										<h2>
-											SCRAM Remote Breath: $210/mo ($50 Install Fee){" "}
+											SCRAM Remote Breath: $240/mo ($50 Install Fee){" "}
 											<b>
 												Frequency:{" "}
 												<InputGroup
@@ -769,7 +770,7 @@ class FormFields extends Component {
 												checked={this.state.supervisionServices.c5}
 											/>
 											<h2>
-												House Arrest – $10/day ($50 Install fee)
+												House Arrest – $10 - $13/day ($50 Install fee)
 												cellular/Ethernet/landline/GPS Satellite
 											</h2>
 										</div>
@@ -906,7 +907,7 @@ class FormFields extends Component {
 											<h2>
 												GPS Bracelet Tracking <b>(active)</b>{" "}
 												<i>
-													$360/mo ($50 Install fee) This GPS rate pertains to
+													$390/mo ($50 Install fee) This GPS rate pertains to
 													immediate response to strap and exclusion zone
 													violations, clients with victims are at this rate.
 												</i>{" "}
@@ -991,6 +992,22 @@ class FormFields extends Component {
 											PharmChem Drug Patch (2-14 days) Cocaine, Opiates,
 											Amphetamines/Methamphetamine, PCP, THC -{" "}
 											<i>$70/patch ($50 Install fee)</i>
+										</h2>
+									</div>
+								</div>
+							) : null}
+							{this.state.availableServices.includes("drug_patch") ? (
+								<div>
+									<div style={{ display: "inline-flex" }}>
+										<Checkbox
+											bsClass="checkBox"
+											postClick={() =>
+												this.updateCheckbox("supervisionServices", "c12")
+											}
+											checked={this.state.supervisionServices.c12}
+										/>
+										<h2>
+											PharmChem Drug Patch Fentanyl panel add on - <i>$10</i>
 										</h2>
 									</div>
 								</div>

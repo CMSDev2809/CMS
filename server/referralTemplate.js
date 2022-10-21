@@ -71,16 +71,16 @@ module.exports = {
 	supervisionServices: `
      <div style="margin-top: 30px">
      <h2 style="font-size: 8px;">&cmsd& Alcohol monitoring - CMS Discretion</h2>
-       <h2 style="font-size: 8px;">&247& 24/7 SCRAM Alcohol Monitoring $300/mo ($50 Install fee) Continuous Alcohol Monitoring 48 tests/day</h2>
-       <h2 style="font-size: 8px;">&sha& SCRAM Alcohol Monitoring w/ House Arrest $300/mo ($50 Install fee) landline OR Ethernet capability</h2>
-       <h2 style="font-size: 8px;">&srb& SCRAM Remote Breath: $210/mo ($50 Install Fee) Frequency: &freq&x/day</h2>
-       <h2 style="font-size: 8px;">&ha& House Arrest – $10/day ($50 Install fee) cellular/Ethernet/landline/GPS Satellite</h2>
+       <h2 style="font-size: 8px;">&247& SCRAM Alcohol Monitoring $330/mo ($50 Install fee) Continuous Alcohol Monitoring 48 tests/day</h2>
+       <h2 style="font-size: 8px;">&sha& SCRAM Alcohol Monitoring w/ House Arrest $330/mo ($50 Install fee) landline OR Ethernet capability</h2>
+       <h2 style="font-size: 8px;">&srb& SCRAM Remote Breath: $240/mo ($50 Install Fee) Frequency: &freq&x/day</h2>
+       <h2 style="font-size: 8px;">&ha& House Arrest – $10 - $13/day ($50 Install fee) cellular/Ethernet/landline/GPS Satellite</h2>
        <h2 style="font-size: 8px;">Movement allowed for House Arrest: &ham1& NONE-Lockdown OR &ham2& Work &ham3& Treatment</h2>
        <h2 style="font-size: 8px;">&apt1& Medical Appt &apt2& Legal Appt &apt3& Religious Functions &apt4& All &apt5& Other &other&</h2>
        <h2 style="font-size: 8px;margin-left: 75px;">All House Arrest Movement verified by CMS</h2>
        <h2 style="font-size: 8px;">&gpsa& GPS Bracelet Tracking (active) $390/mo ($50 Install fee) This GPS rate pertains to immediate response to strap and exclusion zone violations, clients with victims are at this rate Order with restrictions is needed</h2>
-       <h2 style="font-size: 8px;">&gpsp& GPS Bracelet Tracking (passive) $300/mo ($50 Install fee) This GPS rate is for tracking purposes only and violations will be submitted within one (1) business day. Order with restrictions is required</h2>
        <h2 style="font-size: 8px;">&phmc& PharmChem Drug Patch (2-14 days) Cocaine, Opiates, Amphetamines/Methamphetamine, PCP, THC -$70/patch ($50 Install fee)</h2>
+       <h2 style="font-size: 8px;">&phmcf& PharmChem Drug Patch Fentanyl panel add on - $10</h2>
        <h2 style="font-size: 8px;">&hfdt& Hair Follicle Drug Testing - $95 for std. / $130 for extended</h2>
        <h2 style="font-size: 8px;">&ssua& Urinalysis drug testing &uaC& x / &wm&</h2>
      </div>
