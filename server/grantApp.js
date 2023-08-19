@@ -6,7 +6,7 @@ module.exports = (obj) => `
     <div style="padding: 20px;">
       <center style="margin-bottom: 20px;">
         <h1 style="font-size: 15px;">Community Supervision Services</h1>
-        <h2 style="font-size: 8px;">2809 Great Northern Loop, Suite 200</h2>
+        <h2 style="font-size: 8px;">2685 Palmer St Suite 2C</h2>
         <h2 style="font-size: 8px;">Missoula, Montana 59808</h2>
         <h2 style="font-size: 8px;">(406) 529-1789</h2>
         <h2 style="font-size: 8px;">Fax: (888) 855-7964</h2>

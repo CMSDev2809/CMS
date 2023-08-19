@@ -18,17 +18,19 @@ module.exports = {
 			"alcohol_monitoring_discretion",
 		],
 		contacts: [],
-	},
+	},v
 	bozeman: {
 		locationName: "Bozeman",
 		googleMapURI:
-			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.8320975827064!2d-111.06425688443551!3d45.674270879104064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534545af43e83bf5%3A0x965bedf946d36c8a!2s502%20S%2019th%20Ave%20%23301B%2C%20Bozeman%2C%20MT%2059718!5e0!3m2!1sen!2sus!4v1594073087644!5m2!1sen!2sus",
-		contactInformation: {
+			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.9560753564497!2d-111.0734444!3d45.671782099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534545a223303447%3A0xba974d770eff1284!2s2621%20W%20College%20St%2C%20Bozeman%2C%20MT%2059718!5e0!3m2!1sen!2sus!4v1692032462055!5m2!1sen!2sus",
+		
+
+contactInformation: {
 			officeNumber: "(406) 551-7880",
 		},
 		address: {
-			firstLine: "502 South 19th Avenue, Suite 301B",
-			secondLine: "Bozeman, MT 59718",
+			firstLine: "2621 West College Street Suite E",
+			secondLine: "Bozeman, MT 59715",
 		},
 		officeEmail: "gallatin@compliancemonitoringsystems.com",
 		services: [
@@ -375,13 +377,13 @@ module.exports = {
 	missoula: {
 		locationName: "Missoula",
 		googleMapURI:
-			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.970867494389!2d-114.0342496843944!3d46.88362167914331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535dce69786eff93%3A0xa7b30d27c94013f!2s2809+Great+Northern+Loop%2C+Missoula%2C+MT+59808!5e0!3m2!1sen!2sus!4v1502121395649",
+			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.8592789319287!2d-114.03098020000002!3d46.885816899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535dce69cd5ce6af%3A0xbaa65a5982d77ab5!2s2685%20Palmer%20St%20%232c%2C%20Missoula%2C%20MT%2059808!5e0!3m2!1sen!2sus!4v1692032564053!5m2!1sen!2sus",
 		contactInformation: {
 			officeNumber: "(406) 529-1789",
 			faxNumber: "(888) 855-7964",
 		},
 		address: {
-			firstLine: "2809 Great Northern Loop #200",
+			firstLine: "2685 Palmer Street Suite 2C",
 			secondLine: "Missoula, MT 59808",
 		},
 		officeEmail: "missoula@compliancemonitoringsystems.com",
