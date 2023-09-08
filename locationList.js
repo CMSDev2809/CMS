@@ -44,7 +44,7 @@ module.exports = {
 		contacts: [Contacts.jhyett, Contacts.jmathias],
 	},
 	butte: {
-		exclude: true,
+		
 		locationName: "Butte",
 		contactInformation: {
 			officeNumber: "",
