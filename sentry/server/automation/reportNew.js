@@ -9,6 +9,7 @@ const _reduce = async (arr, cb, violation, totalItems) => {
     console.log(`Mail Sent - Items remaining: ${arr.length}`);
     arr.shift();
     if (arr.length > 0) {
+      await new Promise((r) => setTimeout(r, 5000));
       return await _reduce(arr, cb, violation);
     }
   }
