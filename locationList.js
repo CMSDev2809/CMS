@@ -27,8 +27,8 @@ module.exports = {
 			officeNumber: "(406) 551-7880",
 		},
 		address: {
-			firstLine: "502 South 19th Avenue, Suite 301B",
-			secondLine: "Bozeman, MT 59718",
+			firstLine: "2621 West College Street Suite E",
+			secondLine: "Bozeman, MT 59715",
 		},
 		officeEmail: "gallatin@compliancemonitoringsystems.com",
 		services: [
@@ -44,12 +44,16 @@ module.exports = {
 		contacts: [Contacts.jhyett, Contacts.jmathias],
 	},
 	butte: {
-		exclude: true,
+		
 		locationName: "Butte",
 		contactInformation: {
-			officeNumber: "",
-		},
-		officeEmail: "",
+			officeNumber: "(406)370-4806",
+            },
+        address: {
+        firstLine: "501 E. Front Street Suite 504B",
+        secondLine: "Butte, MT 59701",
+    },
+    officeEmail: "Justin.Tardy@compliancemonitoringsystems.com",
 		services: [
 			"remote_breath",
 			"drug_patch",
@@ -59,7 +63,7 @@ module.exports = {
 			"house_arrest",
 			"alcohol_monitoring_discretion",
 		],
-		contacts: [],
+		contacts: [Contacts.jtardy],
 	},
 	choteau: {
 		exclude: true,
@@ -165,13 +169,13 @@ module.exports = {
 	great_falls: {
 		locationName: "Great Falls",
 		googleMapURI:
-			"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5390.446532090585!2d-111.303917!3d47.505043!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x534237ee0f90e2dd%3A0xe8a6000c3e77705e!2s200+Central+Ave%2C+Great+Falls%2C+MT+59401!5e0!3m2!1sen!2sus!4v1514020488988",
+			"https://goo.gl/maps/CK7c77erzPEim4Wh7",
 		contactInformation: {
-			officeNumber: "(406) 315-3241",
+			officeNumber: "(406)274-3089",
 			faxNumber: "(888) 855-7964",
 		},
 		address: {
-			firstLine: "200 Central Avenue, Suite A",
+			firstLine: "319 1st Avenue North",
 			secondLine: "Great Falls, MT 59401",
 		},
 		officeEmail: "cascade@compliancemonitoringsystems.com",
@@ -189,9 +193,9 @@ module.exports = {
 		contacts: [
 			Contacts.blathrop,
 			Contacts.jshelman,
-			Contacts.mrose,
 			Contacts.rmurphy,
 			Contacts.tsigglin,
+            Contacts.napierala
 		],
 	},
 	hamilton: {
@@ -284,8 +288,9 @@ module.exports = {
 		contacts: [
 			Contacts.bhumphreys,
 			Contacts.jtschida,
-			Contacts.mkimmel,
-			Contacts.mtibbetts,
+            Contacts.mhenry,
+            Contacts.tlavanway,
+            Contacts.athomas,
 		],
 	},
 	lewistown: {
@@ -381,7 +386,7 @@ module.exports = {
 			faxNumber: "(888) 855-7964",
 		},
 		address: {
-			firstLine: "2809 Great Northern Loop #200",
+			firstLine: "2685 Palmer Street Suite 2C",
 			secondLine: "Missoula, MT 59808",
 		},
 		officeEmail: "missoula@compliancemonitoringsystems.com",
@@ -397,15 +402,18 @@ module.exports = {
 		],
 		contacts: [
 			Contacts.aallen,
+            Contacts.sallen,
 			Contacts.anealey,
-			Contacts.aprochet,
+			Contacts.bhenderson,
+            Contacts.cvislay,
 			Contacts.aalt,
 			Contacts.aebner,
 			Contacts.jhenry,
 			Contacts.jtarbert,
 			Contacts.jsickels,
-			Contacts.lhenderson,
+			Contacts.llumley,
 			Contacts.tbenjamin,
+            Contacts.mwall,
 		],
 	},
 	other: {
