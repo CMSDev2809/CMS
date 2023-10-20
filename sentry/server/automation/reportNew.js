@@ -27,8 +27,10 @@ module.exports = async () => {
     },
   }).then((res) =>
     res
-      .map((el) => el.AccessionId._text)
-      .filter((id) => !_Util.SaveFile.read(id))
+      ? res
+          .map((el) => el.AccessionId._text)
+          .filter((id) => !_Util.SaveFile.read(id))
+      : undefined
   );
   if (accessionIds && accessionIds.length) {
     _Util.SaveFile.save(accessionIds);
@@ -39,9 +41,11 @@ module.exports = async () => {
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
   }).then((res) =>
-    res.filter(
-      (t) => !_Util.SaveFile.read(t.EnrolleeRecord.EnrolleeIVRCode._text)
-    )
+    res
+      ? res.filter(
+          (t) => !_Util.SaveFile.read(t.EnrolleeRecord.EnrolleeIVRCode._text)
+        )
+      : undefined
   );
   await new Promise((r) => setTimeout(r, 3000));
   if (missedTests && missedTests.length) {
