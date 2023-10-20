@@ -33,9 +33,9 @@ module.exports = async () => {
   if (accessionIds && accessionIds.length) {
     console.log(`Reporting ${accessionIds.length} test results.`);
     await _reduce(accessionIds, _sendReport, null, totalItems);
+    Util.SaveFile.save(accessionIds);
   }
   await new Promise((r) => setTimeout(r, 3000));
-  _Util.SaveFile.save(accessionIds);
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
   }).then((res) =>
@@ -47,8 +47,8 @@ module.exports = async () => {
   if (missedTests && missedTests.length) {
     console.log(`Reporting ${missedTests.length} missed test violations.`);
     await _reduce(missedTests, _sendViolation, "Missed Test", totalItems);
+    _Util.SaveFile.save(
+      missedTests.map((t) => t.EnrolleeRecord.EnrolleeIVRCode._text)
+    );
   }
-  _Util.SaveFile.save(
-    missedTests.map((t) => t.EnrolleeRecord.EnrolleeIVRCode._text)
-  );
 };
