@@ -18,7 +18,6 @@ const _reduce = async (arr, cb, violation, totalItems) => {
 let total = 0;
 
 module.exports = async () => {
-  console.log("RUNNING CRON JOB");
   const totalItems = () => ++total;
   const accessionIds = await Handler.Api.getResults({
     query: {
@@ -26,19 +25,30 @@ module.exports = async () => {
       thisDate: _Util.getDate(0),
       lastDate: _Util.getDate(-2),
     },
-  }).then((res) => res.map((el) => el.AccessionId._text));
-  if (accessionIds) {
+  }).then((res) =>
+    res
+      .map((el) => el.AccessionId._text)
+      .filter((id) => !_Util.SaveFile.read(id))
+  );
+  if (accessionIds && accessionIds.length) {
     console.log(`Reporting ${accessionIds.length} test results.`);
     await _reduce(accessionIds, _sendReport, null, totalItems);
   }
   await new Promise((r) => setTimeout(r, 3000));
+  _Util.SaveFile.save(accessionIds);
   const missedTests = await Handler.Api.getSelections({
     query: { date: _Util.getDate(-1) },
-  });
+  }).then((res) =>
+    res.filter(
+      (t) => !_Util.SaveFile.read(t.EnrolleeRecord.EnrolleeIVRCode._text)
+    )
+  );
   await new Promise((r) => setTimeout(r, 3000));
-  if (missedTests) {
+  if (missedTests && missedTests.length) {
     console.log(`Reporting ${missedTests.length} missed test violations.`);
     await _reduce(missedTests, _sendViolation, "Missed Test", totalItems);
   }
-  console.log("Reporting Finished");
+  _Util.SaveFile.save(
+    missedTests.map((t) => t.EnrolleeRecord.EnrolleeIVRCode._text)
+  );
 };
