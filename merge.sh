@@ -1,3 +1,4 @@
+nvm use 17.9.1
 git pull origin master
 cd /CMS/communitysupervision.org
 npm run build
