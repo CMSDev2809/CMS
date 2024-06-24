@@ -78,12 +78,12 @@ module.exports = {
 		email: "broc@compliancemonitoringsystems.com",
 		phonenumber: "(406) 529-1789",
 	},
-    cvislay: {
-        name: "Chandra Vislay",
-        title: "Compliance Officer",
-        email: "Chandra.vislay@compliancemonitoringsystems.com",
-        phonenumber: "(406) 529-1789",
-    },
+	    cvislay: {
+	        name: "Jessica Adams",
+	        title: "Compliance Officer",
+	        email: "jessica.adams@compliancemonitoringsystems.com",
+	        phonenumber: "(406) 529-1789",
+	    },
 	dburditt: {
 		name: "Darryl Burditt",
 		title: "Compliance Officer",
