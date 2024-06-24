@@ -57,6 +57,9 @@ module.exports = async (enrollee, violation, totalItems) => {
     enrolleeCaseId: enrollee.EnrolleeRecord.EnrolleeCaseId
       ? enrollee.EnrolleeRecord.EnrolleeCaseId._text
       : "",
+    groupName: enrollee.EnrolleeRecord.GroupName
+      ? enrollee.EnrolleeRecord.GroupName._text
+      : "",
   };
   const participants = _Util.parseRecipients(enrollee.memo);
   const content = await new Promise((resolve, reject) => {

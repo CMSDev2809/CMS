@@ -1,6 +1,6 @@
 module.exports = (obj) => `
   <div>
-    <img width="107.5" height="100" src="https://compliancemonitoringsystems.com/static/media/img.18fd2225.png"></img>
+    <img width="107.5" height="100" src="https://compliancemonitoringsystems.com/wp-content/uploads/2023/05/icon.png"></img>
     <div>
       <h2><b>[DO NOT REPLY]</b>${" "}<i style="font-size: 18px;">This is an automated message courtesy of Compliance Monitoring Systems.</i></h2>
     </div>
