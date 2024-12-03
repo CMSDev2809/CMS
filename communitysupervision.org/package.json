@@ -53,7 +53,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-bootstrap": "^0.31.5",
     "react-credit-cards": "^0.7.0",
-    "react-dev-utils": "^4.2.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.1.1",
     "react-dropzone": "^4.2.13",
     "react-https-redirect": "^1.0.10",
