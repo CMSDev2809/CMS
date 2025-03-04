@@ -23,7 +23,7 @@ module.exports = async () => {
     query: {
       date: _Util.getDate(-1),
       thisDate: _Util.getDate(0),
-      lastDate: _Util.getDate(-9),
+      lastDate: _Util.getDate(-2),
     },
   }).then((res) =>
     res
