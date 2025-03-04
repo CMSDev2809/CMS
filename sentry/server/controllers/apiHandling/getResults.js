@@ -25,19 +25,17 @@ module.exports = async (req, res) => {
           ? Object.prototype.toString.call(
               _res.getResultsResponse.ResultRecords.AccessionRecords
                 .AccessionRecord
-            ) == "[object Array]"
-            ? _res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.map(
-                (el) =>
-                  el.ResultDateTime._text.split("T")[0] === req.query.date
-                    ? el
-                    : null
-              ).filter((el) => el)
+            ) == "[object Array]" && false
+            ? _res.getResultsResponse.ResultRecords.AccessionRecords.AccessionRecord.filter(
+                (el) => el.ResultDateTime._text.split("T")[0] === req.query.date
+              )
             : _res.getResultsResponse.ResultRecords.AccessionRecords
                 .AccessionRecord
           : null
       );
     return res ? res.json(results) : results;
   } catch (e) {
+    console.log(e);
     throw new Error(e.message);
   }
 };
