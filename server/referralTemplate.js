@@ -3,7 +3,11 @@ module.exports = {
     <center style="margin-bottom: 20px;">
       <img src="https://compliancemonitoringsystems.com/static/media/img.18fd2225.png" style="width: 75px;float: left;margin-right: -75px;margin-left: 15px;" >
       <h1 style="font-size: 15px;">Compliance Monitoring Systems, LLC</h1>
+<<<<<<< HEAD
       <h2 style="font-size: 8px;">2685 Palmer Street, Suite 2C</h2>
+=======
+      <h2 style="font-size: 8px;">2685 Palmer St Suite 2C</h2>
+>>>>>>> 7ef887b5ca48da8ed408045e09e8896130b2d9c8
       <h2 style="font-size: 8px;">Missoula, Montana 59808</h2>
       <h2 style="font-size: 8px;">(406) 529-1789</h2>
       <h2 style="font-size: 8px;">Fax: (888) 855-7964</h2>

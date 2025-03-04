@@ -77,9 +77,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "PORT=3002 node scripts/start.js",
+    "start": "node scripts/start.js",
     "build": "rm -r build; node scripts/build.js",
-    "production": "PORT=3002 serve -s build"
+    "production": "serve -s build"
   },
   "jest": {
     "collectCoverageFrom": [

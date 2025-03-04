@@ -41,7 +41,9 @@ const _mailFunc = async (
 module.exports = async (enrollee, violation, totalItems) => {
   enrollee = {
     violation,
-    group: enrollee.EnrolleeRecord.GroupName._text,
+    group: enrollee.EnrolleeRecord.GroupName
+      ? enrollee.EnrolleeRecord.GroupName._text
+      : "",
     date: enrollee.TestDate ? enrollee.TestDate._text : "",
     nameFirst: enrollee.EnrolleeRecord.NameFirst
       ? enrollee.EnrolleeRecord.NameFirst._text
@@ -54,6 +56,9 @@ module.exports = async (enrollee, violation, totalItems) => {
       : "",
     enrolleeCaseId: enrollee.EnrolleeRecord.EnrolleeCaseId
       ? enrollee.EnrolleeRecord.EnrolleeCaseId._text
+      : "",
+    groupName: enrollee.EnrolleeRecord.GroupName
+      ? enrollee.EnrolleeRecord.GroupName._text
       : "",
   };
   const participants = _Util.parseRecipients(enrollee.memo);

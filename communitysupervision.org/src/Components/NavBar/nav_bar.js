@@ -64,9 +64,9 @@ class NavBar extends Component {
     ];
     return (
       <div className="link_buttons">
-        {components.map((element) =>
-          this.linkAnims(element, (delay += delayInc))
-        )}
+        {components.map((element) => {
+          return this.linkAnims(element, (delay += delayInc));
+        })}
       </div>
     );
   }

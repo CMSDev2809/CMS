@@ -81,3 +81,4 @@ sms/controllers/handlers/credentials.js
 
 **/build
 training/routes/wow/wow_awards.js
+sentry/server/results.json
