@@ -14,6 +14,8 @@ routes(app);
 
 schedule.scheduleJob("0 5 * * *", () => reportNew());
 
+console.log(config);
+
 if (!config.production) {
   reportNew();
 }
