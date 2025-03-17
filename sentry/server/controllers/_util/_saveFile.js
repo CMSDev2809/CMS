@@ -6,12 +6,11 @@ module.exports = {
   _checkFile: () => {
     const DATE = new Date();
     DATE.setHours(0, 0, 0, 0);
-    if (
-      !fs.existsSync(FILE_PATH) ||
-      (fs.existsSync(FILE_PATH) &&
-        JSON.parse(fs.readFileSync(FILE_PATH, "utf-8")).DATE !==
-          DATE.toString())
-    ) {
+    const fileDoesntExist = !fs.existsSync(FILE_PATH);
+    const saveFileDateDoesntMatchDate =
+      fs.existsSync(FILE_PATH) &&
+      JSON.parse(fs.readFileSync(FILE_PATH, "utf-8")).DATE !== DATE.toString();
+    if (fileDoesntExist) {
       if (fs.existsSync(FILE_PATH)) fs.unlinkSync(FILE_PATH);
       fs.writeFileSync(
         FILE_PATH,
