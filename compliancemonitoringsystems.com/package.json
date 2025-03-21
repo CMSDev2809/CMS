@@ -62,7 +62,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-https-redirect": "^1.1.0",
     "react-loading": "^1.0.5",
-    "react-move": "^2.9.1",
+    "react-move": "^6.5.0",
     "react-recaptcha": "^2.3.10",
     "react-recaptcha-v3": "^1.2.0",
     "react-redux": "^5.1.2",
