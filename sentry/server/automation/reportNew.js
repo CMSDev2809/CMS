@@ -43,14 +43,19 @@ module.exports = async () => {
   }).then((res) =>
     res
       ? res.filter(
-          (t) => !_Util.SaveFile.read(t.EnrolleeRecord.EnrolleeIVRCode._text)
+          (t) =>
+            !_Util.SaveFile.read(
+              `${t.EnrolleeRecord.EnrolleeIVRCode._text}-${_Util.getDate(-1)}`
+            )
         )
       : undefined
   );
   await new Promise((r) => setTimeout(r, 3000));
   if (missedTests && missedTests.length) {
     _Util.SaveFile.save(
-      missedTests.map((t) => t.EnrolleeRecord.EnrolleeIVRCode._text)
+      missedTests.map(
+        (t) => `${t.EnrolleeRecord.EnrolleeIVRCode._text}-${_Util.getDate(-1)}`
+      )
     );
     console.log(`Reporting ${missedTests.length} missed test violations.`);
     await _reduce(missedTests, _sendViolation, "Missed Test", totalItems);
